@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONAURA - Descubre el mejor contenido</title>
+    <link rel="stylesheet" href="prin2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="/">
+                    <span class="logo-text">SONAURA</span>
+                </a>
+            </div>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar películas, series, actores...">
+            </div>
+            
+            <div class="navbar-menu">
+                <a href="/peliculas" class="navbar-item">Películas</a>
+                <a href="/series" class="navbar-item">Series</a>
+                <a href="/noticias" class="navbar-item">Noticias</a>
+                <a href="/premium" class="navbar-item premium">Premium</a>
+                <a href="/login" class="navbar-item login-btn">Iniciar Sesión</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-image" style="background-image: url('https://via.placeholder.com/1920x800')"></div>
+                <div class="hero-overlay"></div>
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-category">Destacado</div>
+                        <h1>Dune: Parte 2</h1>
+                        <div class="hero-meta">
+                            <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                            <span class="year">2024</span>
+                            <span class="duration">166 min</span>
+                            <span class="genre">Sci-Fi</span>
+                        </div>
+                        <p class="hero-description">
+                            Paul Atreides se une a los Fremen y comienza un viaje espiritual y político para convertirse en Muad'Dib, mientras busca venganza contra los conspiradores que destruyeron a su familia.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#" class="btn btn-primary"><i class="fas fa-info-circle"></i> Más Información</a>
+                            <a href="#" class="btn btn-secondary"><i class="fas fa-bookmark"></i> Guardar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-nav">
+            <div class="container">
+                <div class="hero-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="categories-list">
+                <a href="#" class="category-item">
+                    <i class="fas fa-fire"></i>
+                    <span>Tendencias</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-film"></i>
+                    <span>Acción</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-laugh"></i>
+                    <span>Comedia</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Romance</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-ghost"></i>
+                    <span>Terror</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-rocket"></i>
+                    <span>Sci-Fi</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Drama</span>
+                </a>
+                <a href="#" class="category-item">
+                    <i class="fas fa-dragon"></i>
+                    <span>Fantasía</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Rated Section -->
+    <section class="top-rated">
+        <div class="container">
+            <div class="section-header">
+                <h2>Top 5 Mejor Valorados</h2>
+                <div class="section-tabs">
+                    <button class="tab-btn active" data-target="movies">Películas</button>
+                    <button class="tab-btn" data-target="series">Series</button>
+                </div>
+            </div>
+
+            <div class="tab-content active" id="movies">
+                <div class="media-slider">
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="Dune: Parte 2">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>Dune: Parte 2</h3>
+                            <div class="media-meta">
+                                <span>2024</span>
+                                <span>Sci-Fi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="Oppenheimer">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>Oppenheimer</h3>
+                            <div class="media-meta">
+                                <span>2023</span>
+                                <span>Drama</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="Pobres Criaturas">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>Pobres Criaturas</h3>
+                            <div class="media-meta">
+                                <span>2023</span>
+                                <span>Fantasía</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="Civil War">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>Civil War</h3>
+                            <div class="media-meta">
+                                <span>2024</span>
+                                <span>Acción</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="Challengers">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.5</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>Challengers</h3>
+                            <div class="media-meta">
+                                <span>2024</span>
+                                <span>Drama</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="series">
+                <div class="media-slider">
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="The Last of Us">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>The Last of Us</h3>
+                            <div class="media-meta">
+                                <span>2023</span>
+                                <span>Drama</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="Fallout">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>Fallout</h3>
+                            <div class="media-meta">
+                                <span>2024</span>
+                                <span>Sci-Fi</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="Shogun">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>Shogun</h3>
+                            <div class="media-meta">
+                                <span>2024</span>
+                                <span>Histórico</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="The Bear">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>The Bear</h3>
+                            <div class="media-meta">
+                                <span>2023</span>
+                                <span>Comedia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="media-poster">
+                            <img src="https://via.placeholder.com/300x450" alt="True Detective">
+                            <div class="media-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.5</span>
+                            </div>
+                            <div class="media-actions">
+                                <button class="action-btn"><i class="fas fa-play"></i></button>
+                                <button class="action-btn"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="media-info">
+                            <h3>True Detective</h3>
+                            <div class="media-meta">
+                                <span>2024</span>
+                                <span>Crimen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news">
+        <div class="container">
+            <div class="section-header">
+                <h2>Últimas Noticias</h2>
+                <a href="/noticias" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="news-grid">
+                <article class="news-featured">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/800x450" alt="Anunciada nueva temporada de 'The Last of Us'">
+                        <div class="news-category">Series</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Anunciada nueva temporada de 'The Last of Us'</h3>
+                        <div class="news-meta">
+                            <span class="news-date"><i class="far fa-calendar"></i> 23 Abril, 2025</span>
+                            <span class="news-author"><i class="far fa-user"></i> María García</span>
+                        </div>
+                        <p>HBO confirma la fecha de estreno de la esperada segunda temporada de la aclamada serie basada en el videojuego. Pedro Pascal y Bella Ramsey regresan a sus papeles principales.</p>
+                        <a href="#" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+
+                <div class="news-secondary">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Entrevista exclusiva con Christopher Nolan">
+                            <div class="news-category">Entrevistas</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Entrevista exclusiva con Christopher Nolan</h3>
+                            <div class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar"></i> 20 Abril, 2025</span>
+                            </div>
+                            <p>El director habla sobre su próximo proyecto después del éxito de Oppenheimer.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Top 10 películas imprescindibles de ciencia ficción">
+                            <div class="news-category">Recomendaciones</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Top 10 películas imprescindibles de ciencia ficción</h3>
+                            <div class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar"></i> 18 Abril, 2025</span>
+                            </div>
+                            <p>Nuestra selección de las mejores películas del género para este 2025.</p>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Primer vistazo a la nueva serie de Marvel">
+                            <div class="news-category">Avances</div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Primer vistazo a la nueva serie de Marvel</h3>
+                            <div class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar"></i> 15 Abril, 2025</span>
+                            </div>
+                            <p>Disney+ revela las primeras imágenes de su próxima serie del universo Marvel.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Section -->
+    <section class="premium-banner">
+        <div class="container">
+            <div class="premium-content">
+                <div class="premium-badge">Premium</div>
+                <h2>Lleva tu experiencia al siguiente nivel</h2>
+                <p>Suscríbete a nuestro plan Premium y disfruta de contenido exclusivo, listas personalizadas y un calendario de estrenos actualizado.</p>
+                
+                <div class="premium-features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Valoraciones sin límites</h4>
+                            <p>Valora y comenta todas las películas y series que quieras</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Calendario personalizado</h4>
+                            <p>Recibe notificaciones de los estrenos que más te interesan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-ad"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Sin publicidad</h4>
+                            <p>Disfruta de una experiencia sin interrupciones</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="/premium" class="btn btn-premium">Suscríbete ahora</a>
+            </div>
+            
+            <div class="premium-image">
+                <img src="https://via.placeholder.com/600x400" alt="Premium features">
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <div class="section-header">
+                <h2>Próximos Estrenos</h2>
+                <a href="/estrenos" class="view-all">Ver calendario <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="coming-soon-slider">
+                <div class="coming-soon-card">
+                    <div class="release-date">
+                        <span class="month">MAY</span>
+                        <span class="day">15</span>
+                    </div>
+                    <div class="coming-soon-poster">
+                        <img src="https://via.placeholder.com/250x350" alt="Furiosa">
+                    </div>
+                    <div class="coming-soon-info">
+                        <h3>Furiosa</h3>
+                        <p>Precuela de Mad Max: Fury Road</p>
+                    </div>
+                </div>
+                
+                <div class="coming-soon-card">
+                    <div class="release-date">
+                        <span class="month">JUN</span>
+                        <span class="day">07</span>
+                    </div>
+                    <div class="coming-soon-poster">
+                        <img src="https://via.placeholder.com/250x350" alt="Bad Boys 4">
+                    </div>
+                    <div class="coming-soon-info">
+                        <h3>Bad Boys 4</h3>
+                        <p>Nueva entrega de la saga</p>
+                    </div>
+                </div>
+                
+                <div class="coming-soon-card">
+                    <div class="release-date">
+                        <span class="month">JUN</span>
+                        <span class="day">14</span>
+                    </div>
+                    <div class="coming-soon-poster">
+                        <img src="https://via.placeholder.com/250x350" alt="Inside Out 2">
+                    </div>
+                    <div class="coming-soon-info">
+                        <h3>Inside Out 2</h3>
+                        <p>Secuela de la película de Pixar</p>
+                    </div>
+                </div>
+                
+                <div class="coming-soon-card">
+                    <div class="release-date">
+                        <span class="month">JUL</span>
+                        <span class="day">12</span>
+                    </div>
+                    <div class="coming-soon-poster">
+                        <img src="https://via.placeholder.com/250x350" alt="Deadpool & Wolverine">
+                    </div>
+                    <div class="coming-soon-info">
+                        <h3>Deadpool & Wolverine</h3>
+                        <p>Tercera entrega de Deadpool</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Mantente al día</h2>
+                <p>Suscríbete a nuestro boletín y recibe las últimas noticias y recomendaciones directamente en tu correo.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit" class="btn btn-primary">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">SONAURA</a>
+                    <p>Tu guía definitiva para encontrar las mejores películas y series.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Explorar</h3>
+                        <ul>
+                            <li><a href="/peliculas">Películas</a></li>
+                            <li><a href="/series">Series</a></li>
+                            <li><a href="/noticias">Noticias</a></li>
+                            <li><a href="/premium">Premium</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links-column">
+                        <h3>Categorías</h3>
+                        <ul>
+                            <li><a href="/categoria/accion">Acción</a></li>
+                            <li><a href="/categoria/drama">Drama</a></li>
+                            <li><a href="/categoria/comedia">Comedia</a></li>
+                            <li><a href="/categoria/sci-fi">Sci-Fi</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links-column">
+                        <h3>Soporte</h3>
+                        <ul>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/contacto">Contacto</a></li>
+                            <li><a href="/ayuda">Centro de Ayuda</a></li>
+                            <li><a href="/cuenta">Mi Cuenta</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="/privacidad">Política de Privacidad</a></li>
+                            <li><a href="/terminos">Términos de Uso</a></li>
+                            <li><a href="/cookies">Política de Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 SONAURA. Todos los derechos reservados.</p>
+                <div class="app-links">
+                    <a href="#" class="app-link">
+                        <i class="fab fa-apple"></i> App Store
+                    </a>
+                    <a href="#" class="app-link">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all tab content
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Show the corresponding tab content
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

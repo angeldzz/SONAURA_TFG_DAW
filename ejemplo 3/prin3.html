@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONAURA - Universo Cinematográfico</title>
+    <link rel="stylesheet" href="prin3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cosmos-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-text">SONAURA</span>
+                <span class="logo-dot"></span>
+            </a>
+
+            <div class="nav-container">
+                <nav class="main-nav">
+                    <a href="/peliculas" class="nav-link">Películas</a>
+                    <a href="/series" class="nav-link">Series</a>
+                    <a href="/noticias" class="nav-link">Noticias</a>
+                    <a href="/premium" class="nav-link premium">Premium</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="search-toggle">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="/login" class="btn-login">Iniciar Sesión</a>
+                    <a href="/registro" class="btn-register">Registrarse</a>
+                </div>
+            </div>
+
+            <button class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="search-overlay">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" placeholder="Buscar películas, series, actores...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="search-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content container">
+            <div class="hero-text">
+                <h1 class="glitch" data-text="Descubre tu próxima obsesión">Descubre tu próxima obsesión</h1>
+                <p>Tu portal definitivo para explorar, valorar y descubrir el mejor contenido cinematográfico</p>
+                <div class="hero-buttons">
+                    <a href="/explorar" class="btn-primary">Explorar Contenido</a>
+                    <a href="/premium" class="btn-outline">Suscripción Premium</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="card-float" style="--delay: 0s">
+                        <img src="https://via.placeholder.com/200x300" alt="Película destacada">
+                    </div>
+                    <div class="card-float" style="--delay: 0.2s">
+                        <img src="https://via.placeholder.com/200x300" alt="Película destacada">
+                    </div>
+                    <div class="card-float" style="--delay: 0.4s">
+                        <img src="https://via.placeholder.com/200x300" alt="Película destacada">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Top 5 Section -->
+    <section class="top-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Top 5 Mejor Valorados</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="section-tabs">
+                    <button class="tab active" data-tab="movies">Películas</button>
+                    <button class="tab" data-tab="series">Series</button>
+                </div>
+            </div>
+
+            <div class="tab-content active" id="movies-content">
+                <div class="media-grid">
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="Dune: Parte 2">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Sci-Fi</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Dune: Parte 2</h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>166 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="Oppenheimer">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Drama</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Oppenheimer</h3>
+                            <div class="card-meta">
+                                <span>2023</span>
+                                <span>180 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="Pobres Criaturas">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Fantasía</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Pobres Criaturas</h3>
+                            <div class="card-meta">
+                                <span>2023</span>
+                                <span>141 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="Civil War">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.6</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Acción</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Civil War</h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>109 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="Challengers">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.5</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Drama</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Challengers</h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>131 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="series-content">
+                <div class="media-grid">
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="The Last of Us">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Drama</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>The Last of Us</h3>
+                            <div class="card-meta">
+                                <span>2023</span>
+                                <span>1 Temporada</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="Fallout">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Sci-Fi</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Fallout</h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>1 Temporada</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="Shogun">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Histórico</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Shogun</h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>1 Temporada</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="The Bear">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.6</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Comedia</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>The Bear</h3>
+                            <div class="card-meta">
+                                <span>2023</span>
+                                <span>2 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-card neon-card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x450" alt="True Detective">
+                            <div class="card-overlay">
+                                <div class="card-actions">
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="card-action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating">
+                                <div class="rating-circle">
+                                    <span>4.5</span>
+                                </div>
+                            </div>
+                            <div class="card-badge">Crimen</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>True Detective</h3>
+                            <div class="card-meta">
+                                <span>2024</span>
+                                <span>4 Temporadas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Últimas Noticias</h2>
+                    <div class="title-line"></div>
+                </div>
+                <a href="/noticias" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="news-grid">
+                <article class="news-card featured-news">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/800x450" alt="Anunciada nueva temporada de 'The Last of Us'">
+                        <div class="news-badge">Series</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Anunciada nueva temporada de 'The Last of Us'</h3>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 23 Abril, 2025</span>
+                            <span><i class="far fa-clock"></i> 5 min lectura</span>
+                        </div>
+                        <p>HBO confirma la fecha de estreno de la esperada segunda temporada de la aclamada serie basada en el videojuego. Pedro Pascal y Bella Ramsey regresan a sus papeles principales.</p>
+                        <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/400x225" alt="Entrevista exclusiva con Christopher Nolan">
+                        <div class="news-badge">Entrevistas</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Entrevista exclusiva con Christopher Nolan</h3>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 20 Abril, 2025</span>
+                        </div>
+                        <p>El director habla sobre su próximo proyecto después del éxito de Oppenheimer.</p>
+                        <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-image">
+                        <img src="https://via.placeholder.com/400x225" alt="Top 10 películas imprescindibles de ciencia ficción">
+                        <div class="news-badge">Recomendaciones</div>
+                    </div>
+                    <div class="news-content">
+                        <h3>Top 10 películas imprescindibles de ciencia ficción</h3>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> 18 Abril, 2025</span>
+                        </div>
+                        <p>Nuestra selección de las mejores películas del género para este 2025.</p>
+                        <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Explora por Categorías</h2>
+                    <div class="title-line"></div>
+                </div>
+            </div>
+
+            <div class="categories-grid">
+                <a href="/categoria/accion" class="category-card" style="--category-color: #ff4757">
+                    <div class="category-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Acción</h3>
+                    <span class="category-count">243 títulos</span>
+                </a>
+
+                <a href="/categoria/drama" class="category-card" style="--category-color: #5352ed">
+                    <div class="category-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3>Drama</h3>
+                    <span class="category-count">189 títulos</span>
+                </a>
+
+                <a href="/categoria/comedia" class="category-card" style="--category-color: #ffa502">
+                    <div class="category-icon">
+                        <i class="fas fa-laugh"></i>
+                    </div>
+                    <h3>Comedia</h3>
+                    <span class="category-count">156 títulos</span>
+                </a>
+
+                <a href="/categoria/sci-fi" class="category-card" style="--category-color: #2ed573">
+                    <div class="category-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Sci-Fi</h3>
+                    <span class="category-count">127 títulos</span>
+                </a>
+
+                <a href="/categoria/terror" class="category-card" style="--category-color: #ff6b81">
+                    <div class="category-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <h3>Terror</h3>
+                    <span class="category-count">98 títulos</span>
+                </a>
+
+                <a href="/categoria/animacion" class="category-card" style="--category-color: #1e90ff">
+                    <div class="category-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Animación</h3>
+                    <span class="category-count">87 títulos</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Section -->
+    <section class="premium-section">
+        <div class="container">
+            <div class="premium-card">
+                <div class="premium-content">
+                    <div class="premium-badge">Premium</div>
+                    <h2>Eleva tu experiencia cinematográfica</h2>
+                    <p>Desbloquea contenido exclusivo, crea listas personalizadas y recibe notificaciones de estrenos con nuestra suscripción premium.</p>
+                    
+                    <div class="premium-features">
+                        <div class="premium-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Valoraciones ilimitadas</h4>
+                                <p>Califica y comenta todas las películas y series que quieras</p>
+                            </div>
+                        </div>
+                        
+                        <div class="premium-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Calendario personalizado</h4>
+                                <p>Mantente al día con los estrenos que más te interesan</p>
+                            </div>
+                        </div>
+                        
+                        <div class="premium-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Notificaciones</h4>
+                                <p>Recibe alertas sobre nuevos contenidos de tus creadores favoritos</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="/premium" class="btn-premium">Suscríbete ahora</a>
+                </div>
+                
+                <div class="premium-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Premium features">
+                    <div class="glow-effect"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-waves">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+        
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <span class="logo-text">SONAURA</span>
+                        <span class="logo-dot"></span>
+                    </a>
+                    <p>Tu guía definitiva para encontrar las mejores películas y series.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Explorar</h3>
+                        <ul>
+                            <li><a href="/peliculas">Películas</a></li>
+                            <li><a href="/series">Series</a></li>
+                            <li><a href="/noticias">Noticias</a></li>
+                            <li><a href="/premium">Premium</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Categorías</h3>
+                        <ul>
+                            <li><a href="/categoria/accion">Acción</a></li>
+                            <li><a href="/categoria/drama">Drama</a></li>
+                            <li><a href="/categoria/comedia">Comedia</a></li>
+                            <li><a href="/categoria/sci-fi">Sci-Fi</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="/privacidad">Política de Privacidad</a></li>
+                            <li><a href="/terminos">Términos de Uso</a></li>
+                            <li><a href="/cookies">Política de Cookies</a></li>
+                            <li><a href="/contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 SONAURA. Todos los derechos reservados.</p>
+                <div class="footer-app-links">
+                    <a href="#" class="app-link">
+                        <i class="fab fa-apple"></i> App Store
+                    </a>
+                    <a href="#" class="app-link">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tabs functionality
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all tab content
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Show the corresponding tab content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId + '-content').classList.add('active');
+                });
+            });
+
+            // Search toggle
+            const searchToggle = document.querySelector('.search-toggle');
+            const searchOverlay = document.querySelector('.search-overlay');
+            const searchClose = document.querySelector('.search-close');
+            
+            searchToggle.addEventListener('click', function() {
+                searchOverlay.classList.add('active');
+                document.body.classList.add('search-open');
+                setTimeout(() => {
+                    searchOverlay.querySelector('input').focus();
+                }, 300);
+            });
+            
+            searchClose.addEventListener('click', function() {
+                searchOverlay.classList.remove('active');
+                document.body.classList.remove('search-open');
+            });
+
+                        // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const header = document.querySelector('.header');
+
+            mobileToggle.addEventListener('click', function() {
+                header.classList.toggle('menu-open');
+                document.body.classList.toggle('no-scroll');
+            });
+        });
+    </script>
+</body>
+</html>
