@@ -1287,7 +1287,7 @@ img {
 /* Footer */
 .footer {
     position: relative;
-    padding: 5rem 0 2rem;
+    padding: 7.3rem 0 2rem;
     background-color: var(--dark);
     overflow: hidden;
 }
@@ -1477,8 +1477,9 @@ img {
         text-align: left;
     }
 }
-
+/*!-------------------------------------------------------------------  */
 @media (min-width: 768px) {
+
     .hero-text h1 {
         font-size: 4rem;
     }
@@ -1539,6 +1540,10 @@ img {
         z-index: 1000;
     }
     
+    .footer-brand{
+        display: none;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
     }
