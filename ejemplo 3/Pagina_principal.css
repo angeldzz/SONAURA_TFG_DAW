@@ -36,6 +36,7 @@
     --radius-xl: 24px;
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --dark-surface-transparente: #150b2ea8;
 }
 
 * {
@@ -1556,8 +1557,10 @@ img {
 /* Newsletter */
 .newsletter {
     padding: 3rem 0;
-    background-color: var(--dark-surface);
+    background-color: var(--dark-surface-transparente);
     margin: 50px auto;
+    width:800px;
+    border-radius: 20px ;
 }
 
 .newsletter-content {
