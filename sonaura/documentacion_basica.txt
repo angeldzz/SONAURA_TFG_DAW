@@ -1,0 +1,10 @@
+Documentacion y apuntes basicos para el entorno
+
+-crear entorno virtual:
+python -m venv sonaura
+
+-dentro del entorno activarlo:
+.\Scripts\activate.bat
+
+-para instalar todas las librerias simplemente usa este comando (teniendo el entono activado):
+pip install -r requirements.txt
