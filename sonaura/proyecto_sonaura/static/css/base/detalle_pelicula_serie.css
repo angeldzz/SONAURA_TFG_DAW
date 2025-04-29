@@ -1,0 +1,587 @@
+/* Estilos para la página de detalle de película */
+
+/* Movie Hero Section */
+.movie-hero {
+    position: relative;
+    padding: 8rem 0 3rem;
+    margin-bottom: 2rem;
+}
+
+.movie-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.movie-backdrop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.backdrop-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 1, 24, 0.8) 0%, var(--dark) 100%);
+}
+
+.movie-hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.movie-poster {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(157, 78, 221, 0.3);
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.movie-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.movie-info {
+    color: var(--white);
+}
+
+.movie-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.movie-badge {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.movie-info h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--white), var(--primary-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(157, 78, 221, 0.3);
+}
+
+.movie-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--gray-300);
+    font-size: 0.875rem;
+}
+
+.movie-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.movie-tagline {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--gray-300);
+    margin-bottom: 1.5rem;
+}
+
+.movie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Movie Details Section */
+.movie-details {
+    padding: 2rem 0 5rem;
+}
+
+.movie-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.movie-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.content-card {
+    background-color: var(--dark-surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--dark-surface-2);
+}
+
+.content-card .section-title {
+    margin-bottom: 1.5rem;
+}
+
+.content-card p {
+    color: var(--gray-300);
+    line-height: 1.8;
+}
+
+/* Cast Grid */
+.cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.cast-card {
+    text-align: center;
+}
+
+.cast-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 10px rgba(157, 78, 221, 0.3);
+}
+
+.cast-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cast-info h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.cast-info p {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ratings Summary */
+.ratings-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.rating-big {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.rating-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.rating-stars {
+    color: var(--yellow);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.rating-count {
+    font-size: 0.875rem;
+    color: var(--gray-400);
+}
+
+.rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.rating-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rating-label {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--gray-300);
+}
+
+.rating-bar {
+    flex: 1;
+    height: 8px;
+    background-color: var(--dark-surface-2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rating-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    border-radius: 4px;
+}
+
+.rating-percent {
+    width: 40px;
+    font-size: 0.875rem;
+    color: var(--gray-300);
+    text-align: right;
+}
+
+/* Comments */
+.comment-form {
+    background-color: var(--dark-surface-2);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.comment-form h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.user-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.star-rating {
+    display: flex;
+    gap: 0.25rem;
+    color: var(--gray-500);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.star-rating i:hover {
+    color: var(--yellow);
+}
+
+.comment-form textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--dark-surface);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    margin-bottom: 1rem;
+    resize: none;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment {
+    display: flex;
+    gap: 1rem;
+}
+
+.comment-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.comment-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.comment-header h4 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.comment-rating {
+    color: var(--yellow);
+    font-size: 0.75rem;
+}
+
+.comment-date {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    margin-bottom: 0.75rem;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.comment-actions button {
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.comment-actions button:hover {
+    color: var(--primary);
+}
+
+.load-more {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Sidebar */
+.movie-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebar-card {
+    background-color: var(--dark-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--dark-surface-2);
+}
+
+.sidebar-card .section-title {
+    margin-bottom: 1.25rem;
+}
+
+.movie-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.movie-details-list li {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--dark-surface-2);
+}
+
+.movie-details-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detail-label {
+    color: var(--gray-400);
+    font-size: 0.875rem;
+}
+
+.detail-value {
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: right;
+}
+
+.streaming-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.streaming-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--dark-surface-2);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.streaming-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.streaming-option img {
+    height: 30px;
+    width: auto;
+}
+
+.streaming-option span {
+    font-size: 0.875rem;
+    color: var(--gray-300);
+}
+
+.similar-movies {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.similar-movie {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--dark-surface-2);
+}
+
+.similar-movie:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.similar-movie img {
+    width: 60px;
+    height: 90px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+}
+
+.similar-movie-info {
+    flex: 1;
+}
+
+.similar-movie-info h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.similar-movie-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--gray-400);
+}
+
+.similar-movie-meta i {
+    color: var(--yellow);
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .movie-hero-content {
+        grid-template-columns: 300px 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+    
+    .movie-poster {
+        margin: 0;
+    }
+    
+    .movie-info h1 {
+        font-size: 3rem;
+    }
+    
+    .ratings-summary {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .rating-big {
+        width: 200px;
+    }
+    
+    .rating-bars {
+        flex: 1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .movie-details-grid {
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+    }
+    
+    .movie-info h1 {
+        font-size: 3.5rem;
+    }
+}
