@@ -1,0 +1,66 @@
+-Si tenemos un entorno activado hay que desactivarlo metiendonos en su ruta y
+.\Scripts\deactivate.bat
+
+-Creamos un entorno desde una terminal de cmd dentro de la carpeta DJango2425
+python -m venv nombreEntorno
+
+-Activamos el entorno virtual
+.\Scripts\activate.bat
+
+-Descargar Django en el entorno virtual
+pip install Django djangorestframework djangorestframework_simplejwt mysqlclient
+
+-Creamos el proyecto
+django-admin startproject proyecto1
+
+-Nos metemos al proyecto1
+cd proyecto1
+
+-Una vez dentro del proyecto arrancamos el proyecto
+--si no pone el nombre de la carpeta no puedes iniciar el proyecto(nombreCarpeta)
+python manage.py runserver
+
+-Para crear una app tenemos que tener el servidor parado
+django-admin startapp app1
+
+-Creamos en el mysql la BBDD y el usuario / y enlazamos en el settings
+DATABASES = {
+    'default': {
+    'ENGINE': 'django.db.backends.mysql',# Indica que usarás MySQL
+    'NAME': 'catalogo_telefonos', # Reemplaza con el nombre de tu base de datos
+    'USER': 'catalogo_telefonos', # Reemplaza con tu usuario de MySQL
+    'PASSWORD': 'catalogo_telefonos', # Reemplaza con la contraseña de tu usuario
+    'HOST': 'localhost', # Dirección del servidor MySQL (usualmente localhost)
+    'PORT': '3306', # Puerto de conexión (por defecto 3306)
+    }
+}
+
+-Hacer migraciones: py manage.py makemigrations
+-Migrar a la BBDD: py manage.py migrate
+-Hacer el super usuario: py mange.py createsuperuser
+-------------------------------------------------------------------------------------
+-Poner toda la ruta de static
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS=[
+    BASE_DIR / "static", #directorio ocal donde colocoras tus archvios estaticos
+]
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
+
+#imagenes
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+-------------------------------------------------------------------------

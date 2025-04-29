@@ -1,0 +1,18 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNDQyMzg1LCJpYXQiOjE3NDE0Mzg3ODUsImp0aSI6Ijk5NWY0YTA1MjVlODRmYTc4NzU5MmFkZTVjN2Y1YmFjIiwidXNlcl9pZCI6Mn0.jW4FawjRKZMxa-3caqS5fNjWnp9Kc4g_JWR_Sg8Rs7g
+
+curl -X GET http://127.0.0.1:8000/api/productos/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNDQyMzg1LCJpYXQiOjE3NDE0Mzg3ODUsImp0aSI6Ijk5NWY0YTA1MjVlODRmYTc4NzU5MmFkZTVjN2Y1YmFjIiwidXNlcl9pZCI6Mn0.jW4FawjRKZMxa-3caqS5fNjWnp9Kc4g_JWR_Sg8Rs7g"
+
+curl -X POST http://127.0.0.1:8000/api/productos/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNDQyMzg1LCJpYXQiOjE3NDE0Mzg3ODUsImp0aSI6Ijk5NWY0YTA1MjVlODRmYTc4NzU5MmFkZTVjN2Y1YmFjIiwidXNlcl9pZCI6Mn0.jW4FawjRKZMxa-3caqS5fNjWnp9Kc4g_JWR_Sg8Rs7g" ^
+-H "Content-type: application/json" ^
+-d "{\"nombre\":\"Pan\",\"descripcion\":\"esto es el pan\",\"precio\":20,\"stock\":20,\"categoria\":1}"
+
+curl -X PUT http://127.0.0.1:8000/api/productos/1/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNDQyMzg1LCJpYXQiOjE3NDE0Mzg3ODUsImp0aSI6Ijk5NWY0YTA1MjVlODRmYTc4NzU5MmFkZTVjN2Y1YmFjIiwidXNlcl9pZCI6Mn0.jW4FawjRKZMxa-3caqS5fNjWnp9Kc4g_JWR_Sg8Rs7g" ^
+-H "Content-type: application/json" ^
+-d "{\"nombre\":\"Kefir\",\"descripcion\":\"esto es el kefir\",\"precio\":34,\"stock\":55,\"categoria\":2}"
+
+curl -X DELETE http://127.0.0.1:8000/api/productos/3/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNDQyMzg1LCJpYXQiOjE3NDE0Mzg3ODUsImp0aSI6Ijk5NWY0YTA1MjVlODRmYTc4NzU5MmFkZTVjN2Y1YmFjIiwidXNlcl9pZCI6Mn0.jW4FawjRKZMxa-3caqS5fNjWnp9Kc4g_JWR_Sg8Rs7g"
+

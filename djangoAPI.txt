@@ -1,0 +1,170 @@
+-----Instalar dependencias-----
+
+pip install Django djangorestframework djangorestframework_simplejwt mysqlclient pillow
+
+DEPENDIENDO DEL CASO, VAMOS A HACER EL MODELO EN UNA APP APARTE Y PARA IMPORTAR EL MODELO
+SERÍA base.models
+
+Configurar el settings 
+---------------------
+-----meter a aplicaciones instaladas el INSTALLED_APPS y la app de api-----
+    'rest_framework',
+    'api',
+
+Activar interfaz en API sin autenticacion
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Tiempo de vida del token de acceso
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Tiempo de vida del token de refresco
+    'ROTATE_REFRESH_TOKENS': True,  # Renovar automáticamente el token de refresco
+    'BLACKLIST_AFTER_ROTATION': True,  # Evitar reutilización de tokens viejos
+    'ALGORITHM': 'HS256',  # Algoritmo de encriptación
+    'SIGNING_KEY': SECRET_KEY,  # Usa la clave secreta del proyecto DJANGO
+}
+------------------------------------------------------------------------------------------------------------------
+
+urls.py del proyecto
+
+from django.contrib import admin
+from django.urls import path,include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+urlpatterns = [
+    path('api/',include("api.urls")),
+    path('admin/', admin.site.urls),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Para obtener el token
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Para refrescar el token
+]
+
+------------------------------------------------------------------------------------------------------------------
+Para hacer una api tienes que hacer el serializers.py en la app de la api
+
+----serializers.py:
+
+from rest_framework import serializers
+from .models import MiModelo
+
+class MiModeloSerializer(serializers.ModelSerializer):
+    creador = serializers.ReadOnlyField(source='creador.username')
+    
+    class Meta:
+        model = MiModelo
+        fields = '__all__'
+------------------------------------------------------------------------------------------------------------------
+----permissions.py:
+cuando tenemos dos clases del modelo con distinto nombre en la relacion a User, hacemos dos classes IsOwnerOrReadOnly
+
+from rest_framework import permissions
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_authenticated
+
+    def has_object_permission(self, request, view, obj):
+        # Los permisos de lectura están permitidos para cualquier solicitud,
+        # por lo que siempre permitiremos solicitudes GET, HEAD o OPTIONS.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # Los permisos de escritura solo están permitidos para el propietario del objeto.
+        return obj.owner == request.user
+------------------------------------------------------------------------------------------------------------------
+views.py de api
+
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from base.models import Categoria,Productos
+from .serializers import CategoriaSerializer,ProductosSerializer
+from .permissions import IsOwnerOrReadOnly
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    """
+    API que permite:
+    - Ver todos los objetos (solo usuarios autenticados)
+    - Crear un objeto (se asigna automáticamente al usuario autenticado)
+    - Modificar y eliminar solo si el usuario es el creador
+    """
+    
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+    permission_classes = [IsAuthenticated,IsOwnerOrReadOnly]
+
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)    
+
+
+class ProductosViewSet(viewsets.ModelViewSet):
+    """
+    API que permite:
+    - Ver todos los objetos (solo usuarios autenticados)
+    - Crear un objeto (se asigna automáticamente al usuario autenticado)
+    - Modificar y eliminar solo si el usuario es el creador
+    """
+    
+    queryset = Productos.objects.all()
+    serializer_class = ProductosSerializer
+    permission_classes = [IsAuthenticated,IsOwnerOrReadOnly]
+
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+------------------------------------------------------------------------------------------------------------------
+
+urls.py de api
+
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import MiModeloViewSet
+
+router = DefaultRouter()
+router.register(r'mis_objetos', MiModeloViewSet)
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
+#! La ruta en este caso va a ser .../api/mis_objetos
+
+------------------------------------------------------------------------------------------------------------------
+Comandos curl para apis
+
+Para obtener los tokens necesitamos este comando:
+curl -X POST http://127.0.0.1:8000/api/token/ ^
+-H "Content-Type: application/json" ^
+-d "{\"username\":\"usuario2\",\"password\":\"contraseña\"}"
+
+resultado = 
+{
+"refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MTA3NDAwMCwiaWF0IjoxNzQwNDY5MjAwLCJqdGkiOiIxODlhOTQzYTUwNjQ0OWY3OGZhZWExZjY3ZGVhODg0MiIsInVzZXJfaWQiOjJ9.hm32yW8cl1hHop7INCR3IxXkcMqojHNSR7IoL1yLxFg",
+"access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDcyODAwLCJpYXQiOjE3NDA0NjkyMDAsImp0aSI6IjM5M2Y4ZGVhNmE5NTRmYTNiOWUxZWMwMjE5Y2U1MWZmIiwidXNlcl9pZCI6Mn0.FCeemWfc7lIiyJmNKY2IVLpZ2a4kqWXjPwIS-IFh8vQ"
+}
+
+----(si tenemos tokens necesitamos el token access y si da HTML mirar el settings)----
+Para optener los objetos:
+curl -X GET http://127.0.0.1:8000/api/mis_objetos/ ^
+-H "Authorization: Bearer <token access>"
+
+Para crear un objeto:
+curl -X POST http://127.0.0.1:8000/api/mis_objetos/ ^
+-H "Authorization: Bearer <token access>" ^
+-H "Content-type: application/json" ^
+-d "{\"campo1\":\"esto es el texto 1\",\"campo2\":\"esto es el texto 2\"}"
+
+Para modificar:
+curl -X PUT http://127.0.0.1:8000/api/mis_objetos/5/ ^
+-H "Authorization: Bearer <token access>" ^
+-H "Content-type: application/json" ^
+-d "{\"campo1\":\"modificado 1\",\"campo2\":\"modificado 2\"}"
+
+Para eliminar:
+curl -X DELETE http://127.0.0.1:8000/api/mis_objetos/1/ ^
+-H "Authorization: Bearer <token access>"
