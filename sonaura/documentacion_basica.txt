@@ -1,8 +1,5 @@
 Documentacion y apuntes basicos para el entorno
 
--crear entorno virtual:
-python -m venv sonaura
-
 -dentro del entorno activarlo:
 .\Scripts\activate.bat
 
