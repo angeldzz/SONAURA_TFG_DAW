@@ -418,7 +418,6 @@ body {
     position: relative;
     transition: transform 0.3s ease;
 }
-
 .carousel-arrow {
     position: absolute;
     top: 50%;
