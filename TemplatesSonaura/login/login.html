@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONAURA - Iniciar Sesión</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cosmos-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <a href="/" class="logo">
+                <span class="logo-text">SONAURA</span>
+                <span class="logo-dot"></span>
+            </a>
+        </div>
+
+        <div class="login-card">
+            <div class="login-content">
+                <h1>Iniciar Sesión</h1>
+                <p class="login-subtitle">Accede a tu cuenta para disfrutar de todo el contenido</p>
+
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </button>
+                    <button class="social-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>o</span>
+                </div>
+
+                <form class="login-form">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <input type="email" id="email" placeholder="Correo electrónico" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input type="password" id="password" placeholder="Contraseña" required>
+                        <button type="button" class="password-toggle">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="remember">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Recordarme</span>
+                            </label>
+                        </div>
+                        <a href="/recuperar-password" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">
+                        <span>Iniciar Sesión</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="register-link">
+                    <p>¿No tienes una cuenta? <a href="/registro">Regístrate</a></p>
+                </div>
+            </div>
+
+            <div class="login-visual">
+                <div class="visual-content">
+                    <h2>Bienvenido a SONAURA</h2>
+                    <p>Tu portal definitivo para explorar, valorar y descubrir el mejor contenido cinematográfico.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-film"></i>
+                            <span>Explora películas y series</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-star"></i>
+                            <span>Califica y comenta</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Noticias y reseñas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-overlay"></div>
+                <div class="floating-cards">
+                    <div class="card-float" style="--delay: 0s">
+                        <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Película destacada">
+                    </div>
+                    <div class="card-float" style="--delay: 0.2s">
+                        <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Película destacada">
+                    </div>
+                    <div class="card-float" style="--delay: 0.4s">
+                        <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Película destacada">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-footer">
+            <p>© 2025 SONAURA. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="/privacidad">Política de Privacidad</a>
+                <a href="/terminos">Términos de Uso</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password visibility toggle
+            const passwordToggle = document.querySelector('.password-toggle');
+            const passwordInput = document.getElementById('password');
+            
+            passwordToggle.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Toggle eye icon
+                const icon = this.querySelector('i');
+                icon.classList.toggle('fa-eye');
+                icon.classList.toggle('fa-eye-slash');
+            });
+
+            // Input focus effects
+            const inputs = document.querySelectorAll('.form-group input');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+                
+                // Check if input has value on page load
+                if (input.value !== '') {
+                    input.parentElement.classList.add('focused');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

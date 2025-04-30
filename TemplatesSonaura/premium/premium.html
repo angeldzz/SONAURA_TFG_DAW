@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONAURA ELITE - El Universo Cinematográfico Definitivo</title>
+    <link rel="stylesheet" href="premium.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cosmos-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-text">SONAURA<span class="logo-elite">ELITE</span></span>
+                <span class="logo-dot"></span>
+            </a>
+
+            <div class="nav-container">
+                <nav class="main-nav">
+                    <a href="/peliculas" class="nav-link">Películas</a>
+                    <a href="/series" class="nav-link">Series</a>
+                    <a href="/noticias" class="nav-link active">Noticias</a>
+                    <a href="/premium" class="nav-link premium">Elite</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="search-toggle">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="/login" class="btn-login">Iniciar Sesión</a>
+                    <a href="/registro" class="btn-register">Unirse</a>
+                </div>
+            </div>
+
+            <button class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="search-overlay">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" placeholder="Buscar en el universo cinematográfico...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="search-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero news-hero">
+        <div class="hero-parallax">
+            <div class="parallax-layer" data-speed="0.1"></div>
+            <div class="parallax-layer" data-speed="0.2"></div>
+            <div class="parallax-layer" data-speed="0.3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content news-hero-content">
+                <div class="hero-text">
+                    <div class="news-badge featured-badge">Exclusiva</div>
+                    <h1 class="glitch-title" data-text="Christopher Nolan anuncia su próximo proyecto">Christopher Nolan anuncia su próximo proyecto</h1>
+                    <div class="news-meta hero-meta">
+                        <span><i class="far fa-calendar-alt"></i> 25 Abril, 2025</span>
+                        <span><i class="far fa-user"></i> Carlos Martínez</span>
+                        <span><i class="far fa-clock"></i> 8 min lectura</span>
+                        <span><i class="far fa-eye"></i> 2.4K vistas</span>
+                    </div>
+                    <p>El aclamado director británico ha revelado detalles sobre su próxima película, un thriller de ciencia ficción que promete revolucionar el género. La producción comenzará a finales de este año con un reparto estelar encabezado por Cillian Murphy y Florence Pugh.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn-primary"><i class="fas fa-book-open"></i> Leer artículo completo</a>
+                        <a href="#" class="btn-outline"><i class="fas fa-share-alt"></i> Compartir</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Christopher Nolan anuncia su próximo proyecto">
+                    <div class="image-glow"></div>
+                    <div class="image-overlay-gradient"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- News Categories -->
+    <section class="news-categories">
+        <div class="container">
+            <div class="categories-list">
+                <a href="#" class="category-pill active">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Todas</span>
+                </a>
+                <a href="#" class="category-pill">
+                    <i class="fas fa-film"></i>
+                    <span>Cine</span>
+                </a>
+                <a href="#" class="category-pill">
+                    <i class="fas fa-tv"></i>
+                    <span>Series</span>
+                </a>
+                <a href="#" class="category-pill">
+                    <i class="fas fa-microphone"></i>
+                    <span>Entrevistas</span>
+                </a>
+                <a href="#" class="category-pill">
+                    <i class="fas fa-star"></i>
+                    <span>Reseñas</span>
+                </a>
+                <a href="#" class="category-pill">
+                    <i class="fas fa-trophy"></i>
+                    <span>Premios</span>
+                </a>
+                <a href="#" class="category-pill">
+                    <i class="fas fa-video"></i>
+                    <span>Trailers</span>
+                </a>
+                <a href="#" class="category-pill">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Estrenos</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="latest-news">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Últimas Noticias</h2>
+                    <div class="title-line"></div>
+                </div>
+                <div class="section-tabs">
+                    <button class="tab active" data-tab="all">Todas</button>
+                    <button class="tab" data-tab="movies">Cine</button>
+                    <button class="tab" data-tab="series">Series</button>
+                    <button class="tab" data-tab="streaming">Streaming</button>
+                </div>
+            </div>
+
+            <div class="tab-content active" id="all-content">
+                <div class="news-grid">
+                    <article class="news-card featured-news glass-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/800x450" alt="Anunciada nueva temporada de 'The Last of Us'">
+                            <div class="news-badge">Series</div>
+                            <div class="image-overlay"></div>
+                            <div class="news-rating">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.5</span>
+                            </div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Anunciada nueva temporada de 'The Last of Us'</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 23 Abril, 2025</span>
+                                <span><i class="far fa-user"></i> María García</span>
+                                <span><i class="far fa-clock"></i> 5 min lectura</span>
+                            </div>
+                            <p>HBO confirma la fecha de estreno de la esperada segunda temporada de la aclamada serie basada en el videojuego. Pedro Pascal y Bella Ramsey regresan a sus papeles principales en esta nueva entrega que adaptará los eventos de "The Last of Us Part II".</p>
+                            <div class="news-tags">
+                                <span class="news-tag">HBO</span>
+                                <span class="news-tag">Videojuegos</span>
+                                <span class="news-tag">Drama</span>
+                            </div>
+                            <a href="#" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card glass-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Entrevista exclusiva con Christopher Nolan">
+                            <div class="news-badge">Entrevistas</div>
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Entrevista exclusiva con Christopher Nolan</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 20 Abril, 2025</span>
+                                <span><i class="far fa-clock"></i> 7 min lectura</span>
+                            </div>
+                            <p>El director habla sobre su próximo proyecto después del éxito de Oppenheimer y su visión del cine actual.</p>
+                            <div class="news-tags">
+                                <span class="news-tag">Directores</span>
+                                <span class="news-tag">Exclusiva</span>
+                            </div>
+                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card glass-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Top 10 películas imprescindibles de ciencia ficción">
+                            <div class="news-badge">Recomendaciones</div>
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Top 10 películas imprescindibles de ciencia ficción</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 18 Abril, 2025</span>
+                                <span><i class="far fa-clock"></i> 10 min lectura</span>
+                            </div>
+                            <p>Nuestra selección de las mejores películas del género para este 2025, desde clásicos hasta nuevos estrenos.</p>
+                            <div class="news-tags">
+                                <span class="news-tag">Sci-Fi</span>
+                                <span class="news-tag">Rankings</span>
+                            </div>
+                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card glass-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Netflix anuncia nuevas series originales">
+                            <div class="news-badge">Streaming</div>
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Netflix anuncia nuevas series originales para 2025</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 15 Abril, 2025</span>
+                                <span><i class="far fa-clock"></i> 4 min lectura</span>
+                            </div>
+                            <p>La plataforma de streaming revela su catálogo de producciones originales para la segunda mitad del año.</p>
+                            <div class="news-tags">
+                                <span class="news-tag">Netflix</span>
+                                <span class="news-tag">Estrenos</span>
+                            </div>
+                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card glass-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Primer tráiler de Gladiator 2">
+                            <div class="news-badge">Cine</div>
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Lanzado el primer tráiler de Gladiator 2</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 12 Abril, 2025</span>
+                                <span><i class="far fa-clock"></i> 3 min lectura</span>
+                            </div>
+                            <p>Ridley Scott regresa a la antigua Roma con la esperada secuela del clásico del año 2000.</p>
+                            <div class="news-tags">
+                                <span class="news-tag">Trailers</span>
+                                <span class="news-tag">Secuelas</span>
+                            </div>
+                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card glass-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x225" alt="Fallout renovada para una segunda temporada">
+                            <div class="news-badge">Series</div>
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Fallout renovada para una segunda temporada</h3>
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> 10 Abril, 2025</span>
+                                <span><i class="far fa-clock"></i> 4 min lectura</span>
+                            </div>
+                            <p>Amazon Prime Video confirma la renovación de la exitosa adaptación del popular videojuego.</p>
+                            <div class="news-tags">
+                                <span class="news-tag">Amazon</span>
+                                <span class="news-tag">Videojuegos</span>
+                            </div>
+                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="load-more">
+                    <button class="btn-outline btn-load-more">Cargar más noticias <i class="fas fa-spinner"></i></button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="movies-content">
+                <!-- Contenido de la pestaña Cine -->
+                <div class="news-grid">
+                    <!-- Contenido similar al anterior pero filtrado por cine -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="series-content">
+                <!-- Contenido de la pestaña Series -->
+                <div class="news-grid">
+                    <!-- Contenido similar al anterior pero filtrado por series -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="streaming-content">
+                <!-- Contenido de la pestaña Streaming -->
+                <div class="news-grid">
+                    <!-- Contenido similar al anterior pero filtrado por streaming -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Interviews -->
+    <section class="interviews-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Entrevistas Destacadas</h2>
+                    <div class="title-line"></div>
+                </div>
+                <a href="/entrevistas" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="interviews-grid">
+                <div class="interview-card glass-card">
+                    <div class="interview-image">
+                        <img src="https://via.placeholder.com/300x400" alt="Entrevista con Timothée Chalamet">
+                        <div class="interview-play pulse-animation">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="interview-badge">Video</div>
+                        <div class="interview-duration">15:42</div>
+                    </div>
+                    <div class="interview-content">
+                        <h3>Timothée Chalamet habla sobre su papel en Dune: Parte 2</h3>
+                        <div class="interview-meta">
+                            <span><i class="fas fa-eye"></i> 1.2K</span>
+                            <span><i class="fas fa-heart"></i> 342</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interview-card glass-card">
+                    <div class="interview-image">
+                        <img src="https://via.placeholder.com/300x400" alt="Entrevista con Florence Pugh">
+                        <div class="interview-play pulse-animation">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="interview-badge">Video</div>
+                        <div class="interview-duration">18:27</div>
+                    </div>
+                    <div class="interview-content">
+                        <h3>Florence Pugh sobre su carrera y próximos proyectos</h3>
+                        <div class="interview-meta">
+                            <span><i class="fas fa-eye"></i> 956</span>
+                            <span><i class="fas fa-heart"></i> 287</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interview-card glass-card">
+                    <div class="interview-image">
+                        <img src="https://via.placeholder.com/300x400" alt="Entrevista con Denis Villeneuve">
+                        <div class="interview-play pulse-animation">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="interview-badge">Video</div>
+                        <div class="interview-duration">22:15</div>
+                    </div>
+                    <div class="interview-content">
+                        <h3>Denis Villeneuve revela detalles sobre Dune: Parte 3</h3>
+                        <div class="interview-meta">
+                            <span><i class="fas fa-eye"></i> 1.5K</span>
+                            <span><i class="fas fa-heart"></i> 412</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interview-card glass-card">
+                    <div class="interview-image">
+                        <img src="https://via.placeholder.com/300x400" alt="Entrevista con Zendaya">
+                        <div class="interview-play pulse-animation">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="interview-badge">Video</div>
+                        <div class="interview-duration">16:50</div>
+                    </div>
+                    <div class="interview-content">
+                        <h3>Zendaya habla sobre Challengers y su evolución como actriz</h3>
+                        <div class="interview-meta">
+                            <span><i class="fas fa-eye"></i> 1.1K</span>
+                            <span><i class="fas fa-heart"></i> 356</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Recommendations -->
+    <section class="recommendations-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Recomendaciones Semanales</h2>
+                    <div class="title-line"></div>
+                </div>
+                <a href="/recomendaciones" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="recommendations-grid">
+                <div class="recommendation-card glass-card">
+                    <div class="recommendation-image">
+                        <img src="https://via.placeholder.com/500x300" alt="Civil War">
+                        <div class="recommendation-overlay">
+                            <div class="recommendation-badge">Película</div>
+                            <div class="recommendation-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-content">
+                        <h3>Civil War</h3>
+                        <p>La nueva película de Alex Garland es una impactante visión de un futuro distópico que no te puedes perder.</p>
+                        <div class="recommendation-meta">
+                            <span><i class="fas fa-film"></i> Acción/Drama</span>
+                            <span><i class="fas fa-calendar"></i> 2024</span>
+                        </div>
+                        <div class="recommendation-tags">
+                            <span class="recommendation-tag">Distopía</span>
+                            <span class="recommendation-tag">Política</span>
+                            <span class="recommendation-tag">A24</span>
+                        </div>
+                        <a href="#" class="btn-outline recommendation-btn">Ver crítica completa</a>
+                    </div>
+                </div>
+                
+                <div class="recommendation-card glass-card">
+                    <div class="recommendation-image">
+                        <img src="https://via.placeholder.com/500x300" alt="Shogun">
+                        <div class="recommendation-overlay">
+                            <div class="recommendation-badge">Serie</div>
+                            <div class="recommendation-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-content">
+                        <h3>Shogun</h3>
+                        <p>Esta adaptación del clásico de James Clavell es una obra maestra de la televisión con una ambientación histórica impecable.</p>
+                        <div class="recommendation-meta">
+                            <span><i class="fas fa-tv"></i> Drama/Histórico</span>
+                            <span><i class="fas fa-calendar"></i> 2024</span>
+                        </div>
+                        <div class="recommendation-tags">
+                            <span class="recommendation-tag">Japón</span>
+                            <span class="recommendation-tag">Samurais</span>
+                            <span class="recommendation-tag">FX</span>
+                        </div>
+                        <a href="#" class="btn-outline recommendation-btn">Ver crítica completa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elite Section -->
+    <section class="elite-section">
+        <div class="elite-bg-animation">
+            <div class="elite-particle"></div>
+            <div class="elite-particle"></div>
+            <div class="elite-particle"></div>
+            <div class="elite-particle"></div>
+            <div class="elite-particle"></div>
+        </div>
+        <div class="container">
+            <div class="elite-card">
+                <div class="elite-content">
+                    <div class="elite-badge">SONAURA ELITE</div>
+                    <h2>Experiencia cinematográfica definitiva</h2>
+                    <p>Únete a nuestra comunidad exclusiva y accede a contenido premium, entrevistas en profundidad y análisis cinematográficos de expertos.</p>
+                    
+                    <div class="elite-features">
+                        <div class="elite-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Artículos exclusivos</h4>
+                                <p>Contenido escrito por críticos profesionales y expertos de la industria</p>
+                            </div>
+                        </div>
+                        
+                        <div class="elite-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Entrevistas extendidas</h4>
+                                <p>Versiones completas y sin cortes de nuestras entrevistas con cineastas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="elite-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-film"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Acceso anticipado</h4>
+                                <p>Sé el primero en conocer las noticias y estrenos más importantes</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="elite-pricing">
+                        <div class="pricing-option">
+                            <h5>Mensual</h5>
+                            <div class="price">9.99€</div>
+                            <span class="price-period">por mes</span>
+                        </div>
+                        <div class="pricing-option featured">
+                            <div class="best-value">Mejor valor</div>
+                            <h5>Anual</h5>
+                            <div class="price">89.99€</div>
+                            <span class="price-period">por año</span>
+                            <span class="price-save">Ahorra 25%</span>
+                        </div>
+                    </div>
+                    
+                    <a href="/elite" class="btn-elite">Únete ahora</a>
+                </div>
+                
+                <div class="elite-image">
+                    <img src="https://via.placeholder.com/600x400" alt="SONAURA ELITE">
+                    <div class="elite-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-card glass-card">
+                <div class="newsletter-content">
+                    <div class="newsletter-badge">Newsletter</div>
+                    <h2>Mantente al día con las últimas noticias</h2>
+                    <p>Suscríbete a nuestro boletín y recibe las últimas noticias y recomendaciones directamente en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit" class="btn-primary">Suscribirse</button>
+                    </form>
+                    <p class="newsletter-privacy">Al suscribirte, aceptas nuestra <a href="#">política de privacidad</a>.</p>
+                </div>
+                <div class="newsletter-image">
+                    <img src="https://via.placeholder.com/400x300" alt="Newsletter">
+                    <div class="image-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-waves">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+        
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <span class="logo-text">SONAURA<span class="logo-elite">ELITE</span></span>
+                        <span class="logo-dot"></span>
+                    </a>
+                    <p>Tu guía definitiva para explorar el universo cinematográfico.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Explorar</h3>
+                        <ul>
+                            <li><a href="/peliculas">Películas</a></li>
+                            <li><a href="/series">Series</a></li>
+                            <li><a href="/noticias">Noticias</a></li>
+                            <li><a href="/elite">Elite</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Categorías</h3>
+                        <ul>
+                            <li><a href="/categoria/accion">Acción</a></li>
+                            <li><a href="/categoria/drama">Drama</a></li>
+                            <li><a href="/categoria/comedia">Comedia</a></li>
+                            <li><a href="/categoria/sci-fi">Sci-Fi</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="/privacidad">Política de Privacidad</a></li>
+                            <li><a href="/terminos">Términos de Uso</a></li>
+                            <li><a href="/cookies">Política de Cookies</a></li>
+                            <li><a href="/contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 SONAURA ELITE. Todos los derechos reservados.</p>
+                <div class="footer-app-links">
+                    <a href="#" class="app-link">
+                        <i class="fab fa-apple"></i> App Store
+                    </a>
+                    <a href="#" class="app-link">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tabs functionality
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all tab content
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Show the corresponding tab content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId + '-content').classList.add('active');
+                });
+            });
+
+            // Search toggle
+            const searchToggle = document.querySelector('.search-toggle');
+            const searchOverlay = document.querySelector('.search-overlay');
+            const searchClose = document.querySelector('.search-close');
+            
+            searchToggle.addEventListener('click', function() {
+                searchOverlay.classList.add('active');
+                document.body.classList.add('search-open');
+                setTimeout(() => {
+                    searchOverlay.querySelector('input').focus();
+                }, 300);
+            });
+            
+            searchClose.addEventListener('click', function() {
+                searchOverlay.classList.remove('active');
+                document.body.classList.remove('search-open');
+            });
+
+            // Mobile menu toggle
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const header = document.querySelector('.header');
+
+            mobileToggle.addEventListener('click', function() {
+                header.classList.toggle('menu-open');
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            // Category pills
+            const categoryPills = document.querySelectorAll('.category-pill');
+            
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Parallax effect
+            window.addEventListener('scroll', function() {
+                const parallaxLayers = document.querySelectorAll('.parallax-layer');
+                const scrollPosition = window.pageYOffset;
+                
+                parallaxLayers.forEach(layer => {
+                    const speed = layer.getAttribute('data-speed');
+                    layer.style.transform = `translateY(${scrollPosition * speed}px)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
