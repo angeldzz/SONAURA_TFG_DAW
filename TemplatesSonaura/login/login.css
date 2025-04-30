@@ -510,8 +510,8 @@
   
   .card-float {
     position: absolute;
-    width: 180px;
-    height: 270px;
+    width: 120px;
+    height: 200px;
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -520,22 +520,22 @@
   }
   
   .card-float:nth-child(1) {
-    top: 10%;
-    right: 10%;
+    top: 5%;
+    right: 60%;
     transform: rotate(-5deg);
     z-index: 3;
   }
   
   .card-float:nth-child(2) {
-    top: 30%;
-    right: 25%;
+    top: 5%;
+    right: 40%;
     transform: rotate(5deg);
     z-index: 2;
   }
   
   .card-float:nth-child(3) {
-    top: 50%;
-    right: 15%;
+    top: 5%;
+    right: 20%;
     transform: rotate(-8deg);
     z-index: 1;
   }
@@ -655,3 +655,15 @@
     }
   }
   
+  
+  @media (max-width: 1070px) {
+    .card-float {
+      width: 100px;
+      height: 160px;
+    }
+  }
+  @media (max-width: 900px) {
+    .card-float {
+      display: none;
+    }
+  }
