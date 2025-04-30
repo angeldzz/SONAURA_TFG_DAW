@@ -7,160 +7,23 @@
     <link rel="stylesheet" href="peliculas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        .page-header {
-            margin-bottom: 3rem;
-            padding-top: 8rem;
-        }
-        
-        .page-header h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        
-        .page-header p {
-            font-size: 1.25rem;
-            color: var(--gray-300);
-            max-width: 800px;
-        }
-        
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            background-color: var(--dark-surface);
-            padding: 1rem;
-            border-radius: var(--radius-lg);
-        }
-        
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .filter-label {
-            font-size: 0.875rem;
-            color: var(--gray-400);
-        }
-        
-        .filter-select {
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
-            background-color: var(--dark-surface-2);
-            border: 1px solid var(--gray-700);
-            color: var(--white);
-            font-size: 0.875rem;
-            cursor: pointer;
-        }
-        
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 3rem;
-        }
-        
-        .pagination-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius);
-            background-color: var(--dark-surface);
-            color: var(--gray-300);
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .pagination-btn:hover {
-            background-color: var(--dark-surface-2);
-            color: var(--white);
-        }
-        
-        .pagination-btn.active {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-        
-        .pagination-btn.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-    </style>
 </head>
 <body>
     <div class="cosmos-bg">
         <div class="stars"></div>
     </div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <a href="/" class="logo">
-                <span class="logo-text">SONAURA</span>
-                <span class="logo-dot"></span>
-            </a>
-
-            <div class="nav-container">
-                <nav class="main-nav">
-                    <a href="/peliculas" class="nav-link">Películas</a>
-                    <a href="/series" class="nav-link">Series</a>
-                    <a href="/noticias" class="nav-link">Noticias</a>
-                    <a href="/premium" class="nav-link premium">Premium</a>
-                </nav>
-
-                <div class="header-actions">
-                    <button class="search-toggle">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <a href="/login" class="btn-login">Iniciar Sesión</a>
-                    <a href="/registro" class="btn-register">Registrarse</a>
-                </div>
-            </div>
-
-            <button class="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-
-        <div class="search-overlay">
-            <div class="container">
-                <div class="search-container">
-                    <input type="text" placeholder="Buscar películas, series, actores...">
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-                <button class="search-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
     <!-- Main Content -->
     <main>
         <div class="container">
             <div class="page-header">
+                <div class="cosmic-particles" id="particles"></div>
                 <h1>Películas</h1>
                 <p>Descubre las mejores películas de todos los tiempos, desde clásicos hasta los últimos estrenos. Explora nuestro catálogo completo y encuentra tu próxima película favorita.</p>
             </div>
 
             <div class="filters">
                 <div class="filter-group">
+                    <span class="filter-icon"><i class="fas fa-film"></i></span>
                     <span class="filter-label">Género:</span>
                     <select class="filter-select">
                         <option value="all">Todos</option>
@@ -173,6 +36,7 @@
                     </select>
                 </div>
                 <div class="filter-group">
+                    <span class="filter-icon"><i class="fas fa-calendar-alt"></i></span>
                     <span class="filter-label">Año:</span>
                     <select class="filter-select">
                         <option value="all">Todos</option>
@@ -185,6 +49,7 @@
                     </select>
                 </div>
                 <div class="filter-group">
+                    <span class="filter-icon"><i class="fas fa-star"></i></span>
                     <span class="filter-label">Valoración:</span>
                     <select class="filter-select">
                         <option value="all">Todas</option>
@@ -194,6 +59,7 @@
                     </select>
                 </div>
                 <div class="filter-group">
+                    <span class="filter-icon"><i class="fas fa-sort"></i></span>
                     <span class="filter-label">Ordenar por:</span>
                     <select class="filter-select">
                         <option value="popularity">Popularidad</option>
@@ -212,295 +78,344 @@
                     </div>
                 </div>
 
-                <div class="media-grid">
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Dune: Parte 2">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
+                <!-- Carrusel mejorado para Top 10 Películas -->
+                <div class="carousel-container">
+                    <button class="carousel-arrow prev" id="prevSlide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track" id="carouselTrack">
+                            <!-- Película 1 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Dune: Parte 2">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.9</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Sci-Fi</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Dune: Parte 2</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>166 min</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.9</span>
+                            </li>
+                            
+                            <!-- Película 2 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.8</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Oppenheimer</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>180 min</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Dune: Parte 2</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>166 min</span>
-                            </div>
-                        </div>
+                            </li>
+                            
+                            <!-- Película 3 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Pobres Criaturas">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.7</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Fantasía</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Pobres Criaturas</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>141 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 4 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Civil_War-397793862-large.jpg" alt="Civil War">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.6</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Acción</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Civil War</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>109 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 5 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Rivales-998119283-large.jpg" alt="Challengers">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.5</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Challengers</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>131 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 6 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/El_planeta_de_los_simios_Nuevo_reino-722348772-large.jpg" alt="El Planeta de los Simios: Nuevo Reino">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Sci-Fi</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>El Planeta de los Simios: Nuevo Reino</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>145 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 7 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Furiosa_A_Mad_Max_Saga-722651557-large.jpg" alt="Furiosa: De la Saga Mad Max">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.3</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Acción</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Furiosa: De la Saga Mad Max</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>150 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 8 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Barbie-722651147-large.jpg" alt="Barbie">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.1</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Comedia</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Barbie</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>114 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 9 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Anatomia_de_una_caida-432744352-large.jpg" alt="Anatomía de una Caída">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.0</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Anatomía de una Caída</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>150 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 10 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://play-lh.googleusercontent.com/0rEJv2JJIyg-SRRbhiIcqEGrvwp_Nc1bhm0R5iSSpi6HgIliKVtJCyScg2Dgu_0rbfyZIdgFRRh493JyKbA" alt="La Zona de Interés">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>3.9</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>La Zona de Interés</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>105 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.8</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Oppenheimer</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>180 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Pobres Criaturas">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.7</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Fantasía</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Pobres Criaturas</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>141 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Civil_War-397793862-large.jpg" alt="Civil War">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.6</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Civil War</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>109 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Rivales-998119283-large.jpg" alt="Challengers">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.5</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Challengers</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>131 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/El_planeta_de_los_simios_Nuevo_reino-722348772-large.jpg" alt="El Planeta de los Simios: Nuevo Reino">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.4</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>El Planeta de los Simios: Nuevo Reino</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>145 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Furiosa_A_Mad_Max_Saga-722651557-large.jpg" alt="Furiosa: De la Saga Mad Max">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.3</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Furiosa: De la Saga Mad Max</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>150 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Barbie-722651147-large.jpg" alt="Barbie">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.1</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Comedia</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Barbie</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>114 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Anatomia_de_una_caida-432744352-large.jpg" alt="Anatomía de una Caída">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.0</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Anatomía de una Caída</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>150 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/La_zona_de_interes-198294490-large.jpg" alt="La Zona de Interés">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.9</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>La Zona de Interés</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>105 min</span>
-                            </div>
-                        </div>
+                    
+                    <button class="carousel-arrow next" id="nextSlide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <div class="carousel-nav">
+                        <div class="carousel-indicator active" data-slide="0"></div>
+                        <div class="carousel-indicator" data-slide="1"></div>
+                        <div class="carousel-indicator" data-slide="2"></div>
                     </div>
                 </div>
             </section>
@@ -513,1224 +428,656 @@
                     </div>
                 </div>
 
-                <div class="media-grid">
-                    <!-- Películas 1-10 (ya mostradas arriba) -->
-                    
-                    <!-- Películas 11-50 -->
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Godzilla_y_Kong_El_nuevo_imperio-722651127-large.jpg" alt="Godzilla y Kong: El Nuevo Imperio">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
+                <div class="catalog-grid" id="movieGrid">
+                    <!-- Página 1 -->
+                    <div class="catalog-page active" data-page="1">
+                        <!-- Fila 1 -->
+                        <div class="catalog-row">
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Dune: Parte 2">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Sci-Fi</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Dune: Parte 2</h3>
+                                    <div class="card-meta">
+                                        <span>2024</span>
+                                        <span>166 min</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.8</span>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.8</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Drama</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Oppenheimer</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>180 min</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-badge">Acción</div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Pobres Criaturas">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.7</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Fantasía</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Pobres Criaturas</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>141 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Civil_War-397793862-large.jpg" alt="Civil War">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.6</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Acción</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Civil War</h3>
+                                    <div class="card-meta">
+                                        <span>2024</span>
+                                        <span>109 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Rivales-998119283-large.jpg" alt="Challengers">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.5</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Drama</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Challengers</h3>
+                                    <div class="card-meta">
+                                        <span>2024</span>
+                                        <span>131 min</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <h3>Godzilla y Kong: El Nuevo Imperio</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>115 min</span>
+
+                        <!-- Fila 2 -->
+                        <div class="catalog-row">
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/El_planeta_de_los_simios_Nuevo_reino-722348772-large.jpg" alt="El Planeta de los Simios: Nuevo Reino">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.4</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Sci-Fi</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>El Planeta de los Simios: Nuevo Reino</h3>
+                                    <div class="card-meta">
+                                        <span>2024</span>
+                                        <span>145 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Furiosa_A_Mad_Max_Saga-722651557-large.jpg" alt="Furiosa: De la Saga Mad Max">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.3</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Acción</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Furiosa: De la Saga Mad Max</h3>
+                                    <div class="card-meta">
+                                        <span>2024</span>
+                                        <span>150 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Barbie-722651147-large.jpg" alt="Barbie">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.1</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Comedia</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Barbie</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>114 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Anatomia_de_una_caida-432744352-large.jpg" alt="Anatomía de una Caída">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>4.0</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Drama</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Anatomía de una Caída</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>150 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://static.filmin.es/images/es/media/48474/24/poster_0_3.webp" alt="La Zona de Interés">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>3.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Drama</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>La Zona de Interés</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>105 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fila 3 -->
+                        <div class="catalog-row">
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Godzilla_vs_Kong-370227109-large.jpg" alt="Godzilla y Kong: El Nuevo Imperio">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>3.8</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Acción</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Godzilla y Kong: El Nuevo Imperio</h3>
+                                    <div class="card-meta">
+                                        <span>2024</span>
+                                        <span>115 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://pics.filmaffinity.com/Los_asesinos_de_la_luna-211527208-large.jpg" alt="Los Asesinos de la Luna">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>3.7</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Drama</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Los Asesinos de la Luna</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>206 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://m.media-amazon.com/images/I/81GsyUYM3DL.jpg" alt="Del Revés 2">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>3.6</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Animación</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Del Revés 2</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>96 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://m.media-amazon.com/images/M/MV5BZDc4OTNiMDktNjA0NC00NzJiLThiNWEtN2E0MDljYTUxY2ExXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Wonka">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>3.5</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Fantasía</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Wonka</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>116 min</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="media-card neon-card">
+                                <div class="card-image">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Cosplay_of_Aquaman%2C_cinematic%2C_with_trident%2C_SDCC_2015_%2819597141215%29.jpg/960px-Cosplay_of_Aquaman%2C_cinematic%2C_with_trident%2C_SDCC_2015_%2819597141215%29.jpg" alt="Aquaman y el Reino Perdido">
+                                    <div class="card-overlay">
+                                        <div class="card-actions">
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                            <button class="card-action-btn">
+                                                <i class="fas fa-bookmark"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-rating">
+                                        <div class="rating-circle">
+                                            <span>3.4</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-badge">Acción</div>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Aquaman y el Reino Perdido</h3>
+                                    <div class="card-meta">
+                                        <span>2023</span>
+                                        <span>124 min</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Kung_Fu_Panda_4-722651148-large.jpg" alt="Kung Fu Panda 4">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.7</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Animación</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Kung Fu Panda 4</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>94 min</span>
-                            </div>
-                        </div>
+                    <!-- Página 2 y 3 (igual que en el código anterior) -->
+                    <!-- Página 2 -->
+                    <div class="catalog-page" data-page="2">
+                        <!-- Contenido de la página 2 -->
+                        <!-- Filas de películas... -->
                     </div>
 
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Inside_Out_2_Del_reves_2-722651123-large.jpg" alt="Inside Out 2">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.2</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Animación</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Inside Out 2</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>96 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Deadpool_and_Wolverine-722651126-large.jpg" alt="Deadpool & Wolverine">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.3</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Deadpool & Wolverine</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>127 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Alien_Romulus-722651125-large.jpg" alt="Alien: Romulus">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.9</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Terror</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Alien: Romulus</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>119 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Los_asesinos_de_la_luna-737335221-large.jpg" alt="Los Asesinos de la Luna">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.8</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Los Asesinos de la Luna</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>206 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Wonka-722651146-large.jpg" alt="Wonka">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.7</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Fantasía</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Wonka</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>116 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Megalopolis-722651124-large.jpg" alt="Megalópolis">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.2</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Megalópolis</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>138 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Napoleon-517277780-large.jpg" alt="Napoleón">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.6</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Histórico</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Napoleón</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>158 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Joker_Folie_a_Deux-722651122-large.jpg" alt="Joker: Folie à Deux">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.5</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Joker: Folie à Deux</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>138 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Venom_The_Last_Dance-722651121-large.jpg" alt="Venom: The Last Dance">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.4</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Venom: The Last Dance</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>120 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Gladiator_II-722651120-large.jpg" alt="Gladiator II">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.0</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Gladiator II</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>155 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Mufasa_The_Lion_King-722651119-large.jpg" alt="Mufasa: The Lion King">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.8</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Animación</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Mufasa: The Lion King</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>110 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Kraven_the_Hunter-722651118-large.jpg" alt="Kraven the Hunter">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.3</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Kraven the Hunter</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>125 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Beetlejuice_Beetlejuice-722651117-large.jpg" alt="Beetlejuice Beetlejuice">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.9</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Comedia</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Beetlejuice Beetlejuice</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>104 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Twisters-722651116-large.jpg" alt="Twisters">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.7</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Twisters</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>118 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/The_Fall_Guy-722651115-large.jpg" alt="The Fall Guy">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.6</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>The Fall Guy</h3>
-                            <div class="card-meta">
-                                <span>2024</span>
-                                <span>126 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Aquaman_y_el_reino_perdido-722651114-large.jpg" alt="Aquaman y el Reino Perdido">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.2</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Aquaman y el Reino Perdido</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>124 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Mision_imposible_Sentencia_mortal_Parte_1-722651113-large.jpg" alt="Misión Imposible: Sentencia Mortal">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.9</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Misión Imposible: Sentencia Mortal</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>163 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/John_Wick_4-722651112-large.jpg" alt="John Wick 4">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.0</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>John Wick 4</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>169 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Guardianes_de_la_Galaxia_Vol_3-722651111-large.jpg" alt="Guardianes de la Galaxia Vol. 3">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.8</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Guardianes de la Galaxia Vol. 3</h3>
-                            <div class="card-meta">
-                                <span>2023</span>
-                                <span>150 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Avatar_El_sentido_del_agua-722651110-large.jpg" alt="Avatar: El Sentido del Agua">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.7</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Avatar: El Sentido del Agua</h3>
-                            <div class="card-meta">
-                                <span>2022</span>
-                                <span>192 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Top_Gun_Maverick-722651109-large.jpg" alt="Top Gun: Maverick">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.1</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Top Gun: Maverick</h3>
-                            <div class="card-meta">
-                                <span>2022</span>
-                                <span>131 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Todo_a_la_vez_en_todas_partes-722651108-large.jpg" alt="Todo a la Vez en Todas Partes">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.4</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Todo a la Vez en Todas Partes</h3>
-                            <div class="card-meta">
-                                <span>2022</span>
-                                <span>139 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/El_menu-722651107-large.jpg" alt="El Menú">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.8</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Thriller</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>El Menú</h3>
-                            <div class="card-meta">
-                                <span>2022</span>
-                                <span>107 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Babylon-722651106-large.jpg" alt="Babylon">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.6</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Babylon</h3>
-                            <div class="card-meta">
-                                <span>2022</span>
-                                <span>189 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Nope-722651105-large.jpg" alt="Nope">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.7</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Nope</h3>
-                            <div class="card-meta">
-                                <span>2022</span>
-                                <span>130 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/The_Batman-722651104-large.jpg" alt="The Batman">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.0</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>The Batman</h3>
-                            <div class="card-meta">
-                                <span>2022</span>
-                                <span>176 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Dune-722651103-large.jpg" alt="Dune">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.2</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Dune</h3>
-                            <div class="card-meta">
-                                <span>2021</span>
-                                <span>155 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Tenet-722651102-large.jpg" alt="Tenet">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>3.9</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Tenet</h3>
-                            <div class="card-meta">
-                                <span>2020</span>
-                                <span>150 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Joker-722651101-large.jpg" alt="Joker">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.3</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Joker</h3>
-                            <div class="card-meta">
-                                <span>2019</span>
-                                <span>122 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Parasite-722651100-large.jpg" alt="Parásitos">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.5</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Parásitos</h3>
-                            <div class="card-meta">
-                                <span>2019</span>
-                                <span>132 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Avengers_Endgame-722651099-large.jpg" alt="Vengadores: Endgame">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.2</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Vengadores: Endgame</h3>
-                            <div class="card-meta">
-                                <span>2019</span>
-                                <span>181 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Interstellar-722651098-large.jpg" alt="Interstellar">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.6</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Interstellar</h3>
-                            <div class="card-meta">
-                                <span>2014</span>
-                                <span>169 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/Inception-722651097-large.jpg" alt="Origen">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.7</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Sci-Fi</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Origen</h3>
-                            <div class="card-meta">
-                                <span>2010</span>
-                                <span>148 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/El_caballero_oscuro-722651096-large.jpg" alt="El Caballero Oscuro">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.8</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Acción</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>El Caballero Oscuro</h3>
-                            <div class="card-meta">
-                                <span>2008</span>
-                                <span>152 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="media-card neon-card">
-                        <div class="card-image">
-                            <img src="https://pics.filmaffinity.com/El_padrino-722651095-large.jpg" alt="El Padrino">
-                            <div class="card-overlay">
-                                <div class="card-actions">
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-info-circle"></i>
-                                    </button>
-                                    <button class="card-action-btn">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="card-rating">
-                                <div class="rating-circle">
-                                    <span>4.9</span>
-                                </div>
-                            </div>
-                            <div class="card-badge">Drama</div>
-                        </div>
-                        <div class="card-content">
-                            <h3>El Padrino</h3>
-                            <div class="card-meta">
-                                <span>1972</span>
-                                <span>175 min</span>
-                            </div>
-                        </div>
+                    <!-- Página 3 -->
+                    <div class="catalog-page" data-page="3">
+                        <!-- Contenido de la página 3 -->
+                        <!-- Filas de películas... -->
                     </div>
                 </div>
             </section>
 
             <div class="pagination">
-                <button class="pagination-btn disabled">
+                <button class="pagination-btn" id="prevPageBtn">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="pagination-btn active">1</button>
-                <button class="pagination-btn">2</button>
-                <button class="pagination-btn">3</button>
-                <button class="pagination-btn">4</button>
-                <button class="pagination-btn">5</button>
-                <button class="pagination-btn">
+                <button class="pagination-btn active" data-page="1">1</button>
+                <button class="pagination-btn" data-page="2">2</button>
+                <button class="pagination-btn" data-page="3">3</button>
+                <button class="pagination-btn" id="nextPageBtn">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-waves">
-            <div class="wave wave1"></div>
-            <div class="wave wave2"></div>
-            <div class="wave wave3"></div>
-        </div>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="/" class="footer-logo">
-                        <span class="logo-text">SONAURA</span>
-                        <span class="logo-dot"></span>
-                    </a>
-                    <p>Tu guía definitiva para encontrar las mejores películas y series.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h3>Explorar</h3>
-                        <ul>
-                            <li><a href="/peliculas">Películas</a></li>
-                            <li><a href="/series">Series</a></li>
-                            <li><a href="/noticias">Noticias</a></li>
-                            <li><a href="/premium">Premium</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Categorías</h3>
-                        <ul>
-                            <li><a href="/categoria/accion">Acción</a></li>
-                            <li><a href="/categoria/drama">Drama</a></li>
-                            <li><a href="/categoria/comedia">Comedia</a></li>
-                            <li><a href="/categoria/sci-fi">Sci-Fi</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Legal</h3>
-                        <ul>
-                            <li><a href="/privacidad">Política de Privacidad</a></li>
-                            <li><a href="/terminos">Términos de Uso</a></li>
-                            <li><a href="/cookies">Política de Cookies</a></li>
-                            <li><a href="/contacto">Contacto</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 SONAURA. Todos los derechos reservados.</p>
-                <div class="footer-app-links">
-                    <a href="#" class="app-link">
-                        <i class="fab fa-apple"></i> App Store
-                    </a>
-                    <a href="#" class="app-link">
-                        <i class="fab fa-google-play"></i> Google Play
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Search toggle
         document.addEventListener('DOMContentLoaded', function() {
-            const searchToggle = document.querySelector('.search-toggle');
-            const searchOverlay = document.querySelector('.search-overlay');
-            const searchClose = document.querySelector('.search-close');
+            // Inicializar partículas cósmicas
+            initParticles();
             
-            searchToggle.addEventListener('click', function() {
-                searchOverlay.classList.add('active');
-                document.body.classList.add('search-open');
-                setTimeout(() => {
-                    searchOverlay.querySelector('input').focus();
-                }, 300);
+            // Inicializar carrusel
+            initCarousel();
+            
+            // Inicializar paginación
+            initPagination();
+        });
+
+        function initParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posición aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Retraso aleatorio para la animación
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        function initCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const slides = Array.from(track.children);
+            const nextButton = document.getElementById('nextSlide');
+            const prevButton = document.getElementById('prevSlide');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            const slidesPerView = 4; // Mostrar 4 películas a la vez
+            const totalGroups = Math.ceil(slides.length / slidesPerView);
+            
+            // Posicionar los slides uno al lado del otro
+            slides.forEach((slide, index) => {
+                slide.style.left = slideWidth * index + 'px';
             });
             
-            searchClose.addEventListener('click', function() {
-                searchOverlay.classList.remove('active');
-                document.body.classList.remove('search-open');
-            });
-
-            // Mobile menu toggle
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const header = document.querySelector('.header');
-
-            mobileToggle.addEventListener('click', function() {
-                header.classList.toggle('menu-open');
-                document.body.classList.toggle('no-scroll');
-            });
-
-            // Pagination
-            const paginationBtns = document.querySelectorAll('.pagination-btn');
+            let currentIndex = 0;
             
-            paginationBtns.forEach(btn => {
-                if (!btn.classList.contains('disabled')) {
-                    btn.addEventListener('click', function() {
-                        paginationBtns.forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        // Aquí iría la lógica para cargar más películas
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    });
+            // Función para mover el carrusel
+            const moveToSlide = (track, currentIndex) => {
+                const targetPosition = -slideWidth * currentIndex * slidesPerView;
+                track.style.transform = `translateX(${targetPosition}px)`;
+                
+                // Actualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+                
+                // Habilitar/deshabilitar botones según la posición
+                prevButton.classList.toggle('disabled', currentIndex === 0);
+                nextButton.classList.toggle('disabled', currentIndex === totalGroups - 1);
+            };
+            
+            // Event listeners para los botones
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < totalGroups - 1) {
+                    currentIndex++;
+                    moveToSlide(track, currentIndex);
                 }
             });
-
-            // Filtros
-            const filterSelects = document.querySelectorAll('.filter-select');
             
-            filterSelects.forEach(select => {
-                select.addEventListener('change', function() {
-                    // Aquí iría la lógica para filtrar películas
-                    console.log('Filtro cambiado:', this.value);
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    moveToSlide(track, currentIndex);
+                }
+            });
+            
+            // Event listeners para los indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    moveToSlide(track, currentIndex);
                 });
             });
-        });
+            
+            // Inicializar carrusel
+            moveToSlide(track, 0);
+            
+            // Auto-rotación del carrusel (opcional)
+            setInterval(() => {
+                if (currentIndex < totalGroups - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                moveToSlide(track, currentIndex);
+            }, 7000);
+        }
+
+        function initPagination() {
+            const pages = document.querySelectorAll('.catalog-page');
+            const pageButtons = document.querySelectorAll('.pagination-btn[data-page]');
+            const prevPageBtn = document.getElementById('prevPageBtn');
+            const nextPageBtn = document.getElementById('nextPageBtn');
+            
+            let currentPage = 1;
+            const totalPages = pages.length;
+            
+            // Función para actualizar la página visible
+            function updatePage() {
+                // Ocultar todas las páginas
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Mostrar la página actual
+                const activePage = document.querySelector(`.catalog-page[data-page="${currentPage}"]`);
+                if (activePage) {
+                    activePage.classList.add('active');
+                }
+                
+                // Actualizar botones de paginación
+                pageButtons.forEach(button => {
+                    const pageNum = parseInt(button.getAttribute('data-page'));
+                    if (pageNum === currentPage) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+                
+                // Actualizar estado de los botones prev/next
+                prevPageBtn.classList.toggle('disabled', currentPage === 1);
+                nextPageBtn.classList.toggle('disabled', currentPage === totalPages);
+            }
+            
+            // Event listeners para los botones de página
+            pageButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    currentPage = parseInt(button.getAttribute('data-page'));
+                    updatePage();
+                });
+            });
+            
+            // Event listeners para prev/next
+            prevPageBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    updatePage();
+                }
+            });
+            
+            nextPageBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    updatePage();
+                }
+            });
+            
+            // Inicializar la primera página
+            updatePage();
+        }
     </script>
 </body>
 </html>
