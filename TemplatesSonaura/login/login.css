@@ -166,14 +166,18 @@
     flex-direction: column;
     gap: 1.5rem;
   }
-  
+  .manue{
+    margin-left: 10px;
+  }
   .login-content h1 {
+    text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
   
   .login-subtitle {
+    text-align: center;
     color: var(--gray-400);
     font-size: 1.1rem;
     margin-bottom: 1rem;
@@ -356,13 +360,16 @@
   }
   
   .checkbox-container .checkmark:after {
-    left: 7px;
-    top: 3px;
+    content: "";
+    position: absolute;
+    display: none;
     width: 5px;
     height: 10px;
     border: solid white;
     border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
   
   .checkbox-text {
@@ -664,6 +671,11 @@
   }
   @media (max-width: 900px) {
     .card-float {
-      display: none;
+      opacity: 0.5;
     }
+  }
+    @media (max-width: 805px) {
+      .card-float {
+        display: none;
+      }
   }
