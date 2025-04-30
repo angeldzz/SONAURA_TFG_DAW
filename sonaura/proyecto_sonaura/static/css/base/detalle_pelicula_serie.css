@@ -43,7 +43,7 @@
 .movie-poster {
     position: relative;
     width: 100%;
-    max-width: 300px;
+    max-width: 500px;
     margin: 0 auto;
     border-radius: var(--radius-md);
     overflow: hidden;
@@ -548,7 +548,7 @@
 /* Media Queries */
 @media (min-width: 768px) {
     .movie-hero-content {
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 520px 1fr;
         gap: 3rem;
         align-items: center;
     }
