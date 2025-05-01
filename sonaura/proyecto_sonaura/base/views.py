@@ -5,3 +5,9 @@ class Inicio(TemplateView):
 
 class Detalle_Pelicula_Serie(TemplateView):
     template_name = "base/detalle_pelicula_serie.html"
+
+class Peliculas(TemplateView):
+    template_name = "base/peliculas.html"
+
+class Series(TemplateView):
+    template_name = "base/series.html"
