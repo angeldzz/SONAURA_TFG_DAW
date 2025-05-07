@@ -806,18 +806,20 @@
   }
   
   .featured-badge {
-    display: inline-block;
+    display: flex;
     background: linear-gradient(45deg, var(--primary), var(--secondary));
     color: var(--white);
     padding: 0.35rem 1.25rem;
     border-radius: var(--radius-sm);
     font-size: 0.875rem;
     font-weight: 700;
+    margin-top: -3rem;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
     box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
   }
-  
+  i{
+    margin-right: 0.3rem;
+  }
   .hero-meta {
     display: flex;
     flex-wrap: wrap;

@@ -14,3 +14,6 @@ class Series(TemplateView):
 
 class Detalle_Pelicula_Serie(TemplateView):
     template_name = "base/detalle_pelicula_serie.html"
+    
+class Login(TemplateView):
+    template_name = "base/login.html"
