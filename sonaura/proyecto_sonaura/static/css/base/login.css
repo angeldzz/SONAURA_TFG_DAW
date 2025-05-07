@@ -191,7 +191,7 @@
     right: 15%;
     width: 400px;
     height: 400px;
-    background: var(--secondary);
+    background: #00f5d46e;
     animation: pulse-circle 12s infinite alternate-reverse;
   }
   
