@@ -17,3 +17,6 @@ class Detalle_Pelicula_Serie(TemplateView):
     
 class Login(TemplateView):
     template_name = "base/login.html"
+    
+class Premium(TemplateView):
+    template_name = "base/premium.html"
