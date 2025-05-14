@@ -1,0 +1,23 @@
+erDiagram
+    User ||--o{ SuscripcionUsuario : tiene
+    User ||--o{ Perfil : tiene
+    User ||--o{ Valoracion : realiza
+    User ||--o{ Comentario : escribe
+    User ||--o{ Notificacion : recibe
+    User ||--o{ Newsletter : suscribe
+    
+    Perfil ||--o{ ListaPersonalizada : crea
+    
+    Contenido ||--o{ Reparto : incluye
+    Contenido ||--o{ Galeria : tiene
+    Contenido ||--o{ Valoracion : recibe
+    Contenido ||--o{ Comentario : tiene
+    Contenido ||--o{ Recomendacion : tiene
+    Contenido ||--o{ PlataformaStreaming : disponible_en
+    
+    Contenido }o--o{ Genero : pertenece
+    ListaPersonalizada }o--o{ Contenido : contiene
+    
+    Noticia }o--o{ CategoriaNoticia : pertenece
+    
+    Comentario ||--o{ Comentario : responde
