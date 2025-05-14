@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'proyecto_sonaura.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'ENGINE': 'django.db.backends.mysql',# Indica que usarás MySQL
+    'NAME': 'sonaura', # Reemplaza con el nombre de tu base de datos
+    'USER': 'sonaura', # Reemplaza con tu usuario de MySQL
+    'PASSWORD': 'sonaura', # Reemplaza con la contraseña de tu usuario
+    'HOST': 'localhost', # Dirección del servidor MySQL (usualmente localhost)
+    'PORT': '3306', # Puerto de conexión (por defecto 3306)
     }
 }
 
@@ -128,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 #imagenes
 MEDIA_URL = '/media/'
