@@ -1,0 +1,459 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONAURA - Registro</title>
+    <link rel="stylesheet" href="{% static 'css/base/registro.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Fondo cósmico animado -->
+    <div class="cosmos-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
+        <div class="shooting-stars"></div>
+    </div>
+
+    <!-- Círculos animados -->
+    <div class="animated-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <a href="/" class="logo">
+                <span class="logo-text">SONAURA</span>
+                <span class="logo-dot"></span>
+            </a>
+        </div>
+
+        <div class="login-card">
+            <div class="login-content">
+                <h1 class="glow-text">Crear Cuenta</h1>
+                <p class="login-subtitle">Únete a la comunidad cinematográfica más completa</p>
+
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </button>
+                    <button class="social-btn twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>o</span>
+                </div>
+
+                <!-- Mensajes de alerta -->
+                <div id="alertMessages" class="alert-container"></div>
+
+                <form class="login-form needs-validation" method="post" novalidate>
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-user-tag"></i>
+                        </div>
+                        <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+                        <div class="input-highlight"></div>
+                        <div class="invalid-feedback">Por favor ingresa un nombre de usuario válido.</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-user-tag"></i>
+                        </div>
+                        <input type="text" id="first_name" name="first_name" placeholder="Nombre" required>
+                        <div class="input-highlight"></div>
+                        <div class="invalid-feedback">Por favor ingresa un nombre válido.</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-user-tag"></i>
+                        </div>
+                        <input type="text" id="last_name" name="last_name" placeholder="Apellidos" required>
+                        <div class="input-highlight"></div>
+                        <div class="invalid-feedback">Por favor ingresa unos apellidos válidos.</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                        <div class="input-highlight"></div>
+                        <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required
+                            minlength="8">
+                        <button type="button" class="password-toggle">
+                            <i class="far fa-eye"></i>
+                        </button>
+                        <div class="input-highlight"></div>
+                        <div class="invalid-feedback">La contraseña debe tener al menos 8 caracteres.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input type="password" id="confirm_password" name="confirm_password"
+                            placeholder="Confirmar contraseña" required>
+                        <button type="button" class="password-toggle">
+                            <i class="far fa-eye"></i>
+                        </button>
+                        <div class="input-highlight"></div>
+                        <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                    </div>
+
+                    <!-- Medidor de fortaleza de contraseña -->
+                    <div class="password-strength-container">
+                        <div class="password-strength-meter">
+                            <div id="password-strength" class="password-strength-bar"></div>
+                        </div>
+                        <small id="password-strength-text" class="password-strength-text">Fortaleza de la
+                            contraseña</small>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">Acepto los <a href="#" class="terms-link">Términos y
+                                        Condiciones</a></span>
+                            </label>
+                            <div class="invalid-feedback">Debes aceptar los términos y condiciones para continuar.</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-login">
+                        <span>Crear Cuenta</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+
+                <div class="register-link">
+                    <p>¿Ya tienes una cuenta? <a href="/login" class="register-btn">Iniciar Sesión</a></p>
+                </div>
+            </div>
+
+            <div class="login-visual">
+                <div class="aurora-bg"></div>
+                <div class="visual-content">
+                    <h2 class="glow-text">Únete a SONAURA</h2>
+                    <p>Crea tu cuenta y forma parte de nuestra comunidad de amantes del cine.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <span>Perfil personalizado</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-list-alt"></i>
+                            </div>
+                            <span>Crea listas de favoritos</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <span>Participa en discusiones</span>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <span>Recibe notificaciones</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-overlay"></div>
+                <div class="floating-cards">
+                    <div class="card-float" style="--delay: 0s">
+                        <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg"
+                            alt="Película destacada">
+                        <div class="card-glow"></div>
+                    </div>
+                    <div class="card-float" style="--delay: 0.2s">
+                        <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg"
+                            alt="Película destacada">
+                        <div class="card-glow"></div>
+                    </div>
+                    <div class="card-float" style="--delay: 0.4s">
+                        <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg"
+                            alt="Película destacada">
+                        <div class="card-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-footer">
+            <p>© 2025 SONAURA. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="/privacidad">Política de Privacidad</a>
+                <a href="/terminos">Términos de Uso</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para términos y condiciones -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Términos y Condiciones</h5>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Al utilizar nuestro servicio, usted acepta los siguientes términos y condiciones:</p>
+                <ol>
+                    <li>El servicio está disponible solo para usuarios registrados.</li>
+                    <li>Los pagos se procesan a través de Stripe y están sujetos a sus términos de servicio.</li>
+                    <li>Nos reservamos el derecho de cancelar o modificar el servicio en cualquier momento.</li>
+                    <li>La información proporcionada durante el registro debe ser precisa y completa.</li>
+                    <li>Usted es responsable de mantener la confidencialidad de su contraseña.</li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-accept-btn">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Bootstrap validation
+            const forms = document.querySelectorAll('.needs-validation');
+
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity() || !passwordsMatch()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        // Mostrar mensaje de error personalizado
+                        showAlert('Por favor, corrige los errores en el formulario.', 'error');
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+
+            // Password visibility toggle
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const passwordInput = this.previousElementSibling;
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    // Toggle eye icon
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-eye');
+                    icon.classList.toggle('fa-eye-slash');
+                });
+            });
+
+            // Password matching validation
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm_password');
+
+            function passwordsMatch() {
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity('Las contraseñas no coinciden');
+                    return false;
+                } else {
+                    confirmPassword.setCustomValidity('');
+                    return true;
+                }
+            }
+
+            password.addEventListener('input', passwordsMatch);
+            confirmPassword.addEventListener('input', passwordsMatch);
+
+            // Password strength meter
+            password.addEventListener('input', function () {
+                const strength = calculatePasswordStrength(this.value);
+                const progressBar = document.getElementById('password-strength');
+                const strengthText = document.getElementById('password-strength-text');
+
+                progressBar.style.width = strength.score + '%';
+                progressBar.className = 'password-strength-bar strength-' + strength.class;
+                strengthText.textContent = 'Fortaleza: ' + strength.text;
+            });
+
+            function calculatePasswordStrength(password) {
+                let score = 0;
+                let strengthClass = 'danger';
+                let strengthText = 'Muy débil';
+
+                if (password.length > 0) {
+                    // Length check
+                    score += Math.min(password.length * 4, 25);
+
+                    // Character variety checks
+                    if (/[A-Z]/.test(password)) score += 15;
+                    if (/[a-z]/.test(password)) score += 10;
+                    if (/[0-9]/.test(password)) score += 15;
+                    if (/[^A-Za-z0-9]/.test(password)) score += 20;
+
+                    // Determine text and class based on score
+                    if (score >= 80) {
+                        strengthClass = 'success';
+                        strengthText = 'Muy fuerte';
+                    } else if (score >= 60) {
+                        strengthClass = 'info';
+                        strengthText = 'Fuerte';
+                    } else if (score >= 40) {
+                        strengthClass = 'warning';
+                        strengthText = 'Moderada';
+                    } else if (score >= 20) {
+                        strengthClass = 'danger';
+                        strengthText = 'Débil';
+                    }
+                }
+
+                return {
+                    score: score,
+                    class: strengthClass,
+                    text: strengthText
+                };
+            }
+
+            // Input focus effects
+            const inputs = document.querySelectorAll('.form-group input');
+
+            inputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentElement.classList.add('focused');
+                });
+
+                input.addEventListener('blur', function () {
+                    if (this.value === '') {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+
+                // Check if input has value on page load
+                if (input.value !== '') {
+                    input.parentElement.classList.add('focused');
+                }
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('termsModal');
+            const termsLink = document.querySelector('.terms-link');
+            const closeModal = document.querySelector('.close-modal');
+            const acceptBtn = document.querySelector('.modal-accept-btn');
+            const termsCheckbox = document.getElementById('terms');
+
+            termsLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+            });
+
+            closeModal.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+
+            acceptBtn.addEventListener('click', function () {
+                termsCheckbox.checked = true;
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Crear estrellas fugaces aleatorias
+            function createShootingStar() {
+                const shootingStarsContainer = document.querySelector('.shooting-stars');
+                const shootingStar = document.createElement('div');
+                shootingStar.classList.add('shooting-star');
+
+                // Posición aleatoria
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 100;
+                const angle = Math.random() * 45;
+
+                shootingStar.style.top = `${startY}%`;
+                shootingStar.style.left = `${startX}%`;
+                shootingStar.style.transform = `rotate(${angle}deg)`;
+
+                shootingStarsContainer.appendChild(shootingStar);
+
+                // Eliminar la estrella después de la animación
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, 1000);
+            }
+
+            // Crear estrellas fugaces periódicamente
+            setInterval(createShootingStar, 2000);
+
+            // Efecto parallax para los círculos animados
+            document.addEventListener('mousemove', function (e) {
+                const circles = document.querySelectorAll('.circle');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+
+                circles.forEach((circle, index) => {
+                    const speed = (index + 1) * 20;
+                    circle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            });
+
+            // Función para mostrar alertas
+            function showAlert(message, type) {
+                const alertContainer = document.getElementById('alertMessages');
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type}`;
+                alert.innerHTML = `
+                    <i class="fas ${type === 'error' ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i>
+                    ${message}
+                    <button type="button" class="close-alert">&times;</button>
+                `;
+
+                alertContainer.appendChild(alert);
+
+                // Auto-cerrar después de 5 segundos
+                setTimeout(() => {
+                    alert.remove();
+                }, 5000);
+
+                // Botón para cerrar manualmente
+                const closeBtn = alert.querySelector('.close-alert');
+                closeBtn.addEventListener('click', () => {
+                    alert.remove();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

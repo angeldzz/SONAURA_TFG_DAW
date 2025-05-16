@@ -57,7 +57,7 @@
                     </div>
                     {% else %}
                     <a href="{% url 'login' %}" class="btn-login">Iniciar Sesión</a>
-                    <a href="/registro" class="btn-register">Registrarse</a>
+                    <a href="{% url 'crear_usuario' %}" class="btn-register">Registrarse</a>
                     {% endif %}
                 </div>
             </div>
