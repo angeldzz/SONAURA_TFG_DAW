@@ -13,7 +13,10 @@
     padding: 8rem 0 3rem;
     margin-bottom: 2rem;
 }
-
+.btn-primary i,
+.btn-outline i{
+    margin-right: 10px;
+}
 .movie-backdrop {
     position: absolute;
     top: 0;

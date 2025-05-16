@@ -536,6 +536,7 @@
 }
 
 .premium-plan {
+
   border: 2px solid var(--primary);
   box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
   transform: scale(1.05);
@@ -631,8 +632,8 @@
 
 .plan-cta {
   margin-top: auto;
+  text-align: center;
 }
-
 .btn-plan {
   display: flex;
   align-items: center;
@@ -655,7 +656,9 @@
   border-color: var(--primary);
   transform: translateY(-3px);
 }
-
+.btn-premium i{
+  margin-left: 10px;
+}
 /* Testimonials Section */
 .testimonials-section {
   padding: 6rem 2rem;
@@ -1092,7 +1095,6 @@
   .btn-secondary {
     width: 100%;
   }
-
   .float-element {
     display: none;
   }
