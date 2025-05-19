@@ -1,321 +1,259 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
-    SuscripcionUsuario, Perfil, Genero, Contenido, Reparto, 
-    Galeria, Valoracion, Comentario, Notificacion, Newsletter,
-    CategoriaNoticia, Noticia, Entrevista, Recomendacion, 
-    ListaPersonalizada, PlataformaStreaming
+    Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, 
+    ContenidoGenero, Reparto, Actor, Galeria, Valoracion, Comentario, 
+    Notificacion, Newsletter, CategoriaNoticia, Noticia, NoticiaCategoria, 
+    Entrevista, ListaPersonalizada, ListaContenido
 )
 
 # Inlines para relaciones
+class ContenidoGeneroInline(admin.TabularInline):
+    model = ContenidoGenero
+    extra = 1
+    verbose_name = "Género"
+    verbose_name_plural = "Géneros"
+    fields = ('id_genero',)
+
 class RepartoInline(admin.TabularInline):
     model = Reparto
     extra = 1
-    verbose_name = "Actor/Actriz"
-    verbose_name_plural = "Reparto"
+    fields = ('id_contenido',)  # Solo el campo de relación, o puedes dejarlo vacío si no quieres mostrar nada
 
 class GaleriaInline(admin.TabularInline):
     model = Galeria
     extra = 1
-    verbose_name = "Imagen"
-    verbose_name_plural = "Galería de imágenes"
-    
-class ValoracionInline(admin.TabularInline):
-    model = Valoracion
-    extra = 0
-    verbose_name = "Valoración"
-    verbose_name_plural = "Valoraciones"
-    readonly_fields = ('id_usuario', 'puntuacion', 'fecha_creacion')
-    can_delete = False
-    
-class ComentarioInline(admin.TabularInline):
-    model = Comentario
-    extra = 0
-    verbose_name = "Comentario"
-    verbose_name_plural = "Comentarios"
-    readonly_fields = ('id_usuario', 'comentario', 'fecha_comentario')
-    can_delete = False
+    fields = ('url_imagen', 'alt_imagen')
 
 class PlataformaStreamingInline(admin.TabularInline):
     model = PlataformaStreaming
     extra = 1
-    verbose_name = "Plataforma"
-    verbose_name_plural = "Plataformas de streaming"
+    fields = ('nombre_plataforma', 'imagen_logo_plataforma', 'alt_imagen_logo_plataforma', 'tipo_acceso', 'precio')
 
-# Admin para Suscripciones
-@admin.register(SuscripcionUsuario)
-class SuscripcionUsuarioAdmin(admin.ModelAdmin):
-    list_display = ('id_usuario', 'tipo_suscripcion', 'es_premium', 'fecha_fin_suscripcion', 'monto_pagado')
-    list_filter = ('tipo_suscripcion', 'es_premium')
-    search_fields = ('id_usuario__username', 'id_usuario__email')
-    fieldsets = (
-        ('Información de Usuario', {
-            'fields': ('id_usuario',)
-        }),
-        ('Detalles de Suscripción', {
-            'fields': ('tipo_suscripcion', 'es_premium', 'fecha_fin_suscripcion')
-        }),
-        ('Información de Pago', {
-            'fields': ('metodo_pago', 'monto_pagado')
-        }),
-    )
+class ActorInline(admin.TabularInline):
+    model = Actor
+    extra = 1
+    fields = ('nombre_actor', 'personaje', 'imagen_actor')
 
-# Admin para Perfiles
+class ListaContenidoInline(admin.TabularInline):
+    model = ListaContenido
+    extra = 1
+    fields = ('id_contenido',)
+
+class NoticiaCategoriaInline(admin.TabularInline):
+    model = NoticiaCategoria
+    extra = 1
+    fields = ('id_categoria',)
+
+# Admin para modelos relacionados con usuarios
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('nombre_perfil', 'usuario_email', 'mostrar_avatar', 'fecha_creacion')
-    search_fields = ('nombre_perfil', 'id_usuario__username', 'id_usuario__email')
-    readonly_fields = ('fecha_creacion', 'fecha_edicion', 'mostrar_avatar')
-    
-    def usuario_email(self, obj):
-        return obj.id_usuario.email
-    usuario_email.short_description = 'Email del usuario'
+    list_display = ('id_perfil', 'id_usuario', 'nombre_perfil', 'mostrar_avatar', 'fecha_creacion')
+    search_fields = ('nombre_perfil', 'id_usuario__username')
+    list_filter = ('fecha_creacion', 'fecha_edicion')
     
     def mostrar_avatar(self, obj):
-        if obj.avatar:
-            return format_html('<img src="{}" width="50" height="50" />', obj.avatar.url)
+        if obj.imagen_avatar:
+            return format_html('<img src="{}" width="50" height="50" />', obj.imagen_avatar.url)
         return "Sin avatar"
-    mostrar_avatar.short_description = 'Avatar'
+    mostrar_avatar.short_description = "Avatar"
 
-# Admin para Géneros
+@admin.register(SuscripcionUsuario)
+class SuscripcionUsuarioAdmin(admin.ModelAdmin):
+    list_display = ('id_suscripcion', 'id_usuario', 'tipo_suscripcion', 'es_premium', 'fecha_fin_suscripcion', 'monto_pagado')
+    list_filter = ('es_premium', 'tipo_suscripcion', 'fecha_fin_suscripcion')
+    search_fields = ('id_usuario__username', 'tipo_suscripcion')
+    date_hierarchy = 'fecha_fin_suscripcion'
+
+# Admin para modelos de catálogo de contenido
 @admin.register(Genero)
 class GeneroAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'cantidad_contenidos')
+    list_display = ('id_genero', 'nombre')
     search_fields = ('nombre',)
-    
-    def cantidad_contenidos(self, obj):
-        return obj.contenidos.count()
-    cantidad_contenidos.short_description = 'Cantidad de contenidos'
 
-# Admin para Contenidos
 @admin.register(Contenido)
 class ContenidoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'tipo_contenido', 'fecha_estreno', 'puntuacion_imdb', 'es_exclusivo')
-    list_filter = ('tipo_contenido', 'generos', 'es_exclusivo')
+    list_display = ('id_contenido', 'titulo','eslogan', 'año_estreno', 'mostrar_poster', 'puntuacion', 'es_exclusivo')
+    list_filter = ('eslogan', 'año_estreno', 'es_exclusivo', 'fecha_creacion')
     search_fields = ('titulo', 'director', 'sinopsis')
-    filter_horizontal = ('generos',)
-    readonly_fields = ('fecha_creacion', 'fecha_edicion', 'mostrar_poster', 'mostrar_fondo')
-    inlines = [RepartoInline, GaleriaInline, PlataformaStreamingInline, ValoracionInline, ComentarioInline]
-    
+    date_hierarchy = 'fecha_creacion'
+    inlines = [ContenidoGeneroInline, RepartoInline, GaleriaInline, PlataformaStreamingInline]
     fieldsets = (
-        ('Información Básica', {
-            'fields': ('titulo', 'tipo_contenido', 'sinopsis', 'fecha_estreno')
+        ('Información básica', {
+            'fields': ('eslogan', 'titulo', 'sinopsis', 'año_estreno', 'duracion')
         }),
-        ('Detalles Técnicos', {
-            'fields': ('duracion', 'director', 'guionistas', 'clasificacion')
+        ('Producción', {
+            'fields': ('director', 'guionistas')
         }),
-        ('Categorización', {
-            'fields': ('generos', 'puntuacion_imdb', 'es_exclusivo')
+        ('Presentación', {
+            'fields': ('imagen_poster', 'alt_imagen_poster', 'imagen_fondo', 'alt_imagen_fondo')
         }),
-        ('Imágenes', {
-            'fields': ('imagen_poster', 'mostrar_poster', 'imagen_fondo', 'mostrar_fondo')
-        }),
-        ('Metadatos', {
-            'fields': ('fecha_creacion', 'fecha_edicion'),
-            'classes': ('collapse',)
+        ('Detalles adicionales', {
+            'fields': ('clasificacion', 'puntuacion', 'es_exclusivo')
         }),
     )
     
     def mostrar_poster(self, obj):
         if obj.imagen_poster:
-            return format_html('<img src="{}" width="100" />', obj.imagen_poster.url)
-        return "Sin imagen"
-    mostrar_poster.short_description = 'Vista previa del póster'
-    
-    def mostrar_fondo(self, obj):
-        if obj.imagen_fondo:
-            return format_html('<img src="{}" width="200" />', obj.imagen_fondo.url)
-        return "Sin imagen"
-    mostrar_fondo.short_description = 'Vista previa del fondo'
+            return format_html('<img src="{}" width="50" />', obj.imagen_poster.url)
+        return "Sin poster"
+    mostrar_poster.short_description = "Poster"
 
-# Admin para Reparto
 @admin.register(Reparto)
 class RepartoAdmin(admin.ModelAdmin):
-    list_display = ('nombre_actor', 'personaje', 'contenido_titulo')
-    list_filter = ('id_contenido__tipo_contenido',)
+    list_display = ('id_reparto', 'id_contenido')
     search_fields = ('nombre_actor', 'personaje', 'id_contenido__titulo')
-    
-    def contenido_titulo(self, obj):
-        return obj.id_contenido.titulo
-    contenido_titulo.short_description = 'Contenido'
-
-# Admin para Galería
-@admin.register(Galeria)
-class GaleriaAdmin(admin.ModelAdmin):
-    list_display = ('id_contenido', 'mostrar_imagen', 'descripcion_corta')
-    search_fields = ('id_contenido__titulo', 'descripcion_imagen')
+    list_filter = ('id_contenido__tipo_contenido',)
+    inlines = [ActorInline]
     
     def mostrar_imagen(self, obj):
-        if obj.imagen:
-            return format_html('<img src="{}" width="100" />', obj.imagen.url)
+        if obj.imagen_actor:
+            return format_html('<img src="{}" width="50" />', obj.imagen_actor.url)
         return "Sin imagen"
-    mostrar_imagen.short_description = 'Imagen'
-    
-    def descripcion_corta(self, obj):
-        return obj.descripcion_imagen[:50] + '...' if len(obj.descripcion_imagen) > 50 else obj.descripcion_imagen
-    descripcion_corta.short_description = 'Descripción'
+    mostrar_imagen.short_description = "Imagen"
 
-# Admin para Valoraciones
+@admin.register(Actor)
+class ActorAdmin(admin.ModelAdmin):
+    list_display = ('id_actor', 'id_reparto', 'nombre_actor', 'personaje', 'mostrar_imagen')
+    search_fields = ('nombre_actor', 'personaje')
+    
+    def mostrar_imagen(self, obj):
+        if obj.imagen_actor:
+            return format_html('<img src="{}" width="50" />', obj.imagen_actor.url)
+        return "Sin imagen"
+    mostrar_imagen.short_description = "Imagen"
+
+@admin.register(PlataformaStreaming)
+class PlataformaStreamingAdmin(admin.ModelAdmin):
+    list_display = ('id_plataforma', 'nombre_plataforma', 'mostrar_logo', 'tipo_acceso', 'precio')
+    search_fields = ('nombre_plataforma',)
+    list_filter = ('tipo_acceso',)
+    
+    def mostrar_logo(self, obj):
+        if obj.imagen_logo_plataforma:
+            return format_html('<img src="{}" width="50" />', obj.imagen_logo_plataforma.url)
+        return "Sin logo"
+    mostrar_logo.short_description = "Logo"
+
+@admin.register(Galeria)
+class GaleriaAdmin(admin.ModelAdmin):
+    list_display = ('id_imagen', 'id_contenido', 'mostrar_imagen')
+    search_fields = ('id_contenido__titulo', 'alt_imagen')
+    list_filter = ('id_contenido__tipo_contenido',)
+    
+    def mostrar_imagen(self, obj):
+        if obj.url_imagen:
+            return format_html('<img src="{}" width="100" />', obj.url_imagen.url)
+        return "Sin imagen"
+    mostrar_imagen.short_description = "Imagen"
+
+# Admin para interacción de usuarios
 @admin.register(Valoracion)
 class ValoracionAdmin(admin.ModelAdmin):
-    list_display = ('id_usuario', 'id_contenido', 'puntuacion', 'fecha_creacion')
-    list_filter = ('puntuacion',)
-    search_fields = ('id_usuario__username', 'id_contenido__titulo')
-    readonly_fields = ('fecha_creacion', 'fecha_edicion')
+    list_display = ('id_valoracion', 'id_usuario', 'id_contenido', 'puntuacion', 'fecha_creacion')
+    list_filter = ('puntuacion', 'fecha_creacion')
+    search_fields = ('id_usuario__username', 'id_contenido__titulo', 'texto_valoracion')
+    date_hierarchy = 'fecha_creacion'
 
-# Admin para Comentarios
 @admin.register(Comentario)
 class ComentarioAdmin(admin.ModelAdmin):
-    list_display = ('id_usuario', 'id_contenido', 'comentario_corto', 'fecha_comentario', 'likes', 'dislikes')
+    list_display = ('id_comentario', 'id_usuario', 'id_contenido', 'fecha_comentario', 'likes', 'dislikes', 'tiene_respuestas')
     list_filter = ('fecha_comentario',)
     search_fields = ('id_usuario__username', 'id_contenido__titulo', 'comentario')
-    readonly_fields = ('fecha_creacion', 'fecha_edicion')
+    date_hierarchy = 'fecha_comentario'
     
-    def comentario_corto(self, obj):
-        return obj.comentario[:50] + '...' if len(obj.comentario) > 50 else obj.comentario
-    comentario_corto.short_description = 'Comentario'
+    def tiene_respuestas(self, obj):
+        return obj.respuestas.exists()
+    tiene_respuestas.boolean = True
+    tiene_respuestas.short_description = "Tiene respuestas"
 
-# Admin para Notificaciones
 @admin.register(Notificacion)
 class NotificacionAdmin(admin.ModelAdmin):
-    list_display = ('id_usuario', 'tipo_notificacion', 'mensaje_corto', 'fecha_envio', 'leida')
+    list_display = ('id_notificacion', 'id_usuario', 'tipo_notificacion', 'fecha_envio', 'leida')
     list_filter = ('tipo_notificacion', 'leida', 'fecha_envio')
     search_fields = ('id_usuario__username', 'mensaje')
+    date_hierarchy = 'fecha_envio'
+    actions = ['marcar_como_leidas']
     
-    def mensaje_corto(self, obj):
-        return obj.mensaje[:50] + '...' if len(obj.mensaje) > 50 else obj.mensaje
-    mensaje_corto.short_description = 'Mensaje'
+    def marcar_como_leidas(self, request, queryset):
+        queryset.update(leida=True)
+    marcar_como_leidas.short_description = "Marcar notificaciones seleccionadas como leídas"
 
-# Admin para Newsletter
+@admin.register(ListaPersonalizada)
+class ListaPersonalizadaAdmin(admin.ModelAdmin):
+    list_display = ('id_lista', 'id_usuario', 'nombre_lista', 'fecha_creacion', 'contar_contenidos')
+    search_fields = ('nombre_lista', 'id_usuario__username')
+    date_hierarchy = 'fecha_creacion'
+    inlines = [ListaContenidoInline]
+    
+    def contar_contenidos(self, obj):
+        return ListaContenido.objects.filter(id_lista=obj).count()
+    contar_contenidos.short_description = "Contenidos"
+
+# Admin para noticias y contenido editorial
 @admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
-    list_display = ('id_usuario', 'fechas_suscripcion', 'estado')
+    list_display = ('id_suscriptor', 'correo', 'fechas_suscripcion', 'estado')
     list_filter = ('estado', 'fechas_suscripcion')
-    search_fields = ('id_usuario__username', 'id_usuario__email')
+    search_fields = ('correo',)
+    date_hierarchy = 'fechas_suscripcion'
+    actions = ['activar_suscripciones', 'desactivar_suscripciones']
+    
+    def activar_suscripciones(self, request, queryset):
+        queryset.update(estado='activo')
+    activar_suscripciones.short_description = "Activar suscripciones seleccionadas"
+    
+    def desactivar_suscripciones(self, request, queryset):
+        queryset.update(estado='inactivo')
+    desactivar_suscripciones.short_description = "Desactivar suscripciones seleccionadas"
 
-# Admin para Categorías de Noticias
 @admin.register(CategoriaNoticia)
 class CategoriaNoticiaAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'cantidad_noticias')
+    list_display = ('id_categoria', 'nombre')
     search_fields = ('nombre',)
-    
-    def cantidad_noticias(self, obj):
-        return obj.noticias.count()
-    cantidad_noticias.short_description = 'Cantidad de noticias'
 
-# Admin para Noticias
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'autor', 'mostrar_categorias', 'fecha_publicacion', 'vistas')
-    list_filter = ('categorias', 'es_exclusiva', 'fecha_publicacion')
-    search_fields = ('titulo', 'contenido', 'autor')
-    filter_horizontal = ('categorias',)
-    readonly_fields = ('fecha_edicion', 'mostrar_imagen')
-    
+    list_display = ('id_noticia', 'titulo', 'categoria', 'mostrar_imagen', 'vistas', 'es_exclusiva', 'fecha_publicacion')
+    list_filter = ('es_exclusiva', 'fecha_publicacion', 'categoria')
+    search_fields = ('titulo', 'contenido')
+    date_hierarchy = 'fecha_publicacion'
+    inlines = [NoticiaCategoriaInline]
     fieldsets = (
-        ('Información Básica', {
-            'fields': ('titulo', 'contenido', 'autor')
+        ('Contenido', {
+            'fields': ('titulo', 'contenido', 'categoria')
         }),
-        ('Categorización', {
-            'fields': ('categorias', 'es_exclusiva')
+        ('Multimedia', {
+            'fields': ('imagen_principal', 'alt_imagen_principal')
         }),
-        ('Detalles', {
-            'fields': ('imagen_principal', 'mostrar_imagen', 'tiempo_lectura')
+        ('Métricas', {
+            'fields': ('vistas', 'tiempo_lectura')
         }),
-        ('Estadísticas', {
-            'fields': ('vistas',)
-        }),
-        ('Fechas', {
-            'fields': ('fecha_publicacion', 'fecha_edicion')
+        ('Publicación', {
+            'fields': ('es_exclusiva', 'fecha_publicacion')
         }),
     )
     
     def mostrar_imagen(self, obj):
         if obj.imagen_principal:
-            return format_html('<img src="{}" width="200" />', obj.imagen_principal.url)
+            return format_html('<img src="{}" width="100" />', obj.imagen_principal.url)
         return "Sin imagen"
-    mostrar_imagen.short_description = 'Vista previa de la imagen'
-    
-    def mostrar_categorias(self, obj):
-        return ", ".join([c.nombre for c in obj.categorias.all()])
-    mostrar_categorias.short_description = 'Categorías'
+    mostrar_imagen.short_description = "Imagen"
 
-# Admin para Entrevistas
 @admin.register(Entrevista)
 class EntrevistaAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'duracion_formateada', 'vistas', 'es_exclusiva', 'fecha_publicacion')
-    list_filter = ('es_exclusiva', 'fecha_publicacion')
-    search_fields = ('titulo', 'descripcion')
-    readonly_fields = ('fecha_edicion', 'mostrar_imagen')
-    
-    fieldsets = (
-        ('Información Básica', {
-            'fields': ('titulo', 'descripcion')
-        }),
-        ('Detalles', {
-            'fields': ('imagen', 'mostrar_imagen', 'duracion', 'tiempo_lectura')
-        }),
-        ('Estadísticas', {
-            'fields': ('vistas', 'es_exclusiva')
-        }),
-        ('Fechas', {
-            'fields': ('fecha_publicacion', 'fecha_edicion')
-        }),
-    )
+    list_display = ('id_entrevista', 'titulo', 'mostrar_imagen', 'duracion', 'vistas', 'fecha_publicacion')
+    list_filter = ('fecha_publicacion',)
+    search_fields = ('titulo', 'contenido')
+    date_hierarchy = 'fecha_publicacion'
     
     def mostrar_imagen(self, obj):
         if obj.imagen:
-            return format_html('<img src="{}" width="200" />', obj.imagen.url)
+            return format_html('<img src="{}" width="100" />', obj.imagen.url)
         return "Sin imagen"
-    mostrar_imagen.short_description = 'Vista previa de la imagen'
-    
-    def duracion_formateada(self, obj):
-        total_seconds = int(obj.duracion.total_seconds())
-        hours, remainder = divmod(total_seconds, 3600)
-        minutes, seconds = divmod(remainder, 60)
-        if hours:
-            return f"{hours}h {minutes}m"
-        else:
-            return f"{minutes}m {seconds}s"
-    duracion_formateada.short_description = 'Duración'
+    mostrar_imagen.short_description = "Imagen"
 
-# Admin para Recomendaciones
-@admin.register(Recomendacion)
-class RecomendacionAdmin(admin.ModelAdmin):
-    list_display = ('id_contenido', 'puntuacion', 'descripcion_corta', 'fecha_creacion')
-    list_filter = ('puntuacion',)
-    search_fields = ('id_contenido__titulo', 'descripcion')
-    readonly_fields = ('fecha_creacion', 'fecha_edicion')
-    
-    def descripcion_corta(self, obj):
-        return obj.descripcion[:50] + '...' if len(obj.descripcion) > 50 else obj.descripcion
-    descripcion_corta.short_description = 'Descripción'
-
-# Admin para Listas Personalizadas
-@admin.register(ListaPersonalizada)
-class ListaPersonalizadaAdmin(admin.ModelAdmin):
-    list_display = ('nombre_lista', 'perfil_usuario', 'cantidad_contenidos', 'fecha_creacion')
-    search_fields = ('nombre_lista', 'id_perfil__nombre_perfil', 'id_perfil__id_usuario__username')
-    filter_horizontal = ('contenidos',)
-    readonly_fields = ('fecha_creacion', 'fecha_edicion')
-    
-    def perfil_usuario(self, obj):
-        return obj.id_perfil.nombre_perfil
-    perfil_usuario.short_description = 'Perfil'
-    
-    def cantidad_contenidos(self, obj):
-        return obj.contenidos.count()
-    cantidad_contenidos.short_description = 'Cantidad de contenidos'
-
-# Admin para Plataformas de Streaming
-@admin.register(PlataformaStreaming)
-class PlataformaStreamingAdmin(admin.ModelAdmin):
-    list_display = ('nombre_plataforma', 'id_contenido', 'fecha_lanzamiento', 'es_exclusivo')
-    list_filter = ('nombre_plataforma', 'es_exclusivo')
-    search_fields = ('nombre_plataforma', 'id_contenido__titulo')
-    readonly_fields = ('fecha_edicion',)
-
-# Personalización del sitio de administración
-admin.site.site_header = 'Administración de Plataforma de Streaming'
-admin.site.site_title = 'Panel de Administración'
-admin.site.index_title = 'Bienvenido al Panel de Administración'
+# Registrar modelos de relación sin admin personalizado
+admin.site.register(ContenidoGenero)
+admin.site.register(ListaContenido)
+admin.site.register(NoticiaCategoria)
