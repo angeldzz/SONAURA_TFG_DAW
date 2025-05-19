@@ -64,18 +64,27 @@ class Genero(models.Model):
 class Contenido(models.Model):
     id_contenido = models.AutoField(primary_key=True, verbose_name='ID de Contenido')
     titulo = models.CharField(max_length=200, verbose_name='Título')
+    TIPO_CONTENIDO_CHOICES = [
+        ('pelicula', 'pelicula'),
+        ('serie', 'serie'),
+    ]
+    pelicula_serie = models.CharField(
+        max_length=10,
+        choices=TIPO_CONTENIDO_CHOICES,
+        verbose_name='Película/Serie'
+    )
     eslogan = models.CharField(max_length=50, verbose_name='Eslogan')  # Cambiado de tipo_contenido a eslogan
     sinopsis = models.TextField(verbose_name='Sinopsis')
     año_estreno = models.IntegerField(verbose_name='Año de estreno')
     duracion = models.DurationField(verbose_name='Duración')
-    director = models.CharField(max_length=200, verbose_name='Director')
-    guionistas = models.TextField(verbose_name='Guionistas')
-    clasificacion = models.CharField(max_length=10, verbose_name='Clasificación')
+    director = models.CharField(max_length=200, verbose_name='Director',null=True, blank=True)
+    guionistas = models.TextField(verbose_name='Guionistas',null=True, blank=True)
+    clasificacion = models.CharField(max_length=10, verbose_name='Clasificación',null=True, blank=True)
     imagen_poster = models.ImageField(upload_to='posters/', null=True, blank=True, verbose_name='Póster')
     alt_imagen_poster = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo del póster')
     imagen_fondo = models.ImageField(upload_to='fondos/', null=True, blank=True, verbose_name='Imagen de fondo')
     alt_imagen_fondo = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo de la imagen de fondo')
-    puntuacion = models.FloatField(verbose_name='Puntuación')
+    puntuacion = models.FloatField(verbose_name='Puntuación',null=True, blank=True)
     es_exclusivo = models.BooleanField(default=False, verbose_name='¿Es exclusivo?')
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
     fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')

@@ -73,14 +73,14 @@ class GeneroAdmin(admin.ModelAdmin):
 
 @admin.register(Contenido)
 class ContenidoAdmin(admin.ModelAdmin):
-    list_display = ('id_contenido', 'titulo','eslogan', 'año_estreno', 'mostrar_poster', 'puntuacion', 'es_exclusivo')
-    list_filter = ('eslogan', 'año_estreno', 'es_exclusivo', 'fecha_creacion')
+    list_display = ('id_contenido', 'titulo','pelicula_serie', 'eslogan', 'año_estreno', 'mostrar_poster', 'puntuacion', 'es_exclusivo')
+    list_filter = ('eslogan', 'año_estreno', 'es_exclusivo', 'fecha_creacion', 'pelicula_serie')
     search_fields = ('titulo', 'director', 'sinopsis')
     date_hierarchy = 'fecha_creacion'
     inlines = [ContenidoGeneroInline, RepartoInline, GaleriaInline, PlataformaStreamingInline]
     fieldsets = (
         ('Información básica', {
-            'fields': ('eslogan', 'titulo', 'sinopsis', 'año_estreno', 'duracion')
+            'fields': ('titulo', 'pelicula_serie', 'eslogan', 'sinopsis', 'año_estreno', 'duracion')
         }),
         ('Producción', {
             'fields': ('director', 'guionistas')
@@ -103,7 +103,6 @@ class ContenidoAdmin(admin.ModelAdmin):
 class RepartoAdmin(admin.ModelAdmin):
     list_display = ('id_reparto', 'id_contenido')
     search_fields = ('nombre_actor', 'personaje', 'id_contenido__titulo')
-    list_filter = ('id_contenido__tipo_contenido',)
     inlines = [ActorInline]
     
     def mostrar_imagen(self, obj):
@@ -139,7 +138,6 @@ class PlataformaStreamingAdmin(admin.ModelAdmin):
 class GaleriaAdmin(admin.ModelAdmin):
     list_display = ('id_imagen', 'id_contenido', 'mostrar_imagen')
     search_fields = ('id_contenido__titulo', 'alt_imagen')
-    list_filter = ('id_contenido__tipo_contenido',)
     
     def mostrar_imagen(self, obj):
         if obj.url_imagen:
