@@ -19,7 +19,10 @@ class Perfil(models.Model):
         db_table = 'perfiles'
         verbose_name = 'Perfil'
         verbose_name_plural = 'Perfiles'
-
+    
+    def __str__(self):
+        return self.nombre_perfil
+    
 # Subscription model
 class SuscripcionUsuario(models.Model):
     id_suscripcion = models.AutoField(primary_key=True, verbose_name='ID de Suscripción')
@@ -34,6 +37,9 @@ class SuscripcionUsuario(models.Model):
         db_table = 'suscripciones_usuario'
         verbose_name = 'Suscripción de Usuario'
         verbose_name_plural = 'Suscripciones de Usuario'
+    
+    def __str__(self):
+        return str(self.id_suscripcion)
 
 # Streaming Platform model
 class PlataformaStreaming(models.Model):
@@ -49,7 +55,10 @@ class PlataformaStreaming(models.Model):
         db_table = 'plataformas_streaming'
         verbose_name = 'Plataforma de Streaming'
         verbose_name_plural = 'Plataformas de Streaming'
-
+    
+    def __str__(self):
+        return self.nombre_plataforma
+    
 # Genre model
 class Genero(models.Model):
     id_genero = models.AutoField(primary_key=True, verbose_name='ID de Género')
@@ -59,7 +68,10 @@ class Genero(models.Model):
         db_table = 'generos'
         verbose_name = 'Género'
         verbose_name_plural = 'Géneros'
-
+    
+    def __str__(self):
+        return self.nombre
+    
 # Content (Movie/Series) model
 class Contenido(models.Model):
     id_contenido = models.AutoField(primary_key=True, verbose_name='ID de Contenido')
@@ -98,6 +110,9 @@ class Contenido(models.Model):
             models.Index(fields=['titulo']),
         ]
 
+    def __str__(self):
+        return self.titulo
+
 # Content-Genre relationship (N:M)
 class ContenidoGenero(models.Model):
     id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Contenido')
@@ -109,6 +124,9 @@ class ContenidoGenero(models.Model):
         verbose_name = 'Género de Contenido'
         verbose_name_plural = 'Géneros de Contenido'
 
+    def __str__(self):
+        return str(self.id_contenido)
+
 # Cast model
 class Reparto(models.Model):
     id_reparto = models.AutoField(primary_key=True, verbose_name='ID de Reparto')
@@ -118,7 +136,11 @@ class Reparto(models.Model):
         db_table = 'reparto'
         verbose_name = 'Reparto'
         verbose_name_plural = 'Repartos'
-
+    
+    def __str__(self):
+        if self.id_contenido:
+            return f"Reparto de '{self.id_contenido.titulo}' (ID: {self.id_reparto})"
+        return f"Reparto sin contenido (ID: {self.id_reparto})"
 # Actor model
 class Actor(models.Model):
     id_actor = models.AutoField(primary_key=True, verbose_name='ID de Actor')
@@ -131,6 +153,9 @@ class Actor(models.Model):
         db_table = 'actor'
         verbose_name = 'Actor'
         verbose_name_plural = 'Actores'
+    
+    def __str__(self):
+        return self.nombre_actor
 
 # Gallery model
 class Galeria(models.Model):
@@ -143,7 +168,10 @@ class Galeria(models.Model):
         db_table = 'galeria'
         verbose_name = 'Galería'
         verbose_name_plural = 'Galerías'
-
+    
+    def __str__(self):
+        return self.alt_imagen
+    
 # Rating model
 class Valoracion(models.Model):
     id_valoracion = models.AutoField(primary_key=True, verbose_name='ID de Valoración')
@@ -159,7 +187,9 @@ class Valoracion(models.Model):
         unique_together = ('id_usuario', 'id_contenido')
         verbose_name = 'Valoración'
         verbose_name_plural = 'Valoraciones'
-
+    
+    def __str__(self):
+        return str(self.id_valoracion)
 # Comment model
 class Comentario(models.Model):
     id_comentario = models.AutoField(primary_key=True, verbose_name='ID de Comentario')
@@ -177,7 +207,10 @@ class Comentario(models.Model):
         db_table = 'comentarios'
         verbose_name = 'Comentario'
         verbose_name_plural = 'Comentarios'
-
+    
+    def __str__(self):
+        return self.comentario
+    
 # Notification model
 class Notificacion(models.Model):
     id_notificacion = models.AutoField(primary_key=True, verbose_name='ID de Notificación')
@@ -193,6 +226,9 @@ class Notificacion(models.Model):
         verbose_name = 'Notificación'
         verbose_name_plural = 'Notificaciones'
 
+    def __str__(self):
+        return self.mensaje
+    
 # Newsletter subscription model (sin relaciones como se indicó)
 class Newsletter(models.Model):
     id_suscriptor = models.AutoField(primary_key=True, verbose_name='ID de Suscriptor')
@@ -204,7 +240,10 @@ class Newsletter(models.Model):
         db_table = 'newsletter'
         verbose_name = 'Suscripción al Newsletter'
         verbose_name_plural = 'Suscripciones al Newsletter'
-
+    
+    def __str__(self):
+        return self.correo
+    
 # News Category model
 class CategoriaNoticia(models.Model):
     id_categoria = models.AutoField(primary_key=True, verbose_name='ID de Categoría')
@@ -214,7 +253,10 @@ class CategoriaNoticia(models.Model):
         db_table = 'categorias_noticia'
         verbose_name = 'Categoría de Noticia'
         verbose_name_plural = 'Categorías de Noticia'
-
+    
+    def __str__(self):
+        return self.nombre
+    
 # News model
 class Noticia(models.Model):
     id_noticia = models.AutoField(primary_key=True, verbose_name='ID de Noticia')
@@ -238,6 +280,9 @@ class Noticia(models.Model):
             models.Index(fields=['fecha_publicacion']),
         ]
 
+    def __str__(self):
+        return self.titulo
+
 # News-Category relationship (N:M)
 class NoticiaCategoria(models.Model):
     id_noticias = models.ForeignKey(Noticia, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Noticia')
@@ -248,6 +293,9 @@ class NoticiaCategoria(models.Model):
         unique_together = ('id_noticias', 'id_categoria')
         verbose_name = 'Categoría de Noticia'
         verbose_name_plural = 'Categorías de Noticia'
+
+    def __str__(self):
+        return str(self.id_noticias)
 
 # Interview model
 class Entrevista(models.Model):
@@ -266,6 +314,9 @@ class Entrevista(models.Model):
         verbose_name = 'Entrevista'
         verbose_name_plural = 'Entrevistas'
 
+    def __str__(self):
+        return self.titulo
+
 # Personalized List model
 class ListaPersonalizada(models.Model):
     id_lista = models.AutoField(primary_key=True, verbose_name='ID de Lista')
@@ -279,6 +330,9 @@ class ListaPersonalizada(models.Model):
         verbose_name = 'Lista Personalizada'
         verbose_name_plural = 'Listas Personalizadas'
 
+    def __str__(self):
+        return self.nombre_lista
+
 # List-Content relationship (N:M)
 class ListaContenido(models.Model):
     id_lista = models.ForeignKey(ListaPersonalizada, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Lista')
@@ -289,3 +343,6 @@ class ListaContenido(models.Model):
         unique_together = ('id_lista', 'id_contenido')
         verbose_name = 'Contenido de Lista Personalizada'
         verbose_name_plural = 'Contenidos de Listas Personalizadas'
+
+    def __str__(self):
+        return str(self.id_lista) + " " + str(self.id_contenido)
