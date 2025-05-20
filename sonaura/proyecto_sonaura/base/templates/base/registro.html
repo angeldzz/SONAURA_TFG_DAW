@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SONAURA - Registro</title>
+    <script src="{% static 'js/base/bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/base/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base/registro.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syncopate:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -59,8 +59,19 @@
                 </div>
 
                 <!-- Mensajes de alerta -->
-                <div id="alertMessages" class="alert-container"></div>
-
+                <div id="alertMessages" class="alert-container">
+                </div>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-dismissible fade show {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}"
+                    role="alert">
+                    <i
+                        class="bi {% if message.tags == 'error' %}bi-exclamation-triangle-fill{% else %}bi-check-circle-fill{% endif %} me-2"></i>
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
                 <form class="login-form needs-validation" method="post" novalidate>
                     {% csrf_token %}
 
