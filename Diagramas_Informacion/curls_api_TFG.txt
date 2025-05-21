@@ -1,0 +1,23 @@
+Peticion de token access y refresh
+curl -X POST http://127.0.0.1:8000/api/token/ ^
+-H "Content-Type: application/json" ^
+-d "{\"username\":\"angel_dzz\",\"password\":\"Angel123\"}"
+
+curl -X GET http://127.0.0.1:8000/api/contenidos/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODI5NjQxLCJpYXQiOjE3NDc4MjYwNDEsImp0aSI6IjM1ODljYzQyZTUzMDQ4NGM5ZjQ3N2NmNGFiYWMwZmFjIiwidXNlcl9pZCI6Mn0.GRWA6oOy-j16eQuBId-EjCBqsge7yjMMf146o66sOMQ"
+
+Para crear un contenido:
+curl -X POST http://127.0.0.1:8000/api/contenidos/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODI5NjQxLCJpYXQiOjE3NDc4MjYwNDEsImp0aSI6IjM1ODljYzQyZTUzMDQ4NGM5ZjQ3N2NmNGFiYWMwZmFjIiwidXNlcl9pZCI6Mn0.GRWA6oOy-j16eQuBId-EjCBqsge7yjMMf146o66sOMQ" ^
+-H "Content-type: application/json" ^
+-d "{ \"titulo\":\"Avatar\",\"pelicula_serie\":\"pelicula\",\"eslogan\": \"Entra en Pandora\",\"sinopsis\":\"Un ex-marine explora un mundo alienígena.\",\"año_estreno\":2009,\"duracion\":123124}"
+
+Para modificar:
+curl -X PUT http://127.0.0.1:8000/api/contenidos/id/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODI5NjQxLCJpYXQiOjE3NDc4MjYwNDEsImp0aSI6IjM1ODljYzQyZTUzMDQ4NGM5ZjQ3N2NmNGFiYWMwZmFjIiwidXNlcl9pZCI6Mn0.GRWA6oOy-j16eQuBId-EjCBqsge7yjMMf146o66sOMQ" ^
+-H "Content-type: application/json" ^
+-d "{ \"titulo\":\"Avatar\"}"
+
+Para eliminar:
+curl -X DELETE http://127.0.0.1:8000/api/contenidos/id/ ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODI5NjQxLCJpYXQiOjE3NDc4MjYwNDEsImp0aSI6IjM1ODljYzQyZTUzMDQ4NGM5ZjQ3N2NmNGFiYWMwZmFjIiwidXNlcl9pZCI6Mn0.GRWA6oOy-j16eQuBId-EjCBqsge7yjMMf146o66sOMQ"

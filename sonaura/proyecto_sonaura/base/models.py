@@ -50,6 +50,7 @@ class PlataformaStreaming(models.Model):
     alt_imagen_logo_plataforma = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo del logo')
     tipo_acceso = models.CharField(max_length=50, verbose_name='Tipo de acceso')
     precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'plataformas_streaming'
@@ -63,6 +64,7 @@ class PlataformaStreaming(models.Model):
 class Genero(models.Model):
     id_genero = models.AutoField(primary_key=True, verbose_name='ID de Género')
     nombre = models.CharField(max_length=50, unique=True, verbose_name='Nombre')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'generos'
@@ -100,6 +102,7 @@ class Contenido(models.Model):
     es_exclusivo = models.BooleanField(default=False, verbose_name='¿Es exclusivo?')
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
     fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'contenidos'
@@ -117,6 +120,7 @@ class Contenido(models.Model):
 class ContenidoGenero(models.Model):
     id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Contenido')
     id_genero = models.ForeignKey(Genero, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Género')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'contenidos_generos'
@@ -131,7 +135,8 @@ class ContenidoGenero(models.Model):
 class Reparto(models.Model):
     id_reparto = models.AutoField(primary_key=True, verbose_name='ID de Reparto')
     id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, related_name='reparto', null=True, blank=True, verbose_name='Contenido')
-    
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
+
     class Meta:
         db_table = 'reparto'
         verbose_name = 'Reparto'
@@ -148,6 +153,7 @@ class Actor(models.Model):
     nombre_actor = models.CharField(max_length=100, verbose_name='Nombre del Actor')
     personaje = models.CharField(max_length=100, verbose_name='Personaje')
     imagen_actor = models.ImageField(upload_to='actores/', null=True, blank=True, verbose_name='Imagen del Actor')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'actor'
@@ -163,6 +169,7 @@ class Galeria(models.Model):
     id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, related_name='galeria', null=True, blank=True, verbose_name='Contenido')
     url_imagen = models.ImageField(upload_to='galeria/', null=True, blank=True, verbose_name='Imagen')
     alt_imagen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo de la imagen')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'galeria'
@@ -235,6 +242,7 @@ class Newsletter(models.Model):
     correo = models.EmailField(max_length=254, verbose_name='Correo electrónico')
     fechas_suscripcion = models.DateTimeField(default=timezone.now, verbose_name='Fecha de suscripción')
     estado = models.CharField(max_length=20, default='activo', verbose_name='Estado')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'newsletter'
@@ -248,6 +256,7 @@ class Newsletter(models.Model):
 class CategoriaNoticia(models.Model):
     id_categoria = models.AutoField(primary_key=True, verbose_name='ID de Categoría')
     nombre = models.CharField(max_length=50, unique=True, verbose_name='Nombre')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'categorias_noticia'
@@ -270,6 +279,7 @@ class Noticia(models.Model):
     es_exclusiva = models.BooleanField(default=False, verbose_name='¿Es exclusiva?')
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
     fecha_publicacion = models.DateTimeField(default=timezone.now, verbose_name='Fecha de publicación')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'noticias'
@@ -287,6 +297,7 @@ class Noticia(models.Model):
 class NoticiaCategoria(models.Model):
     id_noticias = models.ForeignKey(Noticia, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Noticia')
     id_categoria = models.ForeignKey(CategoriaNoticia, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Categoría')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'noticias_categorias'
@@ -308,6 +319,7 @@ class Entrevista(models.Model):
     vistas = models.IntegerField(default=0, verbose_name='Vistas')
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
     fecha_publicacion = models.DateTimeField(default=timezone.now, verbose_name='Fecha de publicación')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'entrevistas'
@@ -337,6 +349,7 @@ class ListaPersonalizada(models.Model):
 class ListaContenido(models.Model):
     id_lista = models.ForeignKey(ListaPersonalizada, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Lista')
     id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Contenido')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
     class Meta:
         db_table = 'lista_personalizadas_contenidos'

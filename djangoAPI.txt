@@ -140,12 +140,12 @@ Comandos curl para apis
 Para obtener los tokens necesitamos este comando:
 curl -X POST http://127.0.0.1:8000/api/token/ ^
 -H "Content-Type: application/json" ^
--d "{\"username\":\"usuario2\",\"password\":\"contraseña\"}"
+-d "{\"username\":\"sonaura\",\"password\":\"sonaura\"}"
 
 resultado = 
 {
 "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MTA3NDAwMCwiaWF0IjoxNzQwNDY5MjAwLCJqdGkiOiIxODlhOTQzYTUwNjQ0OWY3OGZhZWExZjY3ZGVhODg0MiIsInVzZXJfaWQiOjJ9.hm32yW8cl1hHop7INCR3IxXkcMqojHNSR7IoL1yLxFg",
-"access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNDcyODAwLCJpYXQiOjE3NDA0NjkyMDAsImp0aSI6IjM5M2Y4ZGVhNmE5NTRmYTNiOWUxZWMwMjE5Y2U1MWZmIiwidXNlcl9pZCI6Mn0.FCeemWfc7lIiyJmNKY2IVLpZ2a4kqWXjPwIS-IFh8vQ"
+"access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3ODI1Mzg5LCJpYXQiOjE3NDc4MjE3ODksImp0aSI6ImNlOGMzYjUwYTA3ZDRhNjFhYjMyOTBhOWUzNTJiZDZhIiwidXNlcl9pZCI6MX0.lfyF8yCA29U81NhHs1F9AI2UFdvIkSevF9aVrC-99i8"
 }
 
 ----(si tenemos tokens necesitamos el token access y si da HTML mirar el settings)----

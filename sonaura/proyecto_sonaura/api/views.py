@@ -1,0 +1,181 @@
+from django.shortcuts import render
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+from base.models import (
+    Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
+    Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
+    CategoriaNoticia, Noticia, NoticiaCategoria, Entrevista, ListaPersonalizada, ListaContenido
+)
+from .serializers import (
+    PerfilSerializer, SuscripcionUsuarioSerializer, PlataformaStreamingSerializer, GeneroSerializer,
+    ContenidoSerializer, ContenidoGeneroSerializer, RepartoSerializer, ActorSerializer, GaleriaSerializer,
+    ValoracionSerializer, ComentarioSerializer, NotificacionSerializer, NewsletterSerializer,
+    CategoriaNoticiaSerializer, NoticiaSerializer, NoticiaCategoriaSerializer, EntrevistaSerializer,
+    ListaPersonalizadaSerializer, ListaContenidoSerializer
+)
+from .permissions import IsStaffOrReadOnly
+
+# Create your views here.
+
+# Ejemplo para Perfil (usa IsStaffOrReadOnly)
+class PerfilViewSet(viewsets.ModelViewSet):
+    queryset = Perfil.objects.all()
+    serializer_class = PerfilSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)
+
+# Ejemplo para Valoracion (usa IsStaffOrReadOnly)
+class ValoracionViewSet(viewsets.ModelViewSet):
+    queryset = Valoracion.objects.all()
+    serializer_class = ValoracionSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)
+
+# Ejemplo para Noticia (usa IsStaffOrReadOnly)
+class NoticiaViewSet(viewsets.ModelViewSet):
+    queryset = Noticia.objects.all()
+    serializer_class = NoticiaSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
+
+# Para modelos sin campo de usuario/creador, solo autenticación
+class PlataformaStreamingViewSet(viewsets.ModelViewSet):
+    queryset = PlataformaStreaming.objects.all()
+    serializer_class = PlataformaStreamingSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+class SuscripcionUsuarioViewSet(viewsets.ModelViewSet):
+    queryset = SuscripcionUsuario.objects.all()
+    serializer_class = SuscripcionUsuarioSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)
+
+class GeneroViewSet(viewsets.ModelViewSet):
+    queryset = Genero.objects.all()
+    serializer_class = GeneroSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+class ContenidoViewSet(viewsets.ModelViewSet):
+    queryset = Contenido.objects.all()
+    serializer_class = ContenidoSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+class ContenidoGeneroViewSet(viewsets.ModelViewSet):
+    queryset = ContenidoGenero.objects.all()
+    serializer_class = ContenidoGeneroSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+class RepartoViewSet(viewsets.ModelViewSet):
+    queryset = Reparto.objects.all()
+    serializer_class = RepartoSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+class ActorViewSet(viewsets.ModelViewSet):
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+class GaleriaViewSet(viewsets.ModelViewSet):
+    queryset = Galeria.objects.all()
+    serializer_class = GaleriaSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        """Asigna automáticamente el usuario autenticado como creador"""
+        serializer.save(creador=self.request.user)
+
+class ComentarioViewSet(viewsets.ModelViewSet):
+    queryset = Comentario.objects.all()
+    serializer_class = ComentarioSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)
+
+class NotificacionViewSet(viewsets.ModelViewSet):
+    queryset = Notificacion.objects.all()
+    serializer_class = NotificacionSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)
+
+class NewsletterViewSet(viewsets.ModelViewSet):
+    queryset = Newsletter.objects.all()
+    serializer_class = NewsletterSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
+
+class CategoriaNoticiaViewSet(viewsets.ModelViewSet):
+    queryset = CategoriaNoticia.objects.all()
+    serializer_class = CategoriaNoticiaSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
+
+class NoticiaCategoriaViewSet(viewsets.ModelViewSet):
+    queryset = NoticiaCategoria.objects.all()
+    serializer_class = NoticiaCategoriaSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
+
+class EntrevistaViewSet(viewsets.ModelViewSet):
+    queryset = Entrevista.objects.all()
+    serializer_class = EntrevistaSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
+
+class ListaPersonalizadaViewSet(viewsets.ModelViewSet):
+    queryset = ListaPersonalizada.objects.all()
+    serializer_class = ListaPersonalizadaSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)
+
+class ListaContenidoViewSet(viewsets.ModelViewSet):
+    queryset = ListaContenido.objects.all()
+    serializer_class = ListaContenidoSerializer
+    permission_classes = [IsAuthenticated, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
