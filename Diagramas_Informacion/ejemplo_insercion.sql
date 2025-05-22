@@ -1,6 +1,6 @@
 -- 1. Géneros
-INSERT INTO generos (id_genero, nombre) VALUES
-(1, 'Acción'), (2, 'Aventura'), (3, 'Ciencia Ficción'), (4, 'Drama'), (5, 'Fantasía');
+INSERT INTO generos (id_genero, nombre,creador_id) VALUES
+(1, 'Acción', 1), (2, 'Aventura', 1), (3, 'Ciencia Ficción', 1), (4, 'Drama', 1), (5, 'Fantasía', 1);
 
 -- 2. Películas taquilleras
 INSERT INTO contenidos (id_contenido, titulo, pelicula_serie, eslogan, sinopsis, año_estreno, duracion, director, guionistas, clasificacion, imagen_poster, alt_imagen_poster, imagen_fondo, alt_imagen_fondo, puntuacion, es_exclusivo, fecha_edicion, fecha_creacion,creador_id)
@@ -62,10 +62,7 @@ VALUES
 
 -- 3. Repartos (uno por película)
 INSERT INTO reparto (id_reparto, id_contenido_id, creador_id) VALUES
-(1, 1, 1), (2, 2, 1), (3, 3, 1), (4, 4, 1), (5, 5, 1), (6, 6, 1), (7, 7, 1), (8, 8, 1), (9, 9, 1), (10, 10, 1);
-
--- 3. Repartos (continuación, uno por película desde id 11)
-INSERT INTO reparto (id_reparto, id_contenido_id, creador_id) VALUES
+(1, 1, 1), (2, 2, 1), (3, 3, 1), (4, 4, 1), (5, 5, 1), (6, 6, 1), (7, 7, 1), (8, 8, 1), (9, 9, 1), (10, 10, 1),
 (11, 11, 1), (12, 12, 1), (13, 13, 1), (14, 14, 1), (15, 15, 1), (16, 16, 1), (17, 17, 1), (18, 18, 1), (19, 19, 1), (20, 20, 1),
 (21, 21, 1), (22, 22, 1), (23, 23, 1), (24, 24, 1), (25, 25, 1), (26, 26, 1), (27, 27, 1), (28, 28, 1), (29, 29, 1), (30, 30, 1),
 (31, 31, 1), (32, 32, 1), (33, 33, 1), (34, 34, 1), (35, 35, 1), (36, 36, 1), (37, 37, 1), (38, 38, 1), (39, 39, 1), (40, 40, 1),
