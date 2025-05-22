@@ -90,7 +90,7 @@ class Contenido(models.Model):
     eslogan = models.CharField(max_length=50, verbose_name='Eslogan')  # Cambiado de tipo_contenido a eslogan
     sinopsis = models.TextField(verbose_name='Sinopsis')
     año_estreno = models.IntegerField(verbose_name='Año de estreno')
-    duracion = models.DurationField(verbose_name='Duración')
+    duracion = models.IntegerField(verbose_name='Duración')
     director = models.CharField(max_length=200, verbose_name='Director',null=True, blank=True)
     guionistas = models.TextField(verbose_name='Guionistas',null=True, blank=True)
     clasificacion = models.CharField(max_length=10, verbose_name='Clasificación',null=True, blank=True)

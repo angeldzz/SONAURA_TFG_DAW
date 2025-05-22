@@ -121,17 +121,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 // Convertir duración a minutos si es posible
                                 let duracionMin = '';
                                 if (peli.duracion) {
-                                    const partes = peli.duracion.split(':');
-                                    if (partes.length >= 2) {
-                                        duracionMin = (parseInt(partes[0]) * 60 + parseInt(partes[1])).toString();
-                                    }
+                                    // peli.duracion ahora es un entero en segundos
+                                    const totalMin = peli.duracion / 60;
+                                    duracionMin = Math.ceil(totalMin).toString();
                                 }
 
                                 const card = document.createElement('div');
                                 card.className = 'media-card neon-card';
                                 card.innerHTML = `
                                     <div class="card-image">
-                                        <img src="${peli.imagen_poster}" alt="${peli.titulo}">
+                                        <img src="${peli.imagen_poster}" alt="${peli.alt_imagen_poster ? peli.alt_imagen_poster : peli.titulo}">
                                         <div class="card-overlay">
                                             <div class="card-actions">
                                                 <button class="card-action-btn">
