@@ -136,7 +136,13 @@ class Reparto(models.Model):
     id_reparto = models.AutoField(primary_key=True, verbose_name='ID de Reparto')
     id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, related_name='reparto', null=True, blank=True, verbose_name='Contenido')
     creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-
+    
+    # Metodo para agregar el creador automanticamente
+    def save_model(self, request, obj, form, change):
+        if not obj.creador_id:
+            obj.creador = request.user
+        super().save_model(request, obj, form, change)
+        
     class Meta:
         db_table = 'reparto'
         verbose_name = 'Reparto'
@@ -154,7 +160,13 @@ class Actor(models.Model):
     personaje = models.CharField(max_length=100, verbose_name='Personaje')
     imagen_actor = models.ImageField(upload_to='actores/', null=True, blank=True, verbose_name='Imagen del Actor')
     creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-
+    
+    # Metodo para agregar el creador automanticamente
+    def save_model(self, request, obj, form, change):
+        if not obj.creador_id:
+            obj.creador = request.user
+        super().save_model(request, obj, form, change)
+        
     class Meta:
         db_table = 'actor'
         verbose_name = 'Actor'
@@ -170,7 +182,13 @@ class Galeria(models.Model):
     url_imagen = models.ImageField(upload_to='galeria/', null=True, blank=True, verbose_name='Imagen')
     alt_imagen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo de la imagen')
     creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-
+    
+    # Metodo para agregar el creador automanticamente
+    def save_model(self, request, obj, form, change):
+        if not obj.creador_id:
+            obj.creador = request.user
+        super().save_model(request, obj, form, change)
+        
     class Meta:
         db_table = 'galeria'
         verbose_name = 'Galería'
@@ -297,8 +315,7 @@ class Noticia(models.Model):
 class NoticiaCategoria(models.Model):
     id_noticias = models.ForeignKey(Noticia, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Noticia')
     id_categoria = models.ForeignKey(CategoriaNoticia, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Categoría')
-    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-
+        
     class Meta:
         db_table = 'noticias_categorias'
         unique_together = ('id_noticias', 'id_categoria')
@@ -320,7 +337,13 @@ class Entrevista(models.Model):
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
     fecha_publicacion = models.DateTimeField(default=timezone.now, verbose_name='Fecha de publicación')
     creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-
+    
+    # Metodo para agregar el creador automanticamente
+    def save_model(self, request, obj, form, change):
+        if not obj.creador_id:
+            obj.creador = request.user
+        super().save_model(request, obj, form, change)
+        
     class Meta:
         db_table = 'entrevistas'
         verbose_name = 'Entrevista'

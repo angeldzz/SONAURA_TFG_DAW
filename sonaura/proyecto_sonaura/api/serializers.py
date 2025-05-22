@@ -35,6 +35,12 @@ class ContenidoSerializer(serializers.ModelSerializer):
         model = Contenido
         fields = '__all__'
 
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        # Elimina 'creador' solo en la respuesta
+        rep.pop('creador', None)
+        return rep
+
 class ContenidoGeneroSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
     class Meta:
