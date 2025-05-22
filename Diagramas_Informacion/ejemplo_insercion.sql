@@ -56,7 +56,7 @@ VALUES
 (49, 'La Lista de Schindler', 'pelicula', 'El valor de una vida', 'Un empresario salva a judíos durante el Holocausto.', 1993, 11700, 'Steven Spielberg', 'Steven Zaillian', 'R', NULL, NULL, NULL, NULL, 9.7, 0, NOW(), NOW(), 1),
 (50, 'El Indomable Will Hunting', 'pelicula', 'El genio está en todas partes', 'Un joven con talento para las matemáticas lucha con su pasado.', 1997, 7560, 'Gus Van Sant', 'Matt Damon, Ben Affleck', 'R', NULL, NULL, NULL, NULL, 9.0, 0, NOW(), NOW(), 1),
 (51, 'Infiltrados', 'pelicula', '¿Quién es el topo?', 'Un policía y un infiltrado en la mafia irlandesa.', 2006, 9060, 'Martin Scorsese', 'William Monahan', 'R', NULL, NULL, NULL, NULL, 9.1, 0, NOW(), NOW(), 1),
-(52, 'Avatar', 'pelicula', 'Entra en Pandora', 'Un ex-marine explora un mundo alienígena.', 2009, 9720, 'James Cameron', 'James Cameron', 'PG-13', NULL, NULL, NULL, NULL, 9.0, 0, NOW(), NOW(), 1),
+(52, 'Avatar 2', 'pelicula', 'El camino del agua', 'Jake Sully y Neytiri exploran nuevas regiones de Pandora y enfrentan nuevas amenazas.', 2022, 11520, 'James Cameron', 'James Cameron', 'PG-13', NULL, NULL, NULL, NULL, 9.0, 0, NOW(), NOW(), 1),
 (53, 'Deadpool y Wolverine', 'pelicula', 'El dúo más irreverente', 'Deadpool y Wolverine unen fuerzas en una nueva aventura.', 2024, 7680, 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'R', NULL, NULL, NULL, NULL, 8.7, 0, NOW(), NOW(), 1),
 (54, 'Sin Lugar para los Débiles', 'pelicula', 'El destino está escrito', 'Un hombre encuentra una maleta con dinero y es perseguido por un asesino.', 2007, 7320, 'Joel Coen, Ethan Coen', 'Joel Coen, Ethan Coen', 'R', NULL, NULL, NULL, NULL, 9.0, 0, NOW(), NOW(), 1);
 
