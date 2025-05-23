@@ -31,13 +31,18 @@ class GeneroSerializer(serializers.ModelSerializer):
 
 class ContenidoSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
+    generos = serializers.SerializerMethodField()
+
     class Meta:
         model = Contenido
-        fields = '__all__'
+        fields = '__all__'  # o lista explícita de campos + 'generos'
+
+    def get_generos(self, obj):
+        generos = Genero.objects.filter(contenidogenero__id_contenido=obj)
+        return GeneroSerializer(generos, many=True).data
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        # Elimina 'creador' solo en la respuesta
         rep.pop('creador', None)
         return rep
 

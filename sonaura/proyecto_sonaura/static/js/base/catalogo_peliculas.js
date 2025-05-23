@@ -7,17 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Cargar películas
             cargarPeliculas_Series(filtro_anio())
-            document.getElementById("yearfilter").addEventListener("select",console.log("hola"));
+            document.getElementById("yearFilter").addEventListener("change",() => cargarPeliculas_Series(filtro_anio()));
         });
         function filtro_anio() {  
-            input_anio = document.getElementById("yearFilter").value;
-            console.log(input_anio);
-            if(input_anio == "all"){
-                anio = "";
-            }if(input_anio == "all"){
-                anio = "";
+            const input_anio = document.getElementById("yearFilter").value;
+            let filtro = "";
+
+            if (input_anio === "all") {
+                filtro = "";
+            } else if (input_anio === "older") {
+                filtro = "&anio_estreno__lt=2020";
+            } else {
+                filtro = `&anio_estreno=${input_anio}`;
             }
-            return anio;
+            return filtro;
         }
         function initParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -159,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 <span>${peli.puntuacion ? peli.puntuacion.toFixed(1) : '-'}</span>
                                             </div>
                                         </div>
-                                        <div class="card-badge">${peli.clasificacion || ''}</div>
+                                        <div class="card-badge">${peli.generos && peli.generos.length > 0 ? (peli.generos[0].nombre || peli.generos[0].name || '') : ''}</div>
                                     </div>
                                     <div class="card-content">
                                         <h3>${peli.titulo}</h3>
