@@ -131,49 +131,50 @@ class ContenidoGenero(models.Model):
     def __str__(self):
         return str(self.id_contenido)
 
-# Cast model
-class Reparto(models.Model):
-    id_reparto = models.AutoField(primary_key=True, verbose_name='ID de Reparto')
-    id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, related_name='reparto', null=True, blank=True, verbose_name='Contenido')
-    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-    
-    # Metodo para agregar el creador automanticamente
-    def save_model(self, request, obj, form, change):
-        if not obj.creador_id:
-            obj.creador = request.user
-        super().save_model(request, obj, form, change)
-        
-    class Meta:
-        db_table = 'reparto'
-        verbose_name = 'Reparto'
-        verbose_name_plural = 'Repartos'
-    
-    def __str__(self):
-        if self.id_contenido:
-            return f"Reparto de '{self.id_contenido.titulo}' (ID: {self.id_reparto})"
-        return f"Reparto sin contenido (ID: {self.id_reparto})"
 # Actor model
 class Actor(models.Model):
     id_actor = models.AutoField(primary_key=True, verbose_name='ID de Actor')
-    id_reparto = models.ForeignKey(Reparto, on_delete=models.CASCADE, related_name='actores', null=True, blank=True, verbose_name='Reparto')
     nombre_actor = models.CharField(max_length=100, verbose_name='Nombre del Actor')
-    personaje = models.CharField(max_length=100, verbose_name='Personaje')
     imagen_actor = models.ImageField(upload_to='actores/', null=True, blank=True, verbose_name='Imagen del Actor')
     creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-    
+
     # Metodo para agregar el creador automanticamente
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
         super().save_model(request, obj, form, change)
-        
+
     class Meta:
         db_table = 'actor'
         verbose_name = 'Actor'
         verbose_name_plural = 'Actores'
-    
+
     def __str__(self):
         return self.nombre_actor
+
+# Cast model
+class Reparto(models.Model):
+    id_reparto = models.AutoField(primary_key=True, verbose_name='ID de Reparto')
+    id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, related_name='reparto', null=True, blank=True, verbose_name='Contenido')
+    id_actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='repartos', verbose_name='Actor')
+    personaje = models.CharField(max_length=100, verbose_name='Personaje')
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
+
+    # Metodo para agregar el creador automanticamente
+    def save_model(self, request, obj, form, change):
+        if not obj.creador_id:
+            obj.creador = request.user
+        super().save_model(request, obj, form, change)
+
+    class Meta:
+        db_table = 'reparto'
+        verbose_name = 'Reparto'
+        verbose_name_plural = 'Repartos'
+
+    def __str__(self):
+        if self.id_contenido:
+            return f"{self.id_actor.nombre_actor} como {self.personaje} en '{self.id_contenido.titulo}'"
+        return f"{self.id_actor.nombre_actor} como {self.personaje}"
 
 # Gallery model
 class Galeria(models.Model):
