@@ -4,11 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Inicializar carrusel
             initCarousel();
-            pelicula_serie = document.getElementById("pelicula-serie").value;
+            
             // Cargar películas
-            cargarPeliculas_Series(pelicula_serie);
+            cargarPeliculas_Series(filtro_anio());
         });
-
+        function filtro_anio() {  
+            input_anio = document.getElementById("yearFilter").value;
+            console.log(input_anio);
+            if (condition) {
+                
+            }
+            return anio;
+        }
         function initParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 300;
@@ -82,8 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
         moveToSlide();
     }, 7000);
         }
-        function cargarPeliculas_Series(pelicula_serie) {
-            fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}`)
+        function cargarPeliculas_Series(anio) {
+            pelicula_serie = document.getElementById("pelicula-serie").value;
+
+            fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}&anio_estreno${anio}`)
                 .then(response => {
                     if (!response.ok) throw new Error('Error al obtener las películas');
                     return response.json();

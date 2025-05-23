@@ -59,6 +59,12 @@ VALUES
 (52, 'Avatar 2', 'pelicula', 'El camino del agua', 'Jake Sully y Neytiri exploran nuevas regiones de Pandora y enfrentan nuevas amenazas.', 2022, 11520, 'James Cameron', 'James Cameron', 'PG-13', NULL, NULL, NULL, NULL, 9.0, 0, NOW(), NOW(), 1),
 (53, 'Deadpool y Wolverine', 'pelicula', 'El dúo más irreverente', 'Deadpool y Wolverine unen fuerzas en una nueva aventura.', 2024, 7680, 'Shawn Levy', 'Rhett Reese, Paul Wernick', 'R', NULL, NULL, NULL, NULL, 8.7, 0, NOW(), NOW(), 1),
 (54, 'Sin Lugar para los Débiles', 'pelicula', 'El destino está escrito', 'Un hombre encuentra una maleta con dinero y es perseguido por un asesino.', 2007, 7320, 'Joel Coen, Ethan Coen', 'Joel Coen, Ethan Coen', 'R', NULL, NULL, NULL, NULL, 9.0, 0, NOW(), NOW(), 1);
+(55, 'La La Land', 'pelicula', 'Haz realidad tus sueños', 'Una aspirante a actriz y un pianista luchan por sus sueños en Los Ángeles.', 2016, 7680, 'Damien Chazelle', 'Damien Chazelle', 'PG-13', NULL, NULL, NULL, NULL, 8.5, 0, NOW(), NOW(), 1),
+(56, 'Coco', 'pelicula', 'Recuerda a tu familia', 'Un niño viaja a la Tierra de los Muertos para descubrir su legado familiar.', 2017, 6300, 'Lee Unkrich', 'Adrian Molina, Matthew Aldrich', 'PG', NULL, NULL, NULL, NULL, 8.7, 0, NOW(), NOW(), 1),
+(57, 'Gravity', 'pelicula', 'No hay nada que temer allá afuera', 'Dos astronautas quedan varados en el espacio tras un accidente.', 2013, 5460, 'Alfonso Cuarón', 'Alfonso Cuarón, Jonás Cuarón', 'PG-13', NULL, NULL, NULL, NULL, 8.1, 0, NOW(), NOW(), 1),
+(58, 'El Gran Hotel Budapest', 'pelicula', 'Una aventura inolvidable', 'Las aventuras de un conserje y su protegido en un famoso hotel europeo.', 2014, 5940, 'Wes Anderson', 'Wes Anderson, Hugo Guinness', 'R', NULL, NULL, NULL, NULL, 8.4, 0, NOW(), NOW(), 1),
+(59, 'Black Panther', 'pelicula', 'Wakanda por siempre', 'El rey T Challa debe defender Wakanda de enemigos internos y externos.', 2018, 8040, 'Ryan Coogler', 'Ryan Coogler, Joe Robert Cole', 'PG-13', NULL, NULL, NULL, NULL, 8.0, 0, NOW(), NOW(), 1),
+(60, 'El Gran Pez', 'pelicula', 'Una vida de historias', 'Un hijo intenta descubrir la verdad detrás de las historias fantásticas de su padre.', 2003, 7500, 'Tim Burton', 'John August', 'PG-13', NULL, NULL, NULL, NULL, 8.2, 0, NOW(), NOW(), 1);
 
 -- 3. Repartos (uno por película)
 INSERT INTO reparto (id_reparto, id_contenido_id, creador_id) VALUES
@@ -67,7 +73,7 @@ INSERT INTO reparto (id_reparto, id_contenido_id, creador_id) VALUES
 (21, 21, 1), (22, 22, 1), (23, 23, 1), (24, 24, 1), (25, 25, 1), (26, 26, 1), (27, 27, 1), (28, 28, 1), (29, 29, 1), (30, 30, 1),
 (31, 31, 1), (32, 32, 1), (33, 33, 1), (34, 34, 1), (35, 35, 1), (36, 36, 1), (37, 37, 1), (38, 38, 1), (39, 39, 1), (40, 40, 1),
 (41, 41, 1), (42, 42, 1), (43, 43, 1), (44, 44, 1), (45, 45, 1), (46, 46, 1), (47, 47, 1), (48, 48, 1), (49, 49, 1), (50, 50, 1),
-(51, 51, 1), (52, 52, 1), (53, 53, 1), (54, 54, 1);
+(51, 51, 1), (52, 52, 1), (53, 53, 1), (54, 54, 1)(55, 55, 1), (56, 56, 1), (57, 57, 1), (58, 58, 1), (59, 59, 1), (60, 60, 1);
 
 -- 4. Actores (4 por reparto)
 INSERT INTO actor (id_actor, id_reparto_id, nombre_actor, personaje, imagen_actor, creador_id) VALUES
@@ -211,7 +217,7 @@ INSERT INTO actor (id_actor, id_reparto_id, nombre_actor, personaje, imagen_acto
 (110, 28, 'Hailee Steinfeld', 'Gwen Stacy', NULL, 1),
 (111, 28, 'Oscar Isaac', 'Miguel O''Hara', NULL, 1),
 (112, 28, 'Jake Johnson', 'Peter B. Parker', NULL, 1),
--- Todo a la Vez en Todas Partes
+-- Toxo a la Vez en Todas Partes
 (113, 29, 'Michelle Yeoh', 'Evelyn Wang', NULL, 1),
 (114, 29, 'Ke Huy Quan', 'Waymond Wang', NULL, 1),
 (115, 29, 'Stephanie Hsu', 'Joy Wang', NULL, 1),
@@ -341,11 +347,40 @@ INSERT INTO actor (id_actor, id_reparto_id, nombre_actor, personaje, imagen_acto
 (214, 54, 'Javier Bardem', 'Anton Chigurh', NULL, 1),
 (215, 54, 'Tommy Lee Jones', 'Ed Tom Bell', NULL, 1),
 (216, 54, 'Kelly Macdonald', 'Carla Jean Moss', NULL, 1);
+Land
+(217, 55, 'Ryan Gosling', 'Sebastian', NULL, 1),
+(218, 55, 'Emma Stone', 'Mia', NULL, 1),
+(219, 55, 'John Legend', 'Keith', NULL, 1),
+(220, 55, 'Rosemarie DeWitt', 'Laura', NULL, 1),
+-- Coco
+(221, 56, 'Anthony Gonzalez', 'Miguel (voz)', NULL, 1),
+(222, 56, 'Gael García Bernal', 'Héctor (voz)', NULL, 1),
+(223, 56, 'Benjamin Bratt', 'Ernesto de la Cruz (voz)', NULL, 1),
+(224, 56, 'Alanna Ubach', 'Mamá Imelda (voz)', NULL, 1),
+-- Gravity
+(225, 57, 'Sandra Bullock', 'Ryan Stone', NULL, 1),
+(226, 57, 'George Clooney', 'Matt Kowalski', NULL, 1),
+(227, 57, 'Ed Harris', 'Misión Control (voz)', NULL, 1),
+(228, 57, 'Orto Ignatiussen', 'Aningaaq (voz)', NULL, 1),
+-- El Gran Hotel Budapest
+(229, 58, 'Ralph Fiennes', 'M. Gustave', NULL, 1),
+(230, 58, 'Tony Revolori', 'Zero Moustafa', NULL, 1),
+(231, 58, 'Saoirse Ronan', 'Agatha', NULL, 1),
+(232, 58, 'Adrien Brody', 'Dmitri', NULL, 1),
+-- Black Panther
+(233, 59, 'Chadwick Boseman', 'T` challa / Black Panther', NULL, 1),
+(234, 59, 'Michael B. Jordan', 'Erik Killmonger', NULL, 1),
+(235, 59, 'Lupita Nyong `o', 'Nakia', NULL, 1),
+(236, 59, 'Danai Gurira', 'Okoye', NULL, 1),
+-- El Gran Pez
+(237, 60, 'Ewan McGregor', 'Edward Bloom (joven)', NULL, 1),
+(238, 60, 'Albert Finney', 'Edward Bloom (adulto)', NULL, 1),
+(239, 60, 'Billy Crudup', 'Will Bloom', NULL, 1),
+(240, 60, 'Jessica Lange', 'Sandra Bloom', NULL, 1);
 
 -- 5. Relacionar películas con géneros (ejemplo simple)
 INSERT INTO contenidos_generos (id_contenido_id, id_genero_id, creador_id) VALUES
 (1, 3, 1), (2, 1, 1), (2, 2, 1), (3, 4, 1), (4, 3, 1), (5, 2, 1), (6, 5, 1), (7, 1, 1), (8, 1, 1), (9, 5, 1), (10, 5, 1),
--- A partir de aquí, desde id 11
 (11, 3, 1), (11, 2, 1), (11, 4, 1), -- Dune: Parte 2 (Ciencia Ficción, Aventura, Drama)
 (12, 4, 1), -- Oppenheimer (Drama)
 (13, 5, 1), (13, 4, 1), -- Pobres Criaturas (Fantasía, Drama)
@@ -389,4 +424,10 @@ INSERT INTO contenidos_generos (id_contenido_id, id_genero_id, creador_id) VALUE
 (51, 4, 1), (51, 1, 1), -- Infiltrados (Drama, Acción)
 (52, 3, 1), -- Avatar (Ciencia Ficción)
 (53, 1, 1), (53, 3, 1), -- Deadpool y Wolverine (Acción, Ciencia Ficción)
-(54, 4, 1); -- Sin Lugar para los Débiles (Drama)
+(54, 4, 1), -- Sin Lugar para los Débiles (Drama)
+(55, 4, 1),-- La La Land: Drama
+(56, 5, 1), (56, 2, 1),-- Coco: Fantasía, Aventura
+(57, 3, 1), (57, 4, 1),-- Gravity: Ciencia Ficción, Drama
+(58, 4, 1), (58, 5, 1),-- El Gran Hotel Budapest: Drama, Fantasía
+(59, 1, 1), (59, 3, 1), (59, 2, 1),-- Black Panther: Acción, Ciencia Ficción, Aventura
+(60, 5, 1), (60, 4, 1);-- El Gran Pez: Fantasía, Drama
