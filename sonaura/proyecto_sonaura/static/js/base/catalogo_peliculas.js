@@ -6,13 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
             initCarousel();
             
             // Cargar películas
-            cargarPeliculas_Series(filtro_anio());
+            cargarPeliculas_Series(filtro_anio())
+            document.getElementById("yearfilter").addEventListener("select",console.log("hola"));
         });
         function filtro_anio() {  
             input_anio = document.getElementById("yearFilter").value;
             console.log(input_anio);
-            if (condition) {
-                
+            if(input_anio == "all"){
+                anio = "";
+            }if(input_anio == "all"){
+                anio = "";
             }
             return anio;
         }
@@ -89,10 +92,11 @@ document.addEventListener('DOMContentLoaded', function() {
         moveToSlide();
     }, 7000);
         }
-        function cargarPeliculas_Series(anio) {
+        function cargarPeliculas_Series(anio_filtro) {
+            console.log(anio_filtro);
             pelicula_serie = document.getElementById("pelicula-serie").value;
 
-            fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}&anio_estreno${anio}`)
+            fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}`)
                 .then(response => {
                     if (!response.ok) throw new Error('Error al obtener las películas');
                     return response.json();
