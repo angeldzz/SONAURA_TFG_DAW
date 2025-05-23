@@ -134,14 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 if (idx >= peliculasPagina.length) break;
                                 const peli = peliculasPagina[idx];
 
-                                // Convertir duración a minutos si es posible
-                                let duracionMin = '';
-                                if (peli.duracion) {
-                                    // peli.duracion ahora es un entero en segundos
-                                    const totalMin = peli.duracion / 60;
-                                    duracionMin = Math.ceil(totalMin).toString();
-                                }
-
                                 const card = document.createElement('div');
                                 card.className = 'media-card neon-card';
                                 card.innerHTML = `
@@ -168,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <h3>${peli.titulo}</h3>
                                         <div class="card-meta">
                                             <span>${peli.año_estreno || ''}</span>
-                                            <span>${duracionMin ? duracionMin + ' min' : ''}</span>
+                                            <span>${peli.duracion + ' min'}</span>
                                         </div>
                                     </div>
                                 `;
