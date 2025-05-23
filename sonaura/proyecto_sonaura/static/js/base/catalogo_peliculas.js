@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Inicializar carrusel
             initCarousel();
-            
+            pelicula_serie = document.getElementById("pelicula-serie").value;
             // Cargar películas
-            cargarPeliculas();
+            cargarPeliculas(pelicula_serie);
         });
 
         function initParticles() {
@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
         moveToSlide();
     }, 7000);
         }
-        function cargarPeliculas() {
-            fetch('http://127.0.0.1:8000/api/contenidos/?pelicula_serie=pelicula')
+        function cargarPeliculas(pelicula_serie) {
+            fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}`)
                 .then(response => {
                     if (!response.ok) throw new Error('Error al obtener las películas');
                     return response.json();
