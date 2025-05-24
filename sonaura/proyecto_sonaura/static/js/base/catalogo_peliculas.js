@@ -9,19 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cargarPeliculas_Series(filtro_anio())
             document.getElementById("yearFilter").addEventListener("change",() => cargarPeliculas_Series(filtro_anio()));
         });
-        function filtro_anio() {  
-            const input_anio = document.getElementById("yearFilter").value;
-            let filtro = "";
-
-            if (input_anio === "all") {
-                filtro = "";
-            } else if (input_anio === "older") {
-                filtro = "&anio_estreno__lt=2020";
-            } else {
-                filtro = `&anio_estreno=${input_anio}`;
-            }
-            return filtro;
-        }
+        
         function initParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 300;
@@ -94,6 +82,19 @@ document.addEventListener('DOMContentLoaded', function() {
         currentIndex = (currentIndex + 1) % totalGroups;
         moveToSlide();
     }, 7000);
+        }
+        function filtro_anio() {  
+            const input_anio = document.getElementById("yearFilter").value;
+            let filtro = "";
+
+            if (input_anio === "all") {
+                filtro = "";
+            } else if (input_anio === "older") {
+                filtro = "&anio_estreno__lt=2020";
+            } else {
+                filtro = `&anio_estreno=${input_anio}`;
+            }
+            return filtro;
         }
         function cargarPeliculas_Series(anio_filtro) {
             console.log(anio_filtro);

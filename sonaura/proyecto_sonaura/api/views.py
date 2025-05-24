@@ -72,7 +72,7 @@ class GeneroViewSet(viewsets.ModelViewSet):
         serializer.save(creador=self.request.user)
 
 class ContenidoViewSet(viewsets.ModelViewSet):
-    queryset = Contenido.objects.all()
+    queryset = Contenido.objects.all().order_by('-año_estreno')  # Orden descendente (más reciente primero)
     serializer_class = ContenidoSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
 

@@ -74,6 +74,8 @@ WSGI_APPLICATION = 'proyecto_sonaura.wsgi.application'
 
 # Nombre usuario adminSonaura
 # Contraseña usuario adminSonaura_TFG2025
+# Database
+# Si estás usando Railway, la configuración de la base de datos debería verse así:
 # 'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'railway',  # nombre de la base de datos
@@ -83,9 +85,11 @@ WSGI_APPLICATION = 'proyecto_sonaura.wsgi.application'
 #         'PORT': '32204',    # el puerto correcto según Railway
 #     }
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# para usar Railway, debes configurar tu base de datos MySQL en el archivo settings.py de tu proyecto Django. 
+# Aquí tienes un ejemplo de cómo debería verse la configuración de la base de datos para Railway: funciona la que tenga default
+# Database
 DATABASES = {
-    'default': {
+    'bbdd-railway': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',  # nombre de la base de datos
         'USER': 'root',     # usuario
@@ -93,7 +97,7 @@ DATABASES = {
         'HOST': 'ballast.proxy.rlwy.net',  # solo el host, sin mysql:// ni usuario ni contraseña
         'PORT': '32204',    # el puerto correcto según Railway
     },
-    'localhost': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',# Indica que usarás MySQL
         'NAME': 'sonaura', # Reemplaza con el nombre de tu base de datos
         'USER': 'sonaura', # Reemplaza con tu usuario de MySQL
