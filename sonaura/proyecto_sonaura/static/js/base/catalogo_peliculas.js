@@ -115,6 +115,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     const peliculasPorFila = 5;
                     const totalPaginas = Math.ceil(peliculas.length / peliculasPorPagina);
 
+                    // Generar dinámicamente los botones de paginación
+                    const paginationContainer = document.querySelector('.pagination');
+                    paginationContainer.innerHTML = '';
+                    
+                    // Botón anterior
+                    const prevBtn = document.createElement('button');
+                    prevBtn.className = 'pagination-btn';
+                    prevBtn.id = 'prevPageBtn';
+                    prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                    paginationContainer.appendChild(prevBtn);
+
+                    // Botones de página
+                    for (let i = 1; i <= totalPaginas; i++) {
+                        const pageBtn = document.createElement('button');
+                        pageBtn.className = 'pagination-btn' + (i === 1 ? ' active' : '');
+                        pageBtn.setAttribute('data-page', i);
+                        pageBtn.textContent = i;
+                        paginationContainer.appendChild(pageBtn);
+                    }
+
+                    // Botón siguiente
+                    const nextBtn = document.createElement('button');
+                    nextBtn.className = 'pagination-btn';
+                    nextBtn.id = 'nextPageBtn';
+                    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                    paginationContainer.appendChild(nextBtn);
+
                     for (let pagina = 0; pagina < totalPaginas; pagina++) {
                         const catalogPage = document.createElement('div');
                         catalogPage.className = 'catalog-page' + (pagina === 0 ? ' active' : '');
@@ -142,10 +169,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <img src="${peli.imagen_poster}" alt="${peli.alt_imagen_poster ? peli.alt_imagen_poster : peli.titulo}">
                                         <div class="card-overlay">
                                             <div class="card-actions">
-                                                <button class="card-action-btn">
+                                                <button class="card-action-btn info-btn" data-id="${peli.id_contenido}">
                                                     <i class="fas fa-info-circle"></i>
                                                 </button>
-                                                <button class="card-action-btn">
+                                                <button class="card-action-btn bookmark-btn" data-id="${peli.id_contenido}">
                                                     <i class="fas fa-bookmark"></i>
                                                 </button>
                                             </div>
@@ -174,6 +201,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // Inicializa la paginación después de crear las páginas
                     initPagination();
+
+                    // Después de agregar todas las tarjetas, añade el event listener para los botones info
+                    setTimeout(() => {
+                        document.querySelectorAll('.info-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const id = this.getAttribute('data-id');
+                                window.location.href = `/detalles/${id}/`;
+                            });
+                        });
+                        document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const id = this.getAttribute('data-id');
+                                window.location.href = `/premium`;
+                            });
+                        });
+                    }, 0);
                 })
                 .catch(error => {
                     console.error('Error:', error);

@@ -1,4 +1,4 @@
--- 6. Relacionar series con géneros
+-- 5.1 Relacionar series con géneros (todas las series con al menos 2 géneros lógicos)
 INSERT INTO contenidos_generos (id_contenido_id, id_genero_id, creador_id) VALUES
 -- (61) Game of Thrones → Fantasía, Acción, Drama
 (61, 5, 1), (61, 1, 1), (61, 4, 1),
@@ -24,8 +24,8 @@ INSERT INTO contenidos_generos (id_contenido_id, id_genero_id, creador_id) VALUE
 (71, 4, 1), (71, 6, 1),
 -- (72) The Mandalorian → Ciencia Ficción, Aventura, Acción
 (72, 3, 1), (72, 2, 1), (72, 1, 1),
--- (73) The Office → Comedia
-(73, 6, 1),
+-- (73) The Office → Comedia, Romance
+(73, 6, 1), (73, 9, 1),
 -- (74) Friends → Comedia, Romance
 (74, 6, 1), (74, 9, 1),
 -- (75) The Simpsons → Animación, Comedia
@@ -74,12 +74,12 @@ INSERT INTO contenidos_generos (id_contenido_id, id_genero_id, creador_id) VALUE
 (96, 4, 1), (96, 14, 1),
 -- (97) Dexter → Crimen, Suspense, Drama
 (97, 13, 1), (97, 8, 1), (97, 4, 1),
--- (98) The Big Bang Theory → Comedia
-(98, 6, 1),
--- (99) Modern Family → Comedia
-(99, 6, 1),
--- (100) The West Wing → Drama
-(100, 4, 1),
+-- (98) The Big Bang Theory → Comedia, Romance
+(98, 6, 1), (98, 9, 1),
+-- (99) Modern Family → Comedia, Romance
+(99, 6, 1), (99, 9, 1),
+-- (100) The West Wing → Drama, Suspense
+(100, 4, 1), (100, 8, 1),
 -- (101) Boardwalk Empire → Crimen, Drama, Histórica
 (101, 13, 1), (101, 4, 1), (101, 16, 1),
 -- (102) Sons of Anarchy → Crimen, Drama
@@ -112,8 +112,8 @@ INSERT INTO contenidos_generos (id_contenido_id, id_genero_id, creador_id) VALUE
 (115, 3, 1), (115, 1, 1), (115, 6, 1),
 -- (116) Cobra Kai → Acción, Comedia, Deporte
 (116, 1, 1), (116, 6, 1), (116, 19, 1),
--- (117) The Morning Show → Drama
-(117, 4, 1),
+-- (117) The Morning Show → Drama, Suspense
+(117, 4, 1), (117, 8, 1),
 -- (118) Yellowjackets → Suspense, Drama, Misterio
 (118, 8, 1), (118, 4, 1), (118, 14, 1),
 -- (119) Severance → Suspense, Ciencia Ficción, Drama

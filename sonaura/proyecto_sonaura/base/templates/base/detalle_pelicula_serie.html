@@ -3,39 +3,48 @@
 {% block cssExtra %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base/detalle_pelicula_serie.css' %}">
+    <script src="{% static 'js/base/detalle_pelicula_serie.js' %}" defer></script>
 {% endblock %}
 
 {% block principal %}
 <!-- Movie Hero Section -->
+<input type="hidden" id="contenido-id" value="{{ contenido.id_contenido }}">
 <section class="movie-hero">
     <div class="movie-backdrop">
-        <img src="/placeholder.svg?height=800&width=1920" alt="Dune: Part Two backdrop">
+        {% if contenido.imagen_fondo %}
+            <img src="{{ contenido.imagen_fondo.url }}" alt="{{ contenido.alt_imagen_fondo }}">
+        {% else %}
+            <img src="/placeholder.svg?height=800&width=1920" alt="Fondo">
+        {% endif %}
         <div class="backdrop-overlay"></div>
     </div>
     <div class="container">
         <div class="movie-hero-content">
             <div class="movie-poster">
-                <img src="https://lescriba.cat/wp-content/uploads/2024/05/Dune-Part-Two-Movie-Soundtrack-Review-feature-816x459.jpg.webp" alt="Dune: Part Two poster">
+                {% if contenido.imagen_poster %}
+                    <img src="{{ contenido.imagen_poster.url }}" alt="{{ contenido.alt_imagen_poster }}">
+                {% else %}
+                    <img src="/placeholder.svg?height=400&width=300" alt="Poster">
+                {% endif %}
                 <div class="movie-rating">
                     <div class="rating-circle">
-                        <span>4.9</span>
+                        <span>{{ contenido.puntuacion|default:"-" }}</span>
                     </div>
                 </div>
             </div>
             <div class="movie-info">
                 <div class="movie-badges">
-                    <span class="movie-badge">Ciencia Ficción</span>
-                    <span class="movie-badge">Aventura</span>
-                    <span class="movie-badge">Drama</span>
+                    {% for genero in generos %}
+                        <span class="movie-badge">{{ genero.nombre }}</span>
+                    {% endfor %}
                 </div>
-                <h1>Dune: Part Two</h1>
+                <h1>{{ contenido.titulo }}</h1>
                 <div class="movie-meta">
-                    <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                    <span><i class="fas fa-clock"></i> 166 min</span>
-                    <span><i class="fas fa-film"></i> Denis Villeneuve</span>
-                    <span><i class="fas fa-star"></i> 8.6/10 IMDb</span>
+                    <span><i class="fas fa-calendar-alt"></i> {{ contenido.año_estreno }}</span>
+                    <span><i class="fas fa-clock"></i> {{ contenido.duracion }} min</span>
+                    <span><i class="fas fa-film"></i> {{ contenido.director }}</span>
                 </div>
-                <p class="movie-tagline">El destino del universo está en sus manos</p>
+                <p class="movie-tagline">{{ contenido.eslogan }}</p>
                 <div class="movie-actions">
                     <button class="btn-primary"><i class="fas fa-bookmark"></i> Guardar</button>
                     <button class="btn-outline"><i class="fas fa-share-alt"></i> Compartir</button>
@@ -56,7 +65,7 @@
                         <h2>Sinopsis</h2>
                         <div class="title-line"></div>
                     </div>
-                    <p>Paul Atreides (Timothée Chalamet) continúa su viaje en Arrakis, uniéndose a los Fremen y abrazando su destino como el Kwisatz Haderach. Mientras busca vengar la caída de su casa, Paul debe navegar por las intrigas políticas y las profecías que lo rodean. Junto a Chani (Zendaya), enfrenta al emperador Shaddam IV (Christopher Walken) y la casa Harkonnen, liderada por el barón Vladimir (Stellan Skarsgård) y su sobrino Feyd-Rautha (Austin Butler). La batalla por el control de la especia y el futuro del universo alcanza su clímax en un conflicto épico.</p>
+                    <p>{{ contenido.sinopsis }}</p>
                 </div>
 
                 <div class="content-card">
@@ -305,31 +314,23 @@
                     <ul class="movie-details-list">
                         <li>
                             <span class="detail-label">Director</span>
-                            <span class="detail-value">Denis Villeneuve</span>
+                            <span class="detail-value">{{ contenido.director }}</span>
                         </li>
                         <li>
                             <span class="detail-label">Guionistas</span>
-                            <span class="detail-value">Denis Villeneuve, Jon Spaihts</span>
+                            <span class="detail-value">{{ contenido.guionistas }}</span>
                         </li>
                         <li>
                             <span class="detail-label">Estreno</span>
-                            <span class="detail-value">1 Marzo, 2024</span>
+                            <span class="detail-value">{{ contenido.año_estreno }}</span>
                         </li>
                         <li>
                             <span class="detail-label">Duración</span>
-                            <span class="detail-value">166 minutos</span>
-                        </li>
-                        <li>
-                            <span class="detail-label">Género</span>
-                            <span class="detail-value">Ciencia Ficción, Aventura, Drama</span>
+                            <span class="detail-value">{{ contenido.duracion }} minutos</span>
                         </li>
                         <li>
                             <span class="detail-label">Clasificación</span>
-                            <span class="detail-value">PG-13 (Violencia, Temas maduros)</span>
-                        </li>
-                        <li>
-                            <span class="detail-label">Premios</span>
-                            <span class="detail-value">Nominada a 8 Oscars</span>
+                            <span class="detail-value">{{ contenido.clasificacion }}</span>
                         </li>
                     </ul>
                 </div>

@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.urls import reverse
 import logging
 from django.contrib import messages
+from .models import Contenido, ContenidoGenero, Genero
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -74,8 +75,17 @@ class Peliculas(TemplateView):
 class Series(TemplateView):
     template_name = "base/series.html"
 
-class Detalle_Pelicula_Serie(TemplateView):
+class Detalle_Pelicula_Serie(DetailView):
+    model = Contenido
     template_name = "base/detalle_pelicula_serie.html"
+    context_object_name = "contenido"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Obtener los géneros relacionados con este contenido
+        generos = Genero.objects.filter(contenidogenero__id_contenido=self.object)
+        context['generos'] = generos
+        return context
     
 class Login(TemplateView):
     template_name = "base/login.html"

@@ -5,7 +5,7 @@ urlpatterns = [
         path("crear-usuario/", CrearUsuarioView.as_view(), name="crear_usuario"),
         path('peliculas',Peliculas.as_view(),name='peliculas'),#ruta a la pagina de peliculas
         path('series',Series.as_view(),name='series'),#ruta a la pagina de series
-        path('detalles',Detalle_Pelicula_Serie.as_view(),name='detalles'),#ruta a la pagina de detalles
+        path('detalles/<int:pk>/', Detalle_Pelicula_Serie.as_view(), name='detalles'),  # ruta a la página de detalles con pk
         path('noticias',Noticias.as_view(),name='noticias'),#ruta a la pagina de noticias
         path('premium',Premium.as_view(),name='premium'),#ruta a la pagina de noticias
 ]
