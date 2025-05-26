@@ -27,7 +27,7 @@
         <section class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-title">Eleva tu experiencia cinematográfica</h1>
-                <p class="hero-subtitle">Desbloquea todo el potencial de SONAURA con nuestra suscripción Premium</p>
+                <p class="hero-subtitle"></p>
                 <div class="hero-cta">
                     <a href="#planes" class="btn-premium">
                         <span>Ver Planes</span>
@@ -52,20 +52,20 @@
                 </div>
                 <div class="floating-elements">
                     <div class="float-element float-1">
-                        <i class="fas fa-film"></i>
-                        <span>Sin anuncios</span>
+                        <i class="fas fa-list-check"></i>
+                        <span>Listas Personalizadas</span>
                     </div>
                     <div class="float-element float-2">
-                        <i class="fas fa-download"></i>
-                        <span>Descargas</span>
+                        <i class="fas fa-calendar-xmark"></i>
+                        <span>Calendario estrenos</span>
                     </div>
                     <div class="float-element float-3">
-                        <i class="fas fa-photo-film"></i>
-                        <span>4K HDR</span>
+                        <i class="fas fa-crown"></i>
+                        <span>Perfil premium</span>
                     </div>
                     <div class="float-element float-4">
-                        <i class="fas fa-headphones"></i>
-                        <span>Audio Premium</span>
+                        <i class="fas fa-person"></i>
+                        <span>Página personalizada</span>
                     </div>
                 </div>
             </div>
@@ -79,66 +79,34 @@
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-ban"></i>
+                        <i class="fas fa-list-check"></i>
                     </div>
-                    <h3>Sin publicidad</h3>
-                    <p>Disfruta de una experiencia sin interrupciones. Olvídate de los anuncios y sumérgete completamente en el contenido.</p>
+                    <h3>Listas Personalizadas</h3>
+                    <p>Crea listas con tus películas favoritas ilimitadamente.</p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-download"></i>
+                        <i class="fas fa-person"></i>
                     </div>
-                    <h3>Descargas ilimitadas</h3>
-                    <p>Descarga tus películas y series favoritas para verlas sin conexión cuando y donde quieras.</p>
+                    <h3>Página Personalizada</h3>
+                    <p>Accede a funciones exclusivas en la página premium</p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-photo-film"></i>
+                        <i class="fas fa-calendar-xmark"></i>
                     </div>
-                    <h3>Calidad 4K HDR</h3>
-                    <p>Disfruta del mejor contenido con una calidad de imagen excepcional en resolución 4K con HDR.</p>
+                    <h3>Calendario</h3>
+                    <p>Accede al calendario y sé el primero en enterarte de los nuevos estrenos de tus películas favoritas.</p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <i class="fas fa-headphones"></i>
+                        <i class="fas fa-crown"></i>
                     </div>
-                    <h3>Audio inmersivo</h3>
-                    <p>Experimenta el sonido envolvente con tecnología Dolby Atmos y sonido espacial.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Estrenos anticipados</h3>
-                    <p>Accede a estrenos exclusivos y contenido antes que nadie con nuestro acceso anticipado.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Perfiles múltiples</h3>
-                    <p>Crea hasta 5 perfiles diferentes para compartir tu cuenta con familiares y amigos.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-newspaper"></i>
-                    </div>
-                    <h3>Contenido exclusivo</h3>
-                    <p>Accede a reseñas, entrevistas y documentales exclusivos solo disponibles para usuarios Premium.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-ticket"></i>
-                    </div>
-                    <h3>Descuentos en cines</h3>
-                    <p>Obtén descuentos especiales en entradas de cine y eventos relacionados con el mundo cinematográfico.</p>
+                    <h3>Perfil Premium</h3>
+                    <p>Ten exclusividad y que todos sepan que tienes funciones premium</p>
                 </div>
             </div>
         </section>
@@ -164,28 +132,28 @@
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Calidad HD</span>
+                            <span>Perfil Básico</span>
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>1 perfil</span>
+                            <span>Comentarios y Valoraciones</span>
                         </div>
                         <div class="plan-feature disabled">
                             <i class="fas fa-times"></i>
-                            <span>Incluye publicidad</span>
+                            <span>Listas personalizadas</span>
                         </div>
                         <div class="plan-feature disabled">
                             <i class="fas fa-times"></i>
-                            <span>Sin descargas</span>
+                            <span>Sin calendario</span>
                         </div>
                         <div class="plan-feature disabled">
                             <i class="fas fa-times"></i>
-                            <span>Sin contenido exclusivo</span>
+                            <span>Sin listas personalizadas</span>
                         </div>
                     </div>
                     <div class="plan-cta">
                         <a href="/registro" class="btn-plan">
-                            <span>Registrarse</span>
+                            <span>{% if es_premium %} Ya eres premium <i class="fas fa-crown"></i>{% else %}Ya tienes este plan{% endif %}</span>
                         </a>
                     </div>
                 </div>
@@ -202,11 +170,11 @@
                     <div class="plan-features">
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Catálogo completo</span>
+                            <span>Contenido premium</span>
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Calidad 4K HDR</span>
+                            <span>Calendario</span>
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
@@ -227,8 +195,7 @@
                     </div>
                     <div class="plan-cta">
                         <a href="/checkout" class="btn-premium">
-                            <span>Suscribirse ahora</span>
-                            <i class="fas fa-crown"></i>
+                            <span>{% if es_premium %}Ya eres premium <i class="fas fa-crown"></i>{% else %}Suscribirse ahora{% endif %}</span>
                             <div class="btn-glow"></div>
                         </a>
                     </div>
@@ -238,9 +205,15 @@
                     <div class="plan-header">
                         <h3 class="plan-name">Anual</h3>
                         <div class="plan-price">
-                            <span class="price">89.99€</span>
-                            <span class="period">/ año</span>
-                            <span class="discount">¡25% de descuento!</span>
+                        {% if tiene_plan_mensual %}
+                        <span class="price">{{ diferencia_precio|floatformat:2 }}€</span>
+                        <span class="period">/ anual</span>
+                        <span class="discount">Se descuenta tu mensualidad activa</span>
+                        {% else %}
+                        <span class="price">89.99€</span>
+                        <span class="period">/ año</span>
+                        <span class="discount">¡25% de descuento!</span>
+                        {% endif %}
                         </div>
                     </div>
                     <div class="plan-features">
@@ -271,7 +244,7 @@
                     </div>
                     <div class="plan-cta">
                         <a href="/checkout?plan=anual" class="btn-plan">
-                            <span>Suscribirse anual</span>
+                            <span>{% if es_premium %}Ya eres premium <i class="fas fa-crown"></i>{% else %}Suscribirse ahora{% endif %}</span>
                         </a>
                     </div>
                 </div>

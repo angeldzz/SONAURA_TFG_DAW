@@ -6,7 +6,8 @@ from django.contrib.auth import login
 from django.urls import reverse
 import logging
 from django.contrib import messages
-from .models import Contenido, ContenidoGenero, Genero
+from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario
+from django.utils import timezone
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -92,3 +93,27 @@ class Login(TemplateView):
     
 class Premium(TemplateView):
     template_name = "base/premium.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        es_premium = False
+        tiene_plan_mensual = False
+        diferencia_precio = None
+
+# Verifica si el usuario está autenticado
+        if self.request.user.is_authenticated:
+# Busca una suscripción premium vigente asociada al usuario
+            suscripcion = SuscripcionUsuario.objects.filter(
+                id_usuario=self.request.user,
+                es_premium=True,
+                fecha_fin_suscripcion__gte=timezone.now().date()
+            ).first()
+            if suscripcion:
+                es_premium = True
+                if suscripcion.tipo_suscripcion.lower() == 'mensual':
+                    tiene_plan_mensual = True
+                    diferencia_precio = float(89.99) - float(suscripcion.monto_pagado)
+        context['es_premium'] = es_premium
+        context['tiene_plan_mensual'] = tiene_plan_mensual
+        context['diferencia_precio'] = diferencia_precio
+        return context
