@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONAURA - Mi Perfil</title>
+    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fondo cósmico animado -->
+    <div class="cosmos-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
+        <div class="shooting-stars"></div>
+    </div>
+
+    <!-- Círculos animados -->
+    <div class="animated-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="profile-container">
+        <!-- Header del perfil -->
+        <div class="profile-header">
+            <a href="/" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver</span>
+            </a>
+            <div class="logo">
+                <span class="logo-text">SONAURA</span>
+                <span class="logo-dot"></span>
+            </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="profile-content">
+            <!-- Sidebar de navegación -->
+            <aside class="profile-sidebar">
+                <nav class="profile-nav">
+                    <a href="#perfil" class="nav-item active" data-section="perfil">
+                        <i class="fas fa-user"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+                    <a href="#seguridad" class="nav-item" data-section="seguridad">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Seguridad</span>
+                    </a>
+                    <a href="#preferencias" class="nav-item" data-section="preferencias">
+                        <i class="fas fa-cog"></i>
+                        <span>Preferencias</span>
+                    </a>
+                    <a href="#actividad" class="nav-item" data-section="actividad">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Mi Actividad</span>
+                    </a>
+                    <a href="#suscripcion" class="nav-item" data-section="suscripcion">
+                        <i class="fas fa-crown"></i>
+                        <span>Suscripción</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Área principal de contenido -->
+            <main class="profile-main">
+                <!-- Sección: Mi Perfil -->
+                <section id="perfil" class="profile-section active">
+                    <div class="section-header">
+                        <h2 class="section-title">Mi Perfil</h2>
+                        <p class="section-subtitle">Gestiona tu información personal y avatar</p>
+                    </div>
+
+                    <div class="profile-card">
+                        <!-- Avatar y información básica -->
+                        <div class="avatar-section">
+                            <div class="avatar-container">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" class="avatar-image" id="avatarImage">
+                                <div class="avatar-overlay">
+                                    <button class="change-avatar-btn" onclick="openAvatarModal()">
+                                        <i class="fas fa-camera"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="user-info">
+                                <h3 class="user-name">Carlos Rodríguez</h3>
+                                <p class="user-email">carlos.rodriguez@email.com</p>
+                                <span class="user-badge premium">
+                                    <i class="fas fa-crown"></i>
+                                    Premium
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Formulario de edición -->
+                        <form class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">Nombre</label>
+                                    <input type="text" id="firstName" value="Carlos" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Apellidos</label>
+                                    <input type="text" id="lastName" value="Rodríguez" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="username">Nombre de usuario</label>
+                                    <input type="text" id="username" value="carlosrod_cinema" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Teléfono</label>
+                                    <input type="tel" id="phone" value="+34 612 345 678">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bio">Biografía</label>
+                                <textarea id="bio" rows="3" placeholder="Cuéntanos algo sobre ti...">Amante del cine clásico y las nuevas producciones. Crítico de cine aficionado.</textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="birthdate">Fecha de nacimiento</label>
+                                    <input type="date" id="birthdate" value="1985-03-15">
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">País</label>
+                                    <select id="country">
+                                        <option value="ES" selected>España</option>
+                                        <option value="MX">México</option>
+                                        <option value="AR">Argentina</option>
+                                        <option value="CO">Colombia</option>
+                                        <option value="PE">Perú</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary">Cancelar</button>
+                                <button type="submit" class="btn-primary">
+                                    <span>Guardar cambios</span>
+                                    <i class="fas fa-save"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Sección: Seguridad -->
+                <section id="seguridad" class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Seguridad</h2>
+                        <p class="section-subtitle">Gestiona tu contraseña y configuración de seguridad</p>
+                    </div>
+
+                    <div class="security-cards">
+                        <!-- Cambiar contraseña -->
+                        <div class="security-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Cambiar contraseña</h3>
+                                    <p>Actualiza tu contraseña regularmente para mantener tu cuenta segura</p>
+                                </div>
+                            </div>
+                            
+                            <form class="password-form">
+                                <div class="form-group">
+                                    <label for="currentPassword">Contraseña actual</label>
+                                    <div class="password-input">
+                                        <input type="password" id="currentPassword" required>
+                                        <button type="button" class="password-toggle">
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="newPassword">Nueva contraseña</label>
+                                    <div class="password-input">
+                                        <input type="password" id="newPassword" required>
+                                        <button type="button" class="password-toggle">
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-strength">
+                                        <div class="strength-bar">
+                                            <div class="strength-fill"></div>
+                                        </div>
+                                        <span class="strength-text">Seguridad: Débil</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirmar nueva contraseña</label>
+                                    <div class="password-input">
+                                        <input type="password" id="confirmPassword" required>
+                                        <button type="button" class="password-toggle">
+                                            <i class="far fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-primary">
+                                    <span>Cambiar contraseña</span>
+                                    <i class="fas fa-shield-alt"></i>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Autenticación de dos factores -->
+                        <div class="security-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Autenticación de dos factores</h3>
+                                    <p>Añade una capa extra de seguridad a tu cuenta</p>
+                                </div>
+                                <div class="card-status">
+                                    <span class="status-badge disabled">Desactivado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="card-actions">
+                                <button class="btn-secondary">
+                                    <span>Activar 2FA</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sesiones activas -->
+                        <div class="security-card">
+                            <div class="card-header">
+                                <div class="card-icon">
+                                    <i class="fas fa-devices"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3>Sesiones activas</h3>
+                                    <p>Gestiona los dispositivos donde has iniciado sesión</p>
+                                </div>
+                            </div>
+                            
+                            <div class="sessions-list">
+                                <div class="session-item current">
+                                    <div class="session-info">
+                                        <div class="session-device">
+                                            <i class="fas fa-laptop"></i>
+                                            <span>MacBook Pro - Chrome</span>
+                                        </div>
+                                        <div class="session-details">
+                                            <span class="session-location">Madrid, España</span>
+                                            <span class="session-time">Sesión actual</span>
+                                        </div>
+                                    </div>
+                                    <span class="session-badge current">Actual</span>
+                                </div>
+
+                                <div class="session-item">
+                                    <div class="session-info">
+                                        <div class="session-device">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <span>iPhone 14 - Safari</span>
+                                        </div>
+                                        <div class="session-details">
+                                            <span class="session-location">Madrid, España</span>
+                                            <span class="session-time">Hace 2 horas</span>
+                                        </div>
+                                    </div>
+                                    <button class="session-revoke">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección: Preferencias -->
+                <section id="preferencias" class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Preferencias</h2>
+                        <p class="section-subtitle">Personaliza tu experiencia en SONAURA</p>
+                    </div>
+
+                    <div class="preferences-grid">
+                        <!-- Preferencias de reproducción -->
+                        <div class="preference-card">
+                            <h3>Reproducción</h3>
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Calidad de video</span>
+                                    <small>Selecciona la calidad predeterminada</small>
+                                </div>
+                                <select class="preference-select">
+                                    <option value="auto">Automática</option>
+                                    <option value="4k" selected>4K Ultra HD</option>
+                                    <option value="1080p">Full HD (1080p)</option>
+                                    <option value="720p">HD (720p)</option>
+                                </select>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Reproducción automática</span>
+                                    <small>Reproduce automáticamente el siguiente episodio</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Saltar intro</span>
+                                    <small>Mostrar botón para saltar introducciones</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Preferencias de notificaciones -->
+                        <div class="preference-card">
+                            <h3>Notificaciones</h3>
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Nuevos estrenos</span>
+                                    <small>Recibe notificaciones de nuevas películas y series</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Recomendaciones personalizadas</span>
+                                    <small>Sugerencias basadas en tu historial</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Email marketing</span>
+                                    <small>Ofertas especiales y noticias por email</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Preferencias de privacidad -->
+                        <div class="preference-card">
+                            <h3>Privacidad</h3>
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Perfil público</span>
+                                    <small>Permite que otros usuarios vean tu perfil</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Mostrar actividad</span>
+                                    <small>Comparte lo que estás viendo con amigos</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <span>Análisis de uso</span>
+                                    <small>Ayúdanos a mejorar compartiendo datos anónimos</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección: Mi Actividad -->
+                <section id="actividad" class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Mi Actividad</h2>
+                        <p class="section-subtitle">Revisa tu historial y estadísticas de visualización</p>
+                    </div>
+
+                    <div class="activity-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">247</span>
+                                <span class="stat-label">Películas vistas</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tv"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">89</span>
+                                <span class="stat-label">Series seguidas</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">342h</span>
+                                <span class="stat-label">Tiempo total</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">156</span>
+                                <span class="stat-label">Reseñas escritas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h3>Actividad reciente</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Dune: Parte Dos" class="activity-poster">
+                                <div class="activity-info">
+                                    <h4>Dune: Parte Dos</h4>
+                                    <p>Completado • Hace 2 horas</p>
+                                    <div class="activity-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="activity-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer" class="activity-poster">
+                                <div class="activity-info">
+                                    <h4>Oppenheimer</h4>
+                                    <p>Añadido a favoritos • Hace 1 día</p>
+                                    <div class="activity-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="activity-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Poor Things" class="activity-poster">
+                                <div class="activity-info">
+                                    <h4>Poor Things</h4>
+                                    <p>Reseña publicada • Hace 3 días</p>
+                                    <div class="activity-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="activity-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección: Suscripción -->
+                <section id="suscripcion" class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Mi Suscripción</h2>
+                        <p class="section-subtitle">Gestiona tu plan y facturación</p>
+                    </div>
+
+                    <div class="subscription-info">
+                        <div class="subscription-card premium">
+                            <div class="subscription-header">
+                                <div class="plan-badge">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Premium</span>
+                                </div>
+                                <div class="plan-price">
+                                    <span class="price">9.99€</span>
+                                    <span class="period">/mes</span>
+                                </div>
+                            </div>
+                            
+                            <div class="subscription-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Próxima facturación:</span>
+                                    <span class="detail-value">15 de febrero, 2025</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Método de pago:</span>
+                                    <span class="detail-value">•••• •••• •••• 4532</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Estado:</span>
+                                    <span class="detail-value status active">Activo</span>
+                                </div>
+                            </div>
+
+                            <div class="subscription-actions">
+                                <button class="btn-secondary">Cambiar plan</button>
+                                <button class="btn-secondary">Actualizar pago</button>
+                                <button class="btn-danger">Cancelar suscripción</button>
+                            </div>
+                        </div>
+
+                        <div class="billing-history">
+                            <h3>Historial de facturación</h3>
+                            <div class="billing-list">
+                                <div class="billing-item">
+                                    <div class="billing-info">
+                                        <span class="billing-date">15 Ene 2025</span>
+                                        <span class="billing-description">Suscripción Premium - Mensual</span>
+                                    </div>
+                                    <div class="billing-amount">9.99€</div>
+                                    <button class="billing-download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+
+                                <div class="billing-item">
+                                    <div class="billing-info">
+                                        <span class="billing-date">15 Dic 2024</span>
+                                        <span class="billing-description">Suscripción Premium - Mensual</span>
+                                    </div>
+                                    <div class="billing-amount">9.99€</div>
+                                    <button class="billing-download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+
+                                <div class="billing-item">
+                                    <div class="billing-info">
+                                        <span class="billing-date">15 Nov 2024</span>
+                                        <span class="billing-description">Suscripción Premium - Mensual</span>
+                                    </div>
+                                    <div class="billing-amount">9.99€</div>
+                                    <button class="billing-download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para cambiar avatar -->
+    <div id="avatarModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cambiar Avatar</h3>
+                <button class="modal-close" onclick="closeAvatarModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="avatar-options">
+                    <div class="upload-section">
+                        <div class="upload-area" onclick="document.getElementById('avatarUpload').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Subir nueva imagen</span>
+                            <small>JPG, PNG o GIF (máx. 5MB)</small>
+                        </div>
+                        <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                    </div>
+                    
+                    <div class="preset-avatars">
+                        <h4>Avatares predefinidos</h4>
+                        <div class="avatar-grid">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Avatar 1" class="preset-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Avatar 2" class="preset-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Avatar 3" class="preset-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Avatar 4" class="preset-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Avatar 5" class="preset-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Avatar 6" class="preset-avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeAvatarModal()">Cancelar</button>
+                <button class="btn-primary" onclick="saveAvatar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegación entre secciones
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.profile-section');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remover clase active de todos los elementos
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Añadir clase active al elemento clickeado
+                    this.classList.add('active');
+                    
+                    // Mostrar la sección correspondiente
+                    const targetSection = this.getAttribute('data-section');
+                    document.getElementById(targetSection).classList.add('active');
+                });
+            });
+
+            // Toggle de contraseñas
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const input = this.previousElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        input.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            });
+
+            // Validación de fortaleza de contraseña
+            const newPasswordInput = document.getElementById('newPassword');
+            if (newPasswordInput) {
+                newPasswordInput.addEventListener('input', function() {
+                    const password = this.value;
+                    const strengthBar = document.querySelector('.strength-fill');
+                    const strengthText = document.querySelector('.strength-text');
+                    
+                    let strength = 0;
+                    let strengthLabel = 'Muy débil';
+                    
+                    if (password.length >= 8) strength++;
+                    if (/[a-z]/.test(password)) strength++;
+                    if (/[A-Z]/.test(password)) strength++;
+                    if (/[0-9]/.test(password)) strength++;
+                    if (/[^A-Za-z0-9]/.test(password)) strength++;
+                    
+                    switch (strength) {
+                        case 0:
+                        case 1:
+                            strengthLabel = 'Muy débil';
+                            strengthBar.style.width = '20%';
+                            strengthBar.style.backgroundColor = '#ff5e78';
+                            break;
+                        case 2:
+                            strengthLabel = 'Débil';
+                            strengthBar.style.width = '40%';
+                            strengthBar.style.backgroundColor = '#ff9e00';
+                            break;
+                        case 3:
+                            strengthLabel = 'Media';
+                            strengthBar.style.width = '60%';
+                            strengthBar.style.backgroundColor = '#ffd60a';
+                            break;
+                        case 4:
+                            strengthLabel = 'Fuerte';
+                            strengthBar.style.width = '80%';
+                            strengthBar.style.backgroundColor = '#00c896';
+                            break;
+                        case 5:
+                            strengthLabel = 'Muy fuerte';
+                            strengthBar.style.width = '100%';
+                            strengthBar.style.backgroundColor = '#00f5d4';
+                            break;
+                    }
+                    
+                    strengthText.textContent = `Seguridad: ${strengthLabel}`;
+                });
+            }
+
+            // Crear estrellas fugaces
+            function createShootingStar() {
+                const shootingStarsContainer = document.querySelector('.shooting-stars');
+                const shootingStar = document.createElement('div');
+                shootingStar.classList.add('shooting-star');
+                
+                const startX = Math.random() * 100;
+                const startY = Math.random() * 100;
+                const angle = Math.random() * 45;
+                
+                shootingStar.style.top = `${startY}%`;
+                shootingStar.style.left = `${startX}%`;
+                shootingStar.style.transform = `rotate(${angle}deg)`;
+                
+                shootingStarsContainer.appendChild(shootingStar);
+                
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, 1000);
+            }
+            
+            setInterval(createShootingStar, 3000);
+
+            // Efecto parallax para círculos
+            document.addEventListener('mousemove', function(e) {
+                const circles = document.querySelectorAll('.circle');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                circles.forEach((circle, index) => {
+                    const speed = (index + 1) * 15;
+                    circle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            });
+        });
+
+        // Funciones para el modal de avatar
+        function openAvatarModal() {
+            document.getElementById('avatarModal').style.display = 'flex';
+        }
+
+        function closeAvatarModal() {
+            document.getElementById('avatarModal').style.display = 'none';
+        }
+
+        function saveAvatar() {
+            // Aquí iría la lógica para guardar el avatar
+            closeAvatarModal();
+        }
+
+        // Selección de avatar predefinido
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('preset-avatar')) {
+                // Remover selección anterior
+                document.querySelectorAll('.preset-avatar').forEach(avatar => {
+                    avatar.classList.remove('selected');
+                });
+                
+                // Seleccionar nuevo avatar
+                e.target.classList.add('selected');
+            }
+        });
+    </script>
+</body>
+</html>
