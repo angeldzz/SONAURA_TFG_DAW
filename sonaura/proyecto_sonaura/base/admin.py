@@ -153,21 +153,14 @@ class ContenidoAdmin(admin.ModelAdmin):
 
 @admin.register(Reparto)
 class RepartoAdmin(admin.ModelAdmin):
-    list_display = ('id_reparto', 'id_contenido')
-    search_fields = ('nombre_actor', 'personaje', 'id_contenido__titulo')
-    inlines = [ActorInline]
-    
-    def mostrar_imagen(self, obj):
-        if obj.imagen_actor:
-            return format_html('<img src="{}" width="50" />', obj.imagen_actor.url)
-        return "Sin imagen"
-    mostrar_imagen.short_description = "Imagen"
+    list_display = ('id_reparto', 'id_contenido', 'id_actor', 'personaje')
+    search_fields = ('personaje', 'id_contenido__titulo', 'id_actor__nombre_actor')
 
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
-    list_display = ('id_actor', 'id_reparto', 'nombre_actor', 'personaje', 'mostrar_imagen')
-    search_fields = ('nombre_actor', 'personaje')
-    
+    list_display = ('id_actor', 'nombre_actor', 'mostrar_imagen')
+    search_fields = ('nombre_actor',)
+
     def mostrar_imagen(self, obj):
         if obj.imagen_actor:
             return format_html('<img src="{}" width="50" />', obj.imagen_actor.url)

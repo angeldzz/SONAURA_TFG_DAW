@@ -7,18 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Cargar películas
             cargarPeliculas_Series(filtro_anio())
-            document.getElementById("yearfilter").addEventListener("select",console.log("hola"));
+            document.getElementById("yearFilter").addEventListener("change",() => cargarPeliculas_Series(filtro_anio()));
         });
-        function filtro_anio() {  
-            input_anio = document.getElementById("yearFilter").value;
-            console.log(input_anio);
-            if(input_anio == "all"){
-                anio = "";
-            }if(input_anio == "all"){
-                anio = "";
-            }
-            return anio;
-        }
+        
         function initParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 300;
@@ -92,6 +83,19 @@ document.addEventListener('DOMContentLoaded', function() {
         moveToSlide();
     }, 7000);
         }
+        function filtro_anio() {  
+            const input_anio = document.getElementById("yearFilter").value;
+            let filtro = "";
+
+            if (input_anio === "all") {
+                filtro = "";
+            } else if (input_anio === "older") {
+                filtro = "&anio_estreno__lt=2020";
+            } else {
+                filtro = `&anio_estreno=${input_anio}`;
+            }
+            return filtro;
+        }
         function cargarPeliculas_Series(anio_filtro) {
             console.log(anio_filtro);
             pelicula_serie = document.getElementById("pelicula-serie").value;
@@ -110,6 +114,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     const peliculasPorPagina = 15;
                     const peliculasPorFila = 5;
                     const totalPaginas = Math.ceil(peliculas.length / peliculasPorPagina);
+
+                    // Generar dinámicamente los botones de paginación
+                    const paginationContainer = document.querySelector('.pagination');
+                    paginationContainer.innerHTML = '';
+                    
+                    // Botón anterior
+                    const prevBtn = document.createElement('button');
+                    prevBtn.className = 'pagination-btn';
+                    prevBtn.id = 'prevPageBtn';
+                    prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                    paginationContainer.appendChild(prevBtn);
+
+                    // Botones de página
+                    for (let i = 1; i <= totalPaginas; i++) {
+                        const pageBtn = document.createElement('button');
+                        pageBtn.className = 'pagination-btn' + (i === 1 ? ' active' : '');
+                        pageBtn.setAttribute('data-page', i);
+                        pageBtn.textContent = i;
+                        paginationContainer.appendChild(pageBtn);
+                    }
+
+                    // Botón siguiente
+                    const nextBtn = document.createElement('button');
+                    nextBtn.className = 'pagination-btn';
+                    nextBtn.id = 'nextPageBtn';
+                    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                    paginationContainer.appendChild(nextBtn);
 
                     for (let pagina = 0; pagina < totalPaginas; pagina++) {
                         const catalogPage = document.createElement('div');
@@ -131,14 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 if (idx >= peliculasPagina.length) break;
                                 const peli = peliculasPagina[idx];
 
-                                // Convertir duración a minutos si es posible
-                                let duracionMin = '';
-                                if (peli.duracion) {
-                                    // peli.duracion ahora es un entero en segundos
-                                    const totalMin = peli.duracion / 60;
-                                    duracionMin = Math.ceil(totalMin).toString();
-                                }
-
                                 const card = document.createElement('div');
                                 card.className = 'media-card neon-card';
                                 card.innerHTML = `
@@ -146,10 +169,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <img src="${peli.imagen_poster}" alt="${peli.alt_imagen_poster ? peli.alt_imagen_poster : peli.titulo}">
                                         <div class="card-overlay">
                                             <div class="card-actions">
-                                                <button class="card-action-btn">
+                                                <button class="card-action-btn info-btn" data-id="${peli.id_contenido}">
                                                     <i class="fas fa-info-circle"></i>
                                                 </button>
-                                                <button class="card-action-btn">
+                                                <button class="card-action-btn bookmark-btn" data-id="${peli.id_contenido}">
                                                     <i class="fas fa-bookmark"></i>
                                                 </button>
                                             </div>
@@ -159,13 +182,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 <span>${peli.puntuacion ? peli.puntuacion.toFixed(1) : '-'}</span>
                                             </div>
                                         </div>
-                                        <div class="card-badge">${peli.clasificacion || ''}</div>
+                                        <div class="card-badge">${peli.generos && peli.generos.length > 0 ? (peli.generos[0].nombre || peli.generos[0].name || '') : ''}</div>
                                     </div>
                                     <div class="card-content">
                                         <h3>${peli.titulo}</h3>
                                         <div class="card-meta">
                                             <span>${peli.año_estreno || ''}</span>
-                                            <span>${duracionMin ? duracionMin + ' min' : ''}</span>
+                                            <span>${peli.duracion + ' min'}</span>
                                         </div>
                                     </div>
                                 `;
@@ -178,6 +201,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // Inicializa la paginación después de crear las páginas
                     initPagination();
+
+                    // Después de agregar todas las tarjetas, añade el event listener para los botones info
+                    setTimeout(() => {
+                        document.querySelectorAll('.info-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const id = this.getAttribute('data-id');
+                                window.location.href = `/detalles/${id}/`;
+                            });
+                        });
+                        document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const id = this.getAttribute('data-id');
+                                window.location.href = `/premium`;
+                            });
+                        });
+                    }, 0);
                 })
                 .catch(error => {
                     console.error('Error:', error);

@@ -1,0 +1,22 @@
+-- 1. Géneros
+INSERT INTO generos (id_genero, nombre, creador_id) VALUES
+(1,  'Acción', 1),
+(2,  'Aventura', 1),
+(3,  'Ciencia Ficción', 1),
+(4,  'Drama', 1),
+(5,  'Fantasía', 1),
+(6,  'Comedia', 1),
+(7,  'Terror', 1),
+(8,  'Suspense', 1),
+(9,  'Romance', 1),
+(10, 'Animación', 1),
+(11, 'Documental', 1),
+(12, 'Musical', 1),
+(13, 'Crimen', 1),
+(14, 'Misterio', 1),
+(15, 'Bélica', 1),
+(16, 'Histórica', 1),
+(17, 'Western', 1),
+(18, 'Biográfica', 1),
+(19, 'Deporte', 1),
+(20, 'Noir', 1);

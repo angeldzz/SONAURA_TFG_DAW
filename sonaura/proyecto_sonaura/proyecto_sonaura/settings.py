@@ -72,22 +72,43 @@ TEMPLATES = [
 WSGI_APPLICATION = 'proyecto_sonaura.wsgi.application'
 
 
+# Nombre usuario adminSonaura
+# Contraseña usuario adminSonaura_TFG2025
 # Database
+# Si estás usando Railway, la configuración de la base de datos debería verse así:
+# 'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'railway',  # nombre de la base de datos
+#         'USER': 'root',     # usuario
+#         'PASSWORD': 'bnLszbhgNdaRKguyqtBYcrbdDWMdmFRn',  # contraseña
+#         'HOST': 'ballast.proxy.rlwy.net',  # solo el host, sin mysql:// ni usuario ni contraseña
+#         'PORT': '32204',    # el puerto correcto según Railway
+#     }
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+# para usar Railway, debes configurar tu base de datos MySQL en el archivo settings.py de tu proyecto Django. 
+# Aquí tienes un ejemplo de cómo debería verse la configuración de la base de datos para Railway: funciona la que tenga default
+# Database
 DATABASES = {
+    'bbdd-railway': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',  # nombre de la base de datos
+        'USER': 'root',     # usuario
+        'PASSWORD': 'bnLszbhgNdaRKguyqtBYcrbdDWMdmFRn',  # contraseña
+        'HOST': 'ballast.proxy.rlwy.net',  # solo el host, sin mysql:// ni usuario ni contraseña
+        'PORT': '32204',    # el puerto correcto según Railway
+    },
     'default': {
-    'ENGINE': 'django.db.backends.mysql',# Indica que usarás MySQL
-    'NAME': 'sonaura', # Reemplaza con el nombre de tu base de datos
-    'USER': 'sonaura', # Reemplaza con tu usuario de MySQL
-    'PASSWORD': 'sonaura', # Reemplaza con la contraseña de tu usuario
-    'HOST': 'localhost', # Dirección del servidor MySQL (usualmente localhost)
-    'PORT': '3306', # Puerto de conexión (por defecto 3306)
+        'ENGINE': 'django.db.backends.mysql',# Indica que usarás MySQL
+        'NAME': 'sonaura', # Reemplaza con el nombre de tu base de datos
+        'USER': 'sonaura', # Reemplaza con tu usuario de MySQL
+        'PASSWORD': 'sonaura', # Reemplaza con la contraseña de tu usuario
+        'HOST': 'localhost', # Dirección del servidor MySQL (usualmente localhost)
+        'PORT': '3306', # Puerto de conexión (por defecto 3306)
     }
 }
 
 
-# Password validation
+# Password validation 
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
