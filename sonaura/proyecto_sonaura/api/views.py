@@ -106,6 +106,13 @@ class RepartoViewSet(viewsets.ModelViewSet):
     serializer_class = RepartoSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
     
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        id_contenido = self.request.query_params.get('id_contenido')
+        if id_contenido:
+            queryset = queryset.filter(id_contenido=id_contenido)
+        return queryset
+    
     def perform_create(self, serializer):
         """Asigna automáticamente el usuario autenticado como creador"""
         serializer.save(creador=self.request.user)

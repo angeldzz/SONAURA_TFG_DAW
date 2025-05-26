@@ -54,9 +54,18 @@ class ContenidoGeneroSerializer(serializers.ModelSerializer):
 
 class RepartoSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
+    actor = serializers.SerializerMethodField()
+
     class Meta:
         model = Reparto
-        fields = '__all__'
+        fields = ['id_reparto', 'id_contenido', 'actor', 'personaje', 'creador']
+
+    def get_actor(self, obj):
+        return {
+            'id_actor': obj.id_actor.id_actor,
+            'nombre_actor': obj.id_actor.nombre_actor,
+            'imagen_actor': obj.id_actor.imagen_actor.url if obj.id_actor.imagen_actor else None
+        }
 
 class ActorSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')

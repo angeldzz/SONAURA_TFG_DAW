@@ -1,186 +1,186 @@
 -- 4.1 Reparto de series (mínimo 3 actores por serie)
 INSERT INTO reparto (id_reparto, id_contenido_id, id_actor_id, personaje, creador_id) VALUES
-(241, 61, 241, 'Daenerys Targaryen', 1),
-(242, 61, 242, 'Jon Snow', 1),
-(243, 61, 243, 'Tyrion Lannister', 1),
-(244, 61, 244, 'Cersei Lannister', 1),
-(245, 62, 245, 'Walter White', 1),
-(246, 62, 246, 'Jesse Pinkman', 1),
-(247, 62, 247, 'Skyler White', 1),
-(248, 62, 248, 'Saul Goodman', 1),
-(249, 63, 249, 'Eleven', 1),
-(250, 63, 250, 'Mike Wheeler', 1),
-(251, 63, 251, 'Joyce Byers', 1),
-(252, 63, 252, 'Jim Hopper', 1),
-(253, 64, 253, 'Tony Soprano', 1),
-(254, 64, 254, 'Carmela Soprano', 1),
-(255, 64, 255, 'Omar Little', 1),
-(256, 64, 256, 'Jimmy McNulty', 1),
-(257, 65, 256, 'Stringer Bell', 1),
-(258, 65, 255, 'Bunk Moreland', 1),
-(259, 65, 253, 'Lester Freamon', 1),
-(260, 66, 248, 'Saul Goodman', 1),
-(261, 66, 245, 'Mike Ehrmantraut', 1),
-(262, 66, 246, 'Kim Wexler', 1),
-(263, 67, 257, 'Dolores Abernathy', 1),
-(264, 67, 258, 'Maeve Millay', 1),
-(265, 67, 259, 'Bernard Lowe', 1),
-(266, 68, 259, 'Queen Elizabeth II', 1),
-(267, 68, 260, 'Queen Elizabeth II (older)', 1),
-(268, 68, 241, 'Princess Margaret', 1),
-(269, 69, 261, 'Rust Cohle', 1),
-(270, 69, 262, 'Marty Hart', 1),
-(271, 69, 263, 'Wayne Hays', 1),
-(272, 70, 263, 'Lorne Malvo', 1),
-(273, 70, 261, 'Lester Nygaard', 1),
-(274, 70, 262, 'Molly Solverson', 1),
-(275, 71, 264, 'Kendall Roy', 1),
-(276, 71, 265, 'Shiv Roy', 1),
-(277, 71, 243, 'Logan Roy', 1),
-(278, 72, 266, 'The Mandalorian', 1),
-(279, 72, 241, 'Cara Dune', 1),
-(280, 72, 242, 'Greef Karga', 1),
-(281, 73, 267, 'Michael Scott', 1),
-(282, 73, 268, 'Pam Beesly', 1),
-(283, 73, 269, 'Jim Halpert', 1),
-(284, 74, 269, 'Rachel Green', 1),
-(285, 74, 270, 'Monica Geller', 1),
-(286, 74, 267, 'Ross Geller', 1),
-(287, 75, 271, 'Homer Simpson', 1),
-(288, 75, 272, 'Marge Simpson', 1),
-(289, 75, 269, 'Bart Simpson', 1),
-(290, 76, 241, 'Rhaenyra Targaryen', 1),
-(291, 76, 242, 'Daemon Targaryen', 1),
-(292, 76, 244, 'Alicent Hightower', 1),
-(293, 77, 251, 'Kate Austen', 1),
-(294, 77, 252, 'Jack Shephard', 1),
-(295, 77, 262, 'John Locke', 1),
-(296, 78, 274, 'Don Draper', 1),
-(297, 78, 275, 'Peggy Olson', 1),
-(298, 78, 267, 'Roger Sterling', 1),
-(299, 79, 276, 'Rick Grimes', 1),
-(300, 79, 277, 'Daryl Dixon', 1),
-(301, 79, 251, 'Michonne', 1),
-(302, 80, 249, 'Nessa Stein', 1),
-(303, 80, 250, 'Charlie', 1),
-(304, 80, 251, 'Hannah', 1),
-(305, 81, 279, 'Sherlock Holmes', 1),
-(306, 81, 252, 'John Watson', 1),
-(307, 81, 275, 'Mycroft Holmes', 1),
-(308, 82, 279, 'Geralt of Rivia', 1),
-(309, 82, 241, 'Yennefer of Vengerberg', 1),
-(310, 82, 242, 'Ciri', 1),
-(311, 83, 266, 'Pablo Escobar', 1),
-(312, 83, 255, 'Steve Murphy', 1),
-(313, 83, 256, 'Javier Peña', 1),
-(314, 84, 279, 'Homelander', 1),
-(315, 84, 266, 'Billy Butcher', 1),
-(316, 84, 241, 'Starlight', 1),
-(317, 85, 261, 'Marty Byrde', 1),
-(318, 85, 241, 'Wendy Byrde', 1),
-(319, 85, 242, 'Ruth Langmore', 1),
-(320, 86, 274, 'Valery Legasov', 1),
-(321, 86, 275, 'Boris Shcherbina', 1),
-(322, 86, 241, 'Ulana Khomyuk', 1),
-(323, 87, 241, 'Beth Harmon', 1),
-(324, 87, 242, 'Benny Watts', 1),
-(325, 87, 243, 'Harry Beltik', 1),
-(326, 88, 252, 'Holden Ford', 1),
-(327, 88, 251, 'Bill Tench', 1),
-(328, 88, 241, 'Wendy Carr', 1),
-(329, 89, 241, 'June Osborne', 1),
-(330, 89, 275, 'Serena Joy', 1),
-(331, 89, 242, 'Fred Waterford', 1),
-(332, 90, 243, 'Ragnar Lothbrok', 1),
-(333, 90, 241, 'Lagertha', 1),
-(334, 90, 242, 'Rollo', 1),
-(335, 91, 279, 'Tommy Shelby', 1),
-(336, 91, 241, 'Grace Burgess', 1),
-(337, 91, 242, 'Arthur Shelby', 1),
-(338, 92, 266, 'Joel', 1),
-(339, 92, 241, 'Ellie', 1),
-(340, 92, 242, 'Tess', 1),
-(341, 93, 249, 'Rue Bennett', 1),
-(342, 93, 241, 'Jules Vaughn', 1),
-(343, 93, 242, 'Nate Jacobs', 1),
-(344, 94, 274, 'John Dutton', 1),
-(345, 94, 241, 'Beth Dutton', 1),
-(346, 94, 242, 'Rip Wheeler', 1),
-(347, 95, 267, 'Ted Lasso', 1),
-(348, 95, 241, 'Rebecca Welton', 1),
-(349, 95, 242, 'Roy Kent', 1),
-(350, 96, 279, 'Gregory House', 1),
-(351, 96, 241, 'Lisa Cuddy', 1),
-(352, 96, 242, 'James Wilson', 1),
-(353, 97, 279, 'Dexter Morgan', 1),
-(354, 97, 241, 'Debra Morgan', 1),
-(355, 97, 242, 'Harry Morgan', 1),
-(356, 98, 267, 'Sheldon Cooper', 1),
-(357, 98, 268, 'Penny', 1),
-(358, 98, 269, 'Leonard Hofstadter', 1),
-(359, 99, 267, 'Phil Dunphy', 1),
-(360, 99, 268, 'Claire Dunphy', 1),
-(361, 99, 269, 'Gloria Pritchett', 1),
-(362, 100, 274, 'Jed Bartlet', 1),
-(363, 100, 241, 'Josh Lyman', 1),
-(364, 100, 242, 'C.J. Cregg', 1),
-(365, 101, 267, 'Nucky Thompson', 1),
-(366, 101, 241, 'Margaret Schroeder', 1),
-(367, 101, 242, 'Jimmy Darmody', 1),
-(368, 102, 279, 'Jax Teller', 1),
-(369, 102, 241, 'Gemma Teller Morrow', 1),
-(370, 102, 242, 'Clay Morrow', 1),
-(371, 103, 266, 'James Holden', 1),
-(372, 103, 241, 'Naomi Nagata', 1),
-(373, 103, 242, 'Alex Kamal', 1),
-(374, 104, 260, 'Robert Crawley', 1),
-(375, 104, 241, 'Mary Crawley', 1),
-(376, 104, 242, 'Matthew Crawley', 1),
-(377, 105, 241, 'Earn Marks', 1),
-(378, 105, 242, 'Alfred Miles', 1),
-(379, 105, 243, 'Darius', 1),
-(380, 106, 279, 'Hannibal Lecter', 1),
-(381, 106, 252, 'Will Graham', 1),
-(382, 106, 241, 'Alana Bloom', 1),
-(383, 107, 280, 'Fleabag', 1),
-(384, 107, 241, 'Claire', 1),
-(385, 107, 242, 'Priest', 1),
-(386, 108, 241, 'Eleanor Shellstrop', 1),
-(387, 108, 242, 'Chidi Anagonye', 1),
-(388, 108, 243, 'Tahani Al-Jamil', 1),
-(389, 109, 241, 'Kate Pearson', 1),
-(390, 109, 242, 'Randall Pearson', 1),
-(391, 109, 243, 'Kevin Pearson', 1),
-(392, 110, 274, 'Michael Desiato', 1),
-(393, 110, 241, 'Adam Desiato', 1),
-(394, 110, 242, 'Gina Baxter', 1),
-(395, 111, 279, 'Loki', 1),
-(396, 111, 241, 'Mobius', 1),
-(397, 111, 242, 'Sylvie', 1),
-(398, 112, 241, 'Vi', 1),
-(399, 112, 242, 'Jinx', 1),
-(400, 112, 243, 'Caitlyn', 1),
-(401, 113, 241, 'Nell Crain', 1),
-(402, 113, 242, 'Theo Crain', 1),
-(403, 113, 243, 'Luke Crain', 1),
-(404, 114, 241, 'Daphne Bridgerton', 1),
-(405, 114, 242, 'Simon Basset', 1),
-(406, 114, 243, 'Anthony Bridgerton', 1),
-(407, 115, 241, 'Number Five', 1),
-(408, 115, 242, 'Luther Hargreeves', 1),
-(409, 115, 243, 'Diego Hargreeves', 1),
-(410, 116, 241, 'Daniel LaRusso', 1),
-(411, 116, 242, 'Johnny Lawrence', 1),
-(412, 116, 243, 'Miguel Diaz', 1),
-(413, 117, 269, 'Alex Levy', 1),
-(414, 117, 267, 'Bradley Jackson', 1),
-(415, 117, 241, 'Cory Ellison', 1),
-(416, 118, 241, 'Misty Quigley', 1),
-(417, 118, 242, 'Natalie Scatorccio', 1),
-(418, 118, 243, 'Shauna Shipman', 1),
-(419, 119, 241, 'Mark Scout', 1),
-(420, 119, 242, 'Helly Riggs', 1),
-(421, 119, 243, 'Dylan George', 1),
-(422, 120, 266, 'Cassian Andor', 1),
-(423, 120, 241, 'Mon Mothma', 1),
-(424, 120, 242, 'Luthen Rael', 1);
+(241, 61, 208, 'Daenerys Targaryen', 1), -- Emilia Clarke
+(242, 61, 209, 'Jon Snow', 1), -- Kit Harington
+(243, 61, 210, 'Tyrion Lannister', 1), -- Peter Dinklage
+(244, 61, 211, 'Cersei Lannister', 1), -- Lena Headey
+(245, 62, 212, 'Walter White', 1), -- Bryan Cranston
+(246, 62, 213, 'Jesse Pinkman', 1), -- Aaron Paul
+(247, 62, 214, 'Skyler White', 1), -- Anna Gunn
+(248, 62, 215, 'Saul Goodman', 1), -- Bob Odenkirk
+(249, 63, 216, 'Eleven', 1), -- Millie Bobby Brown
+(250, 63, 217, 'Mike Wheeler', 1), -- Finn Wolfhard
+(251, 63, 218, 'Joyce Byers', 1), -- Winona Ryder
+(252, 63, 219, 'Jim Hopper', 1), -- David Harbour
+(253, 64, 220, 'Tony Soprano', 1), -- James Gandolfini
+(254, 64, 221, 'Carmela Soprano', 1), -- Edie Falco
+(255, 64, 222, 'Omar Little', 1), -- Michael K. Williams
+(256, 64, 223, 'Jimmy McNulty', 1), -- Dominic West
+(257, 65, 222, 'Stringer Bell', 1), -- Michael K. Williams
+(258, 65, 223, 'Bunk Moreland', 1), -- Dominic West
+(259, 65, 220, 'Lester Freamon', 1), -- James Gandolfini
+(260, 66, 215, 'Saul Goodman', 1), -- Bob Odenkirk
+(261, 66, 212, 'Mike Ehrmantraut', 1), -- Bryan Cranston
+(262, 66, 213, 'Kim Wexler', 1), -- Aaron Paul
+(263, 67, 224, 'Dolores Abernathy', 1), -- Evan Rachel Wood
+(264, 67, 225, 'Maeve Millay', 1), -- Thandiwe Newton
+(265, 67, 226, 'Bernard Lowe', 1), -- Claire Foy
+(266, 68, 226, 'Queen Elizabeth II', 1), -- Claire Foy
+(267, 68, 82, 'Queen Elizabeth II (older)', 1), -- Olivia Colman
+(268, 68, 124, 'Princess Margaret', 1), -- Helena Bonham Carter
+(269, 69, 227, 'Rust Cohle', 1), -- Woody Harrelson
+(270, 69, 118, 'Marty Hart', 1), -- Matthew McConaughey
+(271, 69, 227, 'Wayne Hays', 1), -- Woody Harrelson
+(272, 70, 228, 'Lorne Malvo', 1), -- Billy Bob Thornton
+(273, 70, 227, 'Lester Nygaard', 1), -- Woody Harrelson
+(274, 70, 228, 'Molly Solverson', 1), -- Billy Bob Thornton
+(275, 71, 229, 'Kendall Roy', 1), -- Kieran Culkin
+(276, 71, 230, 'Shiv Roy', 1), -- Sarah Snook
+(277, 71, 210, 'Logan Roy', 1), -- Peter Dinklage
+(278, 72, 231, 'The Mandalorian', 1), -- Pedro Pascal
+(279, 72, 208, 'Cara Dune', 1), -- Emilia Clarke
+(280, 72, 209, 'Greef Karga', 1), -- Kit Harington
+(281, 73, 232, 'Michael Scott', 1), -- Steve Carell
+(282, 73, 233, 'Pam Beesly', 1), -- Jenna Fischer
+(283, 73, 234, 'Jim Halpert', 1), -- Jennifer Aniston
+(284, 74, 234, 'Rachel Green', 1), -- Jennifer Aniston
+(285, 74, 235, 'Monica Geller', 1), -- Courteney Cox
+(286, 74, 232, 'Ross Geller', 1), -- Steve Carell
+(287, 75, 236, 'Homer Simpson', 1), -- Homer Simpson
+(288, 75, 237, 'Marge Simpson', 1), -- Marge Simpson
+(289, 75, 236, 'Bart Simpson', 1), -- Homer Simpson
+(290, 76, 208, 'Rhaenyra Targaryen', 1), -- Emilia Clarke
+(291, 76, 209, 'Daemon Targaryen', 1), -- Kit Harington
+(292, 76, 211, 'Alicent Hightower', 1), -- Lena Headey
+(293, 77, 218, 'Kate Austen', 1), -- Winona Ryder
+(294, 77, 219, 'Jack Shephard', 1), -- David Harbour
+(295, 77, 228, 'John Locke', 1), -- Billy Bob Thornton
+(296, 78, 107, 'Don Draper', 1), -- Jon Hamm
+(297, 78, 239, 'Peggy Olson', 1), -- Elisabeth Moss
+(298, 78, 232, 'Roger Sterling', 1), -- Steve Carell
+(299, 79, 240, 'Rick Grimes', 1), -- Andrew Lincoln
+(300, 79, 241, 'Daryl Dixon', 1), -- Norman Reedus
+(301, 79, 203, 'Michonne', 1), -- Danai Gurira
+(302, 80, 117, 'Nessa Stein', 1), -- Maggie Gyllenhaal
+(303, 80, 217, 'Charlie', 1), -- Finn Wolfhard
+(304, 80, 218, 'Hannah', 1), -- Winona Ryder
+(305, 81, 242, 'Sherlock Holmes', 1), -- Mads Mikkelsen
+(306, 81, 219, 'John Watson', 1), -- David Harbour
+(307, 81, 239, 'Mycroft Holmes', 1), -- Elisabeth Moss
+(308, 82, 242, 'Geralt of Rivia', 1), -- Mads Mikkelsen
+(309, 82, 208, 'Yennefer of Vengerberg', 1), -- Emilia Clarke
+(310, 82, 55, 'Ciri', 1), -- Freya Allan
+(311, 83, 49, 'Pablo Escobar', 1), -- Wagner Moura
+(312, 83, 222, 'Steve Murphy', 1), -- Michael K. Williams
+(313, 83, 231, 'Javier Peña', 1), -- Pedro Pascal
+(314, 84, 242, 'Homelander', 1), -- Mads Mikkelsen
+(315, 84, 231, 'Billy Butcher', 1), -- Pedro Pascal
+(316, 84, 208, 'Starlight', 1), -- Emilia Clarke
+(317, 85, 118, 'Marty Byrde', 1), -- Matthew McConaughey
+(318, 85, 239, 'Wendy Byrde', 1), -- Elisabeth Moss
+(319, 85, 227, 'Ruth Langmore', 1), -- Woody Harrelson
+(320, 86, 107, 'Valery Legasov', 1), -- Jon Hamm
+(321, 86, 239, 'Boris Shcherbina', 1), -- Elisabeth Moss
+(322, 86, 208, 'Ulana Khomyuk', 1), -- Emilia Clarke
+(323, 87, 58, 'Beth Harmon', 1), -- Anya Taylor-Joy
+(324, 87, 36, 'Benny Watts', 1), -- Timothée Chalamet
+(325, 87, 227, 'Harry Beltik', 1), -- Woody Harrelson
+(326, 88, 219, 'Holden Ford', 1), -- David Harbour
+(327, 88, 118, 'Bill Tench', 1), -- Matthew McConaughey
+(328, 88, 239, 'Wendy Carr', 1), -- Elisabeth Moss
+(329, 89, 239, 'June Osborne', 1), -- Elisabeth Moss
+(330, 89, 208, 'Serena Joy', 1), -- Emilia Clarke
+(331, 89, 227, 'Fred Waterford', 1), -- Woody Harrelson
+(332, 90, 210, 'Ragnar Lothbrok', 1), -- Peter Dinklage
+(333, 90, 208, 'Lagertha', 1), -- Emilia Clarke
+(334, 90, 209, 'Rollo', 1), -- Kit Harington
+(335, 91, 242, 'Tommy Shelby', 1), -- Mads Mikkelsen
+(336, 91, 208, 'Grace Burgess', 1), -- Emilia Clarke
+(337, 91, 209, 'Arthur Shelby', 1), -- Kit Harington
+(338, 92, 231, 'Joel', 1), -- Pedro Pascal
+(339, 92, 216, 'Ellie', 1), -- Millie Bobby Brown
+(340, 92, 208, 'Tess', 1), -- Emilia Clarke
+(341, 93, 37, 'Rue Bennett', 1), -- Zendaya
+(342, 93, 208, 'Jules Vaughn', 1), -- Emilia Clarke
+(343, 93, 209, 'Nate Jacobs', 1), -- Kit Harington
+(344, 94, 107, 'John Dutton', 1), -- Jon Hamm
+(345, 94, 239, 'Beth Dutton', 1), -- Elisabeth Moss
+(346, 94, 227, 'Rip Wheeler', 1), -- Woody Harrelson
+(347, 95, 232, 'Ted Lasso', 1), -- Steve Carell
+(348, 95, 208, 'Rebecca Welton', 1), -- Emilia Clarke
+(349, 95, 209, 'Roy Kent', 1), -- Kit Harington
+(350, 96, 242, 'Gregory House', 1), -- Mads Mikkelsen
+(351, 96, 239, 'Lisa Cuddy', 1), -- Elisabeth Moss
+(352, 96, 227, 'James Wilson', 1), -- Woody Harrelson
+(353, 97, 242, 'Dexter Morgan', 1), -- Mads Mikkelsen
+(354, 97, 208, 'Debra Morgan', 1), -- Emilia Clarke
+(355, 97, 209, 'Harry Morgan', 1), -- Kit Harington
+(356, 98, 232, 'Sheldon Cooper', 1), -- Steve Carell
+(357, 98, 233, 'Penny', 1), -- Jenna Fischer
+(358, 98, 234, 'Leonard Hofstadter', 1), -- Jennifer Aniston
+(359, 99, 232, 'Phil Dunphy', 1), -- Steve Carell
+(360, 99, 233, 'Claire Dunphy', 1), -- Jenna Fischer
+(361, 99, 234, 'Gloria Pritchett', 1), -- Jennifer Aniston
+(362, 100, 107, 'Jed Bartlet', 1), -- Jon Hamm
+(363, 100, 239, 'Josh Lyman', 1), -- Elisabeth Moss
+(364, 100, 208, 'C.J. Cregg', 1), -- Emilia Clarke
+(365, 101, 232, 'Nucky Thompson', 1), -- Steve Carell
+(366, 101, 239, 'Margaret Schroeder', 1), -- Elisabeth Moss
+(367, 101, 227, 'Jimmy Darmody', 1), -- Woody Harrelson
+(368, 102, 242, 'Jax Teller', 1), -- Mads Mikkelsen
+(369, 102, 208, 'Gemma Teller Morrow', 1), -- Emilia Clarke
+(370, 102, 209, 'Clay Morrow', 1), -- Kit Harington
+(371, 103, 231, 'James Holden', 1), -- Pedro Pascal
+(372, 103, 208, 'Naomi Nagata', 1), -- Emilia Clarke
+(373, 103, 209, 'Alex Kamal', 1), -- Kit Harington
+(374, 104, 82, 'Robert Crawley', 1), -- Olivia Colman
+(375, 104, 239, 'Mary Crawley', 1), -- Elisabeth Moss
+(376, 104, 227, 'Matthew Crawley', 1), -- Woody Harrelson
+(377, 105, 21, 'Earn Marks', 1), -- Donald Glover
+(378, 105, 208, 'Alfred Miles', 1), -- Emilia Clarke
+(379, 105, 209, 'Darius', 1), -- Kit Harington
+(380, 106, 242, 'Hannibal Lecter', 1), -- Mads Mikkelsen
+(381, 106, 219, 'Will Graham', 1), -- David Harbour
+(382, 106, 208, 'Alana Bloom', 1), -- Emilia Clarke
+(383, 107, 243, 'Fleabag', 1), -- Phoebe Waller-Bridge
+(384, 107, 208, 'Claire', 1), -- Emilia Clarke
+(385, 107, 209, 'Priest', 1), -- Kit Harington
+(386, 108, 208, 'Eleanor Shellstrop', 1), -- Emilia Clarke
+(387, 108, 209, 'Chidi Anagonye', 1), -- Kit Harington
+(388, 108, 210, 'Tahani Al-Jamil', 1), -- Peter Dinklage
+(389, 109, 239, 'Kate Pearson', 1), -- Elisabeth Moss
+(390, 109, 227, 'Randall Pearson', 1), -- Woody Harrelson
+(391, 109, 208, 'Kevin Pearson', 1), -- Emilia Clarke
+(392, 110, 107, 'Michael Desiato', 1), -- Jon Hamm
+(393, 110, 208, 'Adam Desiato', 1), -- Emilia Clarke
+(394, 110, 239, 'Gina Baxter', 1), -- Elisabeth Moss
+(395, 111, 242, 'Loki', 1), -- Mads Mikkelsen
+(396, 111, 209, 'Mobius', 1), -- Kit Harington
+(397, 111, 208, 'Sylvie', 1), -- Emilia Clarke
+(398, 112, 208, 'Vi', 1), -- Emilia Clarke
+(399, 112, 209, 'Jinx', 1), -- Kit Harington
+(400, 112, 210, 'Caitlyn', 1), -- Peter Dinklage
+(401, 113, 239, 'Nell Crain', 1), -- Elisabeth Moss
+(402, 113, 208, 'Theo Crain', 1), -- Emilia Clarke
+(403, 113, 227, 'Luke Crain', 1), -- Woody Harrelson
+(404, 114, 208, 'Daphne Bridgerton', 1), -- Emilia Clarke
+(405, 114, 209, 'Simon Basset', 1), -- Kit Harington
+(406, 114, 210, 'Anthony Bridgerton', 1), -- Peter Dinklage
+(407, 115, 208, 'Number Five', 1), -- Emilia Clarke
+(408, 115, 209, 'Luther Hargreeves', 1), -- Kit Harington
+(409, 115, 210, 'Diego Hargreeves', 1), -- Peter Dinklage
+(410, 116, 208, 'Daniel LaRusso', 1), -- Emilia Clarke
+(411, 116, 209, 'Johnny Lawrence', 1), -- Kit Harington
+(412, 116, 210, 'Miguel Diaz', 1), -- Peter Dinklage
+(413, 117, 234, 'Alex Levy', 1), -- Jennifer Aniston
+(414, 117, 232, 'Bradley Jackson', 1), -- Steve Carell
+(415, 117, 208, 'Cory Ellison', 1), -- Emilia Clarke
+(416, 118, 239, 'Misty Quigley', 1), -- Elisabeth Moss
+(417, 118, 208, 'Natalie Scatorccio', 1), -- Emilia Clarke
+(418, 118, 227, 'Shauna Shipman', 1), -- Woody Harrelson
+(419, 119, 208, 'Mark Scout', 1), -- Emilia Clarke
+(420, 119, 209, 'Helly Riggs', 1), -- Kit Harington
+(421, 119, 210, 'Dylan George', 1), -- Peter Dinklage
+(422, 120, 231, 'Cassian Andor', 1), -- Pedro Pascal
+(423, 120, 208, 'Mon Mothma', 1), -- Emilia Clarke
+(424, 120, 209, 'Luthen Rael', 1); -- Kit Harington
