@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.urls import reverse
 import logging
 from django.contrib import messages
-from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario
+from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria
 from django.utils import timezone
 
 # Configurar logging
@@ -82,10 +82,38 @@ class Detalle_Pelicula_Serie(DetailView):
     context_object_name = "contenido"
 
     def get_context_data(self, **kwargs):
+        # Recoger contexto
         context = super().get_context_data(**kwargs)
-        # Obtener los géneros relacionados con este contenido
+        # Recoger generos asociados al contenido
         generos = Genero.objects.filter(contenidogenero__id_contenido=self.object)
+        # Recoger plataformas asociados al contenido
+        plataformas = self.object.plataformas.all() if hasattr(self.object, 'plataformas') else []
+        # Recoger imágenes de la galería asociadas al contenido
+        imagenes_galeria = Galeria.objects.filter(id_contenido=self.object)
+        # Diccionario de URLs oficiales
+        url_dict = {
+            "Netflix": "https://www.netflix.com/",
+            "HBO Max": "https://www.hbomax.com/",
+            "Prime Video": "https://www.primevideo.com/",
+            "Disney+": "https://www.disneyplus.com/",
+        }
+
+        # Creamos una lista de plataformas con su url (si corresponde)
+        plataformas_info = []
+        for plataforma in plataformas:
+            url = url_dict.get(plataforma.nombre_plataforma)
+            plataformas_info.append({
+                "nombre_plataforma": plataforma.nombre_plataforma,
+                "imagen_logo_plataforma": plataforma.imagen_logo_plataforma,
+                "alt_imagen_logo_plataforma": plataforma.alt_imagen_logo_plataforma,
+                "tipo_acceso": plataforma.tipo_acceso,
+                "precio": plataforma.precio,
+                "url": url,
+            })
+
+        context['plataformas'] = plataformas_info
         context['generos'] = generos
+        context['imagenes_galeria'] = imagenes_galeria
         return context
     
 class Login(TemplateView):

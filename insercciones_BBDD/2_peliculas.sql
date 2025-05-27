@@ -68,63 +68,63 @@ VALUES
 -- Plataformas (sin vinculación inicial a contenido)
 INSERT INTO plataformas_streaming (id_plataforma, id_contenido_id, nombre_plataforma, imagen_logo_plataforma, alt_imagen_logo_plataforma, tipo_acceso, precio, creador_id)
 VALUES
-(1, NULL, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(1, NULL, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 (2, NULL, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
-(3, NULL, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
-(4, NULL, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1);
+(3, NULL, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(4, NULL, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1);
 
 -- Vinculación de películas con plataformas
-INSERT INTO plataformas_streaming (id_plataforma, id_contenido, nombre_plataforma, imagen_logo_plataforma, alt_imagen_logo_plataforma, tipo_acceso, precio, creador_id)
+INSERT INTO plataformas_streaming (id_plataforma, id_contenido_id, nombre_plataforma, imagen_logo_plataforma, alt_imagen_logo_plataforma, tipo_acceso, precio, creador_id)
 VALUES
 -- Avatar (Netflix, Disney+)
-(5, 1, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
-(6, 1, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(5, 1, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(6, 1, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Avengers: Endgame (Disney+)
-(7, 2, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(7, 2, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Titanic (Netflix)
-(8, 3, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(8, 3, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Star Wars: The Force Awakens (Disney+)
-(9, 4, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(9, 4, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Jurassic World (Netflix)
-(10, 5, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(10, 5, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- The Lion King (Disney+)
-(11, 6, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(11, 6, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- The Avengers (Disney+, Netflix)
-(12, 7, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
-(13, 7, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(12, 7, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(13, 7, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Furious 7 (Netflix)
-(14, 8, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(14, 8, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Frozen II (Disney+)
-(15, 9, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(15, 9, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Beauty and the Beast (Disney+)
-(16, 10, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(16, 10, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Dune: Parte 2 (HBO Max)
 (17, 11, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Oppenheimer (Netflix)
-(18, 12, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(18, 12, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Pobres Criaturas (HBO Max)
 (19, 13, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Civil War (Prime Video)
-(20, 14, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(20, 14, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Rivales (Prime Video)
-(21, 15, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(21, 15, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- El Planeta de los Simios: Nuevo Reino (Disney+)
-(22, 16, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(22, 16, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Furiosa: De la Saga Mad Max (Prime Video)
-(23, 17, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(23, 17, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Barbie (Netflix, HBO Max)
-(24, 18, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(24, 18, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 (25, 18, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Anatomía de una Caída (Prime Video)
-(26, 19, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(26, 19, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- La Zona de Interés (Prime Video)
-(27, 20, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(27, 20, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Godzilla y Kong: El Nuevo Imperio (HBO Max)
 (28, 21, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Los Asesinos de la Luna (Prime Video)
-(29, 22, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(29, 22, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Del Revés 2 (Disney+)
-(30, 23, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(30, 23, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Wonka (HBO Max)
 (31, 24, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Aquaman y el Reino Perdido (HBO Max)
@@ -132,72 +132,72 @@ VALUES
 -- The Batman (HBO Max)
 (33, 26, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Parásitos (Netflix)
-(34, 27, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(34, 27, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Spider-Man: A Través del Spider-Verso (Netflix)
-(35, 28, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(35, 28, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Todo a la Vez en Todas Partes (Prime Video)
-(36, 29, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(36, 29, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Top Gun: Maverick (Prime Video)
-(37, 30, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(37, 30, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Joker (Netflix)
-(38, 31, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(38, 31, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Origen (Netflix, HBO Max)
-(39, 32, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(39, 32, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 (40, 32, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- El Caballero Oscuro (HBO Max)
 (41, 33, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Interstellar (HBO Max)
 (42, 34, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- El Club de la Pelea (Prime Video)
-(43, 35, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(43, 35, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Tiempos Violentos (Prime Video)
-(44, 36, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(44, 36, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Cadena Perpetua (Netflix)
-(45, 37, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(45, 37, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- El Padrino (Prime Video)
-(46, 38, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(46, 38, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Forrest Gump (Netflix)
-(47, 39, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(47, 39, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- El Señor de los Anillos: La Comunidad del Anillo (Prime Video)
-(48, 40, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(48, 40, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Matrix (Netflix, HBO Max)
-(49, 41, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(49, 41, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 (50, 41, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- Gladiador (Prime Video)
-(51, 42, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(51, 42, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Siete (Netflix)
-(52, 43, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(52, 43, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Rescatando al Soldado Ryan (Prime Video)
-(53, 44, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(53, 44, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- El Rey León (Disney+)
-(54, 45, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(54, 45, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Regreso al Futuro (Prime Video)
-(55, 46, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(55, 46, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- El Silencio de los Corderos (Prime Video)
-(56, 47, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(56, 47, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Jurassic Park (Netflix)
-(57, 48, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(57, 48, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- La Lista de Schindler (Prime Video)
-(58, 49, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(58, 49, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- El Indomable Will Hunting (Prime Video)
-(59, 50, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(59, 50, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Infiltrados (Prime Video)
-(60, 51, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(60, 51, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Avatar 2 (Disney+)
-(61, 52, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(61, 52, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Deadpool y Wolverine (Disney+)
-(62, 53, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(62, 53, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Sin Lugar para los Débiles (Prime Video)
-(63, 54, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(63, 54, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- La La Land (Netflix)
-(64, 55, 'Netflix', 'logos/netflix.jpg', 'Logo de Netflix', 'suscripción', 9.99, 1),
+(64, 55, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
 -- Coco (Disney+)
-(65, 56, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(65, 56, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- Gravity (HBO Max)
 (66, 57, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
 -- El Gran Hotel Budapest (Prime Video)
-(67, 58, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+(67, 58, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
 -- Black Panther (Disney+)
-(68, 59, 'Disney+', 'logos/disneyplus.jpg', 'Logo de Disney+', 'suscripción', 9.99, 1),
+(68, 59, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
 -- El Gran Pez (Prime Video)
-(69, 60, 'Prime Video', 'logos/primevideo.jpg', 'Logo de Prime Video', 'suscripción', 9.99, 1);
+(69, 60, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1);
