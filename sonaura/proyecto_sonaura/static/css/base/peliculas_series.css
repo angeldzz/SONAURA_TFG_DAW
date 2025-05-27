@@ -344,6 +344,29 @@ body {
 .filter-select option {
     background-color: var(--dark-surface);
     color: var(--white);
+    height: 30px; /* Ajusta este valor según prefieras */
+    padding: 5px; /* Agregamos un poco de padding para que el texto no se vea apretado */
+    font-size: 0.9rem; /* Aseguramos que el texto sea legible */
+}
+
+/* Ajuste para limitar la altura y añadir scroll al select de género */
+#genero-filter {
+    max-height: 150px; /* Altura para mostrar ~5 opciones (30px por opción) */
+    overflow-y: auto; /* Agrega scroll vertical */
+}
+
+/* Estilo para el scroll en navegadores Webkit (Chrome, Safari) */
+#genero-filter::-webkit-scrollbar {
+    width: 6px;
+}
+
+#genero-filter::-webkit-scrollbar-track {
+    background: var(--dark-surface);
+}
+
+#genero-filter::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 3px;
 }
 
 /* Secciones */
