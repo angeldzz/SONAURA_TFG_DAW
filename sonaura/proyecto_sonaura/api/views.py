@@ -91,10 +91,13 @@ class ContenidoViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(pelicula_serie=pelicula_serie)
         año_estreno = self.request.query_params.get('anio_estreno')
         año_estreno_lt = self.request.query_params.get('anio_estreno__lt')
+        genero = self.request.query_params.get('genero')
         if año_estreno:
             queryset = queryset.filter(año_estreno=año_estreno)
         if año_estreno_lt:
             queryset = queryset.filter(año_estreno__lt=año_estreno_lt)
+        if genero:
+            queryset = queryset.filter(contenidogenero__id_genero__nombre=genero)    
         return queryset
 
     def perform_create(self, serializer):

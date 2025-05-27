@@ -145,3 +145,8 @@ class Premium(TemplateView):
         context['tiene_plan_mensual'] = tiene_plan_mensual
         context['diferencia_precio'] = diferencia_precio
         return context
+    
+
+class Perfil(TemplateView):
+    template_name = "base/perfil.html"
+    

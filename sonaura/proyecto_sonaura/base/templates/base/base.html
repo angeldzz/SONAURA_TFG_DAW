@@ -40,7 +40,7 @@
                     </button>
                     {% if user.is_authenticated %}
                     <div class="user-nav-menu">
-                        <a href="#" class="user-profile-link">
+                        <a href="{% url 'perfil' %}" class="user-profile-link">
                             <i class="fas fa-user-circle"></i>
                             <span>{{ user.username }}</span>
                         </a>
