@@ -464,6 +464,91 @@
                     alert.remove();
                 });
             }
+
+            const registerForm = document.querySelector('.login-form');
+            if (registerForm) {
+                registerForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    // Validación HTML5 y contraseñas
+                    if (!registerForm.checkValidity()) {
+                        showAlert('Por favor, corrige los errores en el formulario.', 'error');
+                        registerForm.classList.add('was-validated');
+                        return;
+                    }
+                    const password = registerForm.querySelector('input[name="password"]').value;
+                    const confirmPassword = registerForm.querySelector('input[name="confirm_password"]').value;
+                    if (password !== confirmPassword) {
+                        showAlert('Las contraseñas no coinciden.', 'error');
+                        return;
+                    }
+
+                    // 1. Enviar datos de registro al backend
+                    const formData = new FormData(registerForm);
+                    const response = await fetch('/crear-usuario/', {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    if (!response.ok) {
+                        showAlert('No se pudo crear la cuenta. Revisa los datos.', 'error');
+                        return;
+                    }
+                    // 2. Login Django clásico (crea sesión)
+                    const username = registerForm.querySelector('input[name="username"]').value;
+                    const loginFormData = new FormData();
+                    loginFormData.append('username', username);
+                    loginFormData.append('password', password);
+
+                    const csrfToken = getCookie('csrftoken');
+
+                    const loginResponse = await fetch('/login/', {
+                        method: 'POST',
+                        body: loginFormData,
+                        headers: {
+                            'X-CSRFToken': csrfToken
+                        },
+                        credentials: 'same-origin'
+                    });
+
+                    if (!loginResponse.ok) {
+                        showAlert('Error al iniciar sesión después del registro.', 'error');
+                        return;
+                    }
+
+                    // 3. Pedir el token JWT
+                    const tokenResponse = await fetch('/api/token/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                    });
+
+                    if (tokenResponse.ok) {
+                        const data = await tokenResponse.json();
+                        localStorage.setItem('access_token', data.access);
+                        localStorage.setItem('refresh_token', data.refresh);
+                    }
+
+                    // 4. Redirigir al usuario
+                    window.location.href = '/';
+                });
+            }
+
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
         });
     </script>
 </body>
