@@ -84,24 +84,123 @@
                         <div class="title-line"></div>
                     </div>
                     <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="https://media.revistagq.com/photos/65e83375cf39fbce304ce127/16:9/w_1280,c_limit/240219150308-07-dune-2-wb.jpg" alt="Dune: Part Two scene">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://ca-times.brightspotcdn.com/dims4/default/d904b16/2147483647/strip/false/crop/3000x1754+0+0/resize/1486x869!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Faf%2F64%2F6c30f00be7bbb9cd090b2a423fb1%2F716b54753d6a43c5aaad7553ef0e8616" alt="Dune: Part Two scene">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://i.blogs.es/31aa42/dunetrailer2/500_333.jpeg" alt="Dune: Part Two scene">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://sm.ign.com/ign_latam/screenshot/default/mcddupa-wb035_nus3.jpg" alt="Dune: Part Two scene">
-                        </div>
+                        {% if imagenes_galeria and imagenes_galeria|length > 0 %}
+                            {% for imagen in imagenes_galeria %}
+                                <div class="gallery-item">
+                                    <img src="{{ imagen.url_imagen.url }}" alt="{{ imagen.alt_imagen|default:'Imagen de galería' }}">
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div style="padding: 1em; color: #888;">
+                                No hay imágenes en la galería para este contenido.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-sidebar">
+                <div class="sidebar-card">
+                    <div class="section-title">
+                        <h3>Detalles</h3>
+                        <div class="title-line"></div>
+                    </div>
+                    <ul class="movie-details-list">
+                        <li>
+                            <span class="detail-label">Director</span>
+                            <span class="detail-value">{{ contenido.director }}</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Guionistas</span>
+                            <span class="detail-value">{{ contenido.guionistas }}</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Estreno</span>
+                            <span class="detail-value">{{ contenido.año_estreno }}</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Duración</span>
+                            <span class="detail-value">{{ contenido.duracion }} minutos</span>
+                        </li>
+                        <li>
+                            <span class="detail-label">Clasificación</span>
+                            <span class="detail-value">{{ contenido.clasificacion }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <div class="section-title">
+                        <h3>Dónde ver</h3>
+                        <div class="title-line"></div>
+                    </div>
+                    <div class="streaming-options">
+                        {% for plataforma in plataformas %}
+                            <div class="streaming-option" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                {% if plataforma.url %}
+                                    <a href="{{ plataforma.url }}" target="_blank" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
+                                {% endif %}
+                                {% if plataforma.imagen_logo_plataforma %}
+                                    <img src="{{ plataforma.imagen_logo_plataforma.url }}" alt="{{ plataforma.alt_imagen_logo_plataforma|default:plataforma.nombre_plataforma }}" style="height: 32px; width: auto; border-radius: 6px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+                                {% else %}
+                                    <img src="/placeholder.svg?height=32&width=32" alt="{{ plataforma.nombre_plataforma }}" style="height: 32px; width: 32px; border-radius: 6px; background: #eee;">
+                                {% endif %}
+                                <div>
+                                    <div style="font-weight: 600;">{{ plataforma.nombre_plataforma }}</div>
+                                    <div style="font-size: 0.95em; color: #666;">{{ plataforma.tipo_acceso }}{% if plataforma.precio %} - {{ plataforma.precio }}€{% endif %}</div>
+                                </div>
+                                {% if plataforma.url %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% empty %}
+                            <span>No disponible en plataformas de streaming.</span>
+                        {% endfor %}
                     </div>
                 </div>
 
-                <div class="content-card" id="valoraciones">
+                <div class="sidebar-card">
                     <div class="section-title">
-                        <h2>Valoraciones</h2>
+                        <h3>Películas similares</h3>
+                        <div class="title-line"></div>
+                    </div>
+                    <div class="similar-movies">
+                        <a href="#" class="similar-movie">
+                            <img src="/placeholder.svg?height=150&width=100" alt="Dune">
+                            <div class="similar-movie-info">
+                                <h4>Dune</h4>
+                                <div class="similar-movie-meta">
+                                    <span>2021</span>
+                                    <span><i class="fas fa-star"></i> 4.8</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="similar-movie">
+                            <img src="/placeholder.svg?height=150&width=100" alt="Blade Runner 2049">
+                            <div class="similar-movie-info">
+                                <h4>Blade Runner 2049</h4>
+                                <div class="similar-movie-meta">
+                                    <span>2017</span>
+                                    <span><i class="fas fa-star"></i> 4.6</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="similar-movie">
+                            <img src="/placeholder.svg?height=150&width=100" alt="Interstellar">
+                            <div class="similar-movie-info">
+                                <h4>Interstellar</h4>
+                                <div class="similar-movie-meta">
+                                    <span>2014</span>
+                                    <span><i class="fas fa-star"></i> 4.7</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-card" id="valoraciones">
+                    <div class="section-title">
+                        <h3>Valoraciones</h3>
                         <div class="title-line"></div>
                     </div>
                     <div class="ratings-summary">
@@ -155,201 +254,111 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="content-card" id="comentarios">
-                    <div class="section-title">
-                        <h2>Comentarios</h2>
-                        <div class="title-line"></div>
+        <!-- Comments Section (Moved outside movie-details-grid for full width) -->
+        <div class="content-card full-width" id="comentarios">
+            <div class="section-title">
+                <h2>Comentarios</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <div class="comment-form">
+                <h3>Deja tu comentario</h3>
+                <div class="user-rating">
+                    <span>Tu valoración:</span>
+                    <div class="star-rating">
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
-                    
-                    <div class="comment-form">
-                        <h3>Deja tu comentario</h3>
-                        <div class="user-rating">
-                            <span>Tu valoración:</span>
-                            <div class="star-rating">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                        <textarea placeholder="Escribe tu comentario aquí..."></textarea>
-                        <button class="btn-primary">Publicar comentario</button>
+                </div>
+                <textarea placeholder="Escribe tu comentario aquí..."></textarea>
+                <button class="btn-primary">Publicar comentario</button>
+            </div>
+            
+            <div class="comments-list">
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="/placeholder.svg?height=50&width=50" alt="User avatar">
                     </div>
-                    
-                    <div class="comments-list">
-                        <div class="comment">
-                            <div class="comment-avatar">
-                                <img src="/placeholder.svg?height=50&width=50" alt="User avatar">
-                            </div>
-                            <div class="comment-content">
-                                <div class="comment-header">
-                                    <h4>Juan García</h4>
-                                    <div class="comment-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="comment-date">20 abril, 2025</div>
-                                <p>Una continuación espectacular. Villeneuve eleva la historia con una dirección impecable y visuals impresionantes. Timothée Chalamet brilla como Paul, y Austin Butler es aterrador como Feyd-Rautha. La banda sonora de Zimmer es épica.</p>
-                                <div class="comment-actions">
-                                    <button><i class="far fa-thumbs-up"></i> 56</button>
-                                    <button><i class="far fa-thumbs-down"></i> 2</button>
-                                    <button><i class="far fa-comment"></i> Responder</button>
-                                </div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <h4>Juan García</h4>
+                            <div class="comment-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
                         </div>
-                        
-                        <div class="comment">
-                            <div class="comment-avatar">
-                                <img src="/placeholder.svg?height=50&width=50" alt="User avatar">
-                            </div>
-                            <div class="comment-content">
-                                <div class="comment-header">
-                                    <h4>María López</h4>
-                                    <div class="comment-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="comment-date">15 abril, 2025</div>
-                                <p>La película es visualmente increíble y la historia es muy envolvente, aunque a veces se siente un poco densa. Zendaya tiene más presencia aquí y su química con Chalamet es genial. Algunas escenas de acción son de lo mejor que he visto.</p>
-                                <div class="comment-actions">
-                                    <button><i class="far fa-thumbs-up"></i> 34</button>
-                                    <button><i class="far fa-thumbs-down"></i> 4</button>
-                                    <button><i class="far fa-comment"></i> Responder</button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="comment">
-                            <div class="comment-avatar">
-                                <img src="/placeholder.svg?height=50&width=50" alt="User avatar">
-                            </div>
-                            <div class="comment-content">
-                                <div class="comment-header">
-                                    <h4>Alejandro Fernández</h4>
-                                    <div class="comment-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                </div>
-                                <div class="comment-date">10 abril, 2025</div>
-                                <p>Una obra maestra de la ciencia ficción. La escala de la película es abrumadora, y cada detalle, desde los efectos hasta el diseño de producción, está cuidado al máximo. La lucha final es épica, y la evolución de Paul como líder es fascinante.</p>
-                                <div class="comment-actions">
-                                    <button><i class="far fa-thumbs-up"></i> 48</button>
-                                    <button><i class="far fa-thumbs-down"></i> 1</button>
-                                    <button><i class="far fa-comment"></i> Responder</button>
-                                </div>
-                            </div>
+                        <div class="comment-date">20 abril, 2025</div>
+                        <p>Una continuación espectacular. Villeneuve eleva la historia con una dirección impecable y visuals impresionantes. Timothée Chalamet brilla como Paul, y Austin Butler es aterrador como Feyd-Rautha. La banda sonora de Zimmer es épica.</p>
+                        <div class="comment-actions">
+                            <button><i class="far fa-thumbs-up"></i> 56</button>
+                            <button><i class="far fa-thumbs-down"></i> 2</button>
+                            <button><i class="far fa-comment"></i> Responder</button>
                         </div>
                     </div>
-                    
-                    <div class="load-more">
-                        <button class="btn-outline">Cargar más comentarios</button>
+                </div>
+                
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="/placeholder.svg?height=50&width=50" alt="User avatar">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <h4>María López</h4>
+                            <div class="comment-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="comment-date">15 abril, 2025</div>
+                        <p>La película es visualmente increíble y la historia es muy envolvente, aunque a veces se siente un poco densa. Zendaya tiene más presencia aquí y su química con Chalamet es genial. Algunas escenas de acción son de lo mejor que he visto.</p>
+                        <div class="comment-actions">
+                            <button><i class="far fa-thumbs-up"></i> 34</button>
+                            <button><i class="far fa-thumbs-down"></i> 4</button>
+                            <button><i class="far fa-comment"></i> Responder</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comment">
+                    <div class="comment-avatar">
+                        <img src="/placeholder.svg?height=50&width=50" alt="User avatar">
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <h4>Alejandro Fernández</h4>
+                            <div class="comment-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <div class="comment-date">10 abril, 2025</div>
+                        <p>Una obra maestra de la ciencia ficción. La escala de la película es abrumadora, y cada detalle, desde los efectos hasta el diseño de producción, está cuidado al máximo. La lucha final es épica, y la evolución de Paul como líder es fascinante.</p>
+                        <div class="comment-actions">
+                            <button><i class="far fa-thumbs-up"></i> 48</button>
+                            <button><i class="far fa-thumbs-down"></i> 1</button>
+                            <button><i class="far fa-comment"></i> Responder</button>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="movie-sidebar">
-                <div class="sidebar-card">
-                    <div class="section-title">
-                        <h3>Detalles</h3>
-                        <div class="title-line"></div>
-                    </div>
-                    <ul class="movie-details-list">
-                        <li>
-                            <span class="detail-label">Director</span>
-                            <span class="detail-value">{{ contenido.director }}</span>
-                        </li>
-                        <li>
-                            <span class="detail-label">Guionistas</span>
-                            <span class="detail-value">{{ contenido.guionistas }}</span>
-                        </li>
-                        <li>
-                            <span class="detail-label">Estreno</span>
-                            <span class="detail-value">{{ contenido.año_estreno }}</span>
-                        </li>
-                        <li>
-                            <span class="detail-label">Duración</span>
-                            <span class="detail-value">{{ contenido.duracion }} minutos</span>
-                        </li>
-                        <li>
-                            <span class="detail-label">Clasificación</span>
-                            <span class="detail-value">{{ contenido.clasificacion }}</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="sidebar-card">
-                    <div class="section-title">
-                        <h3>Dónde ver</h3>
-                        <div class="title-line"></div>
-                    </div>
-                    <div class="streaming-options">
-                        <a href="#" class="streaming-option">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Max_2025_logo.svg" alt="Max">
-                            <span>Incluido en suscripción</span>
-                        </a>
-                        <a href="#" class="streaming-option">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Prime_Video_logo_%282024%29.svg" alt="Amazon Prime">
-                            <span>Alquiler desde 4,99€</span>
-                        </a>
-                        <a href="#" class="streaming-option">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Apple_TV_Plus_Logo.svg" alt="Apple TV+">
-                            <span>Compra desde 12,99€</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="sidebar-card">
-                    <div class="section-title">
-                        <h3>Películas similares</h3>
-                        <div class="title-line"></div>
-                    </div>
-                    <div class="similar-movies">
-                        <a href="#" class="similar-movie">
-                            <img src="/placeholder.svg?height=150&width=100" alt="Dune">
-                            <div class="similar-movie-info">
-                                <h4>Dune</h4>
-                                <div class="similar-movie-meta">
-                                    <span>2021</span>
-                                    <span><i class="fas fa-star"></i> 4.8</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="similar-movie">
-                            <img src="/placeholder.svg?height=150&width=100" alt="Blade Runner 2049">
-                            <div class="similar-movie-info">
-                                <h4>Blade Runner 2049</h4>
-                                <div class="similar-movie-meta">
-                                    <span>2017</span>
-                                    <span><i class="fas fa-star"></i> 4.6</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="similar-movie">
-                            <img src="/placeholder.svg?height=150&width=100" alt="Interstellar">
-                            <div class="similar-movie-info">
-                                <h4>Interstellar</h4>
-                                <div class="similar-movie-meta">
-                                    <span>2014</span>
-                                    <span><i class="fas fa-star"></i> 4.7</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <div class="load-more">
+                <button class="btn-outline">Cargar más comentarios</button>
             </div>
         </div>
     </div>

@@ -6,17 +6,20 @@
     padding: 0 1.5rem;
     position: relative;
     z-index: 1;
-  }
+}
+
 /* Movie Hero Section */
 .movie-hero {
     position: relative;
     padding: 8rem 0 3rem;
     margin-bottom: 2rem;
 }
+
 .btn-primary i,
-.btn-outline i{
+.btn-outline i {
     margin-right: 10px;
 }
+
 .movie-backdrop {
     position: absolute;
     top: 0;
@@ -153,8 +156,14 @@
     background-color: var(--dark-surface);
     border-radius: var(--radius-lg);
     padding: 2rem;
+    height: 100%;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--dark-surface-2);
+}
+
+.content-card.full-width {
+    max-width: 100%;
+    width: 100%;
 }
 
 .content-card .section-title {
@@ -435,6 +444,45 @@
     flex-direction: column;
     gap: 2rem;
 }
+#valoraciones{
+    height: 100%;
+}
+#valoraciones .ratings-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+#valoraciones .rating-big {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#valoraciones .rating-bars {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+#valoraciones .rating-bar-item {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#valoraciones .rating-label,
+#valoraciones .rating-percent {
+    text-align: center;
+}
 
 .sidebar-card {
     background-color: var(--dark-surface);
@@ -593,5 +641,18 @@
     
     .movie-info h1 {
         font-size: 3.5rem;
+    }
+    
+    .content-card.full-width {
+        margin-top: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    #valoraciones .ratings-summary {
+        align-items: center;
+    }
+    #valoraciones .rating-bars {
+        margin: 0 auto;
     }
 }
