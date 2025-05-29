@@ -69,10 +69,6 @@
                         },
                         credentials: 'same-origin'
                     });
-                    // Redirige al login si no estás ya en login o registro
-                    if (!window.location.pathname.includes('login') && !window.location.pathname.includes('registro')) {
-                        window.location.href = '/login/';
-                    }
                 }
             }
             // Función para obtener el CSRF de la cookie
