@@ -29,7 +29,13 @@
                 {% endif %}
                 <div class="movie-rating">
                     <div class="rating-circle">
-                        <span>{{ contenido.puntuacion|default:"-" }}</span>
+                        <span>
+    {% if puntuacion_x2 %}
+        {{ puntuacion_x2|floatformat:1 }}
+    {% else %}
+        -
+    {% endif %}
+</span>
                     </div>
                 </div>
             </div>

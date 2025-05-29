@@ -110,10 +110,13 @@ class Detalle_Pelicula_Serie(DetailView):
                 "precio": plataforma.precio,
                 "url": url,
             })
-
         context['plataformas'] = plataformas_info
         context['generos'] = generos
         context['imagenes_galeria'] = imagenes_galeria
+
+        # Añade la puntuación multiplicada por 2
+        context['puntuacion_x2'] = self.object.puntuacion * 2 if self.object.puntuacion is not None else None
+
         return context
     
 class Login(TemplateView):
@@ -149,4 +152,3 @@ class Premium(TemplateView):
 
 class Perfil(TemplateView):
     template_name = "base/perfil.html"
-    

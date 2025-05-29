@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
+from rest_framework.response import Response
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
     Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
@@ -14,7 +15,8 @@ from .serializers import (
     CategoriaNoticiaSerializer, NoticiaSerializer, NoticiaCategoriaSerializer, EntrevistaSerializer,
     ListaPersonalizadaSerializer, ListaContenidoSerializer
 )
-from .permissions import IsStaffOrReadOnly,IsAuthenticatedOrReadOnly
+from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly
+from django.db.models import Avg
 
 # Create your views here.
 
@@ -40,8 +42,36 @@ class ValoracionViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(id_contenido=id_contenido)
         return queryset
 
+    def update_contenido_puntuacion(self, id_contenido):
+        """Calculate the average rating for the content and update its puntuacion field."""
+        promedio = Valoracion.objects.filter(id_contenido=id_contenido).aggregate(Avg('puntuacion'))['puntuacion__avg']
+        contenido = Contenido.objects.get(id_contenido=id_contenido)
+        contenido.puntuacion = round(promedio, 1) if promedio is not None else None
+        contenido.save()
+
     def perform_create(self, serializer):
-        serializer.save(id_usuario=self.request.user)
+        user = self.request.user
+        id_contenido = self.request.data.get('id_contenido')
+        # Busca si ya existe una valoración de este usuario para este contenido
+        valoracion = Valoracion.objects.filter(id_usuario=user, id_contenido=id_contenido).first()
+        if valoracion:
+            # Si existe, actualiza la valoración
+            valoracion.puntuacion = self.request.data.get('puntuacion')
+            valoracion.texto_valoracion = self.request.data.get('texto_valoracion', '')
+            valoracion.save()
+            # Actualiza la puntuación del contenido
+            self.update_contenido_puntuacion(id_contenido)
+        else:
+            # Si no existe, crea una nueva
+            serializer.save(id_usuario=user)
+            # Actualiza la puntuación del contenido
+            self.update_contenido_puntuacion(id_contenido)
+
+    def perform_update(self, serializer):
+        serializer.save()
+        # Actualiza la puntuación del contenido después de actualizar la valoración
+        id_contenido = self.request.data.get('id_contenido')
+        self.update_contenido_puntuacion(id_contenido)
 
 # Ejemplo para Noticia (usa IsStaffOrReadOnly)
 class NoticiaViewSet(viewsets.ModelViewSet):
