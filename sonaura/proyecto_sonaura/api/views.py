@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
+from rest_framework.decorators import action
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
     Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
@@ -13,7 +14,7 @@ from .serializers import (
     CategoriaNoticiaSerializer, NoticiaSerializer, NoticiaCategoriaSerializer, EntrevistaSerializer,
     ListaPersonalizadaSerializer, ListaContenidoSerializer
 )
-from .permissions import IsStaffOrReadOnly
+from .permissions import IsStaffOrReadOnly,IsAuthenticatedOrReadOnly
 
 # Create your views here.
 
@@ -26,11 +27,18 @@ class PerfilViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(id_usuario=self.request.user)
 
-# Ejemplo para Valoracion (usa IsStaffOrReadOnly)
+# Ejemplo para Valoracion
 class ValoracionViewSet(viewsets.ModelViewSet):
     queryset = Valoracion.objects.all()
     serializer_class = ValoracionSerializer
-    permission_classes = [AllowAny, IsStaffOrReadOnly]
+    permission_classes = [AllowAny, IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        id_contenido = self.request.query_params.get('id_contenido')
+        if id_contenido:
+            queryset = queryset.filter(id_contenido=id_contenido)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(id_usuario=self.request.user)
@@ -83,10 +91,13 @@ class ContenidoViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(pelicula_serie=pelicula_serie)
         año_estreno = self.request.query_params.get('anio_estreno')
         año_estreno_lt = self.request.query_params.get('anio_estreno__lt')
+        genero = self.request.query_params.get('genero')
         if año_estreno:
             queryset = queryset.filter(año_estreno=año_estreno)
         if año_estreno_lt:
             queryset = queryset.filter(año_estreno__lt=año_estreno_lt)
+        if genero:
+            queryset = queryset.filter(contenidogenero__id_genero__nombre=genero)    
         return queryset
 
     def perform_create(self, serializer):
@@ -138,10 +149,31 @@ class GaleriaViewSet(viewsets.ModelViewSet):
 class ComentarioViewSet(viewsets.ModelViewSet):
     queryset = Comentario.objects.all()
     serializer_class = ComentarioSerializer
-    permission_classes = [AllowAny, IsStaffOrReadOnly]
+    permission_classes = [AllowAny, IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        id_contenido = self.request.query_params.get('id_contenido')
+        if id_contenido:
+            queryset = queryset.filter(id_contenido=id_contenido)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(id_usuario=self.request.user)
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticatedOrReadOnly])
+    def like(self, request, pk=None):
+        comentario = self.get_object()
+        comentario.likes += 1
+        comentario.save()
+        return Response({'likes': comentario.likes})
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticatedOrReadOnly])
+    def dislike(self, request, pk=None):
+        comentario = self.get_object()
+        comentario.dislikes += 1
+        comentario.save()
+        return Response({'dislikes': comentario.dislikes})
 
 class NotificacionViewSet(viewsets.ModelViewSet):
     queryset = Notificacion.objects.all()

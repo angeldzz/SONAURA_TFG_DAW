@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
             initCarousel();
             
             // Cargar películas
-            cargarPeliculas_Series(filtro_anio())
-            document.getElementById("yearFilter").addEventListener("change",() => cargarPeliculas_Series(filtro_anio()));
+            cargarPeliculas_Series(filtro_anio(),filtro_genero())
+            document.getElementById("yearFilter").addEventListener("change",() => cargarPeliculas_Series(filtro_anio(),filtro_genero()));
+            document.getElementById("genero-filter").addEventListener("change",() => cargarPeliculas_Series(filtro_genero(),filtro_anio()));
         });
         
         function initParticles() {
@@ -96,11 +97,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return filtro;
         }
-        function cargarPeliculas_Series(anio_filtro) {
+        function filtro_genero() {  
+            const input_genero = document.getElementById("genero-filter").value;
+            let filtroGenero = "";
+
+            if (input_genero === "all") {
+                filtroGenero = "";
+            } else {
+                filtroGenero = `&genero=${input_genero}`;
+            }
+            return filtroGenero;
+        }
+        function cargarPeliculas_Series(anio_filtro,genero_filtro) {
             console.log(anio_filtro);
+            console.log(genero_filtro);
+            
             pelicula_serie = document.getElementById("pelicula-serie").value;
 
-            fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}`)
+            fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}${genero_filtro}`)
                 .then(response => {
                     if (!response.ok) throw new Error('Error al obtener las películas');
                     return response.json();

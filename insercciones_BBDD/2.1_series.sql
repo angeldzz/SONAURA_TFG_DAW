@@ -61,3 +61,129 @@ VALUES
 (118, 'Yellowjackets', 'serie', 'La supervivencia tiene secretos', 'Tras un accidente aéreo, un equipo de fútbol femenino lucha por sobrevivir en la naturaleza. Décadas después, los supervivientes enfrentan los ecos de su pasado. Este thriller mezcla misterio y drama.', 2021, 60, 'Ashley Lyle', 'Ashley Lyle, Bart Nickerson', 'TV-MA', 'posters/Yellowjackets.jpg', 'Yellowjackets', NULL, NULL, 7.9, 0, NOW(), NOW(), 1),
 (119, 'Severance', 'serie', 'El trabajo no es tu vida', 'Empleados de una corporación usan una tecnología que separa sus recuerdos laborales y personales. Cuando un misterio surge, cuestionan su realidad. Este thriller psicológico explora la identidad y el control.', 2022, 50, 'Dan Erickson', 'Dan Erickson', 'TV-MA', 'posters/Severance.jpg', 'Severance', NULL, NULL, 8.7, 0, NOW(), NOW(), 1),
 (120, 'Andor', 'serie', 'La chispa de la rebelión', 'Cassian Andor, un espía rebelde, enfrenta misiones peligrosas contra el Imperio en el universo de Star Wars. Este drama explora el sacrificio y la resistencia en una galaxia oprimida.', 2022, 45, 'Tony Gilroy', 'Tony Gilroy', 'TV-14', 'posters/Andor.jpg', 'Andor', NULL, NULL, 8.4, 0, NOW(), NOW(), 1);
+
+-- Inserción de plataformas de streaming y vinculación con series
+
+-- Vinculación de series con plataformas (continuando desde id_plataforma 70)
+INSERT INTO plataformas_streaming (id_plataforma, id_contenido_id, nombre_plataforma, imagen_logo_plataforma, alt_imagen_logo_plataforma, tipo_acceso, precio, creador_id)
+VALUES
+-- Game of Thrones (HBO Max)
+(70, 61, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Breaking Bad (Netflix)
+(71, 62, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Stranger Things (Netflix)
+(72, 63, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Sopranos (HBO Max)
+(73, 64, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- The Wire (HBO Max)
+(74, 65, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Better Call Saul (Netflix)
+(75, 66, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Westworld (HBO Max)
+(76, 67, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- The Crown (Netflix)
+(77, 68, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- True Detective (HBO Max)
+(78, 69, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Fargo (HBO Max)
+(79, 70, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Succession (HBO Max)
+(80, 71, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- The Mandalorian (Disney+)
+(81, 72, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
+-- The Office (Netflix)
+(82, 73, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Friends (Netflix)
+(83, 74, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Simpsons (Disney+)
+(84, 75, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
+-- House of the Dragon (HBO Max)
+(85, 76, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Lost (Netflix)
+(86, 77, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Mad Men (Netflix)
+(87, 78, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Walking Dead (Netflix)
+(88, 79, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Black Mirror (Netflix)
+(89, 80, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Sherlock (Netflix)
+(90, 81, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Witcher (Netflix)
+(91, 82, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Narcos (Netflix)
+(92, 83, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Boys (Prime Video)
+(93, 84, 'Prime Video', 'logos/primevideo.png', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+-- Ozark (Netflix)
+(94, 85, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Chernobyl (HBO Max)
+(95, 86, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- The Queen’s Gambit (Netflix)
+(96, 87, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Mindhunter (Netflix)
+(97, 88, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Handmaid’s Tale (Hulu, pero asumimos Netflix por similitud)
+(98, 89, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Vikings (Netflix)
+(99, 90, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Peaky Blinders (Netflix)
+(100, 91, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Last of Us (HBO Max)
+(101, 92, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Euphoria (HBO Max)
+(102, 93, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Yellowstone (Peacock, pero asumimos Prime Video)
+(103, 94, 'Prime Video', 'logopng', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+-- Ted Lasso (Apple TV+, pero asumimos Disney+ por similitud)
+(104, 95, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
+-- House M.D. (Netflix)
+(105, 96, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Dexter (Showtime, pero asumimos Netflix)
+(106, 97, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Big Bang Theory (Netflix)
+(107, 98, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Modern Family (Hulu, pero asumimos Netflix)
+(108, 99, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The West Wing (HBO Max)
+(109, 100, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Boardwalk Empire (HBO Max)
+(110, 101, 'HBO Max', 'logos/hbomax.jpeg', 'Logo de HBO Max', 'suscripción', 9.99, 1),
+-- Sons of Anarchy (Netflix)
+(111, 102, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Expanse (Prime Video)
+(112, 103, 'Prime Video', 'logopng', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+-- Downton Abbey (Netflix)
+(113, 104, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Atlanta (Hulu, pero asumimos Netflix)
+(114, 105, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Hannibal (Netflix)
+(115, 106, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Fleabag (Prime Video)
+(116, 107, 'Prime Video', 'logopng', 'Logo de Prime Video', 'suscripción', 9.99, 1),
+-- The Good Place (Netflix)
+(117, 108, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- This Is Us (Netflix)
+(118, 109, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Your Honor (Showtime, pero asumimos Netflix)
+(119, 110, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Loki (Disney+)
+(120, 111, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
+-- Arcane (Netflix)
+(121, 112, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Haunting of Hill House (Netflix)
+(122, 113, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Bridgerton (Netflix)
+(123, 114, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Umbrella Academy (Netflix)
+(124, 115, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Cobra Kai (Netflix)
+(125, 116, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- The Morning Show (Apple TV+, pero asumimos Disney+)
+(126, 117, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1),
+-- Yellowjackets (Showtime, pero asumimos Netflix)
+(127, 118, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Severance (Apple TV+, pero asumimos Netflix)
+(128, 119, 'Netflix', 'logos/netflix.png', 'Logo de Netflix', 'suscripción', 9.99, 1),
+-- Andor (Disney+)
+(129, 120, 'Disney+', 'logos/disneyplus.png', 'Logo de Disney+', 'suscripción', 9.99, 1);

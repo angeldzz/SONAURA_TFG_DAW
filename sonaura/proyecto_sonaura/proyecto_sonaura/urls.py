@@ -22,16 +22,18 @@ from django.conf import settings
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
+    TokenVerifyView,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('base.urls')),
-    path('api/',include("api.urls")),
+    path('', include('base.urls')),
+    path('api/', include("api.urls")),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Para obtener el token
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # Para refrescar el token
-    path('login/',auth_views.LoginView.as_view(template_name='base/login.html'),name='login'), #ruta de login
-    path('logout/',auth_views.LogoutView.as_view(),name='logout'),# ruta de logout
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),  # Para verificar el token
+    path('login/', auth_views.LoginView.as_view(template_name='base/login.html'), name='login'), # ruta de login
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'), # ruta de logout
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

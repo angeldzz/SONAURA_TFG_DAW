@@ -6,10 +6,20 @@ from django.contrib.auth.models import User
 # Django proporciona este modelo por defecto
 
 # Profile model
+from django.db import models
+from django.contrib.auth.models import User
+
+# Modelo Perfil
 class Perfil(models.Model):
     id_perfil = models.AutoField(primary_key=True, verbose_name='ID de Perfil')
     id_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil', null=True, blank=True, verbose_name='Usuario')
     nombre_perfil = models.CharField(max_length=100, verbose_name='Nombre del Perfil')
+    nombre_usuario = models.CharField(max_length=150, null=True, blank=True, verbose_name='Nombre de Usuario')
+    apellidos = models.CharField(max_length=150, null=True, blank=True, verbose_name='Apellidos')
+    telefono = models.CharField(max_length=20, null=True, blank=True, verbose_name='Teléfono')
+    biografia = models.TextField(null=True, blank=True, verbose_name='Biografía')
+    fecha_nacimiento = models.DateField(null=True, blank=True, verbose_name='Fecha de Nacimiento')
+    pais = models.CharField(max_length=100, null=True, blank=True, verbose_name='País')
     imagen_avatar = models.ImageField(upload_to='avatares/', null=True, blank=True, verbose_name='Avatar')
     alt_imagen_avatar = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo del avatar')
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
@@ -22,7 +32,7 @@ class Perfil(models.Model):
     
     def __str__(self):
         return self.nombre_perfil
-    
+
 # Subscription model
 class SuscripcionUsuario(models.Model):
     id_suscripcion = models.AutoField(primary_key=True, verbose_name='ID de Suscripción')
@@ -124,7 +134,6 @@ class ContenidoGenero(models.Model):
 
     class Meta:
         db_table = 'contenidos_generos'
-        unique_together = ('id_contenido', 'id_genero')
         verbose_name = 'Género de Contenido'
         verbose_name_plural = 'Géneros de Contenido'
 
@@ -210,7 +219,6 @@ class Valoracion(models.Model):
 
     class Meta:
         db_table = 'valoraciones'
-        unique_together = ('id_usuario', 'id_contenido')
         verbose_name = 'Valoración'
         verbose_name_plural = 'Valoraciones'
     
@@ -319,7 +327,6 @@ class NoticiaCategoria(models.Model):
         
     class Meta:
         db_table = 'noticias_categorias'
-        unique_together = ('id_noticias', 'id_categoria')
         verbose_name = 'Categoría de Noticia'
         verbose_name_plural = 'Categorías de Noticia'
 
@@ -377,7 +384,6 @@ class ListaContenido(models.Model):
 
     class Meta:
         db_table = 'lista_personalizadas_contenidos'
-        unique_together = ('id_lista', 'id_contenido')
         verbose_name = 'Contenido de Lista Personalizada'
         verbose_name_plural = 'Contenidos de Listas Personalizadas'
 
