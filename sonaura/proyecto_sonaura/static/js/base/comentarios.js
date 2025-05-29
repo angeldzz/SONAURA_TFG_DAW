@@ -217,71 +217,82 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Función para enviar comentario y valoración
+    // Función para enviar comentario y/o valoración
     function enviarComentario() {
         const comentarioTexto = commentTextarea.value.trim();
         const puntuacion = Array.from(starRating.querySelectorAll('i'))
             .filter(star => star.classList.contains('selected')).length;
 
-        if (!comentarioTexto) {
-            alert('Por favor, escribe un comentario.');
+        // Permitir enviar solo valoración o solo comentario
+        if (!comentarioTexto && puntuacion === 0) {
+            mostrarAviso('Por favor, escribe un comentario o selecciona una valoración.');
             return;
         }
 
-        // Enviar valoración
-        const valoracionData = {
-            id_contenido: contenidoId,
-            puntuacion: puntuacion,
-            texto_valoracion: comentarioTexto
-        };
-
-        fetch('http://127.0.0.1:8000/api/valoraciones/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('auth_token')}` // Ajusta según tu sistema de autenticación
-            },
-            body: JSON.stringify(valoracionData)
-        })
+        // Si hay valoración, envía primero la valoración
+        let valoracionPromise = Promise.resolve();
+        if (puntuacion > 0) {
+            const valoracionData = {
+                id_contenido: contenidoId,
+                puntuacion: puntuacion,
+                texto_valoracion: comentarioTexto // Puedes dejarlo vacío si quieres
+            };
+            valoracionPromise = fetch('http://127.0.0.1:8000/api/valoraciones/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                },
+                body: JSON.stringify(valoracionData)
+            })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Error al enviar la valoración');
+                    // Si el error es 500, probablemente es por duplicado
+                    return response.json().then(err => {
+                        if (response.status === 500) {
+                            throw new Error('Ya has valorado este contenido.');
+                        }
+                        throw new Error('Error al enviar la valoración');
+                    });
                 }
                 return response.json();
+            });
+        }
+
+        // Si hay comentario, envía el comentario después (o solo si no hay valoración)
+        valoracionPromise
+            .then(() => {
+                if (comentarioTexto) {
+                    const comentarioData = {
+                        id_contenido: contenidoId,
+                        comentario: comentarioTexto
+                    };
+                    return fetch('http://127.0.0.1:8000/api/comentarios/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                        },
+                        body: JSON.stringify(comentarioData)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al enviar el comentario');
+                        }
+                        return response.json();
+                    });
+                }
             })
             .then(() => {
-                // Enviar comentario
-                const comentarioData = {
-                    id_contenido: contenidoId,
-                    comentario: comentarioTexto
-                };
-
-                return fetch('http://127.0.0.1:8000/api/comentarios/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
-                    },
-                    body: JSON.stringify(comentarioData)
-                });
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al enviar el comentario');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Comentario enviado:', data);
-                commentTextarea.value = ''; // Limpiar textarea
+                commentTextarea.value = '';
                 starRating.querySelectorAll('i').forEach(star => star.classList.remove('selected', 'fas'));
                 starRating.querySelectorAll('i').forEach(star => star.classList.add('far'));
-                cargarComentarios(contenidoId, 1); // Recargar comentarios
-                cargarValoraciones(contenidoId); // Actualizar valoraciones
+                cargarComentarios(contenidoId, 1);
+                cargarValoraciones(contenidoId);
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Error al enviar el comentario o valoración. Por favor, verifica que estás autenticado.');
+                mostrarAviso('Solo Puedes valorar una vez la pelicula.');
             });
     }
 
@@ -316,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
                 }
             })
                 .then(response => {
@@ -330,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .catch(error => {
                     console.error('Error al dar like:', error);
-                    alert('Error al dar like. Por favor, verifica que estás autenticado.');
+                    mostrarAviso('Error al dar like. Por favor, verifica que estás autenticado.');
                 });
         }
 
@@ -340,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
                 }
             })
                 .then(response => {
@@ -354,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .catch(error => {
                     console.error('Error al dar dislike:', error);
-                    alert('Error al dar dislike. Por favor, verifica que estás autenticado.');
+                    mostrarAviso('Error al dar dislike. Por favor, verifica que estás autenticado.');
                 });
         }
 
@@ -367,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitReplyButton.onclick = function() {
                 const replyText = replyForm.querySelector('textarea').value.trim();
                 if (!replyText) {
-                    alert('Por favor, escribe una respuesta.');
+                    mostrarAviso('Por favor, escribe una respuesta.');
                     return;
                 }
 
@@ -381,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('auth_token')}`
+                        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
                     },
                     body: JSON.stringify(replyData)
                 })
@@ -399,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .catch(error => {
                         console.error('Error al enviar la respuesta:', error);
-                        alert('Error al enviar la respuesta. Por favor, verifica que estás autenticado.');
+                        mostrarAviso('Error al enviar la respuesta. Por favor, verifica que estás autenticado.');
                     });
             };
         }
@@ -414,4 +425,27 @@ document.addEventListener('DOMContentLoaded', function() {
         loadMoreButton.parentElement.style.display = 'none';
         document.querySelector('#valoraciones .ratings-summary').innerHTML = '<p>Error: No se encontró el contenido.</p>';
     }
+
+    // Modal de avisos global
+    function mostrarAviso(mensaje) {
+        const modalAviso = document.getElementById('modalAviso');
+        const mensajeModalAviso = document.getElementById('mensajeModalAviso');
+        if (mensajeModalAviso) mensajeModalAviso.innerHTML = mensaje;
+        if (modalAviso) modalAviso.style.display = 'flex';
+    }
+    // Cerrar modal
+    const modalAviso = document.getElementById('modalAviso');
+    const cerrarModalAviso = document.getElementById('cerrarModalAviso');
+    if (cerrarModalAviso && modalAviso) {
+        cerrarModalAviso.addEventListener('click', function() {
+            modalAviso.style.display = 'none';
+        });
+        window.addEventListener('click', function(event) {
+            if (event.target === modalAviso) {
+                modalAviso.style.display = 'none';
+            }
+        });
+    }
+    // Ejemplo de uso de mostrarAviso
+    // mostrarAviso('Este es un mensaje de aviso de ejemplo.');
 });
