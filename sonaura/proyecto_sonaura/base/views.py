@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView,ListView,DetailView,CreateView,DeleteView,UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.views.generic import View
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.urls import reverse
 import logging
 from django.contrib import messages
-from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria
+from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria, Perfil
 from django.utils import timezone
 
 # Configurar logging
@@ -145,8 +145,36 @@ class Premium(TemplateView):
         context['tiene_plan_mensual'] = tiene_plan_mensual
         context['diferencia_precio'] = diferencia_precio
         return context
-    
 
-class Perfil(TemplateView):
+class PerfilView(TemplateView):
     template_name = "base/perfil.html"
-    
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(reverse('login'))
+        perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
+        context = {
+            'perfil': perfil,
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(reverse('login'))
+        perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
+
+        perfil.nombre_perfil = request.POST.get('nombre_perfil', perfil.nombre_perfil)
+        perfil.nombre_usuario = request.POST.get('nombre_usuario', perfil.nombre_usuario)
+        perfil.apellidos = request.POST.get('apellidos', perfil.apellidos)
+        perfil.telefono = request.POST.get('telefono', perfil.telefono)
+        perfil.biografia = request.POST.get('biografia', perfil.biografia)
+        perfil.fecha_nacimiento = request.POST.get('fecha_nacimiento', perfil.fecha_nacimiento)
+        perfil.pais = request.POST.get('pais', perfil.pais)
+
+        if 'imagen_avatar' in request.FILES:
+            perfil.imagen_avatar = request.FILES['imagen_avatar']
+            perfil.alt_imagen_avatar = request.POST.get('alt_imagen_avatar', perfil.alt_imagen_avatar)
+
+        perfil.save()
+        messages.success(request, "Perfil actualizado exitosamente.")
+        return redirect(reverse('perfil'))

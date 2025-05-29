@@ -97,48 +97,48 @@
                         </div>
 
                         <!-- Formulario de edición -->
-                        <form class="profile-form">
+                        <form class="profile-form" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="message">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName">Nombre</label>
-                                    <input type="text" id="firstName" placeholder="Introduce tu nombre" required>
+                                    <input type="text" id="firstName" name="nombre_perfil" placeholder="Introduce tu nombre" value="{{ perfil.nombre_perfil }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="lastName">Apellidos</label>
-                                    <input type="text" id="lastName" placeholder="Introduce tu apellido" required>
+                                    <input type="text" id="lastName" name="apellidos" placeholder="Introduce tu apellido" value="{{ perfil.apellidos }}" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="username">Nombre de usuario</label>
-                                    <input type="text" id="username" placeholder="Introduce nombre de usuario" required>
+                                    <input type="text" id="username" name="nombre_usuario" placeholder="Introduce nombre de usuario" value="{{ perfil.nombre_usuario }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Teléfono</label>
-                                    <input type="tel" id="phone" placeholder="+34 612 345 678">
+                                    <input type="tel" id="phone" name="telefono" placeholder="+34 612 345 678" value="{{ perfil.telefono }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="bio">Biografía</label>
-                                <textarea id="bio" rows="3" placeholder="Cuéntanos algo sobre ti..."></textarea>
+                                <textarea id="bio" name="biografia" rows="3" placeholder="Cuéntanos algo sobre ti...">{{ perfil.biografia }}</textarea>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="birthdate">Fecha de nacimiento</label>
-                                    <input type="date" id="birthdate" placeholder="1985-03-15">
+                                    <input type="date" id="birthdate" name="fecha_nacimiento" value="{{ perfil.fecha_nacimiento|date:'Y-m-d' }}" placeholder="1985-03-15">
                                 </div>
                                 <div class="form-group">
                                     <label for="country">País</label>
-                                    <select id="country">
-                                        <option value="ES" selected>España</option>
-                                        <option value="MX">México</option>
-                                        <option value="AR">Argentina</option>
-                                        <option value="CO">Colombia</option>
-                                        <option value="PE">Perú</option>
-                                    </select>
+                                    <input type="text" id="country" name="pais" class="input-field" placeholder="Introduce tu país" value="{{ perfil.pais }}">
                                 </div>
                             </div>
 
