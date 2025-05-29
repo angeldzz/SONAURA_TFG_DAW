@@ -117,6 +117,7 @@
             <p class="section-subtitle">Elige el plan que mejor se adapte a tus necesidades</p>
 
             <div class="plans-container">
+                <!-- Plan Básico -->
                 <div class="plan-card">
                     <div class="plan-header">
                         <h3 class="plan-name">Básico</h3>
@@ -136,7 +137,7 @@
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Comentarios y Valoraciones</span>
+                            <span>Comentarios y Valoraciones limitadas</span>
                         </div>
                         <div class="plan-feature disabled">
                             <i class="fas fa-times"></i>
@@ -144,16 +145,15 @@
                         </div>
                         <div class="plan-feature disabled">
                             <i class="fas fa-times"></i>
-                            <span>Sin calendario</span>
-                        </div>
-                        <div class="plan-feature disabled">
-                            <i class="fas fa-times"></i>
-                            <span>Sin listas personalizadas</span>
+                            <span>Calendario</span>
                         </div>
                     </div>
                     <div class="plan-cta">
-                        <a href="/registro" class="btn-plan">
-                            <span>{% if es_premium %} Ya eres premium <i class="fas fa-crown"></i>{% else %}Ya tienes este plan{% endif %}</span>
+                        <a href="{% if user.is_authenticated %}#{% else %}/registro{% endif %}" class="btn-plan">
+                            <span>{% if es_premium %} Ya eres premium <i class="fas fa-crown"></i>
+                                {% else %}
+                                Ya tienes este plan
+                                {% endif %}</span>
                         </a>
                     </div>
                 </div>
@@ -167,6 +167,8 @@
                             <span class="period">/ mes</span>
                         </div>
                     </div>
+
+                    <!-- Plan Premium Mensual -->
                     <div class="plan-features">
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
@@ -174,33 +176,29 @@
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
+                            <span>Perfil premium</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Comentarios y Valoraciones</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Listas Personalizadas</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
                             <span>Calendario</span>
                         </div>
-                        <div class="plan-feature">
-                            <i class="fas fa-check"></i>
-                            <span>5 perfiles</span>
-                        </div>
-                        <div class="plan-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Sin publicidad</span>
-                        </div>
-                        <div class="plan-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Descargas ilimitadas</span>
-                        </div>
-                        <div class="plan-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Contenido exclusivo</span>
-                        </div>
+                    
                     </div>
                     <div class="plan-cta">
-                        <a href="/checkout" class="btn-premium">
-                            <span>{% if es_premium %}Ya eres premium <i class="fas fa-crown"></i>{% else %}Suscribirse ahora{% endif %}</span>
-                            <div class="btn-glow"></div>
-                        </a>
+                       <a href="{% if user.is_authenticated and not es_premium %}/checkout/?plan=mensual{% else %}#{% endif %}" class="btn-premium">
+    <span>{% if es_premium %}Ya eres premium <i class="fas fa-crown"></i>{% else %}Suscribirse ahora{% endif %}</span>
+</a>
                     </div>
                 </div>
-
+<!-- Plan Anual -->
                 <div class="plan-card">
                     <div class="plan-header">
                         <h3 class="plan-name">Anual</h3>
@@ -219,33 +217,29 @@
                     <div class="plan-features">
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Catálogo completo</span>
+                            <span>Contenido premium</span>
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Calidad 4K HDR</span>
+                            <span>Perfil premium</span>
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>5 perfiles</span>
+                            <span>Comentarios y Valoraciones</span>
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Sin publicidad</span>
+                            <span>Listas Personalizadas</span>
                         </div>
                         <div class="plan-feature">
                             <i class="fas fa-check"></i>
-                            <span>Descargas ilimitadas</span>
-                        </div>
-                        <div class="plan-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Contenido exclusivo</span>
+                            <span>Calendario</span>
                         </div>
                     </div>
                     <div class="plan-cta">
-                        <a href="/checkout?plan=anual" class="btn-plan">
-                            <span>{% if es_premium %}Ya eres premium <i class="fas fa-crown"></i>{% else %}Suscribirse ahora{% endif %}</span>
-                        </a>
+                       <a href="{% if user.is_authenticated and not es_premium %}/checkout/?plan=anual{% else %}#{% endif %}" class="btn-plan">
+    <span>{% if es_premium %}Ya eres premium <i class="fas fa-crown"></i>{% else %}Suscribirse ahora{% endif %}</span>
+</a>
                     </div>
                 </div>
             </div>

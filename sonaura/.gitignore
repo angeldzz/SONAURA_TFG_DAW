@@ -4,7 +4,7 @@ Lib/
 # Ignorar entornos virtuales comunes
 venv/
 .env/
-
+.env
 # Ignorar archivos de caché de Python
 __pycache__/
 *.pyc

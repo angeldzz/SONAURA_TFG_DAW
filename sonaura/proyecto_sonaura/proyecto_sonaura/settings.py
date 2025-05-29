@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@tr_u&8*z5d(fy$$75leg7xuujo80_87jw+l#p$*6c_!v!!60c'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +42,11 @@ INSTALLED_APPS = [
     'base',
     'api',
 ]
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_PRICE_ID_MONTHLY = config('STRIPE_PRICE_ID_MONTHLY')
+STRIPE_PRICE_ID_YEARLY = config('STRIPE_PRICE_ID_YEARLY')
+# DOMAIN_URL = 'https://tu-dominio.com'  # Sin barra al final
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,24 +94,27 @@ WSGI_APPLICATION = 'proyecto_sonaura.wsgi.application'
 # para usar Railway, debes configurar tu base de datos MySQL en el archivo settings.py de tu proyecto Django. 
 # Aquí tienes un ejemplo de cómo debería verse la configuración de la base de datos para Railway: funciona la que tenga default
 # Database
+from decouple import config
+
 DATABASES = {
     'bbdd-railway': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',  # nombre de la base de datos
-        'USER': 'root',     # usuario
-        'PASSWORD': 'bnLszbhgNdaRKguyqtBYcrbdDWMdmFRn',  # contraseña
-        'HOST': 'ballast.proxy.rlwy.net',  # solo el host, sin mysql:// ni usuario ni contraseña
-        'PORT': '32204',    # el puerto correcto según Railway
+        'NAME': config('DB_NAME_RAILWAY'),
+        'USER': config('DB_USER_RAILWAY'),
+        'PASSWORD': config('DB_PASSWORD_RAILWAY'),
+        'HOST': config('DB_HOST_RAILWAY'),
+        'PORT': config('DB_PORT_RAILWAY'),
     },
     'default': {
-        'ENGINE': 'django.db.backends.mysql',# Indica que usarás MySQL
-        'NAME': 'sonaura', # Reemplaza con el nombre de tu base de datos
-        'USER': 'sonaura', # Reemplaza con tu usuario de MySQL
-        'PASSWORD': 'sonaura', # Reemplaza con la contraseña de tu usuario
-        'HOST': 'localhost', # Dirección del servidor MySQL (usualmente localhost)
-        'PORT': '3306', # Puerto de conexión (por defecto 3306)
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DB_NAME_LOCAL'),
+        'USER': config('DB_USER_LOCAL'),
+        'PASSWORD': config('DB_PASSWORD_LOCAL'),
+        'HOST': config('DB_HOST_LOCAL'),
+        'PORT': config('DB_PORT_LOCAL'),
     }
 }
+
 
 
 # Password validation 
@@ -156,6 +165,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
 
 #imagenes
 MEDIA_URL = '/media/'

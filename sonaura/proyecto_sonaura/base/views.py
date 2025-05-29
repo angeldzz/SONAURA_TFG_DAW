@@ -8,6 +8,14 @@ import logging
 from django.contrib import messages
 from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario
 from django.utils import timezone
+from django.conf import settings
+import stripe
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from datetime import datetime, timedelta
+import json
+from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -117,3 +125,128 @@ class Premium(TemplateView):
         context['tiene_plan_mensual'] = tiene_plan_mensual
         context['diferencia_precio'] = diferencia_precio
         return context
+    
+
+@method_decorator(login_required, name='dispatch')
+class CheckoutView(View):
+    template_name = 'base/checkout.html'
+
+    def get(self, request, *args, **kwargs):
+        plan = request.GET.get('plan')
+        if plan not in ['mensual', 'anual']:
+            messages.error(request, "Plan no válido.")
+            return redirect('premium')
+        return render(request, self.template_name, {
+            'plan': plan,
+            'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY,  
+            'csrf_token': request.COOKIES.get('csrftoken'),  
+        })
+
+    def post(self, request, *args, **kwargs):
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+
+        plan = request.GET.get('plan')
+
+        if plan not in ['mensual', 'anual']:
+            messages.error(request, "Plan no válido.")
+            return redirect('premium')
+
+        prices = {
+            'mensual': {
+                'price_id': settings.STRIPE_PRICE_ID_MONTHLY,
+                'amount': 9.99,
+                'interval': 'month',
+                'duration': 30
+            },
+            'anual': {
+                'price_id': settings.STRIPE_PRICE_ID_YEARLY,
+                'amount': 89.99,
+                'interval': 'year',
+                'duration': 365
+            }
+        }
+
+        try:
+            existing_subscription = SuscripcionUsuario.objects.filter(
+                id_usuario=request.user,
+                es_premium=True,
+                fecha_fin_suscripcion__gte=timezone.now().date()
+            ).first()
+
+            if existing_subscription:
+                messages.warning(request, "Ya tienes una suscripción activa.")
+                return redirect('premium')
+
+            customer = stripe.Customer.list(email=request.user.email, limit=1).data
+
+            if not customer:
+                customer = stripe.Customer.create(
+                    email=request.user.email,
+                    metadata={'user_id': request.user.id}
+                )
+            else:
+                customer = customer[0]
+
+            checkout_session = stripe.checkout.Session.create(
+                customer=customer.id,
+                payment_method_types=['card'],
+                line_items=[{
+                    'price': prices[plan]['price_id'],
+                    'quantity': 1,
+                }],
+                mode='subscription',
+                success_url=request.build_absolute_uri(
+    reverse('success') + '?session_id={CHECKOUT_SESSION_ID}'
+),
+
+                cancel_url=request.build_absolute_uri('/cancel'),
+                metadata={'plan': plan}
+            )
+
+            return JsonResponse({'sessionId': checkout_session.id})
+
+        except Exception as e:
+            return JsonResponse({'error': f"Error al iniciar el pago: {str(e)}"}, status=400)
+
+@method_decorator(login_required, name='dispatch')
+class SuccessView(TemplateView):
+    template_name = 'base/success.html'
+
+    def get(self, request, *args, **kwargs):
+        session_id = request.GET.get('session_id')
+        try:
+            session = stripe.checkout.Session.retrieve(session_id)
+            subscription = stripe.Subscription.retrieve(session.subscription)
+            
+            if subscription.status != 'active':
+                messages.error(self.request, "La suscripción no se pudo activar.")
+                return redirect('premium')
+
+            plan = session.metadata.get('plan')
+            duration = 30 if plan == 'mensual' else 365
+            end_date = datetime.now() + timedelta(days=duration)
+
+            SuscripcionUsuario.objects.update_or_create(
+                id_usuario=self.request.user,
+                defaults={
+                    'tipo_suscripcion': plan,
+                    'es_premium': True,
+                    'fecha_fin_suscripcion': end_date,
+                    'metodo_pago': 'stripe',
+                    'monto_pagado': 9.99 if plan == 'mensual' else 89.99
+                }
+            )
+
+            messages.success(self.request, f"¡Suscripción {plan} activada con éxito!")
+            return self.render_to_response({'plan': plan})
+        except Exception as e:
+            messages.error(self.request, f"Error al procesar el pago: {str(e)}")
+            return redirect('premium')
+
+class CancelView(TemplateView):
+    template_name = 'base/cancel.html'
+
+    def get(self, request, *args, **kwargs):
+        messages.warning(self.request, "El pago fue cancelado.")
+        return self.render_to_response({})
+
