@@ -8,6 +8,7 @@
     <title>SONAURA - Universo Cinematográfico</title>
     {% block cssExtra %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/base/Pagina_principal.css' %}">
+    <script src="{% static 'js/base/base.js' %}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -47,7 +48,7 @@
                         <a href="#" class="nav-notification">
                             <i class="fas fa-bell"></i>
                         </a>
-                        <form method="post" action="{% url 'logout' %}" class="logout-form">
+                        <form method="post" action="{% url 'logout' %}" onsubmit="borrarTokens(event)" class="logout-form">
                             {% csrf_token %}
                             <button type="submit" class="nav-logout">
                                 <i class="fas fa-sign-out-alt"></i>
@@ -156,103 +157,98 @@
             </div>
         </div>
     </footer>
+    <!-- Botón para abrir el modal -->
+    <button class="demo-button" onclick="abrirModal()">
+        Abrir Modal de Aviso
+    </button>
 
+    <!-- Modal mejorado -->
+    <div id="modalAviso" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalContent">
+        <div class="modal-container">
+            <header class="modal-header">
+                <h2 id="modalTitle" class="modal-title">Aviso Importante</h2>
+                <button 
+                    id="cerrarModalAviso" 
+                    class="modal-close" 
+                    aria-label="Cerrar modal"
+                    onclick="cerrarModal()"
+                >
+                    ×
+                </button>
+            </header>
+            <div id="modalContent" class="modal-content">
+                <div id="mensajeModalAviso">
+                    <p>Este es un mensaje de ejemplo para el modal mejorado. Aquí puedes colocar cualquier contenido que necesites mostrar al usuario.</p>
+                    <p>El modal ahora incluye:</p>
+                    <ul>
+                        <li>Mejor accesibilidad con ARIA labels</li>
+                        <li>Animaciones suaves</li>
+                        <li>Diseño responsive</li>
+                        <li>Efectos visuales modernos</li>
+                        <li>Soporte para contenido largo con scroll</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ejemplo adicional -->
+    <div style="margin-top: 20px;">
+        <button class="demo-button" onclick="mostrarAvisoPersonalizado()">
+            Mostrar Aviso Personalizado
+        </button>
+    </div>
     <script>
-        // Simple tab functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            // Tabs functionality
-            const tabs = document.querySelectorAll('.tab');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function () {
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('active'));
-
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-
-                    // Hide all tab content
-                    const tabContents = document.querySelectorAll('.tab-content');
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // Show the corresponding tab content
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId + '-content').classList.add('active');
-                });
-            });
-
-            // Search toggle
-            const searchToggle = document.querySelector('.search-toggle');
-            const searchOverlay = document.querySelector('.search-overlay');
-            const searchClose = document.querySelector('.search-close');
-
-            searchToggle.addEventListener('click', function () {
-                searchOverlay.classList.add('active');
-                document.body.classList.add('search-open');
-                setTimeout(() => {
-                    searchOverlay.querySelector('input').focus();
-                }, 300);
-            });
-
-            searchClose.addEventListener('click', function () {
-                searchOverlay.classList.remove('active');
-                document.body.classList.remove('search-open');
-            });
-
-            // Mobile menu toggle
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const header = document.querySelector('.header');
-
-            mobileToggle.addEventListener('click', function () {
-                header.classList.toggle('menu-open');
-                document.body.classList.toggle('no-scroll');
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', async function () {
-            const access = localStorage.getItem('access_token');
-            if (access) {
-                const response = await fetch('/api/token/verify/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ token: access })
-                });
-                if (!response.ok) {
-                    // Elimina los tokens JWT
-                    localStorage.removeItem('access_token');
-                    localStorage.removeItem('refresh_token');
-                    // Haz logout en Django (si hay sesión)
-                    await fetch('/logout/', {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRFToken': getCookie('csrftoken')
-                        },
-                        credentials: 'same-origin'
-                    });
-                    // Redirige al login si no estás ya en login o registro
-                    if (!window.location.pathname.includes('login') && !window.location.pathname.includes('registro')) {
-                        window.location.href = '/login/';
-                    }
-                }
+        // Función para abrir el modal
+        function abrirModal(mensaje = null) {
+            const modal = document.getElementById('modalAviso');
+            const mensajeElement = document.getElementById('mensajeModalAviso');
+            
+            if (mensaje) {
+                mensajeElement.innerHTML = mensaje;
             }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+            
+            // Focus en el botón de cerrar para accesibilidad
+            setTimeout(() => {
+                document.getElementById('cerrarModalAviso').focus();
+            }, 100);
+        }
 
-            // Función para obtener el CSRF de la cookie
-            function getCookie(name) {
-                let cookieValue = null;
-                if (document.cookie && document.cookie !== '') {
-                    const cookies = document.cookie.split(';');
-                    for (let i = 0; i < cookies.length; i++) {
-                        const cookie = cookies[i].trim();
-                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
+        // Función para cerrar el modal
+        function cerrarModal() {
+            const modal = document.getElementById('modalAviso');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restaurar scroll del body
+        }
+
+        // Cerrar modal al hacer clic en el overlay
+        document.getElementById('modalAviso').addEventListener('click', function(e) {
+            if (e.target === this) {
+                cerrarModal();
             }
         });
+
+        // Cerrar modal con la tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('modalAviso');
+                if (modal.classList.contains('active')) {
+                    cerrarModal();
+                }
+            }
+        });
+
+        // Ejemplo de uso con diferentes mensajes
+        function mostrarAvisoPersonalizado() {
+            const mensaje = `
+                <h3 style="margin-top: 0; color: #fbbf24;">¡Atención!</h3>
+                <p>Este es un mensaje personalizado que se puede cambiar dinámicamente.</p>
+                <p>Puedes incluir <strong>HTML</strong> y <em>formateo</em> en el contenido.</p>
+            `;
+            abrirModal(mensaje);
+        }
     </script>
 </body>
-
 </html>

@@ -124,7 +124,6 @@ class ContenidoGenero(models.Model):
 
     class Meta:
         db_table = 'contenidos_generos'
-        unique_together = ('id_contenido', 'id_genero')
         verbose_name = 'Género de Contenido'
         verbose_name_plural = 'Géneros de Contenido'
 
@@ -210,7 +209,6 @@ class Valoracion(models.Model):
 
     class Meta:
         db_table = 'valoraciones'
-        unique_together = ('id_usuario', 'id_contenido')
         verbose_name = 'Valoración'
         verbose_name_plural = 'Valoraciones'
     
@@ -319,7 +317,6 @@ class NoticiaCategoria(models.Model):
         
     class Meta:
         db_table = 'noticias_categorias'
-        unique_together = ('id_noticias', 'id_categoria')
         verbose_name = 'Categoría de Noticia'
         verbose_name_plural = 'Categorías de Noticia'
 
@@ -377,7 +374,6 @@ class ListaContenido(models.Model):
 
     class Meta:
         db_table = 'lista_personalizadas_contenidos'
-        unique_together = ('id_lista', 'id_contenido')
         verbose_name = 'Contenido de Lista Personalizada'
         verbose_name_plural = 'Contenidos de Listas Personalizadas'
 
