@@ -89,13 +89,14 @@ class NoticiaCategoriaInline(admin.TabularInline):
 # Admin para modelos relacionados con usuarios
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('id_perfil', 'id_usuario', 'nombre_perfil', 'mostrar_avatar', 'fecha_creacion')
-    search_fields = ('nombre_perfil', 'id_usuario__username')
-    list_filter = ('fecha_creacion', 'fecha_edicion')
-    
+    list_display = ('id_perfil','id_usuario','nombre_perfil','nombre_usuario','apellidos','telefono','pais','fecha_nacimiento','mostrar_avatar','fecha_creacion',)
+    search_fields = ('nombre_perfil','nombre_usuario','apellidos','id_usuario__username','telefono','pais',)
+    list_filter = ('pais', 'fecha_creacion', 'fecha_edicion')
+    readonly_fields = ('fecha_creacion', 'fecha_edicion')
+
     def mostrar_avatar(self, obj):
         if obj.imagen_avatar:
-            return format_html('<img src="{}" width="50" height="50" />', obj.imagen_avatar.url)
+            return format_html('<img src="{}" width="50" height="50" style="object-fit: cover; border-radius: 50%;" />', obj.imagen_avatar.url)
         return "Sin avatar"
     mostrar_avatar.short_description = "Avatar"
 
