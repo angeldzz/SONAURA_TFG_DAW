@@ -520,13 +520,17 @@
                     const tokenResponse = await fetch('/api/token/', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username, password })
+                        body: JSON.stringify({ username, password }) // Cambia a { email, password } si tu backend lo requiere
                     });
 
                     if (tokenResponse.ok) {
                         const data = await tokenResponse.json();
                         localStorage.setItem('access_token', data.access);
                         localStorage.setItem('refresh_token', data.refresh);
+                    } else {
+                        const errorData = await tokenResponse.json();
+                        showAlert('Error al obtener el token: ' + (errorData.detail || 'Error desconocido'), 'error');
+                        return;
                     }
 
                     // 4. Redirigir al usuario
