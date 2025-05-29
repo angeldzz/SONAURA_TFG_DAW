@@ -9,6 +9,7 @@
     {% block cssExtra %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/base/Pagina_principal.css' %}">
     <script src="{% static 'js/base/base.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/base/modal.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -157,11 +158,6 @@
             </div>
         </div>
     </footer>
-    <!-- Botón para abrir el modal -->
-    <button class="demo-button" onclick="abrirModal()">
-        Abrir Modal de Aviso
-    </button>
-
     <!-- Modal mejorado -->
     <div id="modalAviso" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalContent">
         <div class="modal-container">
@@ -190,12 +186,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Ejemplo adicional -->
-    <div style="margin-top: 20px;">
-        <button class="demo-button" onclick="mostrarAvisoPersonalizado()">
-            Mostrar Aviso Personalizado
-        </button>
     </div>
     <script>
         // Función para abrir el modal

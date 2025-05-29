@@ -247,7 +247,10 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (!response.ok) {
-                    // Si el error es 500, probablemente es por duplicado
+                    if (response.status === 401) {
+                        mostrarAviso('Debes iniciar sesión para valorar.');
+                        throw new Error('No autorizado');
+                    }
                     return response.json().then(err => {
                         if (response.status === 500) {
                             throw new Error('Ya has valorado este contenido.');
@@ -277,6 +280,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                     .then(response => {
                         if (!response.ok) {
+                            if (response.status === 401) {
+                                mostrarAviso('Debes iniciar sesión para comentar.');
+                                throw new Error('No autorizado');
+                            }
                             throw new Error('Error al enviar el comentario');
                         }
                         return response.json();
@@ -431,21 +438,40 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalAviso = document.getElementById('modalAviso');
         const mensajeModalAviso = document.getElementById('mensajeModalAviso');
         if (mensajeModalAviso) mensajeModalAviso.innerHTML = mensaje;
-        if (modalAviso) modalAviso.style.display = 'flex';
+        if (modalAviso) {
+            modalAviso.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                const cerrarBtn = document.getElementById('cerrarModalAviso');
+                if (cerrarBtn) cerrarBtn.focus();
+            }, 100);
+        }
     }
     // Cerrar modal
     const modalAviso = document.getElementById('modalAviso');
     const cerrarModalAviso = document.getElementById('cerrarModalAviso');
     if (cerrarModalAviso && modalAviso) {
         cerrarModalAviso.addEventListener('click', function() {
-            modalAviso.style.display = 'none';
+            modalAviso.classList.remove('active');
+            document.body.style.overflow = '';
         });
         window.addEventListener('click', function(event) {
             if (event.target === modalAviso) {
-                modalAviso.style.display = 'none';
+                modalAviso.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     }
+    // Cerrar modal con Esc
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('modalAviso');
+            if (modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
     // Ejemplo de uso de mostrarAviso
     // mostrarAviso('Este es un mensaje de aviso de ejemplo.');
 });

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pago Exitoso</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>¡Suscripción Exitosa!</h1>
+        <p>Tu suscripción {{ plan }} ha sido activada con éxito.</p>
+        <a href="{% url 'premium' %}" class="btn">Volver a Planes</a>
+    </div>
+</body>
+</html>

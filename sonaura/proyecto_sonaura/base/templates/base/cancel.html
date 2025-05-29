@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pago Cancelado</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base/cancel.css' %}">
+</head>
+<body>
+ <!-- Fondo cósmico animado -->
+    <div class="cosmos-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
+    </div>
+
+    <!-- Círculos animados -->
+    <div class="animated-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="cancel-container">
+        <!-- Icono de cancelación -->
+        <div class="cancel-icon">
+            <i class="fas fa-times"></i>
+        </div>
+
+        <!-- Título -->
+        <h1 class="cancel-title">Pago Cancelado</h1>
+
+        <!-- Mensaje -->
+        <p class="cancel-message">
+            La transacción ha sido cancelada. No te preocupes, no se ha realizado ningún cargo a tu cuenta.
+        </p>
+
+        <!-- Botones de acción -->
+        <div class="cancel-actions">
+            <a href="{% url 'premium' %}" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver a Planes</span>
+            </a>
+            <a href="/" class="btn btn-secondary">
+                <i class="fas fa-home"></i>
+                <span>Ir al Inicio</span>
+            </a>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="cancel-info">
+            <h3><i class="fas fa-info-circle"></i> ¿Necesitas ayuda?</h3>
+            <p>
+                Si tienes alguna duda sobre nuestros planes Premium o necesitas asistencia, 
+                no dudes en contactar con nuestro equipo de soporte. Estamos aquí para ayudarte.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto parallax para los círculos animados
+            document.addEventListener('mousemove', function(e) {
+                const circles = document.querySelectorAll('.circle');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+
+                circles.forEach((circle, index) => {
+                    const speed = (index + 1) * 15;
+                    circle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            });
+
+            // Animación de entrada
+            const container = document.querySelector('.cancel-container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 0.8s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

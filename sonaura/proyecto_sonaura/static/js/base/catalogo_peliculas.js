@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         </div>
                                         <div class="card-rating">
                                             <div class="rating-circle">
-                                                <span>${peli.puntuacion ? peli.puntuacion.toFixed(1) : '-'}</span>
+                                                <span>${peli.puntuacion * 2 ? peli.puntuacion.toFixed(1) * 2 : '-'}</span>
                                             </div>
                                         </div>
                                         <div class="card-badge">${peli.generos && peli.generos.length > 0 ? (peli.generos[0].nombre || peli.generos[0].name || '') : ''}</div>

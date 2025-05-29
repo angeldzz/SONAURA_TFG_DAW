@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Procesando Pago</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div id="error-message"></div>
+    <script>
+        const stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+        const plan = new URLSearchParams(window.location.search).get('plan');
+        
+        fetch('/checkout/?plan=' + plan, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                document.getElementById('error-message').textContent = data.error;
+                return;
+            }
+            return stripe.redirectToCheckout({ sessionId: data.sessionId });
+        })
+        .then(result => {
+            if (result.error) {
+                document.getElementById('error-message').textContent = result.error.message;
+            }
+        })
+        .catch(error => {
+            document.getElementById('error-message').textContent = 'Error al procesar el pago';
+        });
+    </script>
+</body>
+</html>
