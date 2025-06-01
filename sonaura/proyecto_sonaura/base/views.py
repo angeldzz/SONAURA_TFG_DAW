@@ -171,24 +171,23 @@ class PerfilView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect(reverse('login'))
+            return redirect('login')
         perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
-
-        perfil.nombre_perfil = request.POST.get('nombre_perfil', perfil.nombre_perfil)
-        perfil.nombre_usuario = request.POST.get('nombre_usuario', perfil.nombre_usuario)
-        perfil.apellidos = request.POST.get('apellidos', perfil.apellidos)
-        perfil.telefono = request.POST.get('telefono', perfil.telefono)
-        perfil.biografia = request.POST.get('biografia', perfil.biografia)
-        perfil.fecha_nacimiento = request.POST.get('fecha_nacimiento', perfil.fecha_nacimiento)
-        perfil.pais = request.POST.get('pais', perfil.pais)
-
+        perfil.nombre_perfil = request.POST.get('nombre_perfil')
+        perfil.apellidos = request.POST.get('apellidos')
+        perfil.nombre_usuario = request.POST.get('nombre_usuario')
+        perfil.telefono = request.POST.get('telefono')
+        perfil.biografia = request.POST.get('biografia')
+        perfil.fecha_nacimiento = request.POST.get('fecha_nacimiento')
+        perfil.pais = request.POST.get('pais')
+        avatar_url = request.POST.get('avatar_url')
+        if avatar_url:
+            perfil.avatar_url = avatar_url
         if 'imagen_avatar' in request.FILES:
             perfil.imagen_avatar = request.FILES['imagen_avatar']
-            perfil.alt_imagen_avatar = request.POST.get('alt_imagen_avatar', perfil.alt_imagen_avatar)
-
         perfil.save()
-        messages.success(request, "Perfil actualizado exitosamente.")
-        return redirect(reverse('perfil'))
+        messages.success(request, "Perfil actualizado correctamente.")
+        return redirect('perfil')
     
     
 
