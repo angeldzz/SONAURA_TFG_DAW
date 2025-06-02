@@ -1,21 +1,27 @@
 ---Footer funcional
--links funcionales
+-links funcionales LEGAL
 -Crear redes de paginas (facebook, x, instagram, youtube )
 
 ---Pagina principal
-
-- Top 5 mejor valoradas dinamico
 - Noticias Dinamico
 - Newsletter Funcional
 
 ---Pagina Peliculas
 - Filtro valoracion
 - Ordenar por ...
-- Top 10 mejor valoradas
 - Funcionalidad guardar pelicula (premium)
 
 ---Pagina Series
 - Filtro valoracion
 - Ordenar por ...
-- Top 10 mejor valoradas
 - Funcionalidad guardar pelicula (premium)
+
+---Pagina Noticias
+- Noticias dinamico, crear noticias por categorias
+- Probablemente se tengan que eliminar las tablas categorias
+
+
+---Pagina Premium 
+- Pago funcional (generar usuario premium cuando el pago se realiza)
+- Enviar correo de pago realizado y que ya es premium
+- Revisar elementos estaticos que todo este correcto y logico

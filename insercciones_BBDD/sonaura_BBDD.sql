@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2025 a las 11:46:11
+-- Tiempo de generación: 02-06-2025 a las 13:31:57
 -- Versión del servidor: 11.6.2-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -450,7 +450,8 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$1000000$XxCxp0N3ts6cXJuCZUgjJ1$QhAZ3ZCYRY2OIR2PWl0+HjLD2aQfPayR2VDiboGrHYk=', NULL, 1, 'sonaura', '', '', '', 1, 1, '2025-06-02 09:43:33.497772');
+(1, 'pbkdf2_sha256$1000000$XxCxp0N3ts6cXJuCZUgjJ1$QhAZ3ZCYRY2OIR2PWl0+HjLD2aQfPayR2VDiboGrHYk=', '2025-06-02 11:04:53.869795', 1, 'sonaura', '', '', '', 1, 1, '2025-06-02 09:43:33.497772'),
+(2, 'pbkdf2_sha256$1000000$fH5MofVdidLwPuHAtiF47R$/k+Hs8NJOOUDUzV5/0hHX1XLzSmKsP9TESpN3p+edZs=', '2025-06-02 10:47:29.295164', 0, 'angel', 'Angel', 'Moreno Dominguez', 'pintodiazangel@gmail.com', 0, 1, '2025-06-02 10:47:27.953881');
 
 -- --------------------------------------------------------
 
@@ -479,18 +480,6 @@ CREATE TABLE `auth_user_user_permissions` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias_noticia`
---
-
-CREATE TABLE `categorias_noticia` (
-  `id_categoria` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `creador_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `comentarios`
 --
 
@@ -506,6 +495,15 @@ CREATE TABLE `comentarios` (
   `id_usuario_id` int(11) DEFAULT NULL,
   `id_contenido_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `comentario`, `fecha_comentario`, `likes`, `dislikes`, `fecha_edicion`, `fecha_creacion`, `id_comentario_padre_id`, `id_usuario_id`, `id_contenido_id`) VALUES
+(1, 'top', '2025-06-02 10:47:38.824735', 0, 0, '2025-06-02 10:47:38.824883', '2025-06-02 10:47:38.824891', NULL, 2, 14),
+(2, 'awdawd', '2025-06-02 10:48:01.838525', 0, 0, '2025-06-02 10:48:01.838640', '2025-06-02 10:48:01.838647', 1, 2, 14),
+(3, 'este muy chula', '2025-06-02 11:05:12.237723', 0, 0, '2025-06-02 11:05:12.237864', '2025-06-02 11:05:12.237870', NULL, 1, 49);
 
 -- --------------------------------------------------------
 
@@ -553,7 +551,7 @@ INSERT INTO `contenidos` (`id_contenido`, `titulo`, `pelicula_serie`, `eslogan`,
 (11, 'Dune: Parte 2', 'pelicula', 'Entra en el desierto', 'Paul Atreides abraza su destino entre los Fremen de Arrakis, mientras la galaxia se tambalea bajo conspiraciones y guerras por el control de la especia. Aliado con Chani, lidera una rebelión contra las fuerzas opresoras. Esta épica continuación combina intriga política, misticismo y batallas colosales en un desierto donde el poder y la profecía chocan con consecuencias universales.', 2024, 166, 'Denis Villeneuve', 'Denis Villeneuve, Jon Spaihts', 'PG-13', 'posters/DuneParte2.jpg', 'Dune: Parte 2', NULL, NULL, 4.3, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (12, 'Oppenheimer', 'pelicula', 'El hombre detrás de la bomba', 'J. Robert Oppenheimer, un brillante físico, lidera el Proyecto Manhattan para crear la primera bomba atómica durante la Segunda Guerra Mundial. Su genialidad choca con dilemas éticos y políticos mientras el arma redefine el destino de la humanidad. Este drama histórico explora el peso de la ambición, el sacrificio y las consecuencias de un descubrimiento que cambió el mundo para siempre.', 2023, 180, 'Christopher Nolan', 'Christopher Nolan', 'PG-13', 'posters/Oppenheimer.jpg', 'Oppenheimer', NULL, NULL, 4.2, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (13, 'Pobres Criaturas', 'pelicula', 'Una vida extraordinaria', 'Bella Baxter, resucitada por un excéntrico científico, despierta a un mundo de maravillas y excesos. Su insaciable curiosidad la lleva a un viaje de autodescubrimiento, desafiando normas sociales y explorando el amor, la libertad y la identidad. Esta fábula surrealista, cargada de humor negro y audacia visual, reimagina el poder de la voluntad humana en un mundo extraño y fascinante.', 2023, 141, 'Yorgos Lanthimos', 'Tony McNamara', 'R', 'posters/PoorThings.jpg', 'Pobres Criaturas', NULL, NULL, 4, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
-(14, 'Civil War', 'pelicula', 'El país dividido', 'En un Estados Unidos fracturado por una guerra civil moderna, un grupo de periodistas recorre un país devastado para documentar la verdad. Entre ciudades destruidas y facciones enfrentadas, enfrentan peligros mortales mientras intentan llegar a Washington D.C. Este thriller distópico explora la fragilidad de la democracia y el costo humano de un conflicto que divide a una nación.', 2024, 109, 'Alex Garland', 'Alex Garland', 'R', 'posters/CivilWar.jpg', 'Civil War', NULL, NULL, 3.8, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
+(14, 'Civil War', 'pelicula', 'El país dividido', 'En un Estados Unidos fracturado por una guerra civil moderna, un grupo de periodistas recorre un país devastado para documentar la verdad. Entre ciudades destruidas y facciones enfrentadas, enfrentan peligros mortales mientras intentan llegar a Washington D.C. Este thriller distópico explora la fragilidad de la democracia y el costo humano de un conflicto que divide a una nación.', 2024, 109, 'Alex Garland', 'Alex Garland', 'R', 'posters/CivilWar.jpg', 'Civil War', '', NULL, 5, 0, '2025-06-02 10:47:38.815819', '2025-06-02 11:44:07.000000', 1),
 (15, 'Rivales', 'pelicula', 'Competencia sin límites', 'Tashi, una ex-promesa del tenis convertida en entrenadora, guía a su esposo hacia la grandeza en la cancha, pero su pasado se reaviva cuando enfrentan a un antiguo amigo y rival. En un torbellino de pasión, ambición y secretos, este triángulo amoroso en el mundo del tenis profesional desafía lealtades y desata emociones intensas en cada punto del juego.', 2024, 131, 'Luca Guadagnino', 'Justin Kuritzkes', 'R', 'posters/Rivales.jpg', 'Rivales', NULL, NULL, 3.7, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (16, 'El Planeta de los Simios: Nuevo Reino', 'pelicula', 'Un nuevo comienzo', 'Siglos después del reinado de César, una nueva generación de simios construye una civilización avanzada. Noa, un joven líder, se enfrenta a un tirano que amenaza el futuro de su especie. Aliado con una humana misteriosa, emprende una aventura que revela secretos del pasado y redefine la convivencia entre simios y humanos en un mundo al borde del cambio.', 2024, 145, 'Wes Ball', 'Josh Friedman', 'PG-13', 'posters/PlanetaDeLosSimios.jpeg', 'El Planeta de los Simios: Nuevo Reino', NULL, NULL, 3.5, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (17, 'Furiosa: De la Saga Mad Max', 'pelicula', 'El origen de Furiosa', 'En un páramo postapocalíptico, la joven Furiosa es arrancada de su hogar y cae en manos de un señor de la guerra. Su lucha por sobrevivir y regresar a casa forja su leyenda como guerrera implacable. Esta precuela de Mad Max: Fury Road ofrece acción vertiginosa, paisajes desoladores y una historia de venganza y redención que define a una heroína inolvidable.', 2024, 150, 'George Miller', 'George Miller, Nico Lathouris', 'R', 'posters/Furiosa.jpg', 'Furiosa: De la Saga Mad Max', NULL, NULL, 3.8, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
@@ -588,7 +586,7 @@ INSERT INTO `contenidos` (`id_contenido`, `titulo`, `pelicula_serie`, `eslogan`,
 (46, 'Regreso al Futuro', 'pelicula', 'Nunca llegaba a tiempo a clase', 'Marty McFly, un adolescente, viaja accidentalmente a 1955 en un DeLorean modificado por el excéntrico Doc Brown. Para regresar a 1985, debe asegurar que sus padres se enamoren mientras evita alterar el futuro. Esta aventura de ciencia ficción combina humor, acción y nostalgia, explorando el destino, la familia y las consecuencias de jugar con el tiempo en un viaje inolvidable.', 1985, 116, 'Robert Zemeckis', 'Robert Zemeckis, Bob Gale', 'PG', 'posters/regreso al futuro.jpg', 'Volver al Futuro', NULL, NULL, 4.2, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (47, 'El Silencio de los Corderos', 'pelicula', 'El mal tiene muchas caras', 'Clarice Starling, una joven agente del FBI, busca la ayuda del brillante pero aterrador Hannibal Lecter para capturar a un asesino en serie conocido como Buffalo Bill. En un juego psicológico de astucia y manipulación, Clarice enfrenta sus miedos mientras desentraña un caso macabro. Este thriller icónico combina suspenso, horror y personajes inolvidables en una cacería implacable.', 1991, 118, 'Jonathan Demme', 'Ted Tally', 'R', 'posters/El_silencio_de_los_corderos.jpg', 'El Silencio de los Corderos', NULL, NULL, 4.3, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (48, 'Jurassic Park', 'pelicula', 'La vida se abre camino', 'Un excéntrico millonario crea un parque temático con dinosaurios clonados en una isla remota. Cuando un fallo de seguridad desata el caos, un grupo de visitantes, incluidos un paleontólogo y dos niños, lucha por sobrevivir entre criaturas prehistóricas. Este clásico de ciencia ficción combina maravilla, tensión y efectos visuales revolucionarios, explorando la arrogancia humana frente al poder de la naturaleza.', 1993, 127, 'Steven Spielberg', 'Michael Crichton, David Koepp', 'PG-13', 'posters/Jurassic Park.jpg', 'Parque Jurásico', NULL, NULL, 4.2, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
-(49, 'La Lista de Schindler', 'pelicula', 'El valor de una vida', 'Oskar Schindler, un empresario alemán, transforma su ambición en una misión para salvar a más de mil judíos durante el Holocausto, arriesgando todo en un acto de humanidad. Este drama histórico, basado en hechos reales, retrata el horror del genocidio y el poder de la compasión, dejando una profunda reflexión sobre el sacrificio y la esperanza en tiempos de oscuridad.', 1993, 195, 'Steven Spielberg', 'Steven Zaillian', 'R', 'posters/La_lista_de_Schindler.jpg', 'La Lista de Schindler', NULL, NULL, 4.6, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
+(49, 'La Lista de Schindler', 'pelicula', 'El valor de una vida', 'Oskar Schindler, un empresario alemán, transforma su ambición en una misión para salvar a más de mil judíos durante el Holocausto, arriesgando todo en un acto de humanidad. Este drama histórico, basado en hechos reales, retrata el horror del genocidio y el poder de la compasión, dejando una profunda reflexión sobre el sacrificio y la esperanza en tiempos de oscuridad.', 1993, 195, 'Steven Spielberg', 'Steven Zaillian', 'R', 'posters/La_lista_de_Schindler.jpg', 'La Lista de Schindler', '', NULL, 4, 0, '2025-06-02 11:05:12.228602', '2025-06-02 11:44:07.000000', 1),
 (50, 'El Indomable Will Hunting', 'pelicula', 'El genio está en todas partes', 'Will Hunting, un joven conserje con un intelecto prodigioso para las matemáticas, oculta su talento tras un pasado turbulento. Cuando un profesor lo descubre, un terapeuta poco convencional lo ayuda a enfrentar sus demonios emocionales. Este drama conmovedor explora la genialidad, la vulnerabilidad y la búsqueda de propósito, destacando el poder transformador de la conexión humana y el autodescubrimiento.', 1997, 126, 'Gus Van Sant', 'Matt Damon, Ben Affleck', 'R', 'posters/El Indomable Will Hunting (1997).jpg', 'El Indomable Will Hunting', NULL, NULL, 4.1, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (51, 'Infiltrados', 'pelicula', '¿Quién es el topo?', 'En Boston, un policía encubierto, Billy Costigan, se infiltra en la mafia irlandesa, mientras un criminal, Colin Sullivan, se convierte en topo dentro de la policía. Sus caminos se cruzan en un juego mortal de engaño y traición. Este thriller intenso de Martin Scorsese combina suspenso, intriga y actuaciones magistrales, explorando la lealtad y el costo de vivir una doble vida.', 2006, 151, 'Martin Scorsese', 'William Monahan', 'R', 'posters/infiltrados.jpg', 'Infiltrados', NULL, NULL, 4.2, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
 (52, 'Avatar 2', 'pelicula', 'El camino del agua', 'Jake Sully y Neytiri, ahora padres, enfrentan nuevas amenazas en Pandora mientras protegen a su familia. Explorando océanos y culturas desconocidas, se unen a los clanes Na’vi para combatir una invasión humana renovada. Esta secuela épica combina espectaculares paisajes acuáticos, acción y una emotiva historia sobre la familia, la resistencia y la conexión con la naturaleza.', 2022, 192, 'James Cameron', 'James Cameron', 'PG-13', 'posters/Avatar2.jpg', 'Avatar 2', NULL, NULL, 3.8, 0, '2025-06-02 11:44:07.000000', '2025-06-02 11:44:07.000000', 1),
@@ -1119,7 +1117,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (17, 'auth', '0012_alter_user_first_name_max_length', '2025-06-02 09:43:03.548919'),
 (18, 'base', '0001_initial', '2025-06-02 09:43:06.338612'),
 (19, 'base', '0002_alter_contenidogenero_unique_together_and_more', '2025-06-02 09:43:07.912151'),
-(20, 'sessions', '0001_initial', '2025-06-02 09:43:08.104417');
+(20, 'sessions', '0001_initial', '2025-06-02 09:43:08.104417'),
+(21, 'base', '0003_remove_noticiacategoria_id_categoria_and_more', '2025-06-02 11:31:31.597143');
 
 -- --------------------------------------------------------
 
@@ -1132,6 +1131,13 @@ CREATE TABLE `django_session` (
   `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('b4z4u5w4d86xqmfydtff3ul1m8bgbw57', '.eJxVjDsOwjAQBe_iGlmJf7Ep6XMGa727wQHkSHFSIe6OI6WAdmbee4sI-5bjXnmNM4mr6MXllyXAJ5dD0APKfZG4lG2dkzwSedoqx4X4dTvbv4MMNbe1852zYDBN2phBBQCX0HlQTBQ0Y7BWcWhYtQJMj3oiGrwxATvvSYvPF-3EOEE:1uM2yL:NFoQAlgl5wn6iD2Kmw5LvU_Gue4Kq6O0JW-WbVQCpIw', '2025-06-16 11:04:53.873424');
 
 -- --------------------------------------------------------
 
@@ -1269,18 +1275,6 @@ CREATE TABLE `noticias` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `noticias_categorias`
---
-
-CREATE TABLE `noticias_categorias` (
-  `id` bigint(20) NOT NULL,
-  `id_categoria_id` int(11) DEFAULT NULL,
-  `id_noticias_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `notificaciones`
 --
 
@@ -1315,6 +1309,14 @@ CREATE TABLE `perfiles` (
   `pais` varchar(100) DEFAULT NULL,
   `telefono` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `perfiles`
+--
+
+INSERT INTO `perfiles` (`id_perfil`, `nombre_perfil`, `imagen_avatar`, `alt_imagen_avatar`, `fecha_edicion`, `fecha_creacion`, `id_usuario_id`, `apellidos`, `biografia`, `fecha_nacimiento`, `nombre_usuario`, `pais`, `telefono`) VALUES
+(1, 'Sonaura_Perfil', 'avatares/ddd.ico.png', NULL, '2025-06-02 10:48:54.362154', '2025-06-02 10:48:05.199784', 2, 'Awdawdaw', 'awdawdawdawdawd', '2005-06-17', 'awdawdawd', 'awdawdawd', '12412412412'),
+(2, '', '', NULL, '2025-06-02 11:11:19.282803', '2025-06-02 11:11:19.282817', 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1937,6 +1939,14 @@ CREATE TABLE `valoraciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
+-- Volcado de datos para la tabla `valoraciones`
+--
+
+INSERT INTO `valoraciones` (`id_valoracion`, `puntuacion`, `texto_valoracion`, `fecha_edicion`, `fecha_creacion`, `id_contenido_id`, `id_usuario_id`) VALUES
+(1, 5, 'top', '2025-06-02 10:47:38.810251', '2025-06-02 10:47:38.810268', 14, 2),
+(2, 4, 'este muy chula', '2025-06-02 11:05:12.223919', '2025-06-02 11:05:12.223936', 49, 1);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -1991,14 +2001,6 @@ ALTER TABLE `auth_user_user_permissions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq` (`user_id`,`permission_id`),
   ADD KEY `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` (`permission_id`);
-
---
--- Indices de la tabla `categorias_noticia`
---
-ALTER TABLE `categorias_noticia`
-  ADD PRIMARY KEY (`id_categoria`),
-  ADD UNIQUE KEY `nombre` (`nombre`),
-  ADD KEY `categorias_noticia_creador_id_a6977b8b_fk_auth_user_id` (`creador_id`);
 
 --
 -- Indices de la tabla `comentarios`
@@ -2111,14 +2113,6 @@ ALTER TABLE `noticias`
   ADD KEY `noticias_creador_id_1372e177_fk_auth_user_id` (`creador_id`);
 
 --
--- Indices de la tabla `noticias_categorias`
---
-ALTER TABLE `noticias_categorias`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `noticias_categorias_id_categoria_id_2eb0a00b_fk_categoria` (`id_categoria_id`),
-  ADD KEY `noticias_categorias_id_noticias_id_ef2a0920` (`id_noticias_id`);
-
---
 -- Indices de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
@@ -2196,7 +2190,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT de la tabla `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `auth_user_groups`
@@ -2211,16 +2205,10 @@ ALTER TABLE `auth_user_user_permissions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `categorias_noticia`
---
-ALTER TABLE `categorias_noticia`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `contenidos`
@@ -2250,7 +2238,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `entrevistas`
@@ -2295,12 +2283,6 @@ ALTER TABLE `noticias`
   MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `noticias_categorias`
---
-ALTER TABLE `noticias_categorias`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `notificaciones`
 --
 ALTER TABLE `notificaciones`
@@ -2310,7 +2292,7 @@ ALTER TABLE `notificaciones`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas_streaming`
@@ -2334,7 +2316,7 @@ ALTER TABLE `suscripciones_usuario`
 -- AUTO_INCREMENT de la tabla `valoraciones`
 --
 ALTER TABLE `valoraciones`
-  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -2372,12 +2354,6 @@ ALTER TABLE `auth_user_groups`
 ALTER TABLE `auth_user_user_permissions`
   ADD CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
   ADD CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-
---
--- Filtros para la tabla `categorias_noticia`
---
-ALTER TABLE `categorias_noticia`
-  ADD CONSTRAINT `categorias_noticia_creador_id_a6977b8b_fk_auth_user_id` FOREIGN KEY (`creador_id`) REFERENCES `auth_user` (`id`);
 
 --
 -- Filtros para la tabla `comentarios`
@@ -2452,13 +2428,6 @@ ALTER TABLE `newsletter`
 --
 ALTER TABLE `noticias`
   ADD CONSTRAINT `noticias_creador_id_1372e177_fk_auth_user_id` FOREIGN KEY (`creador_id`) REFERENCES `auth_user` (`id`);
-
---
--- Filtros para la tabla `noticias_categorias`
---
-ALTER TABLE `noticias_categorias`
-  ADD CONSTRAINT `noticias_categorias_id_categoria_id_2eb0a00b_fk_categoria` FOREIGN KEY (`id_categoria_id`) REFERENCES `categorias_noticia` (`id_categoria`),
-  ADD CONSTRAINT `noticias_categorias_id_noticias_id_ef2a0920_fk_noticias_` FOREIGN KEY (`id_noticias_id`) REFERENCES `noticias` (`id_noticia`);
 
 --
 -- Filtros para la tabla `notificaciones`
