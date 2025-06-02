@@ -1,0 +1,119 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Tabs functionality
+    const tabs = document.querySelectorAll('.tab');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Show the corresponding tab content
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId + '-content').classList.add('active');
+        });
+    });
+
+    // Function to fetch and display Top 5 content
+    function fetchTop5(pelicula_serie, containerId) {
+        fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}`)
+            .then(response => {
+                if (!response.ok) throw new Error(`Error al obtener ${pelicula_serie}`);
+                return response.json();
+            })
+            .then(data => {
+                const items = data.results || data;
+                // Sort by rating and take top 5
+                const top5 = items
+                    .sort((a, b) => b.puntuacion - a.puntuacion)
+                    .slice(0, 5);
+                console.log(items);
+                const container = document.getElementById(containerId);
+                container.innerHTML = '<div class="media-grid"></div>'; // Initialize with media-grid
+
+                const mediaGrid = container.querySelector('.media-grid');
+                top5.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'media-card neon-card';
+                    card.innerHTML = `
+                        <div class="card-image">
+                            <img src="${item.imagen_poster}" alt="${item.alt_imagen_poster || item.titulo}">
+                            <div class="card-overlay-inicio">
+                                <div class="card-actions-inicio">
+                                    <button class="card-action-btn-inicio" onclick="location.href='/detalles/${item.id_contenido}/'">
+                                        <a><i class="fas fa-info-circle"></i></a>
+                                    </button>
+                                    <button class="card-action-btn-inicio" onclick="location.href='/premium'">
+                                        <i class="fas fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-rating-inicio">
+                                <div class="rating-circle">
+                                    <span>${item.puntuacion ? (item.puntuacion * 2).toFixed(1) : '-'}</span>
+                                </div>
+                            </div>
+                            <div class="card-badge-inicio">${item.generos && item.generos.length > 0 ? (item.generos[0].nombre || item.generos[0].name || '') : ''}</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>${item.titulo}</h3>
+                            <div class="card-meta">
+                                <span>${item.año_estreno || ''}</span>
+                                <span>${pelicula_serie === 'pelicula' ? (item.duracion ? item.duracion + ' min' : '') : (item.temporadas ? item.temporadas + ' Temporada' + (item.temporadas > 1 ? 's' : '') : '')}</span>
+                            </div>
+                        </div>
+                    `;
+                    mediaGrid.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error(`Error al cargar el Top 5 de ${pelicula_serie}:`, error);
+            });
+    }
+
+    // Function to fetch and display Top 3 series in hero-visual
+    function fetchTop3Series() {
+        fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=serie`)
+            .then(response => {
+                if (!response.ok) throw new Error('Error al obtener series');
+                return response.json();
+            })
+            .then(data => {
+                const items = data.results || data;
+                // Sort by rating and take top 3
+                const top3 = items
+                    .sort((a, b) => b.puntuacion - a.puntuacion)
+                    .slice(0, 3);
+
+                const floatingCards = document.querySelector('.floating-cards');
+                floatingCards.innerHTML = ''; // Clear previous content
+
+                // Define animation delays
+                const delays = ['0s', '0.2s', '0.4s'];
+                top3.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'card-float';
+                    card.style = `--delay: ${delays[index]}`;
+                    card.innerHTML = `
+                        <img src="${item.imagen_poster}" alt="${item.alt_imagen_poster || item.titulo}">
+                    `;
+                    floatingCards.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar el Top 3 de series:', error);
+            });
+    }
+
+    // Fetch Top 5 movies and series
+    fetchTop5('pelicula', 'peliculas-content');
+    fetchTop5('serie', 'series-content');
+    // Fetch Top 3 series for hero-visual
+    fetchTop3Series();
+});
