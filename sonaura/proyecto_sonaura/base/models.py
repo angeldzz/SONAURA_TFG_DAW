@@ -298,7 +298,7 @@ class Noticia(models.Model):
     imagen_principal = models.ImageField(upload_to='noticias/', null=True, blank=True, verbose_name='Imagen principal')
     alt_imagen_principal = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo de la imagen principal')
     vistas = models.IntegerField(default=0, verbose_name='Vistas')
-    tiempo_lectura = models.DurationField(verbose_name='Tiempo de lectura')
+    tiempo_lectura = models.IntegerField(verbose_name='Tiempo de lectura')
     es_exclusiva = models.BooleanField(default=False, verbose_name='¿Es exclusiva?')
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
     fecha_publicacion = models.DateTimeField(default=timezone.now, verbose_name='Fecha de publicación')
