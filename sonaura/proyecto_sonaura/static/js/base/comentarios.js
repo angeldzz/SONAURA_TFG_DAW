@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 const valoraciones = data.results || data;
                 if (valoraciones.length === 0) {
-                    document.querySelector('#valoraciones .ratings-summary').innerHTML = '<p>No hay valoraciones disponibles.</p>';
+                    document.querySelector('#valoraciones .ratings-summary').innerHTML = '<p>Valoraciones actualmente basadas en datos de internet.</p>';
                     return;
                 }
 
