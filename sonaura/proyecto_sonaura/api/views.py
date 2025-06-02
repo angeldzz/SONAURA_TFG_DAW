@@ -6,13 +6,13 @@ from rest_framework.response import Response
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
     Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
-    CategoriaNoticia, Noticia, NoticiaCategoria, Entrevista, ListaPersonalizada, ListaContenido
+    Noticia,  Entrevista, ListaPersonalizada, ListaContenido
 )
 from .serializers import (
     PerfilSerializer, SuscripcionUsuarioSerializer, PlataformaStreamingSerializer, GeneroSerializer,
     ContenidoSerializer, ContenidoGeneroSerializer, RepartoSerializer, ActorSerializer, GaleriaSerializer,
     ValoracionSerializer, ComentarioSerializer, NotificacionSerializer, NewsletterSerializer,
-    CategoriaNoticiaSerializer, NoticiaSerializer, NoticiaCategoriaSerializer, EntrevistaSerializer,
+    NoticiaSerializer,  EntrevistaSerializer,
     ListaPersonalizadaSerializer, ListaContenidoSerializer
 )
 from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly
@@ -216,22 +216,6 @@ class NotificacionViewSet(viewsets.ModelViewSet):
 class NewsletterViewSet(viewsets.ModelViewSet):
     queryset = Newsletter.objects.all()
     serializer_class = NewsletterSerializer
-    permission_classes = [AllowAny, IsStaffOrReadOnly]
-    
-    def perform_create(self, serializer):
-        serializer.save(creador=self.request.user)
-
-class CategoriaNoticiaViewSet(viewsets.ModelViewSet):
-    queryset = CategoriaNoticia.objects.all()
-    serializer_class = CategoriaNoticiaSerializer
-    permission_classes = [AllowAny, IsStaffOrReadOnly]
-    
-    def perform_create(self, serializer):
-        serializer.save(creador=self.request.user)
-
-class NoticiaCategoriaViewSet(viewsets.ModelViewSet):
-    queryset = NoticiaCategoria.objects.all()
-    serializer_class = NoticiaCategoriaSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
     
     def perform_create(self, serializer):
