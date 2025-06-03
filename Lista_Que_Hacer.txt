@@ -1,5 +1,12 @@
+---Generales
+- Arreglar todos los detalles de responsive( sobre todo en movil para el despligue )
+- Descargar fotos de detalle para todos los contenidos ( como se hizo con portadas )
+- Meter mas noticias 
+- Borrar toda la tabla de entrevistas y arreglar el esquema de la BBDD (se han eliminado las tablas de categoria noticias y la de entrevista hay que eliminarla)
+- Agregar Funcionalidad de Lista de contenidos una vez que es premium
+
 ---Footer funcional
--links funcionales LEGAL
+-links funcionales LEGAL ( crear templates )
 -Crear redes de paginas (facebook, x, instagram, youtube )
 
 ---Pagina principal
