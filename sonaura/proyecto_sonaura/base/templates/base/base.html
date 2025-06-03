@@ -44,7 +44,11 @@
                     {% if user.is_authenticated %}
                     <div class="user-nav-menu">
                         <a href="{% url 'perfil' %}" class="user-profile-link">
-                            <i class="fas fa-user-circle"></i>
+                            {% if user.perfil.imagen_avatar %}
+                                <img src="{{ user.perfil.imagen_avatar.url }}" alt="Avatar" class="header-avatar" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                            {% else %}
+                                <i class="fas fa-user-circle"></i>
+                            {% endif %}
                             <span>{{ user.username }}</span>
                         </a>
                         <a href="#" class="nav-notification">
