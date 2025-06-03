@@ -1,4 +1,4 @@
-    // Definir la variable global pelicula_serie
+// Definir la variable global pelicula_serie
     let pelicula_serie = document.getElementById("pelicula-serie").value;
 
     // Inicializar partículas cósmicas
@@ -11,9 +11,16 @@
     Top_10();
     
     // Cargar películas
-    cargarPeliculas_Series(filtro_anio(), filtro_genero());
-    document.getElementById("yearFilter").addEventListener("change", () => cargarPeliculas_Series(filtro_anio(), filtro_genero()));
-    document.getElementById("genero-filter").addEventListener("change", () => cargarPeliculas_Series(filtro_anio(), filtro_genero()));
+    cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden());
+    document.getElementById("yearFilter").addEventListener("change", () => 
+        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden())
+    );
+    document.getElementById("genero-filter").addEventListener("change", () => 
+        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden())
+    );
+    document.getElementById("sort-filter").addEventListener("change", () => 
+        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden())
+    );
 
 
 function initParticles() {
@@ -102,9 +109,9 @@ function filtro_anio() {
     if (input_anio === "all") {
         filtro = "";
     } else if (input_anio === "older") {
-        filtro = "&anio_estreno__lt=2020";
+        filtro = "&año_estreno__lt=2020";
     } else {
-        filtro = `&anio_estreno=${input_anio}`;
+        filtro = `&año_estreno=${input_anio}`;
     }
     return filtro;
 }
@@ -121,11 +128,25 @@ function filtro_genero() {
     return filtroGenero;
 }
 
-function cargarPeliculas_Series(anio_filtro, genero_filtro) {
+function filtro_orden() {
+    const orden = document.getElementById("sort-filter").value;
+    let filtroOrden = "";
+    if (orden === "rating") {
+        filtroOrden = "&ordering=-puntuacion";
+    } else if (orden === "newest") {
+        filtroOrden = "&ordering=-año_estreno";
+    } else if (orden === "oldest") {
+        filtroOrden = "&ordering=año_estreno";
+    }
+    return filtroOrden;
+}
+
+function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "") {
     console.log(anio_filtro);
     console.log(genero_filtro);
+    console.log(orden_filtro);
     
-    fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}${genero_filtro}`)
+    fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}${genero_filtro}${orden_filtro}`)
         .then(response => {
             if (!response.ok) throw new Error('Error al obtener las películas');
             return response.json();

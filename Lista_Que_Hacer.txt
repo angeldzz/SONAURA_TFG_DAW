@@ -15,12 +15,10 @@
 
 ---Pagina Peliculas
 - Filtro valoracion
-- Ordenar por ...
 - Funcionalidad guardar pelicula (premium)
 
 ---Pagina Series
 - Filtro valoracion
-- Ordenar por ...
 - Funcionalidad guardar pelicula (premium)
 
 ---Pagina Noticias

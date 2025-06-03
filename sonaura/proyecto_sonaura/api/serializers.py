@@ -31,10 +31,11 @@ class GeneroSerializer(serializers.ModelSerializer):
 class ContenidoSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
     generos = serializers.SerializerMethodField()
+    anio_estreno = serializers.IntegerField(source='año_estreno', read_only=True)  # <-- Añadido
 
     class Meta:
         model = Contenido
-        fields = '__all__'  # o lista explícita de campos + 'generos'
+        fields = '__all__'  # Si usas lista explícita, añade 'anio_estreno'
 
     def get_generos(self, obj):
         generos = Genero.objects.filter(contenidogenero__id_contenido=obj)
