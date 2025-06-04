@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Cookies - SONAURA</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base/cookies.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="cosmic-background">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="cookies-header">
+        <div class="container">
+            <div class="logo">
+                <h1>SONAURA</h1>
+                <span class="tagline">STREAMING PLATFORM</span>
+            </div>
+            <nav class="breadcrumb">
+                <a href="/">Inicio</a>
+                <span class="separator">›</span>
+                <span class="current">Política de Cookies</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Configurador de cookies flotante -->
+    <div class="cookie-configurator" id="cookieConfigurator">
+        <div class="configurator-header">
+            <h4>🍪 Configurar Cookies</h4>
+            <button class="toggle-configurator" onclick="toggleConfigurator()">−</button>
+        </div>
+        <div class="configurator-content">
+            <div class="cookie-category-toggle">
+                <div class="category-item">
+                    <label class="toggle-label">
+                        <span>Técnicas</span>
+                        <input type="checkbox" checked disabled>
+                        <span class="toggle-slider required"></span>
+                    </label>
+                    <small>Necesarias</small>
+                </div>
+                
+                <div class="category-item">
+                    <label class="toggle-label">
+                        <span>Analíticas</span>
+                        <input type="checkbox" id="analytics-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <small>Opcional</small>
+                </div>
+                
+                <div class="category-item">
+                    <label class="toggle-label">
+                        <span>Personalización</span>
+                        <input type="checkbox" id="personalization-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <small>Opcional</small>
+                </div>
+                
+                <div class="category-item">
+                    <label class="toggle-label">
+                        <span>Publicitarias</span>
+                        <input type="checkbox" id="advertising-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <small>Opcional</small>
+                </div>
+            </div>
+            
+            <div class="configurator-actions">
+                <button class="accept-all" onclick="acceptAllCookies()">Aceptar Todas</button>
+                <button class="save-preferences" onclick="savePreferences()">Guardar Preferencias</button>
+                <button class="reject-optional" onclick="rejectOptional()">Solo Necesarias</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="cookies-content">
+        <div class="container">
+            <div class="cookies-wrapper">
+                <!-- Título principal -->
+                <div class="cookies-hero">
+                    <div class="hero-icon">🍪</div>
+                    <h1 class="cookies-title">Política de Cookies</h1>
+                    <p class="cookies-subtitle">Información transparente sobre el uso de cookies en SONAURA</p>
+                    <div class="compliance-badges">
+                        <span class="badge eu">UE Compliant</span>
+                        <span class="badge lssi">LSSI</span>
+                        <span class="badge gdpr">GDPR</span>
+                    </div>
+                    <div class="last-updated">
+                        <span>Última actualización: 4 de Junio de 2025</span>
+                    </div>
+                </div>
+
+                <!-- Resumen rápido -->
+                <div class="quick-summary">
+                    <h3>🚀 Resumen Rápido</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-icon">🔧</div>
+                            <h4>Cookies Técnicas</h4>
+                            <p>Esenciales para el funcionamiento</p>
+                            <span class="status required">Siempre Activas</span>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">📊</div>
+                            <h4>Cookies Analíticas</h4>
+                            <p>Para mejorar nuestros servicios</p>
+                            <span class="status optional">Opcional</span>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">🎯</div>
+                            <h4>Personalización</h4>
+                            <p>Para contenido personalizado</p>
+                            <span class="status optional">Opcional</span>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-icon">📢</div>
+                            <h4>Publicitarias</h4>
+                            <p>Solo para usuarios gratuitos</p>
+                            <span class="status optional">Opcional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secciones de la política -->
+                <div class="cookies-sections">
+                    <!-- Qué son las cookies -->
+                    <section id="que-son-cookies" class="cookies-section">
+                        <div class="section-header">
+                            <div class="section-icon">🍪</div>
+                            <h2>1. ¿Qué son las Cookies?</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Permiten que el sitio web recuerde sus acciones y preferencias durante un período de tiempo.</p>
+                            
+                            <div class="cookie-explanation">
+                                <div class="explanation-card">
+                                    <h4>📝 Definición Técnica</h4>
+                                    <p>Una cookie es un pequeño archivo de datos que un sitio web envía a su navegador web mientras navega por el sitio. Su navegador almacena estos datos y los envía de vuelta al mismo sitio web en visitas posteriores.</p>
+                                </div>
+                                
+                                <div class="explanation-card">
+                                    <h4>🎯 Propósito</h4>
+                                    <p>Las cookies nos permiten:</p>
+                                    <ul>
+                                        <li>Recordar sus preferencias de usuario</li>
+                                        <li>Mantener su sesión iniciada</li>
+                                        <li>Personalizar su experiencia</li>
+                                        <li>Analizar cómo usa nuestro sitio</li>
+                                        <li>Mostrar contenido relevante</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="explanation-card">
+                                    <h4>🔒 Seguridad</h4>
+                                    <p>Las cookies no pueden:</p>
+                                    <ul>
+                                        <li>Acceder a archivos en su dispositivo</li>
+                                        <li>Instalar virus o malware</li>
+                                        <li>Acceder a información personal sin su consentimiento</li>
+                                        <li>Ejecutar programas en su dispositivo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Tipos de cookies -->
+                    <section id="tipos-cookies" class="cookies-section">
+                        <div class="section-header">
+                            <div class="section-icon">📋</div>
+                            <h2>2. Tipos de Cookies que Utilizamos</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>Clasificamos nuestras cookies según diferentes criterios:</p>
+                            
+                            <!-- Por finalidad -->
+                            <div class="cookie-classification">
+                                <h4>🎯 Por Finalidad</h4>
+                                <div class="classification-grid">
+                                    <div class="classification-item">
+                                        <div class="classification-header">
+                                            <span class="classification-icon">🔧</span>
+                                            <h5>Cookies Técnicas</h5>
+                                            <span class="necessity required">Necesarias</span>
+                                        </div>
+                                        <p>Permiten la navegación y el uso de las diferentes opciones o servicios que existen en la web.</p>
+                                        <div class="examples">
+                                            <strong>Ejemplos:</strong>
+                                            <span class="cookie-name">session_id</span>
+                                            <span class="cookie-name">auth_token</span>
+                                            <span class="cookie-name">csrf_token</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="classification-item">
+                                        <div class="classification-header">
+                                            <span class="classification-icon">📊</span>
+                                            <h5>Cookies Analíticas</h5>
+                                            <span class="necessity optional">Opcionales</span>
+                                        </div>
+                                        <p>Permiten el seguimiento y análisis del comportamiento de los usuarios para mejorar el funcionamiento de la web.</p>
+                                        <div class="examples">
+                                            <strong>Ejemplos:</strong>
+                                            <span class="cookie-name">_ga</span>
+                                            <span class="cookie-name">_gid</span>
+                                            <span class="cookie-name">_gat</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="classification-item">
+                                        <div class="classification-header">
+                                            <span class="classification-icon">🎨</span>
+                                            <h5>Cookies de Personalización</h5>
+                                            <span class="necessity optional">Opcionales</span>
+                                        </div>
+                                        <p>Permiten recordar información para que el usuario acceda al servicio con determinadas características.</p>
+                                        <div class="examples">
+                                            <strong>Ejemplos:</strong>
+                                            <span class="cookie-name">user_preferences</span>
+                                            <span class="cookie-name">theme_mode</span>
+                                            <span class="cookie-name">language</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="classification-item">
+                                        <div class="classification-header">
+                                            <span class="classification-icon">📢</span>
+                                            <h5>Cookies Publicitarias</h5>
+                                            <span class="necessity optional">Opcionales</span>
+                                        </div>
+                                        <p>Permiten la gestión eficaz de espacios publicitarios y la personalización de anuncios.</p>
+                                        <div class="examples">
+                                            <strong>Ejemplos:</strong>
+                                            <span class="cookie-name">ad_preferences</span>
+                                            <span class="cookie-name">targeting_data</span>
+                                            <span class="cookie-name">conversion_id</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Por duración -->
+                            <div class="cookie-classification">
+                                <h4>⏰ Por Duración</h4>
+                                <div class="duration-grid">
+                                    <div class="duration-item">
+                                        <div class="duration-icon">⚡</div>
+                                        <h5>Cookies de Sesión</h5>
+                                        <p>Se eliminan cuando cierra el navegador</p>
+                                        <div class="duration-examples">
+                                            <span>session_id</span>
+                                            <span>csrf_token</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="duration-item">
+                                        <div class="duration-icon">📅</div>
+                                        <h5>Cookies Persistentes</h5>
+                                        <p>Permanecen hasta su fecha de expiración</p>
+                                        <div class="duration-examples">
+                                            <span>remember_me (30 días)</span>
+                                            <span>preferences (1 año)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Por origen -->
+                            <div class="cookie-classification">
+                                <h4>🌐 Por Origen</h4>
+                                <div class="origin-grid">
+                                    <div class="origin-item">
+                                        <div class="origin-icon">🏠</div>
+                                        <h5>Cookies Propias</h5>
+                                        <p>Enviadas desde nuestros servidores</p>
+                                        <div class="origin-domain">sonaura.com</div>
+                                    </div>
+                                    
+                                    <div class="origin-item">
+                                        <div class="origin-icon">🌍</div>
+                                        <h5>Cookies de Terceros</h5>
+                                        <p>Enviadas desde dominios externos</p>
+                                        <div class="origin-domains">
+                                            <span>google-analytics.com</span>
+                                            <span>doubleclick.net</span>
+                                            <span>facebook.com</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cookies específicas -->
+                    <section id="cookies-especificas" class="cookies-section">
+                        <div class="section-header">
+                            <div class="section-icon">📝</div>
+                            <h2>3. Cookies Específicas que Utilizamos</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>Detalle completo de todas las cookies utilizadas en SONAURA:</p>
+                            
+                            <!-- Tabla de cookies técnicas -->
+                            <div class="cookies-table-section">
+                                <h4>🔧 Cookies Técnicas (Siempre Activas)</h4>
+                                <div class="cookies-table">
+                                    <div class="table-header">
+                                        <span>Nombre</span>
+                                        <span>Finalidad</span>
+                                        <span>Duración</span>
+                                        <span>Tipo</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">session_id</span>
+                                        <span>Mantener la sesión del usuario activa</span>
+                                        <span>Sesión</span>
+                                        <span class="cookie-type technical">Técnica</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">auth_token</span>
+                                        <span>Autenticación y seguridad</span>
+                                        <span>24 horas</span>
+                                        <span class="cookie-type technical">Técnica</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">csrf_token</span>
+                                        <span>Protección contra ataques CSRF</span>
+                                        <span>Sesión</span>
+                                        <span class="cookie-type technical">Técnica</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">load_balancer</span>
+                                        <span>Distribución de carga del servidor</span>
+                                        <span>Sesión</span>
+                                        <span class="cookie-type technical">Técnica</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tabla de cookies analíticas -->
+                            <div class="cookies-table-section">
+                                <h4>📊 Cookies Analíticas</h4>
+                                <div class="cookie-toggle-info">
+                                    <span>Estado actual: </span>
+                                    <span id="analytics-status" class="status-indicator">Desactivadas</span>
+                                    <button class="toggle-btn" onclick="toggleAnalytics()">Cambiar</button>
+                                </div>
+                                <div class="cookies-table">
+                                    <div class="table-header">
+                                        <span>Nombre</span>
+                                        <span>Finalidad</span>
+                                        <span>Duración</span>
+                                        <span>Proveedor</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">_ga</span>
+                                        <span>Distinguir usuarios únicos</span>
+                                        <span>2 años</span>
+                                        <span class="provider">Google Analytics</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">_gid</span>
+                                        <span>Distinguir usuarios únicos</span>
+                                        <span>24 horas</span>
+                                        <span class="provider">Google Analytics</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">_gat</span>
+                                        <span>Limitar la velocidad de solicitudes</span>
+                                        <span>1 minuto</span>
+                                        <span class="provider">Google Analytics</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">_fbp</span>
+                                        <span>Seguimiento de conversiones</span>
+                                        <span>3 meses</span>
+                                        <span class="provider">Facebook Pixel</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tabla de cookies de personalización -->
+                            <div class="cookies-table-section">
+                                <h4>🎨 Cookies de Personalización</h4>
+                                <div class="cookie-toggle-info">
+                                    <span>Estado actual: </span>
+                                    <span id="personalization-status" class="status-indicator">Desactivadas</span>
+                                    <button class="toggle-btn" onclick="togglePersonalization()">Cambiar</button>
+                                </div>
+                                <div class="cookies-table">
+                                    <div class="table-header">
+                                        <span>Nombre</span>
+                                        <span>Finalidad</span>
+                                        <span>Duración</span>
+                                        <span>Tipo</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">user_preferences</span>
+                                        <span>Guardar preferencias del usuario</span>
+                                        <span>1 año</span>
+                                        <span class="cookie-type personalization">Personalización</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">theme_mode</span>
+                                        <span>Recordar tema oscuro/claro</span>
+                                        <span>1 año</span>
+                                        <span class="cookie-type personalization">Personalización</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">language</span>
+                                        <span>Idioma preferido del usuario</span>
+                                        <span>1 año</span>
+                                        <span class="cookie-type personalization">Personalización</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">viewing_history</span>
+                                        <span>Historial para recomendaciones</span>
+                                        <span>6 meses</span>
+                                        <span class="cookie-type personalization">Personalización</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tabla de cookies publicitarias -->
+                            <div class="cookies-table-section">
+                                <h4>📢 Cookies Publicitarias</h4>
+                                <div class="cookie-toggle-info">
+                                    <span>Estado actual: </span>
+                                    <span id="advertising-status" class="status-indicator">Desactivadas</span>
+                                    <button class="toggle-btn" onclick="toggleAdvertising()">Cambiar</button>
+                                </div>
+                                <div class="advertising-note">
+                                    <p><strong>Nota:</strong> Las cookies publicitarias solo se utilizan para usuarios con plan gratuito.</p>
+                                </div>
+                                <div class="cookies-table">
+                                    <div class="table-header">
+                                        <span>Nombre</span>
+                                        <span>Finalidad</span>
+                                        <span>Duración</span>
+                                        <span>Proveedor</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">ad_preferences</span>
+                                        <span>Personalización de anuncios</span>
+                                        <span>1 año</span>
+                                        <span class="provider">Google Ads</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">doubleclick</span>
+                                        <span>Seguimiento publicitario</span>
+                                        <span>1 año</span>
+                                        <span class="provider">Google DoubleClick</span>
+                                    </div>
+                                    
+                                    <div class="table-row">
+                                        <span class="cookie-name">fb_tracking</span>
+                                        <span>Retargeting en Facebook</span>
+                                        <span>3 meses</span>
+                                        <span class="provider">Facebook Ads</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Gestión de cookies -->
+                    <section id="gestion-cookies" class="cookies-section">
+                        <div class="section-header">
+                            <div class="section-icon">⚙️</div>
+                            <h2>4. Cómo Gestionar las Cookies</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>Tiene varias opciones para gestionar las cookies:</p>
+                            
+                            <!-- Configurador integrado -->
+                            <div class="integrated-configurator">
+                                <h4>🍪 Configurador de SONAURA</h4>
+                                <p>Use nuestro configurador integrado para gestionar sus preferencias de cookies:</p>
+                                <button class="open-configurator" onclick="openCookieSettings()">Abrir Configurador de Cookies</button>
+                            </div>
+                            
+                            <!-- Configuración del navegador -->
+                            <div class="browser-settings">
+                                <h4>🌐 Configuración del Navegador</h4>
+                                <p>También puede gestionar las cookies directamente desde su navegador:</p>
+                                
+                                <div class="browser-grid">
+                                    <div class="browser-item">
+                                        <div class="browser-icon">🔵</div>
+                                        <h5>Google Chrome</h5>
+                                        <p>Configuración → Privacidad y seguridad → Cookies y otros datos de sitios</p>
+                                        <a href="https://support.google.com/chrome/answer/95647" target="_blank" class="browser-link">Guía completa</a>
+                                    </div>
+                                    
+                                    <div class="browser-item">
+                                        <div class="browser-icon">🦊</div>
+                                        <h5>Mozilla Firefox</h5>
+                                        <p>Opciones → Privacidad y seguridad → Cookies y datos del sitio</p>
+                                        <a href="https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en-" target="_blank" class="browser-link">Guía completa</a>
+                                    </div>
+                                    
+                                    <div class="browser-item">
+                                        <div class="browser-icon">🧭</div>
+                                        <h5>Safari</h5>
+                                        <p>Preferencias → Privacidad → Gestionar datos de sitios web</p>
+                                        <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" class="browser-link">Guía completa</a>
+                                    </div>
+                                    
+                                    <div class="browser-item">
+                                        <div class="browser-icon">🔷</div>
+                                        <h5>Microsoft Edge</h5>
+                                        <p>Configuración → Cookies y permisos del sitio → Cookies y datos del sitio</p>
+                                        <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" class="browser-link">Guía completa</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Consecuencias de deshabilitar -->
+                            <div class="consequences-info">
+                                <h4>⚠️ Consecuencias de Deshabilitar Cookies</h4>
+                                <div class="consequences-grid">
+                                    <div class="consequence-item">
+                                        <div class="consequence-icon">🔧</div>
+                                        <h5>Cookies Técnicas</h5>
+                                        <p><strong>No recomendado:</strong> El sitio web puede no funcionar correctamente. Problemas con el inicio de sesión y navegación.</p>
+                                    </div>
+                                    
+                                    <div class="consequence-item">
+                                        <div class="consequence-icon">📊</div>
+                                        <h5>Cookies Analíticas</h5>
+                                        <p><strong>Impacto mínimo:</strong> No afecta la funcionalidad, pero no podremos mejorar la experiencia basándonos en datos de uso.</p>
+                                    </div>
+                                    
+                                    <div class="consequence-item">
+                                        <div class="consequence-icon">🎨</div>
+                                        <h5>Cookies de Personalización</h5>
+                                        <p><strong>Experiencia reducida:</strong> Perderá recomendaciones personalizadas y preferencias guardadas.</p>
+                                    </div>
+                                    
+                                    <div class="consequence-item">
+                                        <div class="consequence-icon">📢</div>
+                                        <h5>Cookies Publicitarias</h5>
+                                        <p><strong>Anuncios genéricos:</strong> Seguirá viendo anuncios, pero menos relevantes (solo usuarios gratuitos).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cookies de terceros -->
+                    <section id="cookies-terceros" class="cookies-section">
+                        <div class="section-header">
+                            <div class="section-icon">🌍</div>
+                            <h2>5. Cookies de Terceros</h2>
+                        </div>
+                        <div class="section-content">
+                            <p>Utilizamos servicios de terceros que pueden establecer sus propias cookies:</p>
+                            
+                            <div class="third-party-services">
+                                <div class="service-card">
+                                    <div class="service-header">
+                                        <div class="service-icon">📊</div>
+                                        <h4>Google Analytics</h4>
+                                        <span class="service-category analytics">Analíticas</span>
+                                    </div>
+                                    <div class="service-content">
+                                        <p><strong>Finalidad:</strong> Análisis de tráfico web y comportamiento de usuarios</p>
+                                        <p><strong>Cookies:</strong> _ga, _gid, _gat</p>
+                                        <p><strong>Duración:</strong> Hasta 2 años</p>
+                                        <div class="service-links">
+                                            <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad</a>
+                                            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Opt-out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-card">
+                                    <div class="service-header">
+                                        <div class="service-icon">📢</div>
+                                        <h4>Google Ads</h4>
+                                        <span class="service-category advertising">Publicitarias</span>
+                                    </div>
+                                    <div class="service-content">
+                                        <p><strong>Finalidad:</strong> Personalización y seguimiento de anuncios</p>
+                                        <p><strong>Cookies:</strong> ad_preferences, doubleclick</p>
+                                        <p><strong>Duración:</strong> Hasta 1 año</p>
+                                        <div class="service-links">
+                                            <a href="https://policies.google.com/privacy" target="_blank">Política de Privacidad</a>
+                                            <a href="https://adssettings.google.com/" target="_blank">Configurar Anuncios</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-card">
+                                    <div class="service-header">
+                                        <div class="service-icon">📘</div>
+                                        <h4>Facebook Pixel</h4>
+                                        <span class="service-category advertising">Publicitarias</span>
+                                    </div>
+                                    <div class="service-content">
+                                        <p><strong>Finalidad:</strong> Seguimiento de conversiones y retargeting</p>
+                                        <p><strong>Cookies:</strong> _fbp, fb_tracking</p>
+                                        <p><strong>Duración:</strong> Hasta 3 meses</p>
+                                        <div class="service-links">
+                                            <a href="https://www.facebook.com/privacy/explanation" target="_blank">Política de Privacidad</a>
+                                            <a href="https://www.facebook.com/settings?tab=ads" target="_blank">Configurar Anuncios</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-card">
+                                    <div class="service-header">
+                                        <div class="service-icon">💳</div>
+                                        <h4>Stripe</h4>
+                                        <span class="service-category technical">Técnicas</span>
+                                    </div>
+                                    <div class="service-content">
+                                        <p><strong>Finalidad:</strong> Procesamiento seguro de pagos</p>
+                                        <p><strong>Cookies:</strong> stripe_session, payment_method</p>
+                                        <p><strong>Duración:</strong> Sesión</p>
+                                        <div class="service-links">
+                                            <a href="https://stripe.com/privacy" target="_blank">Política de Privacidad</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Actualizaciones -->
+                    <section id="actualizaciones" class="cookies-section">
+                        <div class="section-header">
+                            <div class="section-icon">🔄</div>
+                            <h2>6. Actualizaciones de la Política</h2>
+                        </div>
+                        <div class="section-content">
+                            <div class="updates-info">
+                                <h4>📝 Modificaciones</h4>
+                                <p>Nos reservamos el derecho a modificar esta Política de Cookies para adaptarla a cambios legislativos, tecnológicos o en nuestros servicios.</p>
+                                
+                                <h4>📢 Notificación</h4>
+                                <p>Le notificaremos cualquier cambio significativo mediante:</p>
+                                <ul>
+                                    <li>Banner informativo en el sitio web</li>
+                                    <li>Email a usuarios registrados</li>
+                                    <li>Actualización de la fecha en esta política</li>
+                                </ul>
+                                
+                                <h4>📚 Historial de Versiones</h4>
+                                <div class="version-history">
+                                    <div class="version-item">
+                                        <span class="version-date">4 de Junio de 2025</span>
+                                        <span class="version-changes">Versión inicial - Cumplimiento RGPD y LSSI</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contacto -->
+                    <section id="contacto" class="cookies-section">
+                        <div class="section-header">
+                            <div class="section-icon">📞</div>
+                            <h2>7. Contacto</h2>
+                        </div>
+                        <div class="section-content">
+                            <div class="contact-info">
+                                <h4>❓ ¿Preguntas sobre Cookies?</h4>
+                                <p>Si tiene alguna pregunta sobre nuestra política de cookies, puede contactarnos:</p>
+                                
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <div class="contact-icon">📧</div>
+                                        <div class="contact-details">
+                                            <strong>Email</strong>
+                                            <span>cookies@sonaura.com</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-method">
+                                        <div class="contact-icon">📞</div>
+                                        <div class="contact-details">
+                                            <strong>Teléfono</strong>
+                                            <span>+34 91 123 45 67</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="contact-method">
+                                        <div class="contact-icon">📍</div>
+                                        <div class="contact-details">
+                                            <strong>Dirección</strong>
+                                            <span>Calle de la Innovación, 123<br>28001 Madrid, España</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="quick-actions">
+                                    <h4>🚀 Acciones Rápidas</h4>
+                                    <div class="action-buttons">
+                                        <button class="action-btn" onclick="openCookieSettings()">Configurar Cookies</button>
+                                        <button class="action-btn" onclick="clearAllCookies()">Eliminar Todas las Cookies</button>
+                                        <button class="action-btn" onclick="downloadCookieReport()">Descargar Informe</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Footer -->
+                <div class="cookies-footer">
+                    <div class="footer-links">
+                        <a href="/aviso-legal">Aviso Legal</a>
+                        <a href="/politica-privacidad">Política de Privacidad</a>
+                        <a href="/terminos-condiciones">Términos y Condiciones</a>
+                        <a href="/contacto">Contacto</a>
+                    </div>
+                    <div class="footer-text">
+                        <p>&copy; 2025 SONAURA Entertainment S.L. Todos los derechos reservados.</p>
+                        <p>Esta política cumple con la LSSI y el RGPD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de configuración avanzada -->
+    <div id="advancedCookieModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🍪 Configuración Avanzada de Cookies</h3>
+                <button class="close-modal" onclick="closeAdvancedModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="advanced-settings">
+                    <div class="setting-group">
+                        <h4>🔧 Cookies Técnicas</h4>
+                        <p>Estas cookies son necesarias para el funcionamiento básico del sitio web.</p>
+                        <label class="setting-toggle">
+                            <input type="checkbox" checked disabled>
+                            <span class="toggle-slider required"></span>
+                            <span>Siempre activas (requeridas)</span>
+                        </label>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h4>📊 Cookies Analíticas</h4>
+                        <p>Nos ayudan a entender cómo interactúa con nuestro sitio web.</p>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="modal-analytics">
+                            <span class="toggle-slider"></span>
+                            <span>Permitir cookies analíticas</span>
+                        </label>
+                        <div class="setting-details">
+                            <small>Incluye: Google Analytics, métricas de rendimiento</small>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h4>🎨 Cookies de Personalización</h4>
+                        <p>Permiten recordar sus preferencias y personalizar su experiencia.</p>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="modal-personalization">
+                            <span class="toggle-slider"></span>
+                            <span>Permitir personalización</span>
+                        </label>
+                        <div class="setting-details">
+                            <small>Incluye: tema, idioma, recomendaciones</small>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h4>📢 Cookies Publicitarias</h4>
+                        <p>Se utilizan para mostrar anuncios relevantes (solo usuarios gratuitos).</p>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="modal-advertising">
+                            <span class="toggle-slider"></span>
+                            <span>Permitir cookies publicitarias</span>
+                        </label>
+                        <div class="setting-details">
+                            <small>Incluye: Google Ads, Facebook Pixel, retargeting</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="modal-btn primary" onclick="saveAdvancedSettings()">Guardar Configuración</button>
+                    <button class="modal-btn secondary" onclick="resetToDefaults()">Restaurar Predeterminados</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón de scroll to top -->
+    <button class="scroll-to-top" onclick="scrollToTop()">
+        <span>↑</span>
+    </button>
+
+    <script>
+        // Estado de las cookies
+        let cookieSettings = {
+            technical: true, // Siempre activas
+            analytics: false,
+            personalization: false,
+            advertising: false
+        };
+
+        // Configurador flotante
+        function toggleConfigurator() {
+            const configurator = document.getElementById('cookieConfigurator');
+            const content = configurator.querySelector('.configurator-content');
+            const toggle = configurator.querySelector('.toggle-configurator');
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                toggle.textContent = '−';
+            } else {
+                content.style.display = 'none';
+                toggle.textContent = '+';
+            }
+        }
+
+        // Funciones de configuración
+        function acceptAllCookies() {
+            cookieSettings = {
+                technical: true,
+                analytics: true,
+                personalization: true,
+                advertising: true
+            };
+            updateCookieToggles();
+            updateStatusIndicators();
+            showNotification('Todas las cookies han sido aceptadas', 'success');
+        }
+
+        function rejectOptional() {
+            cookieSettings = {
+                technical: true,
+                analytics: false,
+                personalization: false,
+                advertising: false
+            };
+            updateCookieToggles();
+            updateStatusIndicators();
+            showNotification('Solo se mantienen las cookies técnicas necesarias', 'info');
+        }
+
+        function savePreferences() {
+            // Leer estado de los toggles
+            cookieSettings.analytics = document.getElementById('analytics-toggle').checked;
+            cookieSettings.personalization = document.getElementById('personalization-toggle').checked;
+            cookieSettings.advertising = document.getElementById('advertising-toggle').checked;
+            
+            updateStatusIndicators();
+            showNotification('Preferencias guardadas correctamente', 'success');
+        }
+
+        // Actualizar indicadores de estado
+        function updateStatusIndicators() {
+            document.getElementById('analytics-status').textContent = 
+                cookieSettings.analytics ? 'Activadas' : 'Desactivadas';
+            document.getElementById('analytics-status').className = 
+                'status-indicator ' + (cookieSettings.analytics ? 'active' : 'inactive');
+                
+            document.getElementById('personalization-status').textContent = 
+                cookieSettings.personalization ? 'Activadas' : 'Desactivadas';
+            document.getElementById('personalization-status').className = 
+                'status-indicator ' + (cookieSettings.personalization ? 'active' : 'inactive');
+                
+            document.getElementById('advertising-status').textContent = 
+                cookieSettings.advertising ? 'Activadas' : 'Desactivadas';
+            document.getElementById('advertising-status').className = 
+                'status-indicator ' + (cookieSettings.advertising ? 'active' : 'inactive');
+        }
+
+        // Actualizar toggles
+        function updateCookieToggles() {
+            document.getElementById('analytics-toggle').checked = cookieSettings.analytics;
+            document.getElementById('personalization-toggle').checked = cookieSettings.personalization;
+            document.getElementById('advertising-toggle').checked = cookieSettings.advertising;
+        }
+
+        // Toggles individuales
+        function toggleAnalytics() {
+            cookieSettings.analytics = !cookieSettings.analytics;
+            updateCookieToggles();
+            updateStatusIndicators();
+        }
+
+        function togglePersonalization() {
+            cookieSettings.personalization = !cookieSettings.personalization;
+            updateCookieToggles();
+            updateStatusIndicators();
+        }
+
+        function toggleAdvertising() {
+            cookieSettings.advertising = !cookieSettings.advertising;
+            updateCookieToggles();
+            updateStatusIndicators();
+        }
+
+        // Modal avanzado
+        function openCookieSettings() {
+            document.getElementById('advancedCookieModal').style.display = 'flex';
+            // Sincronizar con configuración actual
+            document.getElementById('modal-analytics').checked = cookieSettings.analytics;
+            document.getElementById('modal-personalization').checked = cookieSettings.personalization;
+            document.getElementById('modal-advertising').checked = cookieSettings.advertising;
+        }
+
+        function closeAdvancedModal() {
+            document.getElementById('advancedCookieModal').style.display = 'none';
+        }
+
+        function saveAdvancedSettings() {
+            cookieSettings.analytics = document.getElementById('modal-analytics').checked;
+            cookieSettings.personalization = document.getElementById('modal-personalization').checked;
+            cookieSettings.advertising = document.getElementById('modal-advertising').checked;
+            
+            updateCookieToggles();
+            updateStatusIndicators();
+            closeAdvancedModal();
+            showNotification('Configuración avanzada guardada', 'success');
+        }
+
+        function resetToDefaults() {
+            cookieSettings = {
+                technical: true,
+                analytics: false,
+                personalization: false,
+                advertising: false
+            };
+            
+            document.getElementById('modal-analytics').checked = false;
+            document.getElementById('modal-personalization').checked = false;
+            document.getElementById('modal-advertising').checked = false;
+            
+            showNotification('Configuración restaurada a valores predeterminados', 'info');
+        }
+
+        // Acciones rápidas
+        function clearAllCookies() {
+            if (confirm('¿Está seguro de que desea eliminar todas las cookies? Esto cerrará su sesión.')) {
+                // Aquí iría la lógica para eliminar cookies
+                showNotification('Todas las cookies han sido eliminadas', 'warning');
+            }
+        }
+
+        function downloadCookieReport() {
+            // Simular descarga de informe
+            showNotification('Descargando informe de cookies...', 'info');
+        }
+
+        // Sistema de notificaciones
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.style.opacity = '1';
+                scrollButton.style.visibility = 'visible';
+            } else {
+                scrollButton.style.opacity = '0';
+                scrollButton.style.visibility = 'hidden';
+            }
+        });
+
+        // Animación de partículas
+        function createParticles() {
+            const container = document.querySelector('.floating-particles');
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Inicializar
+        createParticles();
+        updateStatusIndicators();
+        
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('advancedCookieModal');
+            if (event.target === modal) {
+                closeAdvancedModal();
+            }
+        });
+    </script>
+</body>
+</html>
