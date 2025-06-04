@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.views.generic import View
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.urls import reverse
 import logging
@@ -181,10 +181,13 @@ class PerfilView(TemplateView):
         perfil.fecha_nacimiento = request.POST.get('fecha_nacimiento')
         perfil.pais = request.POST.get('pais')
         avatar_url = request.POST.get('avatar_url')
+        imagen_avatar = request.FILES.get('imagen_avatar')
         if avatar_url:
-            perfil.avatar_url = avatar_url
-        if 'imagen_avatar' in request.FILES:
-            perfil.imagen_avatar = request.FILES['imagen_avatar']
+            # Si se seleccionó un avatar predefinido
+            perfil.imagen_avatar = avatar_url  # Asumiendo que imagen_avatar puede ser una URL
+        elif imagen_avatar:
+            perfil.imagen_avatar = imagen_avatar  # Imagen subida por el usuario
+
         perfil.save()
         messages.success(request, "Perfil actualizado correctamente.")
         return redirect('perfil')

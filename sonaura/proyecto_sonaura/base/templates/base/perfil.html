@@ -102,6 +102,7 @@
                         <form class="profile-form" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <input type="file" id="avatarUpload" name="imagen_avatar" accept="image/*" style="display: none;">
+                            <input type="hidden" id="avatarUrl" name="avatar_url" value="">
                             {% if messages %}
                                 {% for message in messages %}
                                     <div class="message">{{ message }}</div>
@@ -804,7 +805,6 @@
         }
 
         function saveAvatar() {
-            // Cierra el modal
             closeAvatarModal();
             // Envía el formulario principal
             document.querySelector('.profile-form').submit();
@@ -825,8 +825,16 @@
                 const avatarImage = document.getElementById('avatarImage');
                 avatarImage.src = e.target.src;
 
-                // Guardar la URL en el campo oculto
-                document.getElementById('avatarUrl').value = e.target.src;
+                // Guardar solo la ruta relativa en el campo oculto
+                const src = e.target.src;
+                let relativePath = src;
+                if (src.includes('/media/')) {
+                    relativePath = src.split('/media/')[1];
+                }
+                document.getElementById('avatarUrl').value = relativePath;
+
+                // Limpiar el input de archivo por si acaso
+                document.getElementById('avatarUpload').value = '';
             }
         });
 
@@ -838,6 +846,12 @@
                 reader.onload = function(e) {
                     // Cambia el avatar principal
                     document.getElementById('avatarImage').src = e.target.result;
+                    // Limpiar selección de avatar predefinido
+                    document.querySelectorAll('.preset-avatar').forEach(avatar => {
+                        avatar.classList.remove('selected');
+                    });
+                    // Limpiar el campo oculto
+                    document.getElementById('avatarUrl').value = '';
                 };
                 reader.readAsDataURL(file);
             }
