@@ -4,6 +4,7 @@
 - Meter mas noticias 
 - Borrar toda la tabla de entrevistas y arreglar el esquema de la BBDD (se han eliminado las tablas de categoria noticias y la de entrevista hay que eliminarla)
 - Agregar Funcionalidad de Lista de contenidos una vez que es premium
+- IMPORTANTE = token refresh funcional
 
 ---Footer funcional
 -links funcionales LEGAL ( crear templates )

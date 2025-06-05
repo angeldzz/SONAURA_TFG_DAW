@@ -31,11 +31,11 @@ class GeneroSerializer(serializers.ModelSerializer):
 class ContenidoSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
     generos = serializers.SerializerMethodField()
-    anio_estreno = serializers.IntegerField(source='año_estreno', read_only=True)  # <-- Añadido
+    anio_estreno = serializers.IntegerField(source='año_estreno', read_only=True)
 
     class Meta:
         model = Contenido
-        fields = '__all__'  # Si usas lista explícita, añade 'anio_estreno'
+        fields = '__all__'
 
     def get_generos(self, obj):
         generos = Genero.objects.filter(contenidogenero__id_contenido=obj)
@@ -87,9 +87,23 @@ class ValoracionSerializer(serializers.ModelSerializer):
 
 class ComentarioSerializer(serializers.ModelSerializer):
     id_usuario = serializers.ReadOnlyField(source='id_usuario.username')
+    avatar_url = serializers.SerializerMethodField()
+
     class Meta:
         model = Comentario
         fields = '__all__'
+
+    def get_avatar_url(self, obj):
+        try:
+            perfil = Perfil.objects.get(id_usuario=obj.id_usuario)
+            if perfil.imagen_avatar:
+                request = self.context.get('request')
+                if request:
+                    return request.build_absolute_uri(perfil.imagen_avatar.url)
+                return perfil.imagen_avatar.url
+            return None
+        except Perfil.DoesNotExist:
+            return None
 
 class NotificacionSerializer(serializers.ModelSerializer):
     id_usuario = serializers.ReadOnlyField(source='id_usuario.username')

@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     const commentElement = document.createElement('div');
                     commentElement.className = 'comment';
 
-                    const imagenAvatar = comentario.id_usuario ? `/media/avatares/${comentario.id_usuario}.jpg` : '/placeholder.svg?height=50&width=50';
+                    // Usar avatar_url del API o fallback a placeholder /media/avatares/avatar_predeterminado.png
+                    const imagenAvatar = comentario.avatar_url || '/media/avatares/avatar_predeterminado.png';
                     const nombreUsuario = comentario.id_usuario || 'Anónimo';
                     const fecha = new Date(comentario.fecha_comentario).toLocaleDateString('es-ES', {
                         day: 'numeric',
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     commentElement.innerHTML = `
                         <div class="comment-avatar">
-                            <img src="${imagenAvatar}" alt="Avatar de ${nombreUsuario}">
+                            <img src="${imagenAvatar}" alt="Avatar de ${nombreUsuario}"">
                         </div>
                         <div class="comment-content">
                             <div class="comment-header">
@@ -96,7 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     respuestas.forEach(respuesta => {
                         const replyElement = document.createElement('div');
                         replyElement.className = 'comment';
-                        const replyAvatar = respuesta.id_usuario ? `/media/avatares/${respuesta.id_usuario}.jpg` : '/placeholder.svg?height=50&width=50';
+                        // Usar avatar_url del API o fallback a placeholder
+                        const replyAvatar = respuesta.avatar_url || '/placeholder.svg?height=50&width=50';
                         const replyNombre = respuesta.id_usuario || 'Anónimo';
                         const replyFecha = new Date(respuesta.fecha_comentario).toLocaleDateString('es-ES', {
                             day: 'numeric',
@@ -117,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         replyElement.innerHTML = `
                             <div class="comment-avatar">
-                                <img src="${replyAvatar}" alt="Avatar de ${replyNombre}">
+                                <img src="${replyAvatar}" alt="Avatar de ${replyNombre}" onerror="this.src='/placeholder.svg?height=50&width=50'">
                             </div>
                             <div class="comment-content">
                                 <div class="comment-header">
@@ -299,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error:', error);
-                mostrarAviso('Solo Puedes valorar una vez la pelicula.');
+                mostrarAviso(error);
             });
     }
 
@@ -410,7 +412,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         return response.json();
                     })
                     .then(data => {
-                        console.log('Respuesta enviada:', data);
                         replyForm.querySelector('textarea').value = '';
                         replyForm.style.display = 'none';
                         cargarComentarios(contenidoId, 1);
@@ -423,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Cargar comentarios y valoraciones iniciales
+    // Carga comentarios y valoraciones iniciales
     if (contenidoId) {
         cargarComentarios(contenidoId);
         cargarValoraciones(contenidoId);
@@ -433,21 +434,26 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('#valoraciones .ratings-summary').innerHTML = '<p>Error: No se encontró el contenido.</p>';
     }
 
-    // Modal de avisos global
+    // Modal de avisos
     function mostrarAviso(mensaje) {
         const modalAviso = document.getElementById('modalAviso');
-        const mensajeModalAviso = document.getElementById('mensajeModalAviso');
-        if (mensajeModalAviso) mensajeModalAviso.innerHTML = mensaje;
+        const mensajeModalAviso = modalAviso.querySelector('#mensajeModalAviso');
+        if (mensajeModalAviso) {
+            mensajeModalAviso.innerHTML = mensaje;
+        }
         if (modalAviso) {
             modalAviso.classList.add('active');
             document.body.style.overflow = 'hidden';
             setTimeout(() => {
                 const cerrarBtn = document.getElementById('cerrarModalAviso');
-                if (cerrarBtn) cerrarBtn.focus();
+                if (cerrarBtn) {
+                    cerrarBtn.focus();
+                }
             }, 100);
         }
     }
-    // Cerrar modal
+
+    // Cerrar el modal
     const modalAviso = document.getElementById('modalAviso');
     const cerrarModalAviso = document.getElementById('cerrarModalAviso');
     if (cerrarModalAviso && modalAviso) {
@@ -455,6 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
             modalAviso.classList.remove('active');
             document.body.style.overflow = '';
         });
+
         window.addEventListener('click', function(event) {
             if (event.target === modalAviso) {
                 modalAviso.classList.remove('active');
@@ -462,16 +469,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    // Cerrar modal con Esc
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const modal = document.getElementById('modalAviso');
-            if (modal.classList.contains('active')) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modalAviso && modalAviso.classList.contains('active')) {
+            modalAviso.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
-    // Ejemplo de uso de mostrarAviso
-    // mostrarAviso('Este es un mensaje de aviso de ejemplo.');
 });

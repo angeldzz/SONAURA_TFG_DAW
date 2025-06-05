@@ -111,26 +111,40 @@ class GeneroViewSet(viewsets.ModelViewSet):
         serializer.save(creador=self.request.user)
 
 class ContenidoViewSet(viewsets.ModelViewSet):
-    queryset = Contenido.objects.all().order_by('-año_estreno')  # Orden descendente (más reciente primero)
+    queryset = Contenido.objects.all().order_by('-año_estreno')
     serializer_class = ContenidoSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
-    filter_backends = [filters.OrderingFilter]  # <-- Añadido
-    ordering_fields = ['puntuacion', 'año_estreno']  # <-- Añadido
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['puntuacion', 'año_estreno']
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        
+        # Filtros existentes
         pelicula_serie = self.request.query_params.get('pelicula_serie')
         if pelicula_serie:
             queryset = queryset.filter(pelicula_serie=pelicula_serie)
+            
         año_estreno = self.request.query_params.get('año_estreno')
         año_estreno_lt = self.request.query_params.get('año_estreno__lt')
         genero = self.request.query_params.get('genero')
+        
         if año_estreno:
             queryset = queryset.filter(año_estreno=año_estreno)
         if año_estreno_lt:
             queryset = queryset.filter(año_estreno__lt=año_estreno_lt)
         if genero:
-            queryset = queryset.filter(contenidogenero__id_genero__nombre=genero)    
+            queryset = queryset.filter(contenidogenero__id_genero__nombre=genero)
+        
+        # Nuevo: Soporte para limit
+        limit = self.request.query_params.get('limit')
+        if limit:
+            try:
+                limit = int(limit)
+                queryset = queryset[:limit]
+            except ValueError:
+                pass  # Si no es un número válido, ignorar el limit
+                
         return queryset
 
     def perform_create(self, serializer):
