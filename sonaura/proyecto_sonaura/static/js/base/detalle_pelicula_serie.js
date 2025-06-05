@@ -84,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            console.log(data.results);
             const contenidosFiltrados = data.results
-                .filter(contenido => contenido.id_contenido !== contenidoId)
+                .filter(data => data.id_contenido !== parseInt(contenidoId))
                 .slice(0, 5);
             console.log('Contenidos similares evitando el mismo id:', contenidosFiltrados);
             mostrarPeliculasSimilares(contenidosFiltrados);
