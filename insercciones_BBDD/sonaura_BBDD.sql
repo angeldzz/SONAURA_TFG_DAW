@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2025 a las 09:43:48
+-- Tiempo de generación: 05-06-2025 a las 13:02:38
 -- Versión del servidor: 11.6.2-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -557,7 +557,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$1000000$cJGnLivqoYOX4bAavEoDup$5TGKmL1Iwp1sFflqf8bgk/ozsFHnqNX1rhmxgqYvR/g=', NULL, 1, 'sonaura', '', '', '', 1, 1, '2025-06-05 07:42:16.151054');
+(1, 'pbkdf2_sha256$1000000$cJGnLivqoYOX4bAavEoDup$5TGKmL1Iwp1sFflqf8bgk/ozsFHnqNX1rhmxgqYvR/g=', '2025-06-05 09:56:02.847304', 1, 'sonaura', '', '', '', 1, 1, '2025-06-05 07:42:16.151054');
 
 -- --------------------------------------------------------
 
@@ -601,6 +601,13 @@ CREATE TABLE `comentarios` (
   `id_usuario_id` int(11) DEFAULT NULL,
   `id_contenido_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `comentario`, `fecha_comentario`, `likes`, `dislikes`, `fecha_edicion`, `fecha_creacion`, `id_comentario_padre_id`, `id_usuario_id`, `id_contenido_id`) VALUES
+(1, 'hola', '2025-06-05 09:42:10.729872', 0, 0, '2025-06-05 09:42:10.729872', '2025-06-05 09:42:10.729872', NULL, 1, 37);
 
 -- --------------------------------------------------------
 
@@ -671,7 +678,7 @@ INSERT INTO `contenidos` (`id_contenido`, `titulo`, `pelicula_serie`, `eslogan`,
 (34, 'Interstellar', 'pelicula', 'El destino de la humanidad está en las estrellas', 'En un futuro donde la Tierra agoniza, Cooper, un ex-piloto, lidera una misión para encontrar un nuevo hogar para la humanidad a través de un agujero de gusano. Enfrentando sacrificios personales y fenómenos cósmicos, el equipo lucha contra el tiempo y el espacio. Este drama de ciencia ficción explora el amor, la supervivencia y la búsqueda de esperanza en lo desconocido.', 2014, 169, 'Christopher Nolan', 'Jonathan Nolan, Christopher Nolan', 'PG-13', 'posters/Interestellar.jpg', 'Interstellar', NULL, NULL, 4.3, 0, '2025-06-05 09:42:43.000000', '2025-06-05 09:42:43.000000', 1),
 (35, 'El Club de la Pelea', 'pelicula', 'La primera regla es...', 'Un oficinista desencantado y un carismático desconocido crean un club secreto donde los hombres liberan sus frustraciones a puñetazos. Lo que comienza como una rebelión contra la monotonía se convierte en un movimiento caótico que desafía el orden social. Este thriller satírico y psicológico explora la identidad, el consumismo y la rebelión, dejando una marca imborrable con su audacia y provocación.', 1999, 139, 'David Fincher', 'Jim Uhls', 'R', 'posters/El Club de la Pelea.webp', 'El Club de la Pelea', NULL, NULL, 4.2, 0, '2025-06-05 09:42:43.000000', '2025-06-05 09:42:43.000000', 1),
 (36, 'Tiempos Violentos', 'pelicula', 'Historias entrelazadas', 'En Los Ángeles, las vidas de un boxeador, dos sicarios, un gánster y su esposa se cruzan en una serie de historias entrelazadas llenas de crimen, redención y caos. Con diálogos ingeniosos y una narrativa no lineal, esta obra maestra de Quentin Tarantino combina violencia estilizada, humor negro y personajes inolvidables en un retrato vibrante de la vida al margen de la ley.', 1994, 154, 'Quentin Tarantino', 'Quentin Tarantino, Roger Avary', 'R', 'posters/Tiempos Violentos.jpg', 'Tiempos Violentos', NULL, NULL, 4.3, 0, '2025-06-05 09:42:43.000000', '2025-06-05 09:42:43.000000', 1),
-(37, 'Cadena Perpetua', 'pelicula', 'La esperanza es algo peligroso', 'Andy Dufresne, un banquero condenado injustamente por asesinato, llega a la prisión de Shawshank, donde forja una improbable amistad con Red. A través de décadas de adversidad, su ingenio y esperanza desafían un sistema opresivo. Este drama conmovedor, basado en un relato de Stephen King, celebra la resiliencia humana, la redención y el poder transformador de la amistad frente a la injusticia.', 1994, 142, 'Frank Darabont', 'Frank Darabont', 'R', 'posters/Cadena Perpetua.jpg', 'Cadena Perpetua', NULL, NULL, 4.6, 0, '2025-06-05 09:42:43.000000', '2025-06-05 09:42:43.000000', 1),
+(37, 'Cadena Perpetua', 'pelicula', 'La esperanza es algo peligroso', 'Andy Dufresne, un banquero condenado injustamente por asesinato, llega a la prisión de Shawshank, donde forja una improbable amistad con Red. A través de décadas de adversidad, su ingenio y esperanza desafían un sistema opresivo. Este drama conmovedor, basado en un relato de Stephen King, celebra la resiliencia humana, la redención y el poder transformador de la amistad frente a la injusticia.', 1994, 142, 'Frank Darabont', 'Frank Darabont', 'R', 'posters/Cadena Perpetua.jpg', 'Cadena Perpetua', '', NULL, 4, 0, '2025-06-05 09:42:10.720066', '2025-06-05 09:42:43.000000', 1),
 (38, 'El Padrino', 'pelicula', 'El poder lo es todo', 'En la Nueva York de los años 40, la familia Corleone, liderada por Don Vito, navega el mundo del crimen organizado. Cuando una traición amenaza su imperio, Michael, el hijo menor, se ve arrastrado a un camino de poder y violencia. Este drama épico explora la lealtad, el legado y el costo moral de la ambición en una saga mafiosa inolvidable.', 1972, 175, 'Francis Ford Coppola', 'Mario Puzo, Francis Ford Coppola', 'R', 'posters/El Padrino.jpg', 'El Padrino', NULL, NULL, 4.6, 0, '2025-06-05 09:42:43.000000', '2025-06-05 09:42:43.000000', 1),
 (39, 'Forrest Gump', 'pelicula', 'La vida es como una caja de bombones', 'Forrest Gump, un hombre sencillo con un corazón puro, vive una vida extraordinaria a través de décadas de cambios en Estados Unidos. Desde su infancia hasta convertirse en héroe, corredor y empresario, su amor por Jenny y su bondad inquebrantable lo guían. Esta conmovedora historia celebra la resiliencia, el destino y la belleza de la humanidad en un mundo impredecible.', 1994, 142, 'Robert Zemeckis', 'Eric Roth', 'PG-13', 'posters/Forrest Gump.jpg', 'Forrest Gump', NULL, NULL, 4.4, 0, '2025-06-05 09:42:43.000000', '2025-06-05 09:42:43.000000', 1),
 (40, 'El Señor de los Anillos: La Comunidad del Anillo', 'pelicula', 'Un anillo para gobernarlos a todos', 'Frodo, un joven hobbit, hereda un anillo que encierra un poder oscuro. Junto a una comunidad de héroes, incluidos Gandalf, Aragorn y Legolas, emprende un peligroso viaje para destruirlo y evitar que caiga en manos del malvado Sauron. Esta épica aventura combina magia, valentía y amistad en un mundo fantástico al borde de la guerra.', 2001, 178, 'Peter Jackson', 'Fran Walsh, Philippa Boyens', 'PG-13', 'posters/El Señor de los Anillos 1 La Comunidad del Anillo.jpg', 'El Señor de los Anillos: La Comunidad del Anillo', NULL, NULL, 4.4, 0, '2025-06-05 09:42:43.000000', '2025-06-05 09:42:43.000000', 1),
@@ -1214,7 +1221,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (19, 'base', '0002_alter_contenidogenero_unique_together_and_more', '2025-06-05 07:41:50.331318'),
 (20, 'base', '0003_remove_noticiacategoria_id_categoria_and_more', '2025-06-05 07:41:50.443722'),
 (21, 'base', '0004_alter_noticia_tiempo_lectura', '2025-06-05 07:41:50.474969'),
-(22, 'sessions', '0001_initial', '2025-06-05 07:41:50.481542');
+(22, 'sessions', '0001_initial', '2025-06-05 07:41:50.481542'),
+(23, 'base', '0005_delete_entrevista', '2025-06-05 11:00:15.564861');
 
 -- --------------------------------------------------------
 
@@ -1228,24 +1236,12 @@ CREATE TABLE `django_session` (
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `entrevistas`
+-- Volcado de datos para la tabla `django_session`
 --
 
-CREATE TABLE `entrevistas` (
-  `id_entrevista` int(11) NOT NULL,
-  `titulo` varchar(200) NOT NULL,
-  `contenido` longtext NOT NULL,
-  `imagen` varchar(100) DEFAULT NULL,
-  `alt_imagen` varchar(255) DEFAULT NULL,
-  `duracion` bigint(20) NOT NULL,
-  `vistas` int(11) NOT NULL,
-  `fecha_edicion` datetime(6) NOT NULL,
-  `fecha_publicacion` datetime(6) NOT NULL,
-  `creador_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('ge5n2fy7r6xv2f8h3cfzbawkjgnoyit5', '.eJxVjMEOgjAQRP-lZ9Ns6ZYWj975hmaXLhY1JaFwMv67kHDQ48x7M28VaVtz3KoscUrqqoy6_HZMw1PKAdKDyn3Ww1zWZWJ9KPqkVfdzktftdP8OMtW8r2lXDfoxWAHuIITQeUaPjNiR3_PoGnBWBJqGQZKD1rjA4LG1NoykPl_N2zbk:1uN7KM:gFM7zVq4kSZMASupxpJlb28XRss7U6tNVpJxfOHVY6c', '2025-06-19 09:56:02.851451');
 
 -- --------------------------------------------------------
 
@@ -1416,6 +1412,13 @@ CREATE TABLE `perfiles` (
   `pais` varchar(100) DEFAULT NULL,
   `telefono` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `perfiles`
+--
+
+INSERT INTO `perfiles` (`id_perfil`, `nombre_perfil`, `imagen_avatar`, `alt_imagen_avatar`, `fecha_edicion`, `fecha_creacion`, `id_usuario_id`, `apellidos`, `biografia`, `fecha_nacimiento`, `nombre_usuario`, `pais`, `telefono`) VALUES
+(1, 'Angel', 'avatares/avatarPred1.jpg', NULL, '2025-06-05 09:56:47.859418', '2025-06-05 09:56:04.211478', 1, 'None', 'None', '2025-06-11', 'None', 'None', 'None');
 
 -- --------------------------------------------------------
 
@@ -2038,6 +2041,13 @@ CREATE TABLE `valoraciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
+-- Volcado de datos para la tabla `valoraciones`
+--
+
+INSERT INTO `valoraciones` (`id_valoracion`, `puntuacion`, `texto_valoracion`, `fecha_edicion`, `fecha_creacion`, `id_contenido_id`, `id_usuario_id`) VALUES
+(1, 4, 'hola', '2025-06-05 09:42:10.713536', '2025-06-05 09:42:10.713536', 37, 1);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -2147,13 +2157,6 @@ ALTER TABLE `django_migrations`
 ALTER TABLE `django_session`
   ADD PRIMARY KEY (`session_key`),
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
-
---
--- Indices de la tabla `entrevistas`
---
-ALTER TABLE `entrevistas`
-  ADD PRIMARY KEY (`id_entrevista`),
-  ADD KEY `entrevistas_creador_id_40813751_fk_auth_user_id` (`creador_id`);
 
 --
 -- Indices de la tabla `galeria`
@@ -2299,7 +2302,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `contenidos`
@@ -2329,13 +2332,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT de la tabla `entrevistas`
---
-ALTER TABLE `entrevistas`
-  MODIFY `id_entrevista` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `galeria`
@@ -2383,7 +2380,7 @@ ALTER TABLE `notificaciones`
 -- AUTO_INCREMENT de la tabla `perfiles`
 --
 ALTER TABLE `perfiles`
-  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `plataformas_streaming`
@@ -2407,7 +2404,7 @@ ALTER TABLE `suscripciones_usuario`
 -- AUTO_INCREMENT de la tabla `valoraciones`
 --
 ALTER TABLE `valoraciones`
-  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_valoracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -2474,12 +2471,6 @@ ALTER TABLE `contenidos_generos`
 ALTER TABLE `django_admin_log`
   ADD CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   ADD CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`);
-
---
--- Filtros para la tabla `entrevistas`
---
-ALTER TABLE `entrevistas`
-  ADD CONSTRAINT `entrevistas_creador_id_40813751_fk_auth_user_id` FOREIGN KEY (`creador_id`) REFERENCES `auth_user` (`id`);
 
 --
 -- Filtros para la tabla `galeria`

@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     const commentElement = document.createElement('div');
                     commentElement.className = 'comment';
 
-                    // Usar avatar_url del API o fallback a placeholder
-                    const imagenAvatar = comentario.avatar_url || '/placeholder.svg?height=50&width=50';
+                    // Usar avatar_url del API o fallback a placeholder /media/avatares/avatar_predeterminado.png
+                    const imagenAvatar = comentario.avatar_url || '/media/avatares/avatar_predeterminado.png';
                     const nombreUsuario = comentario.id_usuario || 'Anónimo';
                     const fecha = new Date(comentario.fecha_comentario).toLocaleDateString('es-ES', {
                         day: 'numeric',
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     commentElement.innerHTML = `
                         <div class="comment-avatar">
-                            <img src="${imagenAvatar}" alt="Avatar de ${nombreUsuario}" onerror="this.src='/placeholder.svg?height=50&width=50'">
+                            <img src="${imagenAvatar}" alt="Avatar de ${nombreUsuario}"">
                         </div>
                         <div class="comment-content">
                             <div class="comment-header">

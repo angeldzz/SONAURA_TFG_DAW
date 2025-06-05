@@ -142,9 +142,6 @@ function filtro_orden() {
 }
 
 function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "") {
-    console.log(anio_filtro);
-    console.log(genero_filtro);
-    console.log(orden_filtro);
     
     fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}${genero_filtro}${orden_filtro}`)
         .then(response => {
@@ -152,6 +149,7 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "") {
             return response.json();
         })
         .then(data => {
+            console.log(data);
             const peliculas = data.results || data;
             
             const movieGrid = document.getElementById('movieGrid');

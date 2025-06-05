@@ -316,33 +316,6 @@ class Noticia(models.Model):
     def __str__(self):
         return self.titulo
 
-# Interview model
-class Entrevista(models.Model):
-    id_entrevista = models.AutoField(primary_key=True, verbose_name='ID de Entrevista')
-    titulo = models.CharField(max_length=200, verbose_name='Título')
-    contenido = models.TextField(verbose_name='Contenido')
-    imagen = models.ImageField(upload_to='entrevistas/', null=True, blank=True, verbose_name='Imagen')
-    alt_imagen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo de la imagen')
-    duracion = models.DurationField(verbose_name='Duración')
-    vistas = models.IntegerField(default=0, verbose_name='Vistas')
-    fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
-    fecha_publicacion = models.DateTimeField(default=timezone.now, verbose_name='Fecha de publicación')
-    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-    
-    # Metodo para agregar el creador automanticamente
-    def save_model(self, request, obj, form, change):
-        if not obj.creador_id:
-            obj.creador = request.user
-        super().save_model(request, obj, form, change)
-        
-    class Meta:
-        db_table = 'entrevistas'
-        verbose_name = 'Entrevista'
-        verbose_name_plural = 'Entrevistas'
-
-    def __str__(self):
-        return self.titulo
-
 # Personalized List model
 class ListaPersonalizada(models.Model):
     id_lista = models.AutoField(primary_key=True, verbose_name='ID de Lista')
