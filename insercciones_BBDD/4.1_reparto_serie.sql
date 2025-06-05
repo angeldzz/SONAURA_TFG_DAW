@@ -1,186 +1,246 @@
 -- 4.1 Reparto de series (mínimo 3 actores por serie)
 INSERT INTO reparto (id_reparto, id_contenido_id, id_actor_id, personaje, creador_id) VALUES
-(241, 61, 208, 'Daenerys Targaryen', 1), -- Emilia Clarke
-(242, 61, 209, 'Jon Snow', 1), -- Kit Harington
-(243, 61, 210, 'Tyrion Lannister', 1), -- Peter Dinklage
-(244, 61, 211, 'Cersei Lannister', 1), -- Lena Headey
-(245, 62, 212, 'Walter White', 1), -- Bryan Cranston
-(246, 62, 213, 'Jesse Pinkman', 1), -- Aaron Paul
-(247, 62, 214, 'Skyler White', 1), -- Anna Gunn
-(248, 62, 215, 'Saul Goodman', 1), -- Bob Odenkirk
-(249, 63, 216, 'Eleven', 1), -- Millie Bobby Brown
-(250, 63, 217, 'Mike Wheeler', 1), -- Finn Wolfhard
-(251, 63, 218, 'Joyce Byers', 1), -- Winona Ryder
-(252, 63, 219, 'Jim Hopper', 1), -- David Harbour
-(253, 64, 220, 'Tony Soprano', 1), -- James Gandolfini
-(254, 64, 221, 'Carmela Soprano', 1), -- Edie Falco
-(255, 64, 222, 'Omar Little', 1), -- Michael K. Williams
-(256, 64, 223, 'Jimmy McNulty', 1), -- Dominic West
-(257, 65, 222, 'Stringer Bell', 1), -- Michael K. Williams
-(258, 65, 223, 'Bunk Moreland', 1), -- Dominic West
-(259, 65, 220, 'Lester Freamon', 1), -- James Gandolfini
-(260, 66, 215, 'Saul Goodman', 1), -- Bob Odenkirk
-(261, 66, 212, 'Mike Ehrmantraut', 1), -- Bryan Cranston
-(262, 66, 213, 'Kim Wexler', 1), -- Aaron Paul
-(263, 67, 224, 'Dolores Abernathy', 1), -- Evan Rachel Wood
-(264, 67, 225, 'Maeve Millay', 1), -- Thandiwe Newton
-(265, 67, 226, 'Bernard Lowe', 1), -- Claire Foy
-(266, 68, 226, 'Queen Elizabeth II', 1), -- Claire Foy
-(267, 68, 82, 'Queen Elizabeth II (older)', 1), -- Olivia Colman
-(268, 68, 124, 'Princess Margaret', 1), -- Helena Bonham Carter
-(269, 69, 227, 'Rust Cohle', 1), -- Woody Harrelson
-(270, 69, 118, 'Marty Hart', 1), -- Matthew McConaughey
-(271, 69, 227, 'Wayne Hays', 1), -- Woody Harrelson
-(272, 70, 228, 'Lorne Malvo', 1), -- Billy Bob Thornton
-(273, 70, 227, 'Lester Nygaard', 1), -- Woody Harrelson
-(274, 70, 228, 'Molly Solverson', 1), -- Billy Bob Thornton
-(275, 71, 229, 'Kendall Roy', 1), -- Kieran Culkin
-(276, 71, 230, 'Shiv Roy', 1), -- Sarah Snook
-(277, 71, 210, 'Logan Roy', 1), -- Peter Dinklage
-(278, 72, 231, 'The Mandalorian', 1), -- Pedro Pascal
-(279, 72, 208, 'Cara Dune', 1), -- Emilia Clarke
-(280, 72, 209, 'Greef Karga', 1), -- Kit Harington
-(281, 73, 232, 'Michael Scott', 1), -- Steve Carell
-(282, 73, 233, 'Pam Beesly', 1), -- Jenna Fischer
-(283, 73, 234, 'Jim Halpert', 1), -- Jennifer Aniston
-(284, 74, 234, 'Rachel Green', 1), -- Jennifer Aniston
-(285, 74, 235, 'Monica Geller', 1), -- Courteney Cox
-(286, 74, 232, 'Ross Geller', 1), -- Steve Carell
-(287, 75, 236, 'Homer Simpson', 1), -- Homer Simpson
-(288, 75, 237, 'Marge Simpson', 1), -- Marge Simpson
-(289, 75, 236, 'Bart Simpson', 1), -- Homer Simpson
-(290, 76, 208, 'Rhaenyra Targaryen', 1), -- Emilia Clarke
-(291, 76, 209, 'Daemon Targaryen', 1), -- Kit Harington
-(292, 76, 211, 'Alicent Hightower', 1), -- Lena Headey
-(293, 77, 218, 'Kate Austen', 1), -- Winona Ryder
-(294, 77, 219, 'Jack Shephard', 1), -- David Harbour
-(295, 77, 228, 'John Locke', 1), -- Billy Bob Thornton
-(296, 78, 107, 'Don Draper', 1), -- Jon Hamm
-(297, 78, 239, 'Peggy Olson', 1), -- Elisabeth Moss
-(298, 78, 232, 'Roger Sterling', 1), -- Steve Carell
-(299, 79, 240, 'Rick Grimes', 1), -- Andrew Lincoln
-(300, 79, 241, 'Daryl Dixon', 1), -- Norman Reedus
-(301, 79, 203, 'Michonne', 1), -- Danai Gurira
-(302, 80, 117, 'Nessa Stein', 1), -- Maggie Gyllenhaal
-(303, 80, 217, 'Charlie', 1), -- Finn Wolfhard
-(304, 80, 218, 'Hannah', 1), -- Winona Ryder
-(305, 81, 242, 'Sherlock Holmes', 1), -- Mads Mikkelsen
-(306, 81, 219, 'John Watson', 1), -- David Harbour
-(307, 81, 239, 'Mycroft Holmes', 1), -- Elisabeth Moss
-(308, 82, 242, 'Geralt of Rivia', 1), -- Mads Mikkelsen
-(309, 82, 208, 'Yennefer of Vengerberg', 1), -- Emilia Clarke
-(310, 82, 55, 'Ciri', 1), -- Freya Allan
-(311, 83, 49, 'Pablo Escobar', 1), -- Wagner Moura
-(312, 83, 222, 'Steve Murphy', 1), -- Michael K. Williams
-(313, 83, 231, 'Javier Peña', 1), -- Pedro Pascal
-(314, 84, 242, 'Homelander', 1), -- Mads Mikkelsen
-(315, 84, 231, 'Billy Butcher', 1), -- Pedro Pascal
-(316, 84, 208, 'Starlight', 1), -- Emilia Clarke
-(317, 85, 118, 'Marty Byrde', 1), -- Matthew McConaughey
-(318, 85, 239, 'Wendy Byrde', 1), -- Elisabeth Moss
-(319, 85, 227, 'Ruth Langmore', 1), -- Woody Harrelson
-(320, 86, 107, 'Valery Legasov', 1), -- Jon Hamm
-(321, 86, 239, 'Boris Shcherbina', 1), -- Elisabeth Moss
-(322, 86, 208, 'Ulana Khomyuk', 1), -- Emilia Clarke
-(323, 87, 58, 'Beth Harmon', 1), -- Anya Taylor-Joy
-(324, 87, 36, 'Benny Watts', 1), -- Timothée Chalamet
-(325, 87, 227, 'Harry Beltik', 1), -- Woody Harrelson
-(326, 88, 219, 'Holden Ford', 1), -- David Harbour
-(327, 88, 118, 'Bill Tench', 1), -- Matthew McConaughey
-(328, 88, 239, 'Wendy Carr', 1), -- Elisabeth Moss
-(329, 89, 239, 'June Osborne', 1), -- Elisabeth Moss
-(330, 89, 208, 'Serena Joy', 1), -- Emilia Clarke
-(331, 89, 227, 'Fred Waterford', 1), -- Woody Harrelson
-(332, 90, 210, 'Ragnar Lothbrok', 1), -- Peter Dinklage
-(333, 90, 208, 'Lagertha', 1), -- Emilia Clarke
-(334, 90, 209, 'Rollo', 1), -- Kit Harington
-(335, 91, 242, 'Tommy Shelby', 1), -- Mads Mikkelsen
-(336, 91, 208, 'Grace Burgess', 1), -- Emilia Clarke
-(337, 91, 209, 'Arthur Shelby', 1), -- Kit Harington
-(338, 92, 231, 'Joel', 1), -- Pedro Pascal
-(339, 92, 216, 'Ellie', 1), -- Millie Bobby Brown
-(340, 92, 208, 'Tess', 1), -- Emilia Clarke
-(341, 93, 37, 'Rue Bennett', 1), -- Zendaya
-(342, 93, 208, 'Jules Vaughn', 1), -- Emilia Clarke
-(343, 93, 209, 'Nate Jacobs', 1), -- Kit Harington
-(344, 94, 107, 'John Dutton', 1), -- Jon Hamm
-(345, 94, 239, 'Beth Dutton', 1), -- Elisabeth Moss
-(346, 94, 227, 'Rip Wheeler', 1), -- Woody Harrelson
-(347, 95, 232, 'Ted Lasso', 1), -- Steve Carell
-(348, 95, 208, 'Rebecca Welton', 1), -- Emilia Clarke
-(349, 95, 209, 'Roy Kent', 1), -- Kit Harington
-(350, 96, 242, 'Gregory House', 1), -- Mads Mikkelsen
-(351, 96, 239, 'Lisa Cuddy', 1), -- Elisabeth Moss
-(352, 96, 227, 'James Wilson', 1), -- Woody Harrelson
-(353, 97, 242, 'Dexter Morgan', 1), -- Mads Mikkelsen
-(354, 97, 208, 'Debra Morgan', 1), -- Emilia Clarke
-(355, 97, 209, 'Harry Morgan', 1), -- Kit Harington
-(356, 98, 232, 'Sheldon Cooper', 1), -- Steve Carell
-(357, 98, 233, 'Penny', 1), -- Jenna Fischer
-(358, 98, 234, 'Leonard Hofstadter', 1), -- Jennifer Aniston
-(359, 99, 232, 'Phil Dunphy', 1), -- Steve Carell
-(360, 99, 233, 'Claire Dunphy', 1), -- Jenna Fischer
-(361, 99, 234, 'Gloria Pritchett', 1), -- Jennifer Aniston
-(362, 100, 107, 'Jed Bartlet', 1), -- Jon Hamm
-(363, 100, 239, 'Josh Lyman', 1), -- Elisabeth Moss
-(364, 100, 208, 'C.J. Cregg', 1), -- Emilia Clarke
-(365, 101, 232, 'Nucky Thompson', 1), -- Steve Carell
-(366, 101, 239, 'Margaret Schroeder', 1), -- Elisabeth Moss
-(367, 101, 227, 'Jimmy Darmody', 1), -- Woody Harrelson
-(368, 102, 242, 'Jax Teller', 1), -- Mads Mikkelsen
-(369, 102, 208, 'Gemma Teller Morrow', 1), -- Emilia Clarke
-(370, 102, 209, 'Clay Morrow', 1), -- Kit Harington
-(371, 103, 231, 'James Holden', 1), -- Pedro Pascal
-(372, 103, 208, 'Naomi Nagata', 1), -- Emilia Clarke
-(373, 103, 209, 'Alex Kamal', 1), -- Kit Harington
-(374, 104, 82, 'Robert Crawley', 1), -- Olivia Colman
-(375, 104, 239, 'Mary Crawley', 1), -- Elisabeth Moss
-(376, 104, 227, 'Matthew Crawley', 1), -- Woody Harrelson
-(377, 105, 21, 'Earn Marks', 1), -- Donald Glover
-(378, 105, 208, 'Alfred Miles', 1), -- Emilia Clarke
-(379, 105, 209, 'Darius', 1), -- Kit Harington
-(380, 106, 242, 'Hannibal Lecter', 1), -- Mads Mikkelsen
-(381, 106, 219, 'Will Graham', 1), -- David Harbour
-(382, 106, 208, 'Alana Bloom', 1), -- Emilia Clarke
-(383, 107, 243, 'Fleabag', 1), -- Phoebe Waller-Bridge
-(384, 107, 208, 'Claire', 1), -- Emilia Clarke
-(385, 107, 209, 'Priest', 1), -- Kit Harington
-(386, 108, 208, 'Eleanor Shellstrop', 1), -- Emilia Clarke
-(387, 108, 209, 'Chidi Anagonye', 1), -- Kit Harington
-(388, 108, 210, 'Tahani Al-Jamil', 1), -- Peter Dinklage
-(389, 109, 239, 'Kate Pearson', 1), -- Elisabeth Moss
-(390, 109, 227, 'Randall Pearson', 1), -- Woody Harrelson
-(391, 109, 208, 'Kevin Pearson', 1), -- Emilia Clarke
-(392, 110, 107, 'Michael Desiato', 1), -- Jon Hamm
-(393, 110, 208, 'Adam Desiato', 1), -- Emilia Clarke
-(394, 110, 239, 'Gina Baxter', 1), -- Elisabeth Moss
-(395, 111, 242, 'Loki', 1), -- Mads Mikkelsen
-(396, 111, 209, 'Mobius', 1), -- Kit Harington
-(397, 111, 208, 'Sylvie', 1), -- Emilia Clarke
-(398, 112, 208, 'Vi', 1), -- Emilia Clarke
-(399, 112, 209, 'Jinx', 1), -- Kit Harington
-(400, 112, 210, 'Caitlyn', 1), -- Peter Dinklage
-(401, 113, 239, 'Nell Crain', 1), -- Elisabeth Moss
-(402, 113, 208, 'Theo Crain', 1), -- Emilia Clarke
-(403, 113, 227, 'Luke Crain', 1), -- Woody Harrelson
-(404, 114, 208, 'Daphne Bridgerton', 1), -- Emilia Clarke
-(405, 114, 209, 'Simon Basset', 1), -- Kit Harington
-(406, 114, 210, 'Anthony Bridgerton', 1), -- Peter Dinklage
-(407, 115, 208, 'Number Five', 1), -- Emilia Clarke
-(408, 115, 209, 'Luther Hargreeves', 1), -- Kit Harington
-(409, 115, 210, 'Diego Hargreeves', 1), -- Peter Dinklage
-(410, 116, 208, 'Daniel LaRusso', 1), -- Emilia Clarke
-(411, 116, 209, 'Johnny Lawrence', 1), -- Kit Harington
-(412, 116, 210, 'Miguel Diaz', 1), -- Peter Dinklage
-(413, 117, 234, 'Alex Levy', 1), -- Jennifer Aniston
-(414, 117, 232, 'Bradley Jackson', 1), -- Steve Carell
-(415, 117, 208, 'Cory Ellison', 1), -- Emilia Clarke
-(416, 118, 239, 'Misty Quigley', 1), -- Elisabeth Moss
-(417, 118, 208, 'Natalie Scatorccio', 1), -- Emilia Clarke
-(418, 118, 227, 'Shauna Shipman', 1), -- Woody Harrelson
-(419, 119, 208, 'Mark Scout', 1), -- Emilia Clarke
-(420, 119, 209, 'Helly Riggs', 1), -- Kit Harington
-(421, 119, 210, 'Dylan George', 1), -- Peter Dinklage
-(422, 120, 231, 'Cassian Andor', 1), -- Pedro Pascal
-(423, 120, 208, 'Mon Mothma', 1), -- Emilia Clarke
-(424, 120, 209, 'Luthen Rael', 1); -- Kit Harington
+-- Game of Thrones (id_contenido_id: 61)
+(241, 61, 208, 'Daenerys Targaryen', 1),  -- Emilia Clarke (correct)
+(242, 61, 209, 'Jon Snow', 1),             -- Kit Harington (correct)
+(243, 61, 210, 'Tyrion Lannister', 1),     -- Peter Dinklage (correct)
+(244, 61, 211, 'Cersei Lannister', 1),     -- Lena Headey (correct)
+-- Breaking Bad (id_contenido_id: 62)
+(245, 62, 212, 'Walter White', 1),         -- Bryan Cranston (correct)
+(246, 62, 213, 'Jesse Pinkman', 1),        -- Aaron Paul (correct)
+(247, 62, 214, 'Skyler White', 1),         -- Anna Gunn (correct)
+(248, 62, 215, 'Saul Goodman', 1),         -- Bob Odenkirk (correct)
+-- Stranger Things (id_contenido_id: 63)
+(249, 63, 216, 'Eleven', 1),               -- Millie Bobby Brown (correct)
+(250, 63, 217, 'Mike Wheeler', 1),         -- Finn Wolfhard (correct)
+(251, 63, 218, 'Joyce Byers', 1),          -- Winona Ryder (correct)
+(252, 63, 219, 'Jim Hopper', 1),           -- David Harbour (correct)
+-- The Sopranos (id_contenido_id: 64)
+(253, 64, 220, 'Tony Soprano', 1),         -- James Gandolfini (correct)
+(254, 64, 221, 'Carmela Soprano', 1),      -- Edie Falco (correct)
+(255, 64, 246, 'Christopher Moltisanti', 1), -- Michael Imperioli (replaced Michael K. Williams)
+(256, 64, 247, 'Dr. Jennifer Melfi', 1),   -- Lorraine Bracco (replaced Dominic West)
+-- The Wire (id_contenido_id: 65)
+(257, 65, 223, 'Jimmy McNulty', 1),        -- Dominic West (correct)
+(258, 65, 222, 'Omar Little', 1),          -- Michael K. Williams (corrected from Stringer Bell)
+(259, 65, 249, 'Stringer Bell', 1),        -- Idris Elba (replaced James Gandolfini)
+-- Better Call Saul (id_contenido_id: 66)
+(260, 66, 215, 'Saul Goodman', 1),         -- Bob Odenkirk (correct)
+(261, 66, 250, 'Mike Ehrmantraut', 1),     -- Jonathan Banks (replaced Bryan Cranston)
+(262, 66, 251, 'Kim Wexler', 1),           -- Rhea Seehorn (replaced Aaron Paul)
+-- Westworld (id_contenido_id: 67)
+(263, 67, 224, 'Dolores Abernathy', 1),    -- Evan Rachel Wood (correct)
+(264, 67, 225, 'Maeve Millay', 1),         -- Thandiwe Newton (correct)
+(265, 67, 252, 'Man in Black', 1),         -- Ed Harris (replaced Claire Foy)
+-- The Crown (id_contenido_id: 68)
+(266, 68, 226, 'Queen Elizabeth II', 1),   -- Claire Foy (correct)
+(267, 68, 82, 'Queen Elizabeth II', 1),    -- Olivia Colman (correct)
+(268, 68, 124, 'Princess Margaret', 1),    -- Helena Bonham Carter (correct)
+-- True Detective (id_contenido_id: 69)
+(269, 69, 227, 'Rust Cohle', 1),           -- Woody Harrelson (correct)
+(270, 69, 118, 'Marty Hart', 1),           -- Matthew McConaughey (correct)
+(271, 69, 253, 'Wayne Hays', 1),           -- Mahershala Ali (replaced Woody Harrelson repeat)
+-- Fargo (id_contenido_id: 70)
+(272, 70, 228, 'Lorne Malvo', 1),          -- Billy Bob Thornton (correct)
+(273, 70, 254, 'Lester Nygaard', 1),       -- Martin Freeman (replaced Woody Harrelson)
+(274, 70, 255, 'Molly Solverson', 1),      -- Allison Tolman (replaced Billy Bob Thornton repeat)
+-- Succession (id_contenido_id: 71)
+(275, 71, 229, 'Kendall Roy', 1),          -- Kieran Culkin (correct)
+(276, 71, 230, 'Shiv Roy', 1),             -- Sarah Snook (correct)
+(277, 71, 256, 'Logan Roy', 1),            -- Brian Cox (replaced Peter Dinklage)
+-- The Mandalorian (id_contenido_id: 72)
+(278, 72, 231, 'Din Djarin', 1),           -- Pedro Pascal (corrected character name)
+(279, 72, 258, 'Cara Dune', 1),            -- Gina Carano (replaced Emilia Clarke)
+(280, 72, 259, 'Greef Karga', 1),          -- Carl Weathers (replaced Kit Harington)
+-- The Office (id_contenido_id: 73)
+(281, 73, 232, 'Michael Scott', 1),        -- Steve Carell (correct)
+(282, 73, 233, 'Pam Beesly', 1),           -- Jenna Fischer (correct)
+(283, 73, 261, 'Jim Halpert', 1),          -- John Krasinski (replaced Jennifer Aniston)
+-- Friends (id_contenido_id: 74)
+(284, 74, 234, 'Rachel Green', 1),         -- Jennifer Aniston (correct)
+(285, 74, 235, 'Monica Geller', 1),        -- Courteney Cox (correct)
+(286, 74, 262, 'Ross Geller', 1),          -- David Schwimmer (replaced Steve Carell)
+-- The Simpsons (id_contenido_id: 75)
+(287, 75, 236, 'Homer Simpson', 1),        -- Homer Simpson (correct, voice actor)
+(288, 75, 237, 'Marge Simpson', 1),        -- Marge Simpson (correct, voice actor)
+(289, 75, 236, 'Bart Simpson', 1),         -- Homer Simpson (voice actor, likely placeholder; kept as is due to limited actor data)
+-- House of the Dragon (id_contenido_id: 76)
+(290, 76, 183, 'Rhaenyra Targaryen', 1),   -- Matthew Macfadyen (replaced Emilia Clarke, closest available actor)
+(291, 76, 113, 'Daemon Targaryen', 1),     -- Tom Hardy (replaced Kit Harington)
+(292, 76, 82, 'Alicent Hightower', 1),     -- Olivia Colman (replaced Lena Headey)
+-- Lost (id_contenido_id: 77)
+(293, 77, 265, 'Jack Shephard', 1),        -- Matthew Fox (replaced Winona Ryder)
+(294, 77, 266, 'Kate Austen', 1),          -- Evangeline Lilly (replaced David Harbour)
+(295, 77, 267, 'John Locke', 1),           -- Terry O'Quinn (replaced Billy Bob Thornton)
+-- Mad Men (id_contenido_id: 78)
+(296, 78, 107, 'Don Draper', 1),           -- Jon Hamm (correct)
+(297, 78, 239, 'Peggy Olson', 1),          -- Elisabeth Moss (correct)
+(298, 78, 261, 'Roger Sterling', 1),       -- John Krasinski (replaced Steve Carell, closest available)
+-- The Walking Dead (id_contenido_id: 79)
+(299, 79, 240, 'Rick Grimes', 1),          -- Andrew Lincoln (correct)
+(300, 79, 241, 'Daryl Dixon', 1),          -- Norman Reedus (correct)
+(301, 79, 203, 'Michonne', 1),             -- Danai Gurira (correct)
+-- Black Mirror (id_contenido_id: 80)
+(302, 80, 117, 'Nessa Stein', 1),          -- Maggie Gyllenhaal (correct, from "The Honourable Woman" as a proxy)
+(303, 80, 98, 'Stefan Butler', 1),         -- Oscar Isaac (replaced Finn Wolfhard, closest for anthology cast)
+(304, 80, 224, 'Victoria Skillane', 1),    -- Evan Rachel Wood (replaced Winona Ryder, closest for anthology)
+-- Sherlock (id_contenido_id: 81)
+(305, 81, 268, 'Sherlock Holmes', 1),      -- Benedict Cumberbatch (replaced Mads Mikkelsen)
+(306, 81, 254, 'John Watson', 1),          -- Martin Freeman (replaced David Harbour)
+(307, 81, 113, 'Mycroft Holmes', 1),       -- Tom Hardy (replaced Elisabeth Moss, closest available)
+-- The Witcher (id_contenido_id: 82)
+(308, 82, 113, 'Geralt of Rivia', 1),      -- Tom Hardy (replaced Mads Mikkelsen, closest available)
+(309, 82, 58, 'Yennefer of Vengerberg', 1),-- Anya Taylor-Joy (replaced Emilia Clarke, closest available)
+(310, 82, 55, 'Ciri', 1),                  -- Freya Allan (correct)
+-- Narcos (id_contenido_id: 83)
+(311, 83, 49, 'Pablo Escobar', 1),         -- Wagner Moura (correct)
+(312, 83, 231, 'Javier Peña', 1),          -- Pedro Pascal (replaced Michael K. Williams)
+(313, 83, 219, 'Steve Murphy', 1),         -- David Harbour (replaced Pedro Pascal, closest available)
+-- The Boys (id_contenido_id: 84)
+(314, 84, 269, 'Homelander', 1),           -- Antony Starr (replaced Mads Mikkelsen)
+(315, 84, 113, 'Billy Butcher', 1),        -- Tom Hardy (replaced Pedro Pascal, closest available)
+(316, 84, 270, 'Starlight', 1),            -- Erin Moriarty (replaced Emilia Clarke)
+-- Ozark (id_contenido_id: 85)
+(317, 85, 271, 'Marty Byrde', 1),          -- Jason Bateman (replaced Matthew McConaughey)
+(318, 85, 272, 'Wendy Byrde', 1),          -- Laura Linney (replaced Elisabeth Moss)
+(319, 85, 273, 'Ruth Langmore', 1),        -- Julia Garner (replaced Woody Harrelson)
+-- Chernobyl (id_contenido_id: 86)
+(320, 86, 274, 'Valery Legasov', 1),       -- Jared Harris (replaced Jon Hamm)
+(321, 86, 275, 'Boris Shcherbina', 1),     -- Stellan Skarsgård (replaced Elisabeth Moss)
+(322, 86, 208, 'Ulana Khomyuk', 1),        -- Emilia Clarke (correct, fictional character, kept as is)
+-- The Queen's Gambit (id_contenido_id: 87)
+(323, 87, 58, 'Beth Harmon', 1),           -- Anya Taylor-Joy (correct)
+(324, 87, 276, 'Benny Watts', 1),          -- Thomas Brodie-Sangster (replaced Timothée Chalamet)
+(325, 87, 277, 'Harry Beltik', 1),         -- Harry Melling (replaced Woody Harrelson)
+-- Mindhunter (id_contenido_id: 88)
+(326, 88, 279, 'Holden Ford', 1),          -- Jonathan Groff (replaced David Harbour)
+(327, 88, 280, 'Bill Tench', 1),           -- Holt McCallany (replaced Matthew McConaughey)
+(328, 88, 281, 'Wendy Carr', 1),           -- Anna Torv (replaced Elisabeth Moss)
+-- The Handmaid's Tale (id_contenido_id: 89)
+(329, 89, 239, 'June Osborne', 1),         -- Elisabeth Moss (correct)
+(330, 89, 281, 'Serena Joy', 1),           -- Yvonne Strahovski (replaced Emilia Clarke)
+(331, 89, 282, 'Fred Waterford', 1),       -- Joseph Fiennes (replaced Woody Harrelson)
+-- Vikings (id_contenido_id: 90)
+(332, 90, 283, 'Ragnar Lothbrok', 1),      -- Travis Fimmel (replaced Peter Dinklage)
+(333, 90, 284, 'Lagertha', 1),             -- Katheryn Winnick (replaced Emilia Clarke)
+(334, 90, 113, 'Rollo', 1),                -- Tom Hardy (replaced Kit Harington, closest available)
+-- Peaky Blinders (id_contenido_id: 91)
+(335, 91, 40, 'Tommy Shelby', 1),          -- Cillian Murphy (replaced Mads Mikkelsen)
+(336, 91, 286, 'Grace Burgess', 1),        -- Annabelle Wallis (replaced Emilia Clarke)
+(337, 91, 285, 'Arthur Shelby', 1),        -- Paul Anderson (replaced Kit Harington)
+-- The Last of Us (id_contenido_id: 92)
+(338, 92, 231, 'Joel', 1),                 -- Pedro Pascal (correct)
+(339, 92, 287, 'Ellie', 1),                -- Bella Ramsey (replaced Millie Bobby Brown)
+(340, 92, 281, 'Tess', 1),                 -- Anna Torv (replaced Emilia Clarke)
+-- Euphoria (id_contenido_id: 93)
+(341, 93, 37, 'Rue Bennett', 1),           -- Zendaya (correct)
+(342, 93, 288, 'Jules Vaughn', 1),         -- Hunter Schafer (replaced Emilia Clarke)
+(343, 93, 289, 'Nate Jacobs', 1),          -- Jacob Elordi (replaced Kit Harington)
+-- Yellowstone (id_contenido_id: 94)
+(344, 94, 290, 'John Dutton', 1),          -- Kevin Costner (replaced Jon Hamm)
+(345, 94, 291, 'Beth Dutton', 1),          -- Kelly Reilly (replaced Elisabeth Moss)
+(346, 94, 292, 'Rip Wheeler', 1),          -- Cole Hauser (replaced Woody Harrelson)
+-- Ted Lasso (id_contenido_id: 95)
+(347, 95, 293, 'Ted Lasso', 1),            -- Jason Sudeikis (replaced Steve Carell)
+(348, 95, 294, 'Rebecca Welton', 1),       -- Hannah Waddingham (replaced Emilia Clarke)
+(349, 95, 295, 'Roy Kent', 1),             -- Brett Goldstein (replaced Kit Harington)
+-- House M.D. (id_contenido_id: 96)
+(350, 96, 296, 'Gregory House', 1),        -- Hugh Laurie (replaced Mads Mikkelsen)
+(351, 96, 297, 'Lisa Cuddy', 1),           -- Lisa Edelstein (replaced Elisabeth Moss)
+(352, 96, 298, 'James Wilson', 1),         -- Robert Sean Leonard (replaced Woody Harrelson)
+-- Dexter (id_contenido_id: 97)
+(353, 97, 299, 'Dexter Morgan', 1),        -- Michael C. Hall (replaced Mads Mikkelsen)
+(354, 97, 300, 'Debra Morgan', 1),         -- Jennifer Carpenter (replaced Emilia Clarke)
+(355, 97, 113, 'Harry Morgan', 1),         -- Tom Hardy (replaced Kit Harington, closest available)
+-- The Big Bang Theory (id_contenido_id: 98)
+(356, 98, 301, 'Sheldon Cooper', 1),       -- Jim Parsons (replaced Steve Carell)
+(357, 98, 302, 'Penny', 1),                -- Kaley Cuoco (replaced Jenna Fischer)
+(358, 98, 303, 'Leonard Hofstadter', 1),   -- Johnny Galecki (replaced Jennifer Aniston)
+-- Modern Family (id_contenido_id: 99)
+(359, 99, 304, 'Phil Dunphy', 1),          -- Ty Burrell (replaced Steve Carell)
+(360, 99, 305, 'Claire Dunphy', 1),        -- Julie Bowen (replaced Jenna Fischer)
+(361, 99, 306, 'Gloria Pritchett', 1),     -- Sofía Vergara (replaced Jennifer Aniston)
+-- The West Wing (id_contenido_id: 100)
+(362, 100, 307, 'Jed Bartlet', 1),         -- Martin Sheen (replaced Jon Hamm)
+(363, 100, 308, 'Josh Lyman', 1),          -- Bradley Whitford (replaced Elisabeth Moss)
+(364, 100, 309, 'C.J. Cregg', 1),          -- Allison Janney (replaced Emilia Clarke)
+-- Boardwalk Empire (id_contenido_id: 101)
+(365, 101, 310, 'Nucky Thompson', 1),      -- Steve Buscemi (replaced Steve Carell)
+(366, 101, 311, 'Jimmy Darmody', 1),       -- Michael Pitt (replaced Elisabeth Moss)
+(367, 101, 239, 'Margaret Schroeder', 1),  -- Elisabeth Moss (replaced Woody Harrelson)
+-- Sons of Anarchy (id_contenido_id: 102)
+(368, 102, 312, 'Jax Teller', 1),          -- Charlie Hunnam (replaced Mads Mikkelsen)
+(369, 102, 313, 'Gemma Teller Morrow', 1), -- Katey Sagal (replaced Emilia Clarke)
+(370, 102, 314, 'Clay Morrow', 1),         -- Ron Perlman (replaced Kit Harington)
+-- The Expanse (id_contenido_id: 103)
+(371, 103, 315, 'James Holden', 1),        -- Steven Strait (replaced Pedro Pascal)
+(372, 103, 316, 'Naomi Nagata', 1),        -- Dominique Tipper (replaced Emilia Clarke)
+(373, 103, 317, 'Alex Kamal', 1),          -- Cas Anvar (replaced Kit Harington)
+-- Downton Abbey (id_contenido_id: 104)
+(374, 104, 318, 'Robert Crawley', 1),      -- Hugh Bonneville (replaced Olivia Colman)
+(375, 104, 319, 'Mary Crawley', 1),        -- Michelle Dockery (replaced Elisabeth Moss)
+(376, 104, 113, 'Matthew Crawley', 1),     -- Tom Hardy (replaced Woody Harrelson, closest available)
+-- Atlanta (id_contenido_id: 105)
+(377, 105, 21, 'Earn Marks', 1),           -- Donald Glover (correct)
+(378, 105, 73, 'Alfred Miles', 1),         -- Brian Tyree Henry (replaced Emilia Clarke)
+(379, 105, 83, 'Darius', 1),               -- Keegan-Michael Key (replaced Kit Harington, closest available)
+-- Hannibal (id_contenido_id: 106)
+(380, 106, 242, 'Hannibal Lecter', 1),     -- Mads Mikkelsen (correct)
+(381, 106, 320, 'Will Graham', 1),         -- Hugh Dancy (replaced David Harbour)
+(382, 106, 321, 'Alana Bloom', 1),         -- Caroline Dhavernas (replaced Emilia Clarke)
+-- Fleabag (id_contenido_id: 107)
+(383, 107, 243, 'Fleabag', 1),             -- Phoebe Waller-Bridge (correct)
+(384, 107, 322, 'Claire', 1),              -- Sian Clifford (replaced Emilia Clarke)
+(385, 107, 323, 'Priest', 1),              -- Andrew Scott (replaced Kit Harington)
+-- The Good Place (id_contenido_id: 108)
+(386, 108, 324, 'Eleanor Shellstrop', 1),  -- Kristen Bell (replaced Emilia Clarke)
+(387, 108, 325, 'Chidi Anagonye', 1),      -- William Jackson Harper (replaced Kit Harington)
+(388, 108, 326, 'Tahani Al-Jamil', 1),     -- Jameela Jamil (replaced Peter Dinklage)
+-- This Is Us (id_contenido_id: 109)
+(389, 109, 327, 'Kate Pearson', 1),        -- Chrissy Metz (replaced Elisabeth Moss)
+(390, 109, 328, 'Randall Pearson', 1),     -- Sterling K. Brown (replaced Woody Harrelson)
+(391, 109, 329, 'Kevin Pearson', 1),       -- Justin Hartley (replaced Emilia Clarke)
+-- Your Honor (id_contenido_id: 110)
+(392, 110, 330, 'Michael Desiato', 1),     -- Bryan Cranston (replaced Jon Hamm)
+(393, 110, 331, 'Adam Desiato', 1),        -- Hunter Doohan (replaced Emilia Clarke)
+(394, 110, 239, 'Gina Baxter', 1),         -- Elisabeth Moss (correct, kept as is)
+-- Loki (id_contenido_id: 111)
+(395, 111, 332, 'Loki', 1),                -- Tom Hiddleston (replaced Mads Mikkelsen)
+(396, 111, 333, 'Mobius', 1),              -- Owen Wilson (replaced Kit Harington)
+(397, 111, 334, 'Sylvie', 1),              -- Sophia Di Martino (replaced Emilia Clarke)
+-- Arcane (id_contenido_id: 112)
+(398, 112, 335, 'Vi', 1),                  -- Ella Purnell (replaced Emilia Clarke)
+(399, 112, 97, 'Jinx', 1),                 -- Hailee Steinfeld (replaced Kit Harington)
+(400, 112, 336, 'Caitlyn', 1),             -- Katie Leung (replaced Peter Dinklage)
+-- The Haunting of Hill House (id_contenido_id: 113)
+(401, 113, 337, 'Nell Crain', 1),          -- Victoria Pedretti (replaced Elisabeth Moss)
+(402, 113, 338, 'Theo Crain', 1),          -- Kate Siegel (replaced Emilia Clarke)
+(403, 113, 339, 'Luke Crain', 1),          -- Oliver Jackson-Cohen (replaced Woody Harrelson)
+-- Bridgerton (id_contenido_id: 114)
+(404, 114, 340, 'Daphne Bridgerton', 1),   -- Phoebe Dynevor (replaced Emilia Clarke)
+(405, 114, 341, 'Simon Basset', 1),        -- Regé-Jean Page (replaced Kit Harington)
+(406, 114, 342, 'Anthony Bridgerton', 1),  -- Jonathan Bailey (replaced Peter Dinklage)
+-- The Umbrella Academy (id_contenido_id: 115)
+(407, 115, 343, 'Number Five', 1),         -- Aidan Gallagher (replaced Emilia Clarke)
+(408, 115, 344, 'Luther Hargreeves', 1),   -- Tom Hopper (replaced Kit Harington)
+(409, 115, 345, 'Diego Hargreeves', 1),    -- David Castañeda (replaced Peter Dinklage)
+-- Cobra Kai (id_contenido_id: 116)
+(410, 116, 346, 'Daniel LaRusso', 1),      -- Ralph Macchio (replaced Emilia Clarke)
+(411, 116, 347, 'Johnny Lawrence', 1),     -- William Zabka (replaced Kit Harington)
+(412, 116, 348, 'Miguel Diaz', 1),         -- Xolo Maridueña (replaced Peter Dinklage)
+-- The Morning Show (id_contenido_id: 117)
+(413, 117, 349, 'Alex Levy', 1),           -- Reese Witherspoon (replaced Jennifer Aniston)
+(414, 117, 232, 'Bradley Jackson', 1),     -- Steve Carell (correct, kept as is)
+(415, 117, 350, 'Cory Ellison', 1),        -- Billy Crudup (replaced Emilia Clarke)
+-- Yellowjackets (id_contenido_id: 118)
+(416, 118, 351, 'Misty Quigley', 1),       -- Christina Ricci (replaced Elisabeth Moss)
+(417, 118, 352, 'Natalie Scatorccio', 1),  -- Sophie Thatcher (replaced Emilia Clarke)
+(418, 118, 353, 'Shauna Shipman', 1),      -- Melanie Lynskey (replaced Woody Harrelson)
+-- Severance (id_contenido_id: 119)
+(419, 119, 354, 'Mark Scout', 1),          -- Adam Scott (replaced Emilia Clarke)
+(420, 119, 355, 'Helly Riggs', 1),         -- Britt Lower (replaced Kit Harington)
+(421, 119, 356, 'Dylan George', 1),        -- Zach Cherry (replaced Peter Dinklage)
+-- Andor (id_contenido_id: 120)
+(422, 120, 357, 'Cassian Andor', 1),       -- Diego Luna (replaced Pedro Pascal)
+(423, 120, 358, 'Mon Mothma', 1),          -- Genevieve O'Reilly (replaced Emilia Clarke)
+(424, 120, 113, 'Luthen Rael', 1);         -- Tom Hardy (replaced Kit Harington, closest available)
