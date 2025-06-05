@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.views.generic import View
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.urls import reverse
 import logging
@@ -171,24 +171,26 @@ class PerfilView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect(reverse('login'))
+            return redirect('login')
         perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
-
-        perfil.nombre_perfil = request.POST.get('nombre_perfil', perfil.nombre_perfil)
-        perfil.nombre_usuario = request.POST.get('nombre_usuario', perfil.nombre_usuario)
-        perfil.apellidos = request.POST.get('apellidos', perfil.apellidos)
-        perfil.telefono = request.POST.get('telefono', perfil.telefono)
-        perfil.biografia = request.POST.get('biografia', perfil.biografia)
-        perfil.fecha_nacimiento = request.POST.get('fecha_nacimiento', perfil.fecha_nacimiento)
-        perfil.pais = request.POST.get('pais', perfil.pais)
-
-        if 'imagen_avatar' in request.FILES:
-            perfil.imagen_avatar = request.FILES['imagen_avatar']
-            perfil.alt_imagen_avatar = request.POST.get('alt_imagen_avatar', perfil.alt_imagen_avatar)
+        perfil.nombre_perfil = request.POST.get('nombre_perfil')
+        perfil.apellidos = request.POST.get('apellidos')
+        perfil.nombre_usuario = request.POST.get('nombre_usuario')
+        perfil.telefono = request.POST.get('telefono')
+        perfil.biografia = request.POST.get('biografia')
+        perfil.fecha_nacimiento = request.POST.get('fecha_nacimiento')
+        perfil.pais = request.POST.get('pais')
+        avatar_url = request.POST.get('avatar_url')
+        imagen_avatar = request.FILES.get('imagen_avatar')
+        if avatar_url:
+            # Si se seleccionó un avatar predefinido
+            perfil.imagen_avatar = avatar_url  # Asumiendo que imagen_avatar puede ser una URL
+        elif imagen_avatar:
+            perfil.imagen_avatar = imagen_avatar  # Imagen subida por el usuario
 
         perfil.save()
-        messages.success(request, "Perfil actualizado exitosamente.")
-        return redirect(reverse('perfil'))
+        messages.success(request, "Perfil actualizado correctamente.")
+        return redirect('perfil')
     
     
 

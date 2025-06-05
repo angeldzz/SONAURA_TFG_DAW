@@ -279,30 +279,26 @@ class Newsletter(models.Model):
     def __str__(self):
         return self.correo
     
-# News Category model
-class CategoriaNoticia(models.Model):
-    id_categoria = models.AutoField(primary_key=True, verbose_name='ID de Categoría')
-    nombre = models.CharField(max_length=50, unique=True, verbose_name='Nombre')
-    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
 
-    class Meta:
-        db_table = 'categorias_noticia'
-        verbose_name = 'Categoría de Noticia'
-        verbose_name_plural = 'Categorías de Noticia'
-    
-    def __str__(self):
-        return self.nombre
-    
-# News model
 class Noticia(models.Model):
+    CATEGORIAS = [
+        ('Cine', 'Cine'),
+        ('Series', 'Series'),
+        ('Entrevistas', 'Entrevistas'),
+        ('Reseñas', 'Reseñas'),
+        ('Premios', 'Premios'),
+        ('Trailers', 'Trailers'),
+        ('Estrenos', 'Estrenos'),
+    ]
+
     id_noticia = models.AutoField(primary_key=True, verbose_name='ID de Noticia')
     titulo = models.CharField(max_length=200, verbose_name='Título')
     contenido = models.TextField(verbose_name='Contenido')
-    categoria = models.CharField(max_length=100, verbose_name='Categoría')
+    categoria = models.CharField(max_length=100, choices=CATEGORIAS, verbose_name='Categoría')
     imagen_principal = models.ImageField(upload_to='noticias/', null=True, blank=True, verbose_name='Imagen principal')
     alt_imagen_principal = models.CharField(max_length=255, null=True, blank=True, verbose_name='Texto alternativo de la imagen principal')
     vistas = models.IntegerField(default=0, verbose_name='Vistas')
-    tiempo_lectura = models.DurationField(verbose_name='Tiempo de lectura')
+    tiempo_lectura = models.IntegerField(verbose_name='Tiempo de lectura')
     es_exclusiva = models.BooleanField(default=False, verbose_name='¿Es exclusiva?')
     fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
     fecha_publicacion = models.DateTimeField(default=timezone.now, verbose_name='Fecha de publicación')
@@ -319,19 +315,6 @@ class Noticia(models.Model):
 
     def __str__(self):
         return self.titulo
-
-# News-Category relationship (N:M)
-class NoticiaCategoria(models.Model):
-    id_noticias = models.ForeignKey(Noticia, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Noticia')
-    id_categoria = models.ForeignKey(CategoriaNoticia, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Categoría')
-        
-    class Meta:
-        db_table = 'noticias_categorias'
-        verbose_name = 'Categoría de Noticia'
-        verbose_name_plural = 'Categorías de Noticia'
-
-    def __str__(self):
-        return str(self.id_noticias)
 
 # Interview model
 class Entrevista(models.Model):

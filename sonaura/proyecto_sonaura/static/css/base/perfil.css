@@ -1307,7 +1307,8 @@ input:checked + .toggle-slider:before {
 .avatar-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 3rem;
+  margin-left: 20px;
 }
 
 .preset-avatar {

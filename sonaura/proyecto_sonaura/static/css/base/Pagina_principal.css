@@ -1534,7 +1534,9 @@
     color: var(--white);
     transform: translateY(-3px);
   }
-  
+  .social-link i{
+    margin-left: 5px;
+  }
   .footer-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -2103,3 +2105,11 @@
     }
   }
   
+  .header-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 6px;
+    vertical-align: middle;
+}

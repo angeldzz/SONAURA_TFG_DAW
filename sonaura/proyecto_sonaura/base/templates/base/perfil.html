@@ -79,7 +79,7 @@
                         <!-- Avatar y información básica -->
                         <div class="avatar-section">
                             <div class="avatar-container">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" class="avatar-image" id="avatarImage">
+                                <img src="{% if perfil.imagen_avatar %}{{ perfil.imagen_avatar.url }}{% else %}https://randomuser.me/api/portraits/men/32.jpg{% endif %}" alt="Avatar" class="avatar-image" id="avatarImage">
                                 <div class="avatar-overlay">
                                     <button class="change-avatar-btn" onclick="openAvatarModal()">
                                         <i class="fas fa-camera"></i>
@@ -87,8 +87,10 @@
                                 </div>
                             </div>
                             <div class="user-info">
-                                <h3 class="user-name">Carlos Rodríguez</h3>
-                                <p class="user-email">carlos.rodriguez@email.com</p>
+                                <h3 class="user-name">
+                                    {{ perfil.nombre_perfil|default:request.user.first_name }} {{ perfil.apellidos|default:request.user.last_name }}
+                                </h3>
+                                <p class="user-email">{{ request.user.email }}</p>
                                 <span class="user-badge premium">
                                     <i class="fas fa-crown"></i>
                                     Premium
@@ -99,6 +101,8 @@
                         <!-- Formulario de edición -->
                         <form class="profile-form" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
+                            <input type="file" id="avatarUpload" name="imagen_avatar" accept="image/*" style="display: none;">
+                            <input type="hidden" id="avatarUrl" name="avatar_url" value="">
                             {% if messages %}
                                 {% for message in messages %}
                                     <div class="message">{{ message }}</div>
@@ -141,6 +145,8 @@
                                     <input type="text" id="country" name="pais" class="input-field" placeholder="Introduce tu país" value="{{ perfil.pais }}">
                                 </div>
                             </div>
+
+                           
 
                             <div class="form-actions">
                                 <button type="button" class="btn-secondary">Cancelar</button>
@@ -637,18 +643,18 @@
                             <span>Subir nueva imagen</span>
                             <small>JPG, PNG o GIF (máx. 5MB)</small>
                         </div>
-                        <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                        <input type="file" id="avatarUpload" name="imagen_avatar" accept="image/*" style="display: none;">
                     </div>
                     
                     <div class="preset-avatars">
                         <h4>Avatares predefinidos</h4>
                         <div class="avatar-grid">
-                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Avatar 1" class="preset-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Avatar 2" class="preset-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Avatar 3" class="preset-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Avatar 4" class="preset-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Avatar 5" class="preset-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Avatar 6" class="preset-avatar">
+                            <img src="/media/avatares/avatarPred1.jpg" alt="Avatar 1" class="preset-avatar">
+                            <img src="/media/avatares/avatarPred2.jpg" alt="Avatar 2" class="preset-avatar">
+                            <img src="/media/avatares/avatarPred3.jpg" alt="Avatar 3" class="preset-avatar">
+                            <img src="/media/avatares/avatarPred4.jpg" alt="Avatar 4" class="preset-avatar">
+                            <img src="/media/avatares/avatarPred5.jpg" alt="Avatar 5" class="preset-avatar">
+                            <img src="/media/avatares/avatarPred6.jpg" alt="Avatar 6" class="preset-avatar">
                         </div>
                     </div>
                 </div>
@@ -656,7 +662,7 @@
             
             <div class="modal-footer">
                 <button class="btn-secondary" onclick="closeAvatarModal()">Cancelar</button>
-                <button class="btn-primary" onclick="saveAvatar()">Guardar</button>
+                <button class="btn-primary" type="button" onclick="saveAvatar()">Guardar</button>
             </div>
         </div>
     </div>
@@ -799,8 +805,9 @@
         }
 
         function saveAvatar() {
-            // Aquí iría la lógica para guardar el avatar
             closeAvatarModal();
+            // Envía el formulario principal
+            document.querySelector('.profile-form').submit();
         }
 
         // Selección de avatar predefinido
@@ -810,11 +817,50 @@
                 document.querySelectorAll('.preset-avatar').forEach(avatar => {
                     avatar.classList.remove('selected');
                 });
-                
+
                 // Seleccionar nuevo avatar
                 e.target.classList.add('selected');
+
+                // Cambiar el avatar principal
+                const avatarImage = document.getElementById('avatarImage');
+                avatarImage.src = e.target.src;
+
+                // Guardar solo la ruta relativa en el campo oculto
+                const src = e.target.src;
+                let relativePath = src;
+                if (src.includes('/media/')) {
+                    relativePath = src.split('/media/')[1];
+                }
+                document.getElementById('avatarUrl').value = relativePath;
+
+                // Limpiar el input de archivo por si acaso
+                document.getElementById('avatarUpload').value = '';
             }
         });
+
+        // Previsualizar imagen subida en el modal y en el avatar principal
+        document.getElementById('avatarUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Cambia el avatar principal
+                    document.getElementById('avatarImage').src = e.target.result;
+                    // Limpiar selección de avatar predefinido
+                    document.querySelectorAll('.preset-avatar').forEach(avatar => {
+                        avatar.classList.remove('selected');
+                    });
+                    // Limpiar el campo oculto
+                    document.getElementById('avatarUrl').value = '';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Al hacer click en "Guardar" del modal, cierra el modal
+        function saveAvatar() {
+            closeAvatarModal();
+        }
     </script>
 </body>
 </html>
