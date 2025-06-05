@@ -73,27 +73,31 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     function cargarPeliculasSimilares(genero) {
-        // Construir la URL con parámetros para filtrar por género y limitar a 3 resultados
-        const url = `http://127.0.0.1:8000/api/contenidos/?genero=${encodeURIComponent(genero)}&limit=3`;
-        
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al obtener los contenidos similares');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Contenidos similares:', data.results);
-                // Aquí puedes procesar los 3 contenidos obtenidos
-            })
-            .catch(error => {
-                console.error('Error al cargar contenidos similares:', error);
-                const castGrid = document.querySelector('.cast-grid');
-                if (castGrid) {
-                    castGrid.innerHTML = '<p>Error al cargar los contenidos similares. Por favor, intenta de nuevo más tarde.</p>';
-                }
-            });
+    // Construir la URL con parámetros para filtrar por género y limitar a 3 resultados
+    const url = `http://127.0.0.1:8000/api/contenidos/?genero=${encodeURIComponent(genero)}&limit=6`;
+    
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener los contenidos similares');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            const contenidosFiltrados = data.results
+                .filter(contenido => contenido.id_contenido !== contenidoId)
+                .slice(0, 5);
+            console.log('Contenidos similares evitando el mismo id:', contenidosFiltrados);
+            mostrarPeliculasSimilares(contenidosFiltrados);
+        })
+        .catch(error => {
+            console.error('Error al cargar contenidos similares:', error);
+            const similarMoviesContainer = document.querySelector('.similar-movies');
+            if (similarMoviesContainer) {
+                similarMoviesContainer.innerHTML = '<p>Error al cargar los contenidos similares. Por favor, intenta de nuevo más tarde.</p>';
+            }
+        });
     }
     // Llamar a la función para cargar el reparto si existe contenidoId
     if (contenidoId) {
@@ -105,3 +109,45 @@ document.addEventListener('DOMContentLoaded', function() {
         castGrid.innerHTML = '<p>Error: No se encontró el contenido.</p>';
     }
 });
+function mostrarPeliculasSimilares(contenidos) {
+    const similarMoviesContainer = document.querySelector('.similar-movies');
+    
+    if (!similarMoviesContainer) {
+        console.error('No se encontró el contenedor .similar-movies');
+        return;
+    }
+    
+    if (contenidos.length === 0) {
+        similarMoviesContainer.innerHTML = '<p>No se encontraron contenidos similares.</p>';
+        return;
+    }
+    
+    // Limpiar contenido anterior
+    similarMoviesContainer.innerHTML = '';
+    
+    // Generar HTML para cada contenido similar
+    contenidos.forEach(contenido => {
+        const similarMovieElement = document.createElement('a');
+        similarMovieElement.href = `/detalles/${contenido.id_contenido}`; // Ajusta la URL según tu estructura
+        similarMovieElement.className = 'similar-movie';
+        
+        // Usar imagen poster o placeholder si no existe
+        const imagenSrc = contenido.imagen_poster || '/placeholder.svg?height=150&width=100';
+        
+        // Formatear puntuación
+        const puntuacion = contenido.puntuacion ? contenido.puntuacion.toFixed(1) : 'N/A';
+        
+        similarMovieElement.innerHTML = `
+            <img src="${imagenSrc}" alt="${contenido.titulo}">
+            <div class="similar-movie-info">
+                <h4>${contenido.titulo}</h4>
+                <div class="similar-movie-meta">
+                    <span>${contenido.anio_estreno || 'N/A'}</span>
+                    <span><i class="fas fa-star"></i> ${puntuacion}</span>
+                </div>
+            </div>
+        `;
+        
+        similarMoviesContainer.appendChild(similarMovieElement);
+    });
+}
