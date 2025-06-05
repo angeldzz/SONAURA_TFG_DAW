@@ -3,13 +3,153 @@
 <head>
     <title>Pago Exitoso</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/success.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>¡Suscripción Exitosa!</h1>
-        <p>Tu suscripción {{ plan }} ha sido activada con éxito.</p>
-        <a href="{% url 'premium' %}" class="btn">Volver a Planes</a>
+    <!-- Fondo cósmico animado -->
+    <div class="cosmos-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="nebula"></div>
     </div>
+
+    <!-- Círculos animados -->
+    <div class="animated-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="success-container">
+        <!-- Icono de éxito -->
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+
+        <!-- Título -->
+        <h1 class="success-title">¡Suscripción Exitosa!</h1>
+
+        <!-- Mensaje -->
+        <p class="success-message">
+            Tu suscripción ha sido activada con éxito. 
+            ¡Bienvenido a la experiencia Premium!
+        </p>
+
+        <!-- Botones de acción -->
+        <div class="success-actions">
+            <a href="{% url 'premium' %}" class="btn btn-primary">
+                <i class="fas fa-crown"></i>
+                <span>Explorar Premium</span>
+            </a>
+            <a href="/" class="btn btn-secondary">
+                <i class="fas fa-home"></i>
+                <span>Ir al Inicio</span>
+            </a>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="success-info">
+            <h3><i class="fas fa-gift"></i> ¡Disfruta de tus beneficios!</h3>
+            <p>
+                Ahora tienes acceso completo a todas las funciones Premium. 
+                Explora las nuevas características y aprovecha al máximo tu suscripción.
+            </p>
+            <div class="benefits-list">
+                <div class="benefit">
+                    <i class="fas fa-star"></i>
+                    <span>Acceso ilimitado</span>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Soporte prioritario</span>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-rocket"></i>
+                    <span>Funciones exclusivas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto parallax para los círculos animados
+            document.addEventListener('mousemove', function(e) {
+                const circles = document.querySelectorAll('.circle');
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+
+                circles.forEach((circle, index) => {
+                    const speed = (index + 1) * 15;
+                    circle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            });
+
+            // Animación de entrada
+            const container = document.querySelector('.success-container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 0.8s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+
+            // Animación de confeti
+            createConfetti();
+        });
+
+        function createConfetti() {
+            const colors = ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444'];
+            const confettiContainer = document.createElement('div');
+            confettiContainer.style.position = 'fixed';
+            confettiContainer.style.top = '0';
+            confettiContainer.style.left = '0';
+            confettiContainer.style.width = '100%';
+            confettiContainer.style.height = '100%';
+            confettiContainer.style.pointerEvents = 'none';
+            confettiContainer.style.zIndex = '1000';
+            document.body.appendChild(confettiContainer);
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'absolute';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.animation = 'confetti-fall 3s linear forwards';
+                    confettiContainer.appendChild(confetti);
+
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+
+            setTimeout(() => {
+                confettiContainer.remove();
+            }, 8000);
+        }
+    </script>
+
+    <style>
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </body>
 </html>
