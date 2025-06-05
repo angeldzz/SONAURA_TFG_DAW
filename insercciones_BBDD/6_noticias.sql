@@ -10,7 +10,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     8,
     1,
     NOW(),
-    NOW(),
+    '2025-02-15 14:20:00',
     1
 ),
 (
@@ -23,7 +23,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     9,
     1,
     NOW(),
-    NOW(),
+    '2025-01-02 12:10:00',
     1
 ),
 (
@@ -36,7 +36,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     7,
     0,
     NOW(),
-    NOW(),
+    '2025-03-19 11:30:00',
     1
 ),
 (
@@ -49,7 +49,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     8,
     1,
     NOW(),
-    NOW(),
+    '2025-01-21 12:10:00',
     1
 ),
 (
@@ -62,7 +62,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     7,
     0,
     NOW(),
-    NOW(),
+    '2025-02-12 11:10:00',
     1
 ),
 (
@@ -75,9 +75,10 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     9,
     1,
     NOW(),
-    NOW(),
+    '2025-05-12 11:45:00',
     1
 ),
+-- Series
 (
     '‘El Eco del Vacío’ redefine el drama distópico en 2025',
     'Estrenada el 10 de marzo de 2025 en la plataforma de streaming Nexus, *El Eco del Vacío* se ha convertido en un fenómeno global, acumulando más de 50 millones de horas vistas en su primera semana. Creada por la showrunner Ava DuVernay, esta serie distópica explora un futuro donde la humanidad vive en bunkers subterráneos tras un colapso ecológico. Protagonizada por Yahya Abdul-Mateen II y Tessa Thompson, la trama sigue a un grupo de rebeldes que descubren secretos sobre el origen del cataclismo. La serie combina un guion emocionalmente profundo con una cinematografía que utiliza tonos fríos para reflejar la desolación del mundo. Los efectos visuales, a cargo de Framestore, han sido elogiados por su representación de paisajes subterráneos y tecnología futurista. La banda sonora, compuesta por Trent Reznor y Atticus Ross, ha generado millones de streams en Spotify. En redes sociales, los fans han creado teorías sobre un posible giro en la segunda temporada, confirmada para 2026. La serie ha recibido elogios por su diversidad en el reparto y su comentario social sobre el cambio climático.',
@@ -88,7 +89,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     7,
     1,
     NOW(),
-    NOW(),
+    '2025-02-04 12:11:00',
     1
 ),
 (
@@ -101,7 +102,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     6,
     0,
     NOW(),
-    NOW(),
+    '2025-02-11 09:10:00',
     1
 ),
 (
@@ -114,7 +115,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     8,
     1,
     NOW(),
-    NOW(),
+    '2024-12-31 23:59:50',
     1
 ),
 (
@@ -127,7 +128,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     7,
     1,
     NOW(),
-    NOW(),
+    '2025-01-23 10:30:00',
     1
 ),
 (
@@ -140,7 +141,7 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     8,
     0,
     NOW(),
-    NOW(),
+    '2025-05-01 19:10:00',
     1
 ),
 (
@@ -153,6 +154,402 @@ INSERT INTO noticias (titulo, contenido, categoria, imagen_principal, alt_imagen
     9,
     1,
     NOW(),
+    '2025-02-21 13:50:00',
+    1
+),
+-- Categoría: Entrevistas (6 noticias)
+(
+    'Charlize Theron revela los secretos detrás de su transformación para Mad Max: Saga Furiosa',
+    'En una reveladora entrevista exclusiva para nuestro medio, la ganadora del Oscar Charlize Theron compartió detalles íntimos sobre su preparación para interpretar a Furiosa en la próxima entrega de la saga Mad Max. Durante una conversación de dos horas en su hogar de Los Ángeles, Theron describió el proceso físico y emocional que la llevó a encarnar nuevamente a uno de los personajes más icónicos del cine de acción moderno. "Furiosa no es solo un personaje, es una fuerza de la naturaleza que representa la resistencia femenina en un mundo hostil", explicó la actriz sudafricana, mientras mostraba las cicatrices reales que se hizo durante el entrenamiento intensivo. La preparación incluyó seis meses de entrenamiento militar, aprendizaje de artes marciales mixtas y manejo de vehículos pesados en el desierto de Namibia. "George Miller me pidió que olvidara todo lo que sabía sobre actuar y que me convirtiera en una guerrera real", reveló Theron. La actriz también habló sobre los desafíos de trabajar con un 90% de efectos prácticos, describiendo escenas donde realmente condujo camiones modificados a 120 km/h en paisajes desérticos. Durante la entrevista, Theron reflexionó sobre el impacto cultural de Furiosa y cómo el personaje ha inspirado a una generación de mujeres jóvenes. "Recibo cartas de niñas que me dicen que quieren ser ingenieras mecánicas o pilotos porque vieron a Furiosa", compartió emocionada. La conversación también tocó temas más personales, incluyendo su trabajo como activista y madre soltera en Hollywood.',
+    'Entrevistas',
+    'noticias/charlize_theron_interview.jpg',
+    'Charlize Theron durante la entrevista exclusiva en su hogar de Los Ángeles',
+    8500,
+    12,
+    1,
     NOW(),
+    '2025-05-15 14:30:00',
+    1
+),
+(
+    'Pedro Almodóvar: "Mi próxima película será la más personal que he hecho"',
+    'En una íntima conversación en su estudio madrileño, el aclamado director manchego Pedro Almodóvar nos abrió las puertas de su mundo creativo para hablar sobre su próximo proyecto cinematográfico, que promete ser su obra más autobiográfica hasta la fecha. "Después de 50 años haciendo cine, finalmente me atrevo a contar mi propia historia", confesó el cineasta de 75 años, rodeado de carteles de sus películas más emblemáticas. La nueva película, titulada provisionalmente "Laberinto de Espejos", explorará la relación del director con su madre fallecida y su proceso de aceptación de la identidad sexual en la España franquista. "Es una película que he querido hacer durante décadas, pero necesitaba la madurez emocional y artística para abordar temas tan personales", explicó Almodóvar mientras hojeaba el guión manuscrito. Durante la entrevista de tres horas, el director reveló que el film contará con Penélope Cruz y Tilda Swinton en los roles principales, y que será filmado enteramente en Calzada de Calatrava, su pueblo natal. "Quiero mostrar la España rural de los años 60 desde una perspectiva que nunca he explorado en mi cine", añadió. La conversación derivó hacia sus influencias cinematográficas, desde Luis Buñuel hasta Douglas Sirk, y cómo estas han moldeado su lenguaje visual único. Almodóvar también habló sobre el futuro del cine español y su preocupación por las nuevas generaciones de cineastas. "El cine debe seguir siendo un refugio para las historias que la sociedad no quiere escuchar", reflexionó el director.',
+    'Entrevistas',
+    'noticias/almodovar_interview.jpg',
+    'Pedro Almodóvar en su estudio cinematográfico de Madrid',
+    7200,
+    10,
+    1,
+    NOW(),
+    '2025-04-28 16:45:00',
+    1
+),
+(
+    'Zendaya habla sobre su evolución artística: "De Disney a Dune ha sido un viaje extraordinario"',
+    'En una exclusiva entrevista realizada en los estudios de grabación de Atlanta, Zendaya Coleman reflexionó sobre su meteórica evolución desde estrella juvenil de Disney hasta convertirse en una de las actrices más versátiles de su generación. "Cuando comencé en *Shake It Up* a los 13 años, jamás imaginé que estaría interpretando a Chani en el universo de *Dune* o ganando un Emmy por *Euphoria*", compartió la actriz de 28 años con una sonrisa nostálgica. Durante la conversación de dos horas, Zendaya detalló los desafíos de transicionar del entretenimiento familiar a roles más complejos y maduros. "Muchas personas del medio me decían que era imposible escapar de la etiqueta de "estrella Disney", pero yo sabía que tenía más que ofrecer", explicó. La actriz describió su proceso de preparación para *Euphoria*, incluyendo sesiones de terapia para entender la psicología de Rue y el impacto de la adicción en los adolescentes. "Trabajar con Sam Levinson me enseñó que la vulnerabilidad es la herramienta más poderosa de un actor", reveló. Zendaya también habló sobre su experiencia trabajando con Denis Villeneuve en *Dune* y cómo la ciencia ficción le permitió explorar temas de liderazgo y resistencia. La entrevista tocó su faceta como productora ejecutiva y su deseo de crear contenido que represente a comunidades subrepresentadas. "Quiero usar mi plataforma para contar historias que importan, especialmente las de mujeres jóvenes de color", afirmó con determinación. La conversación concluyó con Zendaya compartiendo sus planes futuros, incluyendo su debut como directora y su regreso a la música.',
+    'Entrevistas',
+    'noticias/zendaya_interview.jpg',
+    'Zendaya durante la entrevista en los estudios de Atlanta',
+    9100,
+    11,
+    1,
+    NOW(),
+    '2025-03-22 11:15:00',
+    1
+),
+(
+    'Ryan Gosling reflexiona sobre sus 30 años de carrera: "Cada papel me ha enseñado algo sobre mí mismo"',
+    'En una emotiva entrevista en un café de Toronto, su ciudad natal, Ryan Gosling hizo un repaso exhaustivo de su trayectoria artística, desde sus inicios como niño actor en "The Mickey Mouse Club" hasta convertirse en uno de los intérpretes más respetados de Hollywood. "Nunca imaginé que actuaría durante tanto tiempo. Comenzé porque era tímido y pensé que interpretar otros personajes me ayudaría a encontrar mi propia voz", confesó el actor canadiense de 44 años durante nuestra conversación de cuatro horas. Gosling describió detalladamente su proceso de preparación para roles icónicos como el de Sebastian en "La La Land", explicando cómo aprendió piano durante seis meses y estudió la historia del jazz en Los Ángeles. "Damien Chazelle me pidió que no solo tocara las canciones, sino que las sintiera como un músico de verdad", recordó mientras tarareaba "City of Stars". La entrevista también abordó su controvertida interpretación de Ken en "Barbie", un papel que inicialmente rechazó tres veces. "Greta Gerwig me convenció diciéndome que Ken representaba la masculinidad tóxica de una manera que podía ser tanto divertida como reflexiva", explicó. El actor compartió anécdotas sobre trabajar con directores como Denis Villeneuve en "Blade Runner 2049" y Derek Cianfrance en "Blue Valentine", describiendo cómo cada colaboración lo desafió de maneras diferentes. Gosling también habló sobre su vida personal, su relación con Eva Mendes y cómo la paternidad ha cambiado su perspectiva sobre los proyectos que elige. "Ahora pienso en qué tipo de mundo quiero dejar para mis hijas", reflexionó.',
+    'Entrevistas',
+    'noticias/ryan_gosling_interview.jpg',
+    'Ryan Gosling durante la entrevista en un café de Toronto',
+    10200,
+    13,
+    1,
+    NOW(),
+    '2025-02-14 09:30:00',
+    1
+),
+(
+    'Margot Robbie desvela su proceso creativo como productora: "Quiero cambiar cómo se cuentan las historias femeninas"',
+    'Desde las oficinas de LuckyChap Entertainment en West Hollywood, Margot Robbie nos recibió para una extensa conversación sobre su evolución de actriz a una de las productoras más influyentes de la industria cinematográfica. "Fundé LuckyChap porque estaba cansada de leer guiones donde las mujeres eran solo intereses amorosos o víctimas", explicó la actriz australiana de 34 años, rodeada de pósters de sus producciones más exitosas como "Promising Young Woman" y "Barbie". Durante la entrevista de tres horas, Robbie detalló el proceso de desarrollo de "Barbie", desde la idea inicial hasta convertirse en el fenómeno cultural de 2023. "Greta Gerwig y Noah Baumbach escribieron un guión que era tanto una comedia como una reflexión profunda sobre los roles de género en la sociedad moderna", reveló. La productora describió las dificultades iniciales para conseguir financiación para el proyecto, ya que muchos ejecutivos no entendían cómo una película sobre una muñeca podía generar conversaciones serias sobre feminismo. "Tuvimos que demostrar que el público estaba listo para contenido inteligente disfrazado de entretenimiento mainstream", explicó. Robbie también habló sobre su compromiso con la diversidad en sus producciones, revelando que LuckyChap tiene una política de contratar al menos 50% de mujeres y personas de color en posiciones clave. La conversación tocó sus próximos proyectos, incluyendo una adaptación de "The Sims" y una serie limitada sobre mujeres exploradoras del siglo XIX. "Mi objetivo es que en 10 años, cuando la gente vea el logo de LuckyChap, sepa que va a ver una historia que desafía las expectativas", concluyó.',
+    'Entrevistas',
+    'noticias/margot_robbie_interview.jpg',
+    'Margot Robbie en las oficinas de LuckyChap Entertainment',
+    11800,
+    14,
+    1,
+    NOW(),
+    '2025-01-18 13:20:00',
+    1
+),
+(
+    'Michael Shannon habla sin filtros: "Hollywood necesita más historias que incomoden al público"',
+    'En una franca conversación en un bar de Chicago, su ciudad adoptiva, Michael Shannon compartió sus reflexiones sobre tres décadas de carrera interpretando personajes complejos y a menudo perturbadores. "Nunca he buscado ser querido por el público. Mi trabajo es mostrar aspectos de la humanidad que preferiríamos ignorar", declaró el actor de 50 años durante nuestra intensa charla de dos horas. Shannon describió su proceso de construcción de personajes, desde el General Zod en "Man of Steel" hasta el detective corrupto en "The Shape of Water", explicando cómo encuentra la humanidad en roles aparentemente malvados. "Todos los villanos creen que son los héroes de sus propias historias. Mi trabajo es encontrar esa justificación interna", reveló. La entrevista profundizó en su colaboración con directores como Jeff Nichols en "Take Shelter" y "Midnight Special", películas que exploraban temas de paranoia y aislamiento en la América contemporánea. "Jeff entiende que el cine puede ser un espejo incómodo de nuestra sociedad", explicó Shannon. El actor también reflexionó sobre su trabajo teatral, especialmente su interpretación en la obra "Killer Joe", y cómo el teatro le permite explorar emociones más crudas. Shannon criticó la tendencia actual del cine hacia contenido "seguro" y predecible. "Estamos tan obsesionados con no ofender a nadie que hemos olvidado que el arte debe provocar reacciones", argumentó. La conversación concluyó con Shannon discutiendo sus próximos proyectos, incluyendo su debut como director con un thriller psicológico ambientado en el medio oeste americano.',
+    'Entrevistas',
+    'noticias/michael_shannon_interview.jpg',
+    'Michael Shannon durante la entrevista en un bar de Chicago',
+    9800,
+    12,
+    1,
+    NOW(),
+    '2025-06-01 20:45:00',
+    1
+),
+-- Categoría: Reseñas (6 noticias)
+(
+    'Reseña: "The Creator" - Una obra maestra de la ciencia ficción moderna que redefine el género',
+    'Con "The Creator", el visionario director Gareth Edwards entrega una obra cinematográfica que no solo eleva el listón de la ciencia ficción contemporánea, sino que redefine completamente lo que esperamos del género. Esta epopeya futurista, ambientada en 2070, nos presenta un mundo donde la inteligencia artificial ha evolucionado hasta convertirse en una nueva forma de vida, generando un conflicto existencial que trasciende la típica narrativa de "humanos vs. máquinas". La película sigue a Joshua (John David Washington), un exagente militar que debe infiltrarse en territorio controlado por IA para destruir una superarma conocida como "The Creator". Sin embargo, descubre que su objetivo es en realidad una niña androide llamada Alphie (Madeleine Yuna Voyles), cuyas habilidades podrían cambiar el curso de la guerra. Edwards demuestra una madurez narrativa excepcional al abordar temas de paternidad, identidad y lo que significa ser verdaderamente humano. Visualmente, la película es un festín para los sentidos. La cinematografía de Oren Soffer captura paisajes postapocalípticos con una belleza melancólica que recuerda a "Blade Runner 2049", mientras que los efectos especiales, sorprendentemente logrados con un presupuesto modesto de $80 millones, rivalizan con producciones de estudio mucho más costosas. La banda sonora de Hans Zimmer complementa perfectamente la narrativa emocional, utilizando una mezcla de sintetizadores y orquesta tradicional que refleja la hibridación entre lo orgánico y lo artificial. Las actuaciones destacan por su autenticidad emocional, especialmente la química entre Washington y la joven Voyles, cuya interpretación como Alphie es sorprendentemente madura. "The Creator" es una reflexión profunda sobre la naturaleza de la consciencia y el amor en un futuro incierto.',
+    'Reseñas',
+    'noticias/the_creator_review.jpg',
+    'Escena de la película The Creator mostrando el paisaje futurista',
+    11500,
+    15,
+    1,
+    NOW(),
+    '2025-05-08 19:20:00',
+    1
+),
+(
+    'Reseña: "Oppenheimer" en IMAX 70mm - Una experiencia cinematográfica transformadora que marca época',
+    'Christopher Nolan ha creado con "Oppenheimer" no solo una película, sino una experiencia sensorial que redefine los límites del cine biográfico. Proyectada en formato IMAX 70mm, esta obra maestra de tres horas sobre el "padre de la bomba atómica" es un tour de force cinematográfico que combina narrativa compleja, actuaciones extraordinarias y una técnica visual sin precedentes. Cillian Murphy entrega la interpretación de su carrera como J. Robert Oppenheimer, capturando tanto la brillantez intelectual como la tortura moral del físico teórico. Su actuación es un estudio magistral de un hombre brillante confrontado por las consecuencias devastadoras de su propio genio. El reparto de apoyo, incluyendo a Robert Downey Jr., Emily Blunt y Matt Damon, funciona como un ensemble perfecto que da vida a una época crucial de la historia estadounidense. Nolan utiliza su narrativa no lineal característica para explorar tres líneas temporales interconectadas: el desarrollo del Proyecto Manhattan, las audiencias de seguridad de Oppenheimer en 1954, y la confirmación de Lewis Strauss como Secretario de Comercio en 1959. Esta estructura compleja nunca se siente forzada, sino que refleja la naturaleza fragmentada de la memoria y la historia. La decisión de filmar en 70mm sin efectos digitales para las secuencias de la prueba Trinity resulta en imágenes de una intensidad visual abrumadora. La explosión atómica, representada enteramente con efectos prácticos, es uno de los momentos más impactantes en la historia del cine. La banda sonora de Ludwig Göransson complementa perfectamente la tensión creciente, utilizando violines disonantes que evocan la ansiedad científica y moral. "Oppenheimer" funciona simultáneamente como thriller histórico, drama moral y reflexión sobre el poder de la ciencia en la era moderna. Es cine en su forma más pura y ambiciosa.',
+    'Reseñas',
+    'noticias/oppenheimer_review.jpg',
+    'Cillian Murphy como Oppenheimer en una escena clave de la película',
+    12200,
+    16,
+    1,
+    NOW(),
+    '2025-04-15 21:10:00',
+    1
+),
+(
+    'Reseña: "Past Lives" - Un poema cinematográfico sobre el amor y las vidas que pudimos vivir',
+    'Celine Sciamma debutó como directora con una de las películas más emotivamente devastadoras y visualmente poéticas de la década. "Past Lives" es una meditación profunda sobre el concepto coreano de "in-yun" - las conexiones kármicas entre almas que trascienden vidas y tiempo. La película sigue a Nora (Greta Lee) y Hae Sung (Teo Yoo), dos amigos de la infancia en Seúl que se reencuentran virtualmente después de 20 años, y luego físicamente después de otros 12 años en Nueva York. La narrativa, estructurada en tres actos que abarcan diferentes épocas, explora cómo los caminos de vida divergentes moldean nuestra identidad y nuestras relaciones. Sciamma demuestra una madurez cinematográfica extraordinaria para una ópera prima, utilizando largos planos fijos y composiciones simétricas que evocan la contemplación silenciosa del paso del tiempo. La cinematografía de Shabier Kirchner captura tanto la nostalgia urbana de Nueva York como los recuerdos dorados de Seúl con una paleta de colores que evoluciona sutilmente a medida que avanza la narrativa. Las actuaciones de Greta Lee, Teo Yoo y John Magaro son de una delicadeza extraordinaria, comunicando emociones complejas a través de miradas, silencios y gestos mínimos. La película evita el melodrama fácil, optando por una honestidad emocional que resulta más devastadora que cualquier manipulación sentimental. La banda sonora minimalista de Christopher Bear y Daniel Rossen complementa perfectamente el tono contemplativo, utilizando piano y cuerdas que evocan tanto la melancolía como la esperanza. "Past Lives" es una reflexión universal sobre el amor, la pérdida y los caminos no tomados, envuelta en una especificidad cultural que la hace más, no menos, relatable. Es una película que permanece contigo mucho después de los créditos finales, plantando preguntas sobre tus propias conexiones perdidas y las vidas alternas que podrías haber vivido.',
+    'Reseñas',
+    'noticias/past_lives_review.jpg',
+    'Greta Lee y Teo Yoo en una escena emblemática de Past Lives',
+    10800,
+    14,
+    1,
+    NOW(),
+    '2025-03-30 18:35:00',
+    1
+),
+(
+    'Reseña: "Killers of the Flower Moon" - Scorsese examina el corazón oscuro de América',
+    'Martin Scorsese regresa con una obra que puede ser considerada su testamento cinematográfico más personal y devastador. "Killers of the Flower Moon", basada en el libro de David Grann, es una epopeya de tres horas y media que examina los asesinatos sistemáticos de miembros de la nación Osage en Oklahoma durante la década de 1920. Más que un simple thriller histórico, la película es una autopsia moral de la codicia estadounidense y el racismo institucional. Leonardo DiCaprio entrega una de sus interpretaciones más complejas como Ernest Burkhart, un hombre débil y manipulable cuyo amor por su esposa Osage Mollie (Lily Gladstone) se ve corrompido por la avaricia y la influencia de su tío William Hale (Robert De Niro). Gladstone, en particular, ofrece una actuación de una dignidad y fuerza silenciosa que ancla emocionalmente toda la película. Su interpretación de Mollie como mujer que gradualmente comprende la traición de quienes más ama es desgarradora. Scorsese utiliza su dominio técnico al servicio de una narrativa que funciona como parábola sobre la América contemporánea. La cinematografía de Rodrigo Prieto captura tanto la belleza natural de Oklahoma como la corrupción moral que la infecta, utilizando una paleta de colores terrosos que refleja la conexión de los Osage con su tierra. La banda sonora de Robbie Robertson (en una de sus últimas colaboraciones con Scorsese) incorpora música tradicional Osage de manera respetuosa y emotiva. La película se toma su tiempo para desarrollar el mundo y los personajes, utilizando cada minuto de su extensa duración para profundizar en las complejidades morales de la historia. Scorsese evita la pornografía de la violencia, optando por mostrar las consecuencias humanas de la codicia sistemática. "Killers of the Flower Moon" es cine de la más alta calidad, una obra que confronta las atrocidades históricas mientras ilumina patrones de explotación que persisten en la actualidad. Es una película esencial que solidifica el legado de Scorsese como uno de los grandes cronistas de la experiencia estadounidense.',
+    'Reseñas',
+    'noticias/killers_flower_moon_review.jpg',
+    'Leonardo DiCaprio y Lily Gladstone en Killers of the Flower Moon',
+    13500,
+    18,
+    1,
+    NOW(),
+    '2025-02-22 16:50:00',
+    1
+),
+(
+    'Reseña: "Spider-Man: Across the Spider-Verse" - Animación revolucionaria al servicio de una narrativa emocional perfecta',
+    'Los directores Joaquim Dos Santos, Kemp Powers y Justin K. Thompson han creado con "Spider-Man: Across the Spider-Verse" no solo la mejor película de superhéroes de la década, sino una revolución artística que redefine las posibilidades de la animación cinematográfica. Esta secuela supera a su predecesora "Into the Spider-Verse" en todos los aspectos, entregando una experiencia visual y emocional que trasciende las expectativas del género. La película sigue a Miles Morales (Shameik Moore) mientras navega las complejidades de ser Spider-Man en su universo, solo para descubrir una sociedad multiversal de Spider-People liderada por Miguel O Hara (Oscar Isaac). Cuando Miles descubre que salvar a su padre podría destruir el multiverso, debe tomar decisiones que definirán no solo su destino, sino el de innumerables realidades. El guión de Phil Lord, Christopher Miller y Dave Callaham funciona simultáneamente como coming-of-age story, exploración familiar y deconstrucción de las narrativas de superhéroes. La animación es simplemente revolucionaria. Cada universo visitado tiene su propio estilo visual único, desde el aesthetic punk-rock del mundo de Spider-Punk hasta el renacimiento artístico del universo de Spider-Man India. Los animadores han creado un lenguaje visual que combina técnicas tradicionales, CGI y elementos de collage de una manera que nunca se siente gimmicky sino orgánica a la narrativa. Las secuencias de acción, particularmente la persecución a través del multiverso, son poesía visual en movimiento. Las actuaciones de voz destacan por su autenticidad emocional, especialmente Hailee Steinfeld como Spider-Gwen, cuya relación con Miles forma el corazón emocional de la película. La banda sonora de Daniel Pemberton incorpora elementos de hip-hop, música latina y orchestral de manera que cada universo tiene su propia identidad sonora. "Across the Spider-Verse" funciona como entretenimiento familiar, arte visual de vanguardia y reflexión profunda sobre identidad, responsabilidad y las consecuencias de nuestras decisiones. Es una obra maestra que elevará las expectativas para toda la animación futura.',
+    'Reseñas',
+    'noticias/spiderverse_review.jpg',
+    'Miles Morales en una escena espectacular de Spider-Man: Across the Spider-Verse',
+    12800,
+    17,
+    1,
+    NOW(),
+    '2025-01-12 14:25:00',
+    1
+),
+(
+    'Reseña: "The Zone of Interest" - Jonathan Glazer crea una obra maestra perturbadora sobre la banalidad del mal',
+    'Jonathan Glazer regresa después de una década de silencio con "The Zone of Interest", una película que redefine cómo el cine puede abordar el Holocausto sin caer en la explotación o la sentimentalidad barata. Basada en la novela de Martin Amis, la película sigue la vida cotidiana de Rudolf Höss (Christian Friedel), comandante de Auschwitz, y su familia mientras viven en una casa idílica justo al lado del campo de concentración. La genialidad de Glazer radica en su enfoque: nunca vemos directamente los horrores del campo, pero están omnipresentes en cada plano. La banda sonora diseñada por Johnnie Burn es una sinfonía de terror sutil: gritos distantes, disparos ocasionales, el sonido constante de maquinaria industrial de muerte. Estos elementos crean una tensión psicológica más efectiva que cualquier imagen explícita. Christian Friedel y Sandra Hüller entregan actuaciones escalofriantes en su normalidad. Höss aparece como un burócrata eficiente obsesionado con su jardín, mientras su esposa se preocupa por las flores y los niños juegan inocentemente. Glazer captura la banalidad del mal de manera más efectiva que cualquier película anterior sobre el tema. La cinematografía de Łukasz Żal utiliza cámaras fijas y encuadres precisos que evocan documentales de observación, haciendo que el público se sienta como voyeur de esta normalidad monstruosa. Los planos del jardín familiar, filmados en 16mm, contrastan visceralmente con las imágenes termográficas nocturnas que revelan los movimientos de las víctimas como fantasmas. La película dura apenas 105 minutos, pero cada segundo se siente calculado para máximo impacto psicológico. Glazer evita cualquier momento de catarsis o redención, manteniéndonos en un estado de horror contemplativo que persiste mucho después de los créditos. "The Zone of Interest" es cine de la más alta calidad artística al servicio de un recordatorio moral esencial. No es una película que se "disfrute" en el sentido tradicional, pero es una obra que todo espectador serio debería confrontar.',
+    'Reseñas',
+    'noticias/zone_interest_review.jpg',
+    'Una escena inquietante de The Zone of Interest mostrando la casa familiar',
+    11200,
+    15,
+    1,
+    NOW(),
+    '2025-06-03 22:15:00',
+    1
+),
+-- Categoría: Premios (6 noticias)
+(
+    'Oscars 2025: "Oppenheimer" arrasa con 7 estatuillas incluyendo Mejor Película',
+    'La 97ª edición de los Premios de la Academia celebrada el 10 de marzo de 2025 en el Dolby Theatre de Hollywood será recordada como la noche de Christopher Nolan y "Oppenheimer". La épica biográfica sobre el padre de la bomba atómica se alzó con siete estatuillas doradas, incluyendo las codiciadas categorías de Mejor Película, Mejor Director para Nolan, y Mejor Actor para Cillian Murphy. La ceremonia, presentada por Jimmy Kimmel, mantuvo a los espectadores en vilo durante las tres horas de transmisión, con momentos emotivos y sorpresas inesperadas. Murphy, visiblemente emocionado al recibir su primer Oscar, dedicó el premio "a todos los científicos que luchan por un mundo mejor" en un discurso que arrancó lágrimas en el auditorio. Robert Downey Jr. completó su regreso triunfal a los Oscars al ganar Mejor Actor de Reparto por su interpretación de Lewis Strauss, mientras que Christopher Nolan finalmente recibió el reconocimiento de la Academia después de décadas de ser ignorado en esta categoría. La película también se llevó las estatuillas de Mejor Cinematografía, Mejor Montaje, Mejor Banda Sonora Original y Mejor Sonido. "Barbie", a pesar de liderar las nominaciones con 8 menciones, solo logró ganar Mejor Canción Original por "What Was I Made For?" de Billie Eilish. Otros ganadores destacados incluyeron "Past Lives" por Mejor Guión Original, "The Zone of Interest" por Mejor Película Internacional, y "Spider-Man: Across the Spider-Verse" por Mejor Película Animada. La ceremonia registró una audiencia de 36.8 millones de espectadores, la más alta en cinco años.',
+    'Premios',
+    'noticias/oscars_2025_oppenheimer.jpg',
+    'Cillian Murphy sostiene su Oscar por Mejor Actor en la ceremonia 2025',
+    14500,
+    12,
+    1,
+    NOW(),
+    '2025-03-11 02:30:00',
+    1
+),
+(
+    'Cannes 2025: Palma de Oro sorpresa para "Red Rooms" del director canadiense Pascal Plante',
+    'El 78º Festival Internacional de Cine de Cannes llegó a su fin el 25 de mayo con una de las decisiones más sorprendentes en la historia del evento. "Red Rooms", el thriller psicológico del director quebequense Pascal Plante, se alzó con la prestigiosa Palma de Oro, derrotando a favoritos como "Megalopolis" de Francis Ford Coppola y "The Brutalist" de Brady Corbet. La película, protagonizada por Juliette Gariépy, explora el mundo perturbador de los live streams de crímenes violentos y había generado controversia desde su première en la Quincena de Realizadores. El jurado presidido por Greta Gerwig explicó su decisión destacando "la valentía cinematográfica de Plante para abordar temas incómodos sobre nuestra relación con la violencia digital". Durante su discurso de aceptación, Plante dedicó el premio "a todos los cineastas independientes que se atreven a incomodar al público". El Gran Premio del Jurado fue para "Anora" de Sean Baker, mientras que el Premio del Jurado se dividió entre "All We Imagine as Light" de Payal Kapadia y "Emilia Pérez" de Jacques Audiard. Jesse Plemons ganó el Premio al Mejor Actor por su interpretación en "Kinds of Kindness" de Yorgos Lanthimos, mientras que Selena Gómez fue reconocida como Mejor Actriz por "Emilia Pérez". El festival también destacó por la presencia de nuevos talentos, con cuatro directoras compitiendo por la Palma de Oro, un récord histórico. La ceremonia de clausura, presentada por Adriana Ugarte, fue vista por más de 200 millones de espectadores en todo el mundo.',
+    'Premios',
+    'noticias/cannes_2025_palme.jpg',
+    'Pascal Plante sostiene la Palma de Oro en la ceremonia de clausura de Cannes 2025',
+    12800,
+    14,
+    1,
+    NOW(),
+    '2025-05-26 00:15:00',
+    1
+),
+(
+    'Globos de Oro 2025: "Barbie" domina la categoría de comedia mientras "Oppenheimer" triunfa en drama',
+    'La 82ª edición de los Globos de Oro celebrada el 7 de enero de 2025 en el Beverly Hilton Hotel marcó el regreso de la ceremonia después de las controversias de años anteriores. La noche estuvo dominada por el fenómeno "Barbenheimer", con "Barbie" arrasando en las categorías de Comedia o Musical y "Oppenheimer" dominando en Drama. Margot Robbie ganó Mejor Actriz en Comedia o Musical por su icónica interpretación de Barbie, mientras que Greta Gerwig se alzó con el premio a Mejor Directora, convirtiéndose en solo la segunda mujer en ganar esta categoría en la historia de los Globos de Oro. "Barbie" también se llevó los premios de Mejor Película de Comedia o Musical y Mejor Canción Original. En el apartado dramático, "Oppenheimer" dominó con Cillian Murphy ganando Mejor Actor Dramático y Christopher Nolan llevándose el premio al Mejor Director de Drama. La película también fue reconocida como Mejor Película Dramática y ganó Mejor Banda Sonora Original. Emma Stone causó sorpresa al ganar Mejor Actriz Dramática por "Poor Things", derrotando a favoritas como Carey Mulligan por "Maestro". En televisión, "The Bear" continuó su dominio en comedia, mientras que "Succession" se despidió con varios reconocimientos en su temporada final. La ceremonia, presentada por Jo Koy, registró mejores índices de audiencia que el año anterior, con 9.4 millones de espectadores. El evento también destacó por sus momentos emotivos, incluyendo un tributo a los actores fallecidos durante 2024.',
+    'Premios',
+    'noticias/globos_oro_2025.jpg',
+    'Margot Robbie celebra su Globo de Oro por Barbie en la ceremonia 2025',
+    11900,
+    13,
+    1,
+    NOW(),
+    '2025-01-08 04:45:00',
+    1
+),
+(
+    'Emmy 2025: "The Last of Us" hace historia con 8 premios incluyendo Mejor Serie Dramática',
+    'La 77ª edición de los Premios Emmy celebrada el 15 de septiembre de 2025 será recordada como la noche en que "The Last of Us" de HBO redefinió los estándares de excelencia televisiva. La adaptación del videojuego postapocalíptico creada by Craig Mazin y Neil Druckmann se alzó con ocho estatuillas, incluyendo la prestigiosa Mejor Serie Dramática. Pedro Pascal ganó su primer Emmy como Mejor Actor Dramático por su emotiva interpretación de Joel Miller, mientras que Bella Ramsey fue reconocida como Mejor Actriz Joven. La serie también triunfó en categorías técnicas como Mejor Efectos Visuales, Mejor Maquillaje Protésico y Mejor Diseño de Producción. Durante su discurso de aceptación, Pascal dedicó el premio "a todos los padres que harían cualquier cosa por proteger a sus hijos", generando una ovación de pie que duró varios minutos. En comedia, "Abbott Elementary" continuó su racha ganadora con Quinta Brunson llevándose su segundo Emmy consecutivo como Mejor Actriz de Comedia. "The White Lotus: Sicily" dominó las categorías de Serie Limitada, con Murray Bartlett ganando Mejor Actor de Reparto. La ceremonia, presentada por Anthony Anderson, destacó por su diversidad, con un récord de 40% de ganadores pertenecientes a minorías étnicas. Netflix lideró la noche con 24 premios totales, seguido por HBO con 18. El evento registró 12.9 millones de espectadores, un aumento del 15% respecto al año anterior, demostrando la continua relevancia de los Emmy en la era del streaming.',
+    'Premios',
+    'noticias/emmy_2025_last_of_us.jpg',
+    'Pedro Pascal sostiene su Emmy por Mejor Actor Dramático por The Last of Us',
+    13200,
+    15,
+    1,
+    NOW(),
+    '2025-09-16 03:20:00',
+    1
+),
+(
+    'SAG Awards 2025: Cillian Murphy y Lily Gladstone lideran una noche de reconocimiento a la diversidad actoral',
+    'Los 31º Premios del Sindicato de Actores (SAG) celebrados el 24 de febrero de 2025 en el Shrine Auditorium de Los Ángeles destacaron por reconocer tanto el talento establecido como las nuevas voces en la industria. Cillian Murphy se alzó con el premio al Mejor Actor por "Oppenheimer", mientras que Lily Gladstone hizo historia al convertirse en la primera actriz nativa americana en ganar el SAG Award a Mejor Actriz por "Killers of the Flower Moon". El reparto de "Oppenheimer" también ganó el prestigioso premio al Mejor Reparto en Película, consolidando su dominio en la temporada de premios. Gladstone, visiblemente emocionada, comenzó su discurso en lengua Blackfeet antes de continuar en inglés: "Este premio no es solo mío, es para todas las mujeres indígenas que han sido invisibilizadas en esta industria durante décadas". En televisión, el reparto de "The Bear" se llevó el premio al Mejor Reparto en Serie de Comedia por segundo año consecutivo, mientras que "The Last of Us" dominó en drama con Pedro Pascal ganando Mejor Actor Dramático. Ayo Edebiri causó sorpresa al ganar Mejor Actriz de Comedia por "The Bear", derrotando a favoritas más establecidas. La ceremonia, presentada por Idris Elba, destacó por su enfoque en la diversidad y la inclusión, con el 45% de los ganadores pertenecientes a grupos históricamente subrepresentados. El evento fue visto por 2.9 millones de espectadores y generó más de 15 millones de interacciones en redes sociales.',
+    'Premios',
+    'noticias/sag_awards_2025.jpg',
+    'Lily Gladstone sostiene su SAG Award por Mejor Actriz en la ceremonia 2025',
+    12400,
+    14,
+    1,
+    NOW(),
+    '2025-02-25 05:10:00',
+    1
+),
+(
+    'BAFTA 2025: "The Zone of Interest" sorprende con 4 premios incluyendo Mejor Película Británica',
+    'La 78ª edición de los Premios BAFTA celebrada el 18 de febrero en el Royal Festival Hall de Londres estuvo marcada por el triunfo inesperado de "The Zone of Interest" de Jonathan Glazer. La controvertida película sobre el Holocausto se alzó con cuatro premios, incluyendo Mejor Película Británica, Mejor Sonido, Mejor Película en Lengua Extranjera y el Outstanding British Film Award. Glazer, durante su discurso de aceptación, generó debate al declarar: "Hicimos esta película para confrontar el presente, no solo para recordar el pasado". "Oppenheimer" también tuvo una noche exitosa, ganando siete premios incluyendo Mejor Película, Mejor Director para Christopher Nolan y Mejor Actor para Cillian Murphy. La ceremonia destacó por el reconocimiento a nuevos talentos británicos, con Mia McKenna-Bruce ganando el premio EE Rising Star Award por su interpretación en "How to Have Sex". En las categorías técnicas, "Dune: Part Two" dominó con premios en Mejores Efectos Visuales, Mejor Cinematografía y Mejor Diseño de Producción. Emma Stone ganó Mejor Actriz por "Poor Things", mientras que Robert Downey Jr. se llevó el premio de Mejor Actor de Reparto por "Oppenheimer". La ceremonia, presentada por David Tennant, incluyó un emotivo tributo a Michael Gambon y otros miembros de la industria fallecidos durante 2024. El evento registró 6.8 millones de espectadores en BBC One, convirtiéndose en la transmisión de BAFTA más vista en tres años. Los premios también destacaron por su compromiso con la sostenibilidad, siendo la primera ceremonia carbono-neutral en la historia de BAFTA.',
+    'Premios',
+    'noticias/bafta_2025_zone_interest.jpg',
+    'Jonathan Glazer con sus cuatro premios BAFTA por The Zone of Interest',
+    11600,
+    13,
+    1,
+    NOW(),
+    '2025-02-19 01:25:00',
+    1
+),
+
+-- Categoría: Trailers (6 noticias)
+(
+    'El nuevo tráiler de "Dune: Part Three" revela el regreso épico de Timothée Chalamet como emperador',
+    'Warner Bros. ha lanzado el tráiler oficial de "Dune: Part Three", la conclusión épica de la trilogía dirigida por Denis Villeneuve que llegará a los cines el 12 de diciembre de 2025. El tráiler de tres minutos, revelado durante la Comic-Con de San Diego, muestra a Paul Atreides (Timothée Chalamet) completamente transformado en el temido emperador Muad "Dib, liderando una jihad galáctica que amenaza con destruir el universo conocido. Las imágenes revelan espectaculares batallas espaciales, nuevos planetas del universo de Frank Herbert, y el regreso de personajes queridos como Gurney Halleck (Josh Brolin) y la Reverenda Madre (Charlotte Rampling). El tráiler presenta por primera vez a los nuevos miembros del reparto, incluyendo a Anya Taylor-Joy como Alia Atreides y Florence Pugh como la Princesa Irulan en roles expandidos. Las secuencias de acción muestran el dominio visual característico de Villeneuve, con tomas aéreas de enormes gusanos de arena atravesando paisajes desérticos y flotas espaciales enfrentándose en el vacío del espacio. La banda sonora de Hans Zimmer evoluciona hacia territorios más oscuros, incorporando coros gregorianos que evocan el fanatismo religioso que define esta parte de la saga. El tráiler culmina con una impactante secuencia donde Paul confronta al Emperador Shaddam IV (Christopher Walken) en el planeta Kaitain, prometiendo "el fin de todas las casas nobles". Villeneuve ha confirmado que esta entrega explorará las consecuencias morales del poder absoluto y el precio de la venganza. El tráiler ha generado más de 50 millones de visualizaciones en sus primeras 24 horas, estableciendo un nuevo récord para Warner Bros.',
+    'Trailers',
+    'noticias/dune_part_three_trailer.jpg',
+    'Timothée Chalamet como emperador Paul Atreides en el nuevo tráiler de Dune: Part Three',
+    13800,
+    16,
+    1,
+    NOW(),
+    '2025-07-20 19:45:00',
+    1
+),
+(
+    'Marvel presenta el tráiler explosivo de "Fantastic Four: First Steps" con Pedro Pascal como Reed Richards',
+    'Marvel Studios ha liberado el primer tráiler oficial de "Fantastic Four: First Steps", dirigida por Matt Shakman y programada para estrenar el 25 de julio de 2025. El tráiler de dos minutos y medio presenta oficialmente a Pedro Pascal como Reed Richards/Mr. Fantastic, Vanessa Kirby como Sue Storm/Invisible Woman, Joseph Quinn como Johnny Storm/Human Torch, y Ebon Moss-Bachrach como Ben Grimm/The Thing. Ambientada en los años 60 en una realidad alterna, la película promete una estética retro-futurista que combina elementos de ciencia ficción clásica con el humor característico del MCU. El tráiler revela el origen de los poderes del cuarteto durante una misión espacial que sale terriblemente mal, con efectos visuales que muestran las transformaciones de manera visceral y emocionante. Las secuencias de acción incluyen a Reed Richards estirando su cuerpo de maneras creativas nunca vistas en adaptaciones anteriores, mientras que The Thing aparece completamente realizado en CGI con un nivel de detalle fotorrealístico. El villano principal, Galactus, aparece brevemente al final del tráiler como una sombra cósmica amenazante que se cierne sobre la Tierra. Ralph Ineson le da voz al Devorador de Mundos con un tono profundo y resonante que promete una presencia intimidante. El tráiler también revela la participación de Julia Garner como Shalla-Bal/Silver Surfer, mostrándola navegando por el cosmos en su tabla plateada. La música, compuesta por Michael Giacchino, evoca las aventuras espaciales clásicas mientras incorpora temas heroicos modernos. Kevin Feige ha confirmado que esta película reintroducirá oficialmente a los Fantastic Four en el MCU antes de "Avengers: Secret Wars".',
+    'Trailers',
+    'noticias/fantastic_four_trailer.jpg',
+    'Los Fantastic Four en acción en el nuevo tráiler de First Steps',
+    12900,
+    15,
+    1,
+    NOW(),
+    '2025-04-12 17:20:00',
+    1
+),
+(
+    'El tráiler final de "Indiana Jones: Legacy of the Crystal Skull" promete la despedida definitiva de Harrison Ford',
+    'Lucasfilm ha lanzado el tráiler final de "Indiana Jones: Legacy of the Crystal Skull", la quinta y última aventura de Harrison Ford como el icónico arqueólogo aventurero. Dirigida por James Mangold y programada para estrenar el 30 de junio de 2025, la película presenta a un Indy envejecido enfrentando tanto enemigos del pasado como nuevas amenazas. El tráiler de cuatro minutos revela que la historia está ambientada en 1969, con Indiana Jones trabajando como profesor universitario cuando es arrastrado a una última aventura para recuperar un artefacto alienígena robado por antiguos nazis. Phoebe Waller-Bridge aparece como Helena Shaw, la ahijada de Indy que se convierte en su compañera de aventuras, mientras que Mads Mikkelsen interpreta al Dr. Klaber, un científico nazi que busca usar la tecnología alienígena para alterar la historia. Las secuencias de acción muestran persecuciones vehiculares épicas, incluyendo una espectacular secuencia en motocicleta a través de las calles de Tánger y una carrera de trenes en los Alpes. El tráiler promete el regreso de elementos clásicos de la franquicia: trampas antiguas, artefactos místicos y el humor característico de Ford. Las imágenes finales sugieren un viaje temporal que llevará a Indy a diferentes épocas históricas, incluyendo la Roma antigua y el Nueva York de los años 40. John Williams regresa para componer la banda sonora, prometiendo nuevas variaciones de temas clásicos junto con nuevas composiciones épicas. Ford, de 82 años, ha confirmado que esta será definitivamente su última interpretación del personaje que definió su carrera.',
+    'Trailers',
+    'noticias/indiana_jones_legacy_trailer.jpg',
+    'Harrison Ford regresa como Indiana Jones en el tráiler final de Legacy of the Crystal Skull',
+    14200,
+    17,
+    1,
+    NOW(),
+    '2025-05-04 16:35:00',
+    1
+),
+(
+    'El primer tráiler de "Avatar: The Seed Bearer" muestra el impresionante mundo submarino de Pandora',
+    ' 20th Century Studios ha revelado el primer tráiler de "Avatar: The Seed Bearer", la tercera entrega de la saga de James Cameron que llegará a los cines el 20 de diciembre de 2025. El tráiler de tres minutos nos sumerge literalmente en las profundidades oceánicas de Pandora, revelando criaturas marinas bioluminiscentes y ecosistemas submarinos de una belleza visual sin precedentes. Jake Sully (Sam Worthington) y Neytiri (Zoe Saldana) continúan protegiendo a su familia mientras exploran nuevas regiones del planeta, encontrándose con la tribu Ash People, Na "vi adaptados a vivir en volcanes activos. Las nuevas imágenes muestran avances tecnológicos impresionantes en captura de movimiento submarino, con secuencias de natación que parecen completamente reales. El tráiler introduce nuevos miembros del reparto, incluyendo a Michelle Yeoh como la matriarca de los Ash People y David Thewlis como un científico humano que ha vivido en Pandora durante décadas. Las criaturas más impactantes incluyen enormes ballenas voladoras con membranas bioluminiscentes y depredadores volcánicos que parecen dragones de lava. La tecnología RDA aparece más avanzada que nunca, con mechs submarinos y estaciones de minería que amenazan los ecosistemas oceánicos. Cameron ha utilizado nuevas cámaras submarinas desarrolladas específicamente para esta producción, capturando imágenes a profundidades nunca antes filmadas para una película narrativa. La banda sonora de Simon Franglen incorpora sonidos oceánicos reales grabados en las fosas más profundas del océano Pacífico. El tráiler concluye con una épica batalla submarina que promete ser la secuencia de acción acuática más espectacular jamás filmada.',
+    'Trailers',
+    'noticias/avatar_seed_bearer_trailer.jpg',
+    'Jake Sully explora las profundidades oceánicas en el tráiler de Avatar: The Seed Bearer',
+    13500,
+    16,
+    1,
+    NOW(),
+    '2025-08-15 14:10:00',
+    1
+),
+(
+    'El intenso tráiler de "John Wick: Chapter 5" muestra a Keanu Reeves en su venganza más personal',
+    'Lionsgate ha estrenado el tráiler oficial de "John Wick: Chapter 5", la quinta entrega de la franquicia de acción que promete ser la más emocional y violenta hasta la fecha. Dirigida una vez más por Chad Stahelski, la película llegará a los cines el 15 de mayo de 2025 con Keanu Reeves regresando como el legendario asesino. El tráiler de dos minutos y medio revela que John Wick ha sobrevivido a los eventos del Capítulo 4 y ahora busca venganza contra la Mesa Alta por la muerte de su amigo Winston (Ian McShane). Las secuencias de acción muestran combates coreografiados en locaciones espectaculares, incluyendo una pelea en la Torre Eiffel, persecuciones en motocicleta por las calles de Tokio, y un enfrentamiento final en el Coliseo Romano. Halle Berry regresa como Sofia con sus perros entrenados, mientras que nuevos antagonistas incluyen a Hiroyuki Sanada como el líder de una facción yakuza y Charlize Theron como una asesina élite con historia personal con John. El tráiler revela armas y gadgets más elaborados que nunca, incluyendo un traje blindado personalizado y una motocicleta equipada con armas automáticas. La cinematografía de Dan Laustsen utiliza una paleta de colores neón que contrasta con la violencia brutal, creando un estilo visual único que combina elegancia y caos. Tyler Bates y Joel J. Richard regresan para componer una banda sonora que mezcla música electrónica con orquesta sinfónica. El tráiler sugiere que esta podría ser realmente la última aventura de John Wick, con Reeves declarando en entrevistas que quiere "cerrar la historia de manera definitiva".',
+    'Trailers',
+    'noticias/john_wick_5_trailer.jpg',
+    'Keanu Reeves regresa como John Wick en el intenso tráiler del Capítulo 5',
+    12600,
+    14,
+    1,
+    NOW(),
+    '2025-03-08 18:25:00',
+    1
+),
+(
+    'El tráiler de "The Batman: Part II" revela el primer vistazo del Joker de Barry Keoghan',
+    'Warner Bros. ha liberado el esperado tráiler de "The Batman: Part II", dirigida por Matt Reeves y programada para estrenar el 3 de octubre de 2025. El tráiler de tres minutos finalmente revela la interpretación completa del Joker por Barry Keoghan, mostrando una versión del villano más perturbadora y realista que las versiones anteriores. Robert Pattinson regresa como un Batman más experimentado pero igualmente atormentado, enfrentando una Gotham City sumida en el caos después de los eventos de la primera película. El tráiler muestra la alianza entre Batman y Jim Gordon (Jeffrey Wright) mientras investigan una serie de asesinatos que parecen estar conectados con el pasado de la familia Wayne. Zoë Kravitz regresa como Catwoman en un rol expandido, con secuencias que muestran su relación romántica complicada con Bruce Wayne. Las nuevas adiciones al reparto incluyen a Colin Farrell retomando su papel como Penguin, ahora como el jefe del crimen de Gotham, y Cristin Milioti como Sofia Falcone. El tráiler revela vehículos nuevos para Batman, incluyendo una versión actualizada del Batmobile y por primera vez, el Batwing adaptado al estilo realista de Reeves. La cinematografía de Greig Fraser continúa el estilo noir establecido en la primera película, utilizando iluminación práctica y colores desaturados para crear una atmósfera opresiva. Michael Giacchino expande su aclamada banda sonora con nuevos temas para el Joker que incorporan elementos disonantes y perturbadores. El tráiler concluye con una confrontación directa entre Batman y el Joker que promete redefinir la relación entre estos personajes icónicos.',
+    'Trailers',
+    'noticias/batman_part_ii_trailer.jpg',
+    'Robert Pattinson como Batman enfrenta al Joker de Barry Keoghan en el nuevo tráiler',
+    13900,
+    17,
+    1,
+    NOW(),
+    '2025-06-14 20:50:00',
+    1
+),
+-- Categoría: Estrenos (6 estrenos)
+(
+    'El tráiler de "Mission: Impossible – The Final Reckoning" promete la aventura más explosiva de Tom Cruise',
+    'Paramount Pictures ha desvelado el tráiler oficial de "Mission: Impossible – The Final Reckoning", la octava y última entrega de la franquicia protagonizada por Tom Cruise como Ethan Hunt, programada para estrenarse el 23 de mayo de 2025. Dirigida por Christopher McQuarrie, el tráiler de cuatro minutos sumerge al espectador en una misión global que combina acrobacias de alto riesgo con una narrativa emocionalmente cargada. Ethan Hunt y su equipo, incluyendo a Ving Rhames, Simon Pegg y Rebecca Ferguson, enfrentan una inteligencia artificial rebelde que amenaza con desestabilizar el orden mundial. Las secuencias de acción destacan por su escala: desde una persecución en motocicleta por los acantilados de Noruega hasta una pelea en un tren descarrilado sobre un puente colgante en los Andes. Tom Cruise realiza personalmente acrobacias impresionantes, como colgarse de un avión en vuelo, un momento que ha generado revuelo en redes sociales. El tráiler introduce a nuevos personajes, con Hannah Waddingham como una villana enigmática y Hayley Atwell retomando su papel como Grace. La cinematografía de Fraser Taggart captura paisajes urbanos y naturales con un realismo crudo, mientras que la banda sonora de Lorne Balfe mezcla temas icónicos de la saga con tonos electrónicos modernos. Los fans han elogiado la intensidad del tráiler, que acumuló 60 millones de visualizaciones en 24 horas, rompiendo récords para Paramount. McQuarrie ha prometido un final "épico y conmovedor" para la saga, con un enfoque en el sacrificio y el legado de Ethan Hunt.',
+    'Trailers',
+    'noticias/mission_impossible_final_reckoning_trailer.jpg',
+    'Tom Cruise en una acrobacia aérea en el tráiler de Mission: Impossible – The Final Reckoning',
+    16500,
+    20,
+    1,
+    NOW(),
+    '2025-05-25 09:00:00',
+    1
+),
+(
+    'El primer tráiler de "Jurassic World: Rebirth" desata el caos con nuevas especies de dinosaurios',
+    'Universal Pictures ha lanzado el segundo tráiler de "Jurassic World: Rebirth", la séptima entrega de la franquicia, que llegará a los cines el 2 de julio de 2025. Dirigida por Gareth Edwards, el tráiler de tres minutos y medio presenta a Scarlett Johansson como una científica liderando una expedición para recuperar ADN de dinosaurios extintos en una isla secreta. La narrativa se centra en una corporación biotecnológica que ha creado híbridos marinos, incluyendo un aterrador mosasaurio que ataca un submarino en una secuencia visceral. Jonathan Bailey y Mahershala Ali completan el elenco, interpretando a un paleontólogo y un agente gubernamental, respectivamente. Las imágenes destacan por su uso de efectos visuales de vanguardia, con dinosaurios renderizados con un nivel de detalle fotorrealista, especialmente en una escena donde un enjambre de compsognathus invade una selva bioluminiscente. El tráiler también insinúa una conspiración global que conecta los eventos con el Jurassic Park original. La banda sonora de Michael Giacchino remezcla temas clásicos de John Williams con nuevos arreglos que evocan tensión y maravilla. Las reacciones en redes sociales han sido abrumadoramente positivas, con más de 45 millones de visualizaciones en las primeras 24 horas. Edwards ha destacado que la película explora "la arrogancia humana frente a la naturaleza", prometiendo un enfoque más oscuro y emocional que sus predecesoras.',
+    'Trailers',
+    'noticias/jurassic_world_rebirth_trailer.jpg',
+    'Scarlett Johansson enfrenta un mosasaurio en el tráiler de Jurassic World: Rebirth',
+    15800,
+    19,
+    1,
+    NOW(),
+    '2025-05-20 14:30:00',
+    1
+),
+(
+    'El tráiler de "Superman" de James Gunn redefine al héroe con un enfoque vibrante y humano',
+    'DC Studios ha revelado el tráiler oficial de "Superman", dirigida por James Gunn y programada para estrenarse el 11 de julio de 2025. El tráiler de tres minutos presenta a David Corenswet como un Clark Kent que lucha por equilibrar su vida como reportero y su papel como Superman en un mundo que cuestiona su intervención en conflictos internacionales. La narrativa aborda las consecuencias de sus acciones, con una opinión pública dividida y el ejército viéndolo como una amenaza. Rachel Brosnahan brilla como Lois Lane, mientras que Nicholas Hoult interpreta a un Lex Luthor carismático pero despiadado. Las secuencias de acción incluyen un enfrentamiento en Metrópolis con una criatura alienígena y un rescate masivo en una ciudad en llamas. La cinematografía de Henry Braham utiliza colores vibrantes para alejarse del tono oscuro de las películas de Zack Snyder, enfatizando la esperanza y el heroísmo. Un momento destacado es un cameo de Creature Commandos, conectando la película con el universo DCU. La banda sonora de John Murphy combina temas orquestales con un toque moderno, evocando la grandeza de los cómics clásicos. El tráiler ha generado 55 millones de visualizaciones en su primera semana, con fans elogiando la línea de Jonathan Kent (Pruitt Taylor Vince) que redefine el legado de Superman.',
+    'Trailers',
+    'noticias/superman_trailer.jpg',
+    'David Corenswet como Superman en el nuevo tráiler de James Gunn',
+    16200,
+    21,
+    1,
+    NOW(),
+    '2025-05-19 16:00:00',
+    1
+),
+(
+    '“Happy Gilmore 2” lanza un tráiler lleno de humor y nostalgia con Adam Sandler',
+    'Netflix ha estrenado el tráiler oficial de "Happy Gilmore 2", la secuela de la comedia clásica de 1996, que llegará a la plataforma el 25 de julio de 2025. Dirigida por Kyle Newacheck, el tráiler de dos minutos y medio muestra a Adam Sandler retomando su papel como Happy Gilmore, ahora un golfista retirado que regresa al circuito profesional para salvar un campo de golf familiar. La trama mezcla comedia absurda con momentos emotivos, con apariciones de Julie Bowen y Christopher McDonald como Virginia y Shooter McGavin. Nuevos rostros como Bad Bunny, Margaret Qualley y Travis Kelce aportan frescura, con Kelce destacando en una escena de un torneo caótico. Las secuencias de golf están llenas de gags físicos, incluyendo un golpe imposible desde un tejado y una pelea en un campo de minigolf. La cinematografía de Seamus Tierney captura un estilo colorido y dinámico, mientras que la banda sonora de Rupert Gregson-Williams incluye guiños al rock de los 90. El tráiler termina con una referencia icónica al enfrentamiento entre Happy y Shooter, que ha generado entusiasmo en redes sociales, acumulando 40 millones de visualizaciones en 48 horas. Sandler ha prometido "risas y corazón" para los fans de la original.',
+    'Trailers',
+    'noticias/happy_gilmore_2_trailer.jpg',
+    'Adam Sandler como Happy Gilmore en el tráiler de la secuela de Netflix',
+    14800,
+    18,
+    1,
+    NOW(),
+    '2025-06-01 10:45:00',
+    1
+),
+(
+    'El tráiler de "Predator: Badlands" lleva la cacería a un nuevo mundo alienígena',
+    '20th Century Studios ha lanzado el tráiler de "Predator: Badlands", dirigido por Dan Trachtenberg, que llegará a los cines el 7 de noviembre de 2025. El tráiler de tres minutos transporta a los espectadores a un planeta desértico en el futuro lejano, donde una comunidad humana enfrenta a un nuevo tipo de Predator más letal que nunca. La narrativa sigue a una cazadora (interpretada por Elle Fanning) que lidera una resistencia contra el invasor alienígena. Las secuencias de acción son impresionantes, con una escena destacada donde el Predator derriba una nave con un arpón, seguida de un combate cuerpo a cuerpo en un cañón iluminado por tormentas de arena. Los efectos visuales, creados por ILM, muestran al Predator con tecnología avanzada, incluyendo un camuflaje térmico mejorado. El elenco incluye a Boyd Holbrook, que regresa de "Prey", y a Riz Ahmed como un científico rebelde. La banda sonora de Lorne Balfe combina percusiones tribales con sonidos electrónicos, creando una atmósfera de tensión épica. El tráiler, presentado en CinemaCon, ha generado 50 millones de visualizaciones en su primera semana, con fans elogiando su enfoque fresco y su conexión con "Prey". Trachtenberg promete una historia sobre "la supervivencia y la humanidad frente a lo inhumano".',
+    'Trailers',
+    'noticias/predator_badlands_trailer.jpg',
+    'Elle Fanning enfrenta al Predator en el tráiler de Predator: Badlands',
+    15500,
+    20,
+    1,
+    NOW(),
+    '2025-06-01 18:00:00',
+    1
+),
+(
+    '“Frankenstein” de Guillermo del Toro deslumbra con un tráiler gótico y emocional en Netflix',
+    'Netflix ha estrenado el primer tráiler de "Frankenstein", dirigida por Guillermo del Toro, que llegará a la plataforma en noviembre de 2025. El tráiler de tres minutos y medio ofrece una reinterpretación oscura y poética del clásico de Mary Shelley, con Oscar Isaac como el Dr. Victor Frankenstein y Jacob Elordi como la criatura. La narrativa explora temas de creación, soledad y redención, ambientada en una Europa del siglo XIX recreada con un estilo visual gótico. Las secuencias muestran la construcción de la criatura en un laboratorio lleno de máquinas steampunk, junto con momentos de introspección donde la criatura descubre su humanidad. Mia Goth y Felix Kammerer completan el elenco, aportando intensidad a los roles secundarios. La cinematografía de Dan Laustsen utiliza sombras y colores fríos para crear una atmósfera inquietante, mientras que la banda sonora de Alexandre Desplat incorpora cuerdas melancólicas y coros etéreos. El tráiler ha sido elogiado por su enfoque artístico, acumulando 48 millones de visualizaciones en 72 horas. Del Toro ha descrito la película como "una carta de amor a los monstruos y a los marginados", prometiendo una experiencia visual y emocional única.',
+    'Trailers',
+    'noticias/frankenstein_trailer.jpg',
+    'Oscar Isaac como Victor Frankenstein en el tráiler de la película de Guillermo del Toro',
+    15000,
+    19,
+    1,
+    NOW(),
+    '2025-05-28 17:00:00',
     1
 );
