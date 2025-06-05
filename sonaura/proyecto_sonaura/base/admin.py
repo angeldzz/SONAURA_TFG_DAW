@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from .models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, 
     ContenidoGenero, Reparto, Actor, Galeria, Valoracion, Comentario, 
-    Notificacion, Newsletter, Noticia, 
+    Notificacion, Newsletter, CategoriaNoticia, Noticia, NoticiaCategoria, 
     Entrevista, ListaPersonalizada, ListaContenido
 )
 
@@ -74,7 +74,18 @@ class ListaContenidoInline(admin.TabularInline):
         if not obj.creador_id:
             obj.creador = request.user
         super().save_model(request, obj, form, change)
-
+        
+class NoticiaCategoriaInline(admin.TabularInline):
+    model = NoticiaCategoria
+    extra = 1
+    fields = ('id_categoria',)
+    
+    # Metodo para agregar el creador automanticamente
+    def save_model(self, request, obj, form, change):
+        if not obj.creador_id:
+            obj.creador = request.user
+        super().save_model(request, obj, form, change)
+        
 # Admin para modelos relacionados con usuarios
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
@@ -252,12 +263,24 @@ class NewsletterAdmin(admin.ModelAdmin):
         queryset.update(estado='inactivo')
     desactivar_suscripciones.short_description = "Desactivar suscripciones seleccionadas"
 
+@admin.register(CategoriaNoticia)
+class CategoriaNoticiaAdmin(admin.ModelAdmin):
+    list_display = ('id_categoria', 'nombre')
+    search_fields = ('nombre',)
+    
+    # Metodo para agregar el creador automanticamente
+    def save_model(self, request, obj, form, change):
+        if not obj.creador_id:
+            obj.creador = request.user
+        super().save_model(request, obj, form, change)
+        
 @admin.register(Noticia)
 class NoticiaAdmin(admin.ModelAdmin):
     list_display = ('id_noticia', 'titulo', 'categoria', 'mostrar_imagen', 'vistas', 'es_exclusiva', 'fecha_publicacion')
     list_filter = ('es_exclusiva', 'fecha_publicacion', 'categoria')
     search_fields = ('titulo', 'contenido')
     date_hierarchy = 'fecha_publicacion'
+    inlines = [NoticiaCategoriaInline]
     fieldsets = (
         ('Contenido', {
             'fields': ('titulo', 'contenido', 'categoria')
@@ -269,18 +292,16 @@ class NoticiaAdmin(admin.ModelAdmin):
             'fields': ('vistas', 'tiempo_lectura')
         }),
         ('Publicación', {
-            'fields': ('es_exclusiva', 'fecha_publicacion', 'creador')
+            'fields': ('es_exclusiva', 'fecha_publicacion')
         }),
     )
-    readonly_fields = ('creador',)  # Make creador read-only to prevent manual changes
-
-    # Method to automatically set the creator
+        
+    # Metodo para agregar el creador automanticamente
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
         super().save_model(request, obj, form, change)
-
-    # Method to display the image in the admin list view
+        
     def mostrar_imagen(self, obj):
         if obj.imagen_principal:
             return format_html('<img src="{}" width="100" />', obj.imagen_principal.url)
@@ -309,3 +330,4 @@ class EntrevistaAdmin(admin.ModelAdmin):
 # Registrar modelos de relación sin admin personalizado
 admin.site.register(ContenidoGenero)
 admin.site.register(ListaContenido)
+admin.site.register(NoticiaCategoria)

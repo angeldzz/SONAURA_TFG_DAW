@@ -3,17 +3,16 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import filters  # Asegúrate de importar esto
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
     Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
-    Noticia,  Entrevista, ListaPersonalizada, ListaContenido
+    CategoriaNoticia, Noticia, NoticiaCategoria, Entrevista, ListaPersonalizada, ListaContenido
 )
 from .serializers import (
     PerfilSerializer, SuscripcionUsuarioSerializer, PlataformaStreamingSerializer, GeneroSerializer,
     ContenidoSerializer, ContenidoGeneroSerializer, RepartoSerializer, ActorSerializer, GaleriaSerializer,
     ValoracionSerializer, ComentarioSerializer, NotificacionSerializer, NewsletterSerializer,
-    NoticiaSerializer,  EntrevistaSerializer,
+    CategoriaNoticiaSerializer, NoticiaSerializer, NoticiaCategoriaSerializer, EntrevistaSerializer,
     ListaPersonalizadaSerializer, ListaContenidoSerializer
 )
 from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly
@@ -114,16 +113,14 @@ class ContenidoViewSet(viewsets.ModelViewSet):
     queryset = Contenido.objects.all().order_by('-año_estreno')  # Orden descendente (más reciente primero)
     serializer_class = ContenidoSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
-    filter_backends = [filters.OrderingFilter]  # <-- Añadido
-    ordering_fields = ['puntuacion', 'año_estreno']  # <-- Añadido
 
     def get_queryset(self):
         queryset = super().get_queryset()
         pelicula_serie = self.request.query_params.get('pelicula_serie')
         if pelicula_serie:
             queryset = queryset.filter(pelicula_serie=pelicula_serie)
-        año_estreno = self.request.query_params.get('año_estreno')
-        año_estreno_lt = self.request.query_params.get('año_estreno__lt')
+        año_estreno = self.request.query_params.get('anio_estreno')
+        año_estreno_lt = self.request.query_params.get('anio_estreno__lt')
         genero = self.request.query_params.get('genero')
         if año_estreno:
             queryset = queryset.filter(año_estreno=año_estreno)
@@ -219,6 +216,22 @@ class NotificacionViewSet(viewsets.ModelViewSet):
 class NewsletterViewSet(viewsets.ModelViewSet):
     queryset = Newsletter.objects.all()
     serializer_class = NewsletterSerializer
+    permission_classes = [AllowAny, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
+
+class CategoriaNoticiaViewSet(viewsets.ModelViewSet):
+    queryset = CategoriaNoticia.objects.all()
+    serializer_class = CategoriaNoticiaSerializer
+    permission_classes = [AllowAny, IsStaffOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(creador=self.request.user)
+
+class NoticiaCategoriaViewSet(viewsets.ModelViewSet):
+    queryset = NoticiaCategoria.objects.all()
+    serializer_class = NoticiaCategoriaSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
     
     def perform_create(self, serializer):

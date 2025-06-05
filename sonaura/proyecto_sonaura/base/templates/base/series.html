@@ -1,133 +1,450 @@
 {% extends "base/base.html" %}
+    
+    {% block cssExtra %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/base/peliculas_series.css' %}">
+        <script src="{% static 'js/base/catalogo_peliculas.js' %}" defer></script>
+    {% endblock %}
 
-{% block cssExtra %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/base/peliculas_series.css' %}">
-    <script src="{% static 'js/base/catalogo_peliculas.js' %}" defer></script>
-{% endblock %}
-
-{% block principal %}
-<div class="cosmos-bg">
-    <div class="stars"></div>
-</div>
-<!-- Main Content -->
-<main>
-    <input type="hidden" id="pelicula-serie" name="pelicula-serie" value="serie">
-    <div class="container">
-        <div class="page-header">
-            <div class="cosmic-particles" id="particles"></div>
-            <h1>Series</h1>
-            <p>Descubre las mejores series de todos los tiempos, desde clásicos hasta los últimos estrenos. Explora nuestro catálogo completo y encuentra tu próxima serie favorita.</p>
-        </div>
-
-        <div class="filters">
-            <div class="filter-group">
-                <span class="filter-icon"><i class="fas fa-film"></i></span>
-                <span class="filter-label">Género:</span>
-                <select class="filter-select" id="genero-filter">
-                    <option value="all">Todos</option>
-                    <option value="Acción">Acción</option>
-                    <option value="Aventura">Aventura</option>
-                    <option value="Ciencia Ficción">Ciencia Ficción</option>
-                    <option value="Drama">Drama</option>
-                    <option value="Fantasía">Fantasía</option>
-                    <option value="Comedia">Comedia</option>
-                    <option value="horror">Terror</option>
-                    <option value="suspense">Suspense</option>
-                    <option value="romance">Romance</option>
-                    <option value="animacion">Animación</option>
-                    <option value="documental">Documental</option>
-                    <option value="musical">Musical</option>
-                    <option value="crimen">Crimen</option>
-                    <option value="misterio">Misterio</option>
-                    <option value="belica">Bélica</option>
-                    <option value="historica">Histórica</option>
-                    <option value="western">Western</option>
-                    <option value="biografica">Biográfica</option>
-                    <option value="deporte">Deporte</option>
-                    <option value="noir">Noir</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <span class="filter-icon"><i class="fas fa-calendar-alt"></i></span>
-                <span class="filter-label">Año:</span>
-                <select class="filter-select" id="yearFilter">
-                    <option value="all">Todos</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="older">Anteriores</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <span class="filter-icon"><i class="fas fa-star"></i></span>
-                <span class="filter-label">Valoración:</span>
-                <select class="filter-select">
-                    <option value="all">Todas</option>
-                    <option value="5">5 estrellas</option>
-                    <option value="4">4+ estrellas</option>
-                    <option value="3">3+ estrellas</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <span class="filter-icon"><i class="fas fa-sort"></i></span>
-                <span class="filter-label">Ordenar por:</span>
-                <select class="filter-select" id="sort-filter">
-                    <option value="nothing">Ninguna</option>
-                    <option value="rating">Valoración</option>
-                    <option value="newest">Más recientes</option>
-                    <option value="oldest">Más antiguas</option>
-                </select>
-            </div>
-        </div>
-
-        <section class="top-section">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Top 10 Series Mejor Valoradas</h2>
-                    <div class="title-line"></div>
-                </div>
-            </div>
-
-            <!-- Carrusel dinámico para Top 10 Series -->
-            <div class="carousel-container">
-                <button class="carousel-arrow prev" id="prevSlide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="carousel-track-container">
-                    <ul class="carousel-track" id="carouselTrack">
-                        <!-- Las diapositivas se generarán dinámicamente por JavaScript -->
-                    </ul>
-                </div>
-                
-                <button class="carousel-arrow next" id="nextSlide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <div class="carousel-nav">
-                    <div class="carousel-indicator active" data-slide="0"></div>
-                    <div class="carousel-indicator" data-slide="1"></div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Catálogo Completo</h2>
-                    <div class="title-line"></div>
-                </div>
-            </div>
-
-            <div class="catalog-grid" id="movieGrid">
-            </div>
-        </section>
-
-        <div class="pagination"></div>
+    {% block principal %}
+    <div class="cosmos-bg">
+        <div class="stars"></div>
     </div>
-</main>
+    <!-- Main Content -->
+    <main>
+        <input type="hidden" id="pelicula-serie" name="pelicula-serie" value="serie">
+        <div class="container">
+            <div class="page-header">
+                <div class="cosmic-particles" id="particles"></div>
+                <h1>Series</h1>
+                <p>Descubre las mejores series de todos los tiempos, desde clásicos hasta los últimos estrenos. Explora nuestro catálogo completo y encuentra tu próxima película favorita.</p>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                        <span class="filter-icon"><i class="fas fa-film"></i></span>
+                        <span class="filter-label">Género:</span>
+                        <select class="filter-select" id="genero-filter">
+                            <option value="all">Todos</option>
+                            <option value="Acción">Acción</option>
+                            <option value="Aventura">Aventura</option>
+                            <option value="Ciencia Ficción">Ciencia Ficción</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Fantasía">Fantasía</option>
+                            <option value="Comedia">Comedia</option>
+                            <option value="horror">Terror</option>
+                            <option value="suspense">Suspense</option>
+                            <option value="romance">Romance</option>
+                            <option value="animacion">Animación</option>
+                            <option value="documental">Documental</option>
+                            <option value="musical">Musical</option>
+                            <option value="crimen">Crimen</option>
+                            <option value="misterio">Misterio</option>
+                            <option value="belica">Bélica</option>
+                            <option value="historica">Histórica</option>
+                            <option value="western">Western</option>
+                            <option value="biografica">Biográfica</option>
+                            <option value="deporte">Deporte</option>
+                            <option value="noir">Noir</option>
+                        </select>
+                    </div>
+                <div class="filter-group">
+                    <span class="filter-icon"><i class="fas fa-calendar-alt"></i></span>
+                    <span class="filter-label">Año:</span>
+                    <select class="filter-select" id="yearFilter">
+                        <option value="all">Todos</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="older">Anteriores</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-icon"><i class="fas fa-star"></i></span>
+                    <span class="filter-label">Valoración:</span>
+                    <select class="filter-select">
+                        <option value="all">Todas</option>
+                        <option value="5">5 estrellas</option>
+                        <option value="4">4+ estrellas</option>
+                        <option value="3">3+ estrellas</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-icon"><i class="fas fa-sort"></i></span>
+                    <span class="filter-label">Ordenar por:</span>
+                    <select class="filter-select">
+                        <option value="popularity">Popularidad</option>
+                        <option value="rating">Valoración</option>
+                        <option value="newest">Más recientes</option>
+                        <option value="oldest">Más antiguas</option>
+                    </select>
+                </div>
+            </div>
+
+            <section class="top-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2>Top 10 Series Mejor Valoradas</h2>
+                        <div class="title-line"></div>
+                    </div>
+                </div>
+
+                <!-- Carrusel mejorado para Top 10 Películas -->
+                <div class="carousel-container">
+                    <button class="carousel-arrow prev" id="prevSlide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track" id="carouselTrack">
+                            <!-- Película 1 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Dune: Parte 2">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.9</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Ciencia Ficción</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Dune: Parte 2</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>166 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 2 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.8</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Oppenheimer</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>180 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 3 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Pobres Criaturas">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.7</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Fantasía</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Pobres Criaturas</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>141 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 4 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Civil_War-397793862-large.jpg" alt="Civil War">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.6</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Acción</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Civil War</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>109 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 5 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://pics.filmaffinity.com/Rivales-998119283-large.jpg" alt="Rivales">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.5</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Rivales</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>131 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 6 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://lumiere-a.akamaihd.net/v1/images/02_kotpota_teaser_1sht_las_652fbe30.jpeg" alt="El Planeta de los Simios: Nuevo Reino">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.4</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Ciencia Ficción</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>El Planeta de los Simios: Nuevo Reino</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>145 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 7 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://m.media-amazon.com/images/M/MV5BZWVhOTU2NDItYjE3Zi00ZjBiLTk0MjItNDEzZTBiNmM4YTIxXkEyXkFqcGc@._V1_.jpg" alt="Furiosa: De la Saga Mad Max">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.3</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Acción</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Furiosa: De la Saga Mad Max</h3>
+                                        <div class="card-meta">
+                                            <span>2024</span>
+                                            <span>150 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 8 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p13472534_p_v8_am.jpg" alt="Barbie">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.1</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Comedia</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Barbie</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>114 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 9 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://m.media-amazon.com/images/M/MV5BMWMzNWUxZWEtNjVlYy00OGFjLWI5ZTUtYjcwNzRlMTRhZDYyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Anatomía de una Caída">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>4.0</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>Anatomía de una Caída</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>150 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <!-- Película 10 -->
+                            <li class="carousel-slide">
+                                <div class="media-card neon-card">
+                                    <div class="card-image">
+                                        <img src="https://play-lh.googleusercontent.com/0rEJv2JJIyg-SRRbhiIcqEGrvwp_Nc1bhm0R5iSSpi6HgIliKVtJCyScg2Dgu_0rbfyZIdgFRRh493JyKbA" alt="La Zona de Interés">
+                                        <div class="card-overlay">
+                                            <div class="card-actions">
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </button>
+                                                <button class="card-action-btn">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="card-rating">
+                                            <div class="rating-circle">
+                                                <span>3.9</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-badge">Drama</div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>La Zona de Interés</h3>
+                                        <div class="card-meta">
+                                            <span>2023</span>
+                                            <span>105 min</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button class="carousel-arrow next" id="nextSlide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <div class="carousel-nav">
+                        <div class="carousel-indicator active" data-slide="0"></div>
+                        <div class="carousel-indicator" data-slide="1"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">
+                    <div class="section-title">
+                        <h2>Catálogo Completo</h2>
+                        <div class="title-line"></div>
+                    </div>
+                </div>
+
+                <div class="catalog-grid" id="movieGrid">
+                </div>
+            </section>
+            <div class="pagination"><!-- Los botones se generan dinámicamente por JS --></div>
+        </div>
+    </main>
 {% endblock %}

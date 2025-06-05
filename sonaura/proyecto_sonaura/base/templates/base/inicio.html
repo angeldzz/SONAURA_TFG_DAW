@@ -1,8 +1,5 @@
 {% extends "base/base.html" %}
-{% block cssExtra %}
-    {% load static %}
-    <script src="{% static 'js/base/inicio.js' %}" defer></script>
-{% endblock %}
+
 {% block principal %}
 <!-- Hero Section -->
 <section class="hero">
@@ -16,7 +13,18 @@
             </div>
         </div>
         <div class="hero-visual">
-            <div class="floating-cards"></div>
+            <div class="floating-cards">
+                <div class="card-float" style="--delay: 0s">
+                    <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg"
+                        alt="Película destacada">
+                </div>
+                <div class="card-float" style="--delay: 0.2s">
+                    <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Película destacada">
+                </div>
+                <div class="card-float" style="--delay: 0.4s">
+                    <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Película destacada">
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -30,17 +38,311 @@
                 <div class="title-line"></div>
             </div>
             <div class="section-tabs">
-                <button class="tab active" data-tab="peliculas">Películas</button>
+                <button class="tab active" data-tab="movies">Películas</button>
                 <button class="tab" data-tab="series">Series</button>
             </div>
         </div>
 
-        <div class="tab-content active" id="peliculas-content">
-            <div class="media-grid"></div>
+        <div class="tab-content active" id="movies-content">
+            <div class="media-grid">
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Dune: Parte 2">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <a><i class="fas fa-info-circle"></i></a>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Sci-Fi</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Dune: Parte 2</h3>
+                        <div class="card-meta">
+                            <span>2024</span>
+                            <span>166 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Drama</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Oppenheimer</h3>
+                        <div class="card-meta">
+                            <span>2023</span>
+                            <span>180 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Pobres Criaturas">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Fantasía</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Pobres Criaturas</h3>
+                        <div class="card-meta">
+                            <span>2023</span>
+                            <span>141 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://pics.filmaffinity.com/Civil_War-397793862-large.jpg" alt="Civil War">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Acción</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Civil War</h3>
+                        <div class="card-meta">
+                            <span>2024</span>
+                            <span>109 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://pics.filmaffinity.com/Rivales-998119283-large.jpg" alt="Challengers">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.5</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Drama</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Challengers</h3>
+                        <div class="card-meta">
+                            <span>2024</span>
+                            <span>131 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="tab-content" id="series-content">
-            <div class="media-grid"></div>
+            <div class="media-grid">
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://m.media-amazon.com/images/M/MV5BYWI3ODJlMzktY2U5NC00ZjdlLWE1MGItNWQxZDk3NWNjN2RhXkEyXkFqcGc@._V1_.jpg"
+                            alt="The Last of Us">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Drama</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>The Last of Us</h3>
+                        <div class="card-meta">
+                            <span>2023</span>
+                            <span>1 Temporada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://m.media-amazon.com/images/M/MV5BNjI5ZmZkNDktZDliMS00ZjlmLWE2MTUtMWVlZjU2YWQ3ZDYxXkEyXkFqcGc@._V1_.jpg"
+                            alt="Fallout">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Sci-Fi</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Fallout</h3>
+                        <div class="card-meta">
+                            <span>2024</span>
+                            <span>1 Temporada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://m.media-amazon.com/images/M/MV5BZmJkMDRjYzEtMWI3Ny00OWE3LWJlNTItMGQ1MTQzMzc3NDY5XkEyXkFqcGc@._V1_.jpg"
+                            alt="Shogun">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Histórico</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Shogun</h3>
+                        <div class="card-meta">
+                            <span>2024</span>
+                            <span>1 Temporada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://pics.filmaffinity.com/The_Bear_Serie_de_TV-751672583-large.jpg"
+                            alt="The Bear">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Comedia</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>The Bear</h3>
+                        <div class="card-meta">
+                            <span>2023</span>
+                            <span>2 Temporadas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="media-card neon-card">
+                    <div class="card-image">
+                        <img src="https://www.ecartelera.com/carteles-series/000/31/007_m.jpg" alt="True Detective">
+                        <div class="card-overlay-inicio">
+                            <div class="card-actions-inicio">
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                                <button class="card-action-btn-inicio">
+                                    <i class="fas fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-rating-inicio">
+                            <div class="rating-circle">
+                                <span>4.5</span>
+                            </div>
+                        </div>
+                        <div class="card-badge-inicio">Crimen</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>True Detective</h3>
+                        <div class="card-meta">
+                            <span>2024</span>
+                            <span>4 Temporadas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -142,6 +444,10 @@
         </div>
     </div>
 </section>
+
+
+
+
 
 <!-- Premium Section -->
 <section class="premium-section">
