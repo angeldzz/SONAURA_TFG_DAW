@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
-    Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter, Noticia, Entrevista, ListaPersonalizada, ListaContenido
+    Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
+    CategoriaNoticia, Noticia, NoticiaCategoria, Entrevista, ListaPersonalizada, ListaContenido
 )
 
 class PerfilSerializer(serializers.ModelSerializer):
@@ -31,11 +32,10 @@ class GeneroSerializer(serializers.ModelSerializer):
 class ContenidoSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
     generos = serializers.SerializerMethodField()
-    anio_estreno = serializers.IntegerField(source='año_estreno', read_only=True)  # <-- Añadido
 
     class Meta:
         model = Contenido
-        fields = '__all__'  # Si usas lista explícita, añade 'anio_estreno'
+        fields = '__all__'  # o lista explícita de campos + 'generos'
 
     def get_generos(self, obj):
         generos = Genero.objects.filter(contenidogenero__id_contenido=obj)
@@ -103,10 +103,22 @@ class NewsletterSerializer(serializers.ModelSerializer):
         model = Newsletter
         fields = '__all__'
 
+class CategoriaNoticiaSerializer(serializers.ModelSerializer):
+    creador = serializers.ReadOnlyField(source='creador.username')
+    class Meta:
+        model = CategoriaNoticia
+        fields = '__all__'
+
 class NoticiaSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
     class Meta:
         model = Noticia
+        fields = '__all__'
+
+class NoticiaCategoriaSerializer(serializers.ModelSerializer):
+    creador = serializers.ReadOnlyField(source='creador.username')
+    class Meta:
+        model = NoticiaCategoria
         fields = '__all__'
 
 class EntrevistaSerializer(serializers.ModelSerializer):

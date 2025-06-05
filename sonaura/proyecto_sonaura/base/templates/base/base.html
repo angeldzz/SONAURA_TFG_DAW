@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{% static 'css/base/modal.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/media/logo_sonaura.webp" type="image/x-icon">
 </head>
 
 <body>
@@ -44,11 +43,7 @@
                     {% if user.is_authenticated %}
                     <div class="user-nav-menu">
                         <a href="{% url 'perfil' %}" class="user-profile-link">
-                            {% if user.perfil.imagen_avatar %}
-                                <img src="{{ user.perfil.imagen_avatar.url }}" alt="Avatar" class="header-avatar" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
-                            {% else %}
-                                <i class="fas fa-user-circle"></i>
-                            {% endif %}
+                            <i class="fas fa-user-circle"></i>
                             <span>{{ user.username }}</span>
                         </a>
                         <a href="#" class="nav-notification">
@@ -111,8 +106,9 @@
                     <p>Tu guía definitiva para encontrar las mejores películas y series.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/sonaura2025" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/sonaura.2025/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -128,11 +124,21 @@
                     </div>
 
                     <div class="footer-column">
+                        <h3>Categorías</h3>
+                        <ul>
+                            <li><a href="/categoria/accion">Acción</a></li>
+                            <li><a href="/categoria/drama">Drama</a></li>
+                            <li><a href="/categoria/comedia">Comedia</a></li>
+                            <li><a href="/categoria/sci-fi">Sci-Fi</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
                         <h3>Legal</h3>
                         <ul>
-                            <li><a href="{% url 'aviso_legal' %}">Aviso Legal</a></li>
-                            <li><a href="{% url 'privacidad' %}">Política de Privacidad</a></li>
-                            <li><a href="{% url 'cookies' %}">Política de Cookies</a></li>
+                            <li><a href="/privacidad">Política de Privacidad</a></li>
+                            <li><a href="/terminos">Términos de Uso</a></li>
+                            <li><a href="/cookies">Política de Cookies</a></li>
                             <li><a href="/contacto">Contacto</a></li>
                         </ul>
                     </div>
@@ -141,6 +147,14 @@
 
             <div class="footer-bottom">
                 <p>© 2025 SONAURA. Todos los derechos reservados.</p>
+                <div class="footer-app-links">
+                    <a href="#" class="app-link">
+                        <i class="fab fa-apple"></i> App Store
+                    </a>
+                    <a href="#" class="app-link">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
