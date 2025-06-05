@@ -3,8 +3,7 @@ from django.utils.html import format_html
 from .models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, 
     ContenidoGenero, Reparto, Actor, Galeria, Valoracion, Comentario, 
-    Notificacion, Newsletter, Noticia, 
-    Entrevista, ListaPersonalizada, ListaContenido
+    Notificacion, Newsletter, Noticia, ListaPersonalizada, ListaContenido
 )
 
 # Inlines para relaciones
@@ -284,25 +283,6 @@ class NoticiaAdmin(admin.ModelAdmin):
     def mostrar_imagen(self, obj):
         if obj.imagen_principal:
             return format_html('<img src="{}" width="100" />', obj.imagen_principal.url)
-        return "Sin imagen"
-    mostrar_imagen.short_description = "Imagen"
-
-@admin.register(Entrevista)
-class EntrevistaAdmin(admin.ModelAdmin):
-    list_display = ('id_entrevista', 'titulo', 'mostrar_imagen', 'duracion', 'vistas', 'fecha_publicacion')
-    list_filter = ('fecha_publicacion',)
-    search_fields = ('titulo', 'contenido')
-    date_hierarchy = 'fecha_publicacion'
-        
-    # Metodo para agregar el creador automanticamente
-    def save_model(self, request, obj, form, change):
-        if not obj.creador_id:
-            obj.creador = request.user
-        super().save_model(request, obj, form, change)
-        
-    def mostrar_imagen(self, obj):
-        if obj.imagen:
-            return format_html('<img src="{}" width="100" />', obj.imagen.url)
         return "Sin imagen"
     mostrar_imagen.short_description = "Imagen"
 

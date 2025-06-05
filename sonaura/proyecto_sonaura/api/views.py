@@ -7,14 +7,13 @@ from rest_framework import filters  # Asegúrate de importar esto
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
     Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
-    Noticia,  Entrevista, ListaPersonalizada, ListaContenido
+    Noticia, ListaPersonalizada, ListaContenido
 )
 from .serializers import (
     PerfilSerializer, SuscripcionUsuarioSerializer, PlataformaStreamingSerializer, GeneroSerializer,
     ContenidoSerializer, ContenidoGeneroSerializer, RepartoSerializer, ActorSerializer, GaleriaSerializer,
     ValoracionSerializer, ComentarioSerializer, NotificacionSerializer, NewsletterSerializer,
-    NoticiaSerializer,  EntrevistaSerializer,
-    ListaPersonalizadaSerializer, ListaContenidoSerializer
+    NoticiaSerializer, ListaPersonalizadaSerializer, ListaContenidoSerializer
 )
 from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly
 from django.db.models import Avg
@@ -233,14 +232,6 @@ class NotificacionViewSet(viewsets.ModelViewSet):
 class NewsletterViewSet(viewsets.ModelViewSet):
     queryset = Newsletter.objects.all()
     serializer_class = NewsletterSerializer
-    permission_classes = [AllowAny, IsStaffOrReadOnly]
-    
-    def perform_create(self, serializer):
-        serializer.save(creador=self.request.user)
-
-class EntrevistaViewSet(viewsets.ModelViewSet):
-    queryset = Entrevista.objects.all()
-    serializer_class = EntrevistaSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
     
     def perform_create(self, serializer):

@@ -19,7 +19,6 @@ router.register(r'comentarios', views.ComentarioViewSet)
 router.register(r'notificaciones', views.NotificacionViewSet)
 router.register(r'newsletters', views.NewsletterViewSet)
 router.register(r'noticias', views.NoticiaViewSet)
-router.register(r'entrevistas', views.EntrevistaViewSet)
 router.register(r'listas-personalizadas', views.ListaPersonalizadaViewSet)
 router.register(r'listas-contenido', views.ListaContenidoViewSet)
 
