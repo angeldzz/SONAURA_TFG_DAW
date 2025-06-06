@@ -158,8 +158,7 @@ function filtro_valoracion() {
     return filtroValoracion;
 }
 
-function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "",valoracion_filtro) {
-    
+function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", valoracion_filtro) {
     fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}${genero_filtro}${orden_filtro}${valoracion_filtro}`)
         .then(response => {
             if (!response.ok) throw new Error('Error al obtener las películas');
@@ -173,7 +172,7 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "",va
             movieGrid.innerHTML = ''; // Limpiar contenido anterior
 
             const peliculasPorPagina = 15;
-            const peliculasPorFila = 5;
+            let peliculasPorFila = window.innerWidth <= 400 ? 1 : window.innerWidth <= 750 ? 3 : 5; // Dynamic number of movies per row
             const totalPaginas = Math.ceil(peliculas.length / peliculasPorPagina);
 
             // Generar dinámicamente los botones de paginación
