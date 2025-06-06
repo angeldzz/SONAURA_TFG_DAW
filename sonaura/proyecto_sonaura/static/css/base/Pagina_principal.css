@@ -1967,7 +1967,7 @@
       display: none;
     }
   }
-  
+
   /* Estilos actualizados para la sección de noticias */
   .news-container-inicio {
     display: grid;
@@ -2112,4 +2112,322 @@
     object-fit: cover;
     margin-right: 6px;
     vertical-align: middle;
+}
+/* Responsive styles for screens smaller than 520px */
+@media (max-width: 520px) {
+  .section-header {
+    display: block; /* Apilar título y tabs verticalmente */
+    text-align: center; /* Centrar texto */
+    margin-bottom: 1.5rem; /* Reducir margen para ahorrar espacio */
+  }
+
+  .section-title {
+    margin-bottom: 1rem; /* Espacio entre título y tabs */
+  }
+
+  .title-line {
+    margin: 0 auto; /* Centrar la línea */
+    width: 40px; /* Reducir ancho para móviles */
+  }
+
+  .section-tabs {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los botones se envuelvan */
+    justify-content: center; /* Centrar los botones */
+    margin: 0 auto; /* Centrar el contenedor */
+    width: 100%; /* Usar todo el ancho disponible */
+    max-width: 300px; /* Limitar ancho máximo */
+    padding: 0.2rem; /* Reducir padding */
+    gap: 0.5rem; /* Espacio entre botones */
+    background-color: var(--dark-surface); /* Restaurar fondo si es necesario */
+    border-radius: var(--radius-md); /* Ajustar radio */
+  }
+
+  .tab {
+    padding: 0.4rem 0.8rem; /* Reducir padding */
+    font-size: 0.85rem; /* Fuente más pequeña */
+    flex: 1; /* Botones se expanden equitativamente */
+    min-width: 80px; /* Ancho mínimo para evitar que se encojan demasiado */
+    text-align: center; /* Centrar texto */
+    border-radius: var(--radius-sm); /* Radio más pequeño */
+  }
+
+  .tab.active {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 320px) {
+  .section-tabs {
+    max-width: 250px; /* Aún más compacto */
+    gap: 0.3rem; /* Menos espacio entre botones */
+  }
+
+  .tab {
+    padding: 0.3rem 0.6rem; /* Más compacto */
+    font-size: 0.75rem; /* Fuente más pequeña */
+    min-width: 70px; /* Ancho mínimo reducido */
+  }
+}
+/* Responsive styles for screens smaller than 471px */
+@media (max-width: 471px) {
+  /* Top 5 Section */
+  .media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Smaller card width for mobile */
+    gap: 1rem; /* Reduce gap between cards */
+  }
+
+  .card-image {
+    aspect-ratio: 2 / 3; /* Maintain aspect ratio */
+    width: 100%; /* Ensure image takes full container width */
+    height: auto; /* Allow height to adjust naturally */
+  }
+
+  .media-card {
+    border-radius: var(--radius-sm); /* Slightly smaller radius for mobile */
+  }
+
+  .card-content h3 {
+    font-size: 0.875rem; /* Smaller title font size */
+  }
+
+  .card-meta {
+    font-size: 0.7rem; /* Smaller meta text */
+    gap: 0.5rem; /* Reduce gap between meta items */
+  }
+
+  .card-rating-inicio .rating-circle {
+    width: 30px; /* Smaller rating circle */
+    height: 30px;
+    font-size: 0.75rem; /* Smaller rating text */
+  }
+
+  .card-badge-inicio {
+    font-size: 0.65rem; /* Smaller badge text */
+    padding: 0.2rem 0.5rem; /* Adjust badge padding */
+  }
+
+  .card-action-btn-inicio {
+    width: 32px; /* Smaller action buttons */
+    height: 32px;
+    font-size: 0.9rem; /* Smaller icon size */
+  }
+
+  /* Newsletter Section */
+  .newsletter {
+    width: 100%; /* Remove fixed width for mobile */
+    margin: 2rem 0; /* Adjust margin */
+    padding: 2rem 1rem; /* Reduce padding */
+    border-radius: var(--radius-md); /* Slightly smaller radius */
+  }
+
+  .newsletter-content h2 {
+    font-size: 1.5rem; /* Smaller heading */
+  }
+
+  .newsletter-content p {
+    font-size: 0.875rem; /* Smaller paragraph text */
+    margin-bottom: 1.5rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column; /* Stack input and button vertically */
+    gap: 0.75rem; /* Increase gap for better spacing */
+  }
+
+  .newsletter-form input {
+    padding: 0.5rem; /* Reduce input padding */
+    font-size: 0.875rem; /* Smaller input text */
+  }
+
+  .newsletter-form .btn-primary {
+    padding: 0.75rem; /* Adjust button padding */
+    font-size: 0.875rem; /* Smaller button text */
+  }
+  .section-tabs{
+    margin-left: 20px;
+  }
+}
+
+/* Responsive styles for screens smaller than 342px */
+@media (max-width: 344px) {
+  /* Top 5 Section */
+  .media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Even smaller card width */
+    gap: 0.75rem; /* Tighter gap for very small screens */
+  }
+
+  .card-image {
+    aspect-ratio: 2 / 3; /* Maintain aspect ratio */
+    width: 100%; /* Full container width */
+    height: auto; /* Adjust height dynamically */
+  }
+
+  .media-card {
+    border-radius: var(--radius-sm); /* Keep smaller radius */
+  }
+
+  .card-content h3 {
+    font-size: 0.75rem; /* Smaller title font size */
+    white-space: normal; /* Allow text wrapping to prevent overflow */
+    line-height: 1.2; /* Tighter line height */
+  }
+
+  .card-meta {
+    font-size: 0.65rem; /* Even smaller meta text */
+    gap: 0.3rem; /* Tighter gap */
+    flex-direction: column; /* Stack meta items vertically */
+  }
+
+  .card-rating-inicio .rating-circle {
+    width: 26px; /* Smaller rating circle */
+    height: 26px;
+    font-size: 0.65rem; /* Smaller rating text */
+  }
+
+  .card-badge-inicio {
+    font-size: 0.6rem; /* Smaller badge text */
+    padding: 0.15rem 0.4rem; /* Tighter badge padding */
+  }
+
+  .card-action-btn-inicio {
+    width: 28px; /* Smaller action buttons */
+    height: 28px;
+    font-size: 0.8rem; /* Smaller icon size */
+  }
+
+  /* Newsletter Section */
+  .newsletter {
+    width: 100%; /* Ensure fluid width */
+    margin: 1.5rem 0; /* Reduce margin */
+    padding: 1.5rem 0.75rem; /* Tighter padding */
+    border-radius: var(--radius-sm); /* Smaller radius */
+  }
+
+  .newsletter-content h2 {
+    font-size: 1.25rem; /* Smaller heading */
+  }
+
+  .newsletter-content p {
+    font-size: 0.75rem; /* Smaller paragraph text */
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column; /* Keep vertical stacking */
+    gap: 0.5rem; /* Tighter gap */
+  }
+
+  .newsletter-form input {
+    padding: 0.4rem; /* Tighter input padding */
+    font-size: 0.75rem; /* Smaller input text */
+  }
+
+  .newsletter-form .btn-primary {
+    padding: 0.6rem; /* Tighter button padding */
+    font-size: 0.75rem; /* Smaller button text */
+  }
+}
+/* Responsive styles for premium-section on screens smaller than 400px */
+@media (max-width: 400px) {
+  .premium-section {
+    padding: 3rem 0; /* Reduce padding for smaller screens */
+  }
+
+  .premium-card {
+    padding: 1.5rem; /* Tighter padding to save space */
+    border-radius: var(--radius-md); /* Slightly smaller radius */
+    gap: 1.5rem; /* Reduce gap between content and image */
+  }
+
+  .premium-content h2 {
+    font-size: 1.5rem; /* Smaller heading for readability */
+    margin-bottom: 0.75rem;
+  }
+
+  .premium-content p {
+    font-size: 0.875rem; /* Smaller paragraph text */
+    margin-bottom: 1.5rem;
+  }
+
+  .premium-badge {
+    font-size: 0.65rem; /* Smaller badge text */
+    padding: 0.2rem 0.75rem; /* Adjust padding */
+  }
+
+  .premium-features {
+    gap: 1rem; /* Tighter gap between feature items */
+  }
+
+  .premium-feature {
+    gap: 0.75rem; /* Reduce gap between icon and text */
+  }
+
+  .feature-icon {
+    width: 32px; /* Smaller icon size */
+    height: 32px;
+    font-size: 1rem; /* Smaller icon font */
+  }
+
+  .feature-text h4 {
+    font-size: 1rem; /* Smaller feature title */
+  }
+
+  .feature-text p {
+    font-size: 0.75rem; /* Smaller feature description */
+  }
+
+  .btn-premium {
+    padding: 0.75rem 1.5rem; /* Smaller button */
+    font-size: 0.875rem; /* Smaller button text */
+    border-radius: var(--radius-md); /* Adjust radius */
+  }
+
+  .premium-image {
+    height: 200px; /* Reduce image height */
+  }
+
+  .glow-effect {
+    background: radial-gradient(circle at center, rgba(157, 78, 221, 0.2) 0%, transparent 70%); /* Softer glow */
+  }
+}
+/* Responsive styles for newsletter on screens between 500px and 800px */
+@media (min-width: 500px) and (max-width: 800px) {
+  .newsletter {
+    width: 90%; /* Scale to viewport width with some margin */
+    max-width: 600px; /* Cap width to prevent it from being too wide */
+    margin: 2rem auto; /* Reduce margin for better fit */
+    padding: 2.5rem 1rem; /* Slightly tighter padding */
+    border-radius: var(--radius-md); /* Consistent radius, slightly smaller */
+  }
+
+  .newsletter-content {
+    max-width: 90%; /* Ensure content stays within container */
+  }
+
+  .newsletter-content h2 {
+    font-size: 1.75rem; /* Slightly smaller heading for balance */
+  }
+
+  .newsletter-content p {
+    font-size: 0.875rem; /* Readable paragraph size */
+    margin-bottom: 1.5rem; /* Adjust spacing */
+  }
+
+  .newsletter-form {
+    max-width: 100%; /* Form fills content area */
+    gap: 0.5rem; /* Maintain gap for form elements */
+  }
+
+  .newsletter-form input {
+    padding: 0.75rem; /* Comfortable input padding */
+    font-size: 0.875rem; /* Readable input text */
+  }
+
+  .newsletter-form .btn-primary {
+    padding: 0.75rem 1.5rem; /* Balanced button size */
+    font-size: 0.875rem; /* Readable button text */
+  }
 }

@@ -20,7 +20,7 @@
     <header class="privacy-header">
         <div class="container">
             <div class="logo">
-                <h1>SONAURA</h1>
+                <a style="text-decoration: none;" href="/"><h1>SONAURA</h1></a>
                 <span class="tagline">STREAMING PLATFORM</span>
             </div>
             <nav class="breadcrumb">
@@ -772,10 +772,9 @@
                 <!-- Footer de la política -->
                 <div class="privacy-footer">
                     <div class="footer-links">
-                        <a href="/aviso-legal">Aviso Legal</a>
-                        <a href="/terminos-condiciones">Términos y Condiciones</a>
-                        <a href="/politica-cookies">Política de Cookies</a>
-                        <a href="/contacto">Contacto</a>
+                        <a href="{% url 'aviso_legal' %}">Aviso Legal</a>
+                        <a href="{% url 'privacidad' %}">Política de Privacidad</a>
+                        <a href="{% url 'cookies' %}">Política de Cookies</a>
                     </div>
                     <div class="footer-text">
                         <p>&copy; 2025 SONAURA Entertainment S.L. Todos los derechos reservados.</p>
