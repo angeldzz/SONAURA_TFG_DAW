@@ -11,15 +11,18 @@
     Top_10();
     
     // Cargar películas
-    cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden());
+    cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion());
     document.getElementById("yearFilter").addEventListener("change", () => 
-        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden())
+        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion())
     );
     document.getElementById("genero-filter").addEventListener("change", () => 
-        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden())
+        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion())
     );
     document.getElementById("sort-filter").addEventListener("change", () => 
-        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden())
+        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion())
+    );
+    document.getElementById("rating-filter").addEventListener("change", () => 
+        cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion())
     );
 
 
@@ -141,9 +144,23 @@ function filtro_orden() {
     return filtroOrden;
 }
 
-function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "") {
+function filtro_valoracion() {
+    const puntuacion = document.getElementById("rating-filter").value;
+    let filtroValoracion = "";
+    if (puntuacion === "8") {
+        filtroValoracion = "&puntuacion__gte=4&ordering=-puntuacion";
+    } else if (puntuacion === "6") {
+        filtroValoracion = "&puntuacion__gte=3&puntuacion__lt=4&ordering=puntuacion";
+    } else if (puntuacion === "4") {
+        filtroValoracion = "&puntuacion__gte=2&puntuacion__lt=3&ordering=puntuacion";
+    }
+    console.log("Filtro aplicado: ", filtroValoracion);
+    return filtroValoracion;
+}
+
+function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "",valoracion_filtro) {
     
-    fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}${genero_filtro}${orden_filtro}`)
+    fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}${anio_filtro}${genero_filtro}${orden_filtro}${valoracion_filtro}`)
         .then(response => {
             if (!response.ok) throw new Error('Error al obtener las películas');
             return response.json();
