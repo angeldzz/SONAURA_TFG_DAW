@@ -224,7 +224,7 @@ INSERT INTO reparto (id_reparto, id_contenido_id, id_actor_id, personaje, creado
 (230, 58, 197, 'Zero Moustafa', 1), -- Tony Revolori
 (231, 58, 198, 'Agatha', 1), -- Saoirse Ronan
 (232, 58, 199, 'Dmitri', 1), -- Adrien Brody
-(233, 59, 200, 'T''Challa / Black Panther', 1), -- Chadwick Boseman
+(233, 59, 200, 'T Challa / Black Panther', 1), -- Chadwick Boseman
 (234, 59, 201, 'Erik Killmonger', 1), -- Michael B. Jordan
 (235, 59, 202, 'Nakia', 1), -- Lupita Nyong'o
 (236, 59, 203, 'Okoye', 1), -- Danai Gurira
