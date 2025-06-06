@@ -1,33 +1,22 @@
 ---Generales
 - Arreglar todos los detalles de responsive( sobre todo en movil para el despligue )
-- Descargar fotos de detalle para todos los contenidos ( como se hizo con portadas )
-- Meter mas noticias 
-- Borrar toda la tabla de entrevistas y arreglar el esquema de la BBDD (se han eliminado las tablas de categoria noticias y la de entrevista hay que eliminarla)
 - Agregar Funcionalidad de Lista de contenidos una vez que es premium
 - IMPORTANTE = token refresh funcional
-
----Footer funcional
--links funcionales LEGAL ( crear templates )
--Crear redes de paginas (facebook, x, instagram, youtube )
 
 ---Pagina principal
 - Noticias Dinamico
 - Newsletter Funcional
 
 ---Pagina Peliculas
-- Filtro valoracion
 - Funcionalidad guardar pelicula (premium)
 
 ---Pagina Series
-- Filtro valoracion
 - Funcionalidad guardar pelicula (premium)
 
 ---Pagina Noticias
-- Noticias dinamico, crear noticias por categorias
-- Probablemente se tengan que eliminar las tablas categorias
-
+- Noticias dinamico
 
 ---Pagina Premium 
-- Pago funcional (generar usuario premium cuando el pago se realiza)
+- Pago funcional ( falta el anual )
 - Enviar correo de pago realizado y que ya es premium
 - Revisar elementos estaticos que todo este correcto y logico
