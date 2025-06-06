@@ -119,21 +119,41 @@ class ContenidoViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = super().get_queryset()
         
-        # Filtros existentes
+        # Filtro por tipo (película o serie)
         pelicula_serie = self.request.query_params.get('pelicula_serie')
         if pelicula_serie:
             queryset = queryset.filter(pelicula_serie=pelicula_serie)
-            
+        
+        # Filtros de año
         año_estreno = self.request.query_params.get('año_estreno')
         año_estreno_lt = self.request.query_params.get('año_estreno__lt')
-        genero = self.request.query_params.get('genero')
-        
         if año_estreno:
             queryset = queryset.filter(año_estreno=año_estreno)
         if año_estreno_lt:
             queryset = queryset.filter(año_estreno__lt=año_estreno_lt)
+        
+        # Filtro por género
+        genero = self.request.query_params.get('genero')
         if genero:
             queryset = queryset.filter(contenidogenero__id_genero__nombre=genero)
+        
+        # Filtros de puntuación
+        puntuacion_gte = self.request.query_params.get('puntuacion__gte')
+        if puntuacion_gte:
+            try:
+                queryset = queryset.filter(puntuacion__gte=float(puntuacion_gte))
+            except (ValueError, TypeError):
+                pass  # Ignorar si el valor no es numérico
+        
+        puntuacion_lt = self.request.query_params.get('puntuacion__lt')
+        if puntuacion_lt:
+            try:
+                queryset = queryset.filter(puntuacion__lt=float(puntuacion_lt))
+            except (ValueError, TypeError):
+                pass  # Ignorar si el valor no es numérico
+        
+        # Excluir valores nulos en puntuación
+        queryset = queryset.exclude(puntuacion__isnull=True)
         
         # Nuevo: Soporte para limit
         limit = self.request.query_params.get('limit')
@@ -143,7 +163,7 @@ class ContenidoViewSet(viewsets.ModelViewSet):
                 queryset = queryset[:limit]
             except ValueError:
                 pass  # Si no es un número válido, ignorar el limit
-                
+        
         return queryset
 
     def perform_create(self, serializer):
