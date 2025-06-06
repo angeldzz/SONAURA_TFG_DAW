@@ -38,9 +38,6 @@
                 </nav>
 
                 <div class="header-actions">
-                    <button class="search-toggle">
-                        <i class="fas fa-search"></i>
-                    </button>
                     {% if user.is_authenticated %}
                     <div class="user-nav-menu">
                         <a href="{% url 'perfil' %}" class="user-profile-link">
