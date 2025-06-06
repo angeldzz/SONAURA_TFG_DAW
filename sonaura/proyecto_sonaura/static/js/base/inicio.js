@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to fetch and display Top 5 content
     function fetchTop5(pelicula_serie, containerId) {
-        fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}`)
+        fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}&limit=5`)
             .then(response => {
                 if (!response.ok) throw new Error(`Error al obtener ${pelicula_serie}`);
                 return response.json();
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const top5 = items
                     .sort((a, b) => b.puntuacion - a.puntuacion)
                     .slice(0, 5);
-                console.log(items);
                 const container = document.getElementById(containerId);
                 container.innerHTML = '<div class="media-grid"></div>'; // Initialize with media-grid
 

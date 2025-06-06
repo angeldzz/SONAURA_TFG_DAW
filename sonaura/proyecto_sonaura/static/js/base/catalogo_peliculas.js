@@ -317,7 +317,7 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
         });
 }
 function Top_10 () {
-    fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}`)
+    fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}&limit=10`)
         .then(response => { 
             if (!response.ok) throw new Error('Error al obtener los contenidos');
             return response.json();

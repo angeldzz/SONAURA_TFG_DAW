@@ -2,10 +2,21 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const access = localStorage.getItem('access_token');
     const refresh = localStorage.getItem('refresh_token');
+    const form = document.querySelector('.logout-form');
     
     console.log('Access token exists:', !!access);
     console.log('Refresh token exists:', !!refresh);
     
+    if (!access || !refresh) {
+        console.log("haciendo logout");
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
+        if (form) {
+        // Limpia los tokens antes de enviar
+        form.submit(); // Esto enviará el POST con csrf al backend
+        }
+    }
+
     if (access) {
         const isValid = await verifyAndRefreshToken();
         if (!isValid) {
@@ -83,24 +94,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         
-        try {
-            await fetch('/logout/', {
-                method: 'POST',
-                headers: {
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                credentials: 'same-origin'
-            });
-            console.log('Logout Django completado');
-        } catch (error) {
-            console.error('Error durante logout Django:', error);
+        if (form) {        
+        form.submit(); // Esto enviará el POST con csrf al backend
+        } else {
+            console.error("No se encontró el formulario de logout.");
         }
-        
-        // Opcional: redirigir
-        // window.location.href = '/login/';
     }
-
-    function getCookie(name) {
+});
+function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
             const cookies = document.cookie.split(';');
@@ -114,8 +115,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
         return cookieValue;
     }
-});
-
 // Función de login mejorada con manejo de errores
 async function loginUser(username, password) {
     try {

@@ -53,7 +53,7 @@
                         </a>
                         <form method="post" action="{% url 'logout' %}" onsubmit="borrarTokens(event)" class="logout-form">
                             {% csrf_token %}
-                            <button type="submit" class="nav-logout">
+                            <button id="logout" type="submit" class="nav-logout">
                                 <i class="fas fa-sign-out-alt"></i>
                             </button>
                         </form>
