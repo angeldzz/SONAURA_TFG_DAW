@@ -94,7 +94,7 @@
                         {% if imagenes_galeria and imagenes_galeria|length > 0 %}
                             {% for imagen in imagenes_galeria %}
                                 <div class="gallery-item">
-                                    <img src="{{ imagen.url_imagen.url }}" alt="{{ imagen.alt_imagen|default:'Imagen de galería' }}">
+                                        <img  src="{{ imagen.url_imagen.url }}" alt="{{ imagen.alt_imagen|default:'Imagen de galería' }}">
                                 </div>
                             {% endfor %}
                         {% else %}
