@@ -51,10 +51,7 @@
                         <i class="fas fa-shield-alt"></i>
                         <span>Seguridad</span>
                     </a>
-                    <a href="#preferencias" class="nav-item" data-section="preferencias">
-                        <i class="fas fa-cog"></i>
-                        <span>Preferencias</span>
-                    </a>
+                    
                     <a href="#actividad" class="nav-item" data-section="actividad">
                         <i class="fas fa-chart-line"></i>
                         <span>Mi Actividad</span>
@@ -79,7 +76,7 @@
                         <!-- Avatar y información básica -->
                         <div class="avatar-section">
                             <div class="avatar-container">
-                                <img src="{% if perfil.imagen_avatar %}{{ perfil.imagen_avatar.url }}{% else %}https://randomuser.me/api/portraits/men/32.jpg{% endif %}" alt="Avatar" class="avatar-image" id="avatarImage">
+                                <img src="{% if perfil.imagen_avatar %}{{ perfil.imagen_avatar.url }}{% else %}/media/avatares/perfilPred.png{% endif %}" alt="Avatar" class="avatar-image" id="avatarImage">
                                 <div class="avatar-overlay">
                                     <button class="change-avatar-btn" onclick="openAvatarModal()">
                                         <i class="fas fa-camera"></i>
@@ -138,7 +135,7 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="birthdate">Fecha de nacimiento</label>
-                                    <input type="date" id="birthdate" name="fecha_nacimiento" value="{{ perfil.fecha_nacimiento|date:'Y-m-d' }}" placeholder="1985-03-15">
+                                    <input type="date" id="birthdate" name="fecha_nacimiento" value="{{ perfil.fecha_nacimiento|date:'Y-m-d' }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="country">País</label>
@@ -223,198 +220,12 @@
                             </form>
                         </div>
 
-                        <!-- Autenticación de dos factores -->
-                        <div class="security-card">
-                            <div class="card-header">
-                                <div class="card-icon">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <div class="card-info">
-                                    <h3>Autenticación de dos factores</h3>
-                                    <p>Añade una capa extra de seguridad a tu cuenta</p>
-                                </div>
-                                <div class="card-status">
-                                    <span class="status-badge disabled">Desactivado</span>
-                                </div>
-                            </div>
-                            
-                            <div class="card-actions">
-                                <button class="btn-secondary">
-                                    <span>Activar 2FA</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Sesiones activas -->
-                        <div class="security-card">
-                            <div class="card-header">
-                                <div class="card-icon">
-                                    <i class="fas fa-devices"></i>
-                                </div>
-                                <div class="card-info">
-                                    <h3>Sesiones activas</h3>
-                                    <p>Gestiona los dispositivos donde has iniciado sesión</p>
-                                </div>
-                            </div>
-                            
-                            <div class="sessions-list">
-                                <div class="session-item current">
-                                    <div class="session-info">
-                                        <div class="session-device">
-                                            <i class="fas fa-laptop"></i>
-                                            <span>MacBook Pro - Chrome</span>
-                                        </div>
-                                        <div class="session-details">
-                                            <span class="session-location">Madrid, España</span>
-                                            <span class="session-time">Sesión actual</span>
-                                        </div>
-                                    </div>
-                                    <span class="session-badge current">Actual</span>
-                                </div>
-
-                                <div class="session-item">
-                                    <div class="session-info">
-                                        <div class="session-device">
-                                            <i class="fas fa-mobile-alt"></i>
-                                            <span>iPhone 14 - Safari</span>
-                                        </div>
-                                        <div class="session-details">
-                                            <span class="session-location">Madrid, España</span>
-                                            <span class="session-time">Hace 2 horas</span>
-                                        </div>
-                                    </div>
-                                    <button class="session-revoke">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        
                     </div>
                 </section>
 
-                <!-- Sección: Preferencias -->
-                <section id="preferencias" class="profile-section">
-                    <div class="section-header">
-                        <h2 class="section-title">Preferencias</h2>
-                        <p class="section-subtitle">Personaliza tu experiencia en SONAURA</p>
-                    </div>
-
-                    <div class="preferences-grid">
-                        <!-- Preferencias de reproducción -->
-                        <div class="preference-card">
-                            <h3>Reproducción</h3>
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Calidad de video</span>
-                                    <small>Selecciona la calidad predeterminada</small>
-                                </div>
-                                <select class="preference-select">
-                                    <option value="auto">Automática</option>
-                                    <option value="4k" selected>4K Ultra HD</option>
-                                    <option value="1080p">Full HD (1080p)</option>
-                                    <option value="720p">HD (720p)</option>
-                                </select>
-                            </div>
-
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Reproducción automática</span>
-                                    <small>Reproduce automáticamente el siguiente episodio</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Saltar intro</span>
-                                    <small>Mostrar botón para saltar introducciones</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Preferencias de notificaciones -->
-                        <div class="preference-card">
-                            <h3>Notificaciones</h3>
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Nuevos estrenos</span>
-                                    <small>Recibe notificaciones de nuevas películas y series</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Recomendaciones personalizadas</span>
-                                    <small>Sugerencias basadas en tu historial</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Email marketing</span>
-                                    <small>Ofertas especiales y noticias por email</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox">
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Preferencias de privacidad -->
-                        <div class="preference-card">
-                            <h3>Privacidad</h3>
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Perfil público</span>
-                                    <small>Permite que otros usuarios vean tu perfil</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox">
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Mostrar actividad</span>
-                                    <small>Comparte lo que estás viendo con amigos</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox">
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-
-                            <div class="preference-item">
-                                <div class="preference-info">
-                                    <span>Análisis de uso</span>
-                                    <small>Ayúdanos a mejorar compartiendo datos anónimos</small>
-                                </div>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                
 
                 <!-- Sección: Mi Actividad -->
                 <section id="actividad" class="profile-section">
@@ -582,43 +393,7 @@
                             </div>
                         </div>
 
-                        <div class="billing-history">
-                            <h3>Historial de facturación</h3>
-                            <div class="billing-list">
-                                <div class="billing-item">
-                                    <div class="billing-info">
-                                        <span class="billing-date">15 Ene 2025</span>
-                                        <span class="billing-description">Suscripción Premium - Mensual</span>
-                                    </div>
-                                    <div class="billing-amount">9.99€</div>
-                                    <button class="billing-download">
-                                        <i class="fas fa-download"></i>
-                                    </button>
-                                </div>
-
-                                <div class="billing-item">
-                                    <div class="billing-info">
-                                        <span class="billing-date">15 Dic 2024</span>
-                                        <span class="billing-description">Suscripción Premium - Mensual</span>
-                                    </div>
-                                    <div class="billing-amount">9.99€</div>
-                                    <button class="billing-download">
-                                        <i class="fas fa-download"></i>
-                                    </button>
-                                </div>
-
-                                <div class="billing-item">
-                                    <div class="billing-info">
-                                        <span class="billing-date">15 Nov 2024</span>
-                                        <span class="billing-description">Suscripción Premium - Mensual</span>
-                                    </div>
-                                    <div class="billing-amount">9.99€</div>
-                                    <button class="billing-download">
-                                        <i class="fas fa-download"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </section>
             </main>
