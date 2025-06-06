@@ -24,7 +24,24 @@
     document.getElementById("rating-filter").addEventListener("change", () => 
         cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion())
     );
+    
+// Add debounce function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
+// Add resize event listener
+window.addEventListener('resize', debounce(() => {
+    cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(), filtro_valoracion());
+}, 200));
 
 function initParticles() {
     const particlesContainer = document.getElementById('particles');
@@ -172,7 +189,7 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
             movieGrid.innerHTML = ''; // Limpiar contenido anterior
 
             const peliculasPorPagina = 15;
-            let peliculasPorFila = window.innerWidth <= 400 ? 1 : window.innerWidth <= 750 ? 3 : 5; // Dynamic number of movies per row
+            let peliculasPorFila = window.innerWidth <= 400 ? 1 : window.innerWidth <= 750 ? 3 : 5;
             const totalPaginas = Math.ceil(peliculas.length / peliculasPorPagina);
 
             // Generar dinámicamente los botones de paginación
@@ -269,15 +286,28 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
             // Añadir event listeners para los botones de información y marcador
             setTimeout(() => {
                 document.querySelectorAll('.info-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation(); // Prevent touch event on card
                         const id = this.getAttribute('data-id');
                         window.location.href = `/detalles/${id}/`;
                     });
                 });
                 document.querySelectorAll('.bookmark-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation(); // Prevent touch event on card
                         const id = this.getAttribute('data-id');
                         window.location.href = `/premium`;
+                    });
+                });
+
+                // Añadir soporte para eventos táctiles
+                document.querySelectorAll('.media-card').forEach(card => {
+                    card.addEventListener('touchstart', function(e) {
+                        // Prevenir comportamiento predeterminado en algunos dispositivos
+                        e.preventDefault();
+                        // Alternar la clase active en el card-overlay
+                        const overlay = this.querySelector('.card-overlay');
+                        overlay.classList.toggle('active');
                     });
                 });
             }, 0);
