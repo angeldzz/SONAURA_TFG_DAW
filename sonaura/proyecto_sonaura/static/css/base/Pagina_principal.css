@@ -470,21 +470,6 @@
     align-items: center;
   }
   
-  .search-toggle {
-    background: none;
-    border: none;
-    color: var(--gray-300);
-    font-size: 1.25rem;
-    cursor: pointer;
-    margin-right: 1rem;
-    transition: var(--transition);
-  }
-  
-  .search-toggle:hover {
-    color: var(--white);
-    transform: scale(1.1);
-  }
-  
   .mobile-toggle {
     display: none;
     background: none;
