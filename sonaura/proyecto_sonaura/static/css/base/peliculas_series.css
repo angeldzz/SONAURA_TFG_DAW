@@ -870,3 +870,6 @@ body {
         display: none;
     }
 }
+.card-overlay.active {
+    opacity: 1;
+}
