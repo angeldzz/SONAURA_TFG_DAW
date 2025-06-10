@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SONAURA - Servicio en Mantenimiento</title>
+    <link rel="stylesheet" href="mantenimiento.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo cósmico animado -->
+    <div class="cosmic-bg">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+    </div>
+
+    <!-- Partículas flotantes -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="maintenance-container">
+        <!-- Header con logo -->
+        <header class="maintenance-header">
+            <div class="logo-container">
+                <h1 class="logo-text">
+                    <span class="logo-s">S</span>ONAURA
+                </h1>
+            </div>
+        </header>
+
+        <!-- Sección principal -->
+        <main class="maintenance-main">
+            <!-- Iconos de herramientas animados -->
+            <div class="tools-animation">
+                <div class="tool-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="tool-icon">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <div class="tool-icon">
+                    <i class="fas fa-hammer"></i>
+                </div>
+                <div class="tool-icon">
+                    <i class="fas fa-screwdriver"></i>
+                </div>
+            </div>
+
+            <!-- Mensaje principal -->
+            <div class="main-message">
+                <h2 class="maintenance-title">
+                    <span class="glitch-text" data-text="MANTENIMIENTO">MANTENIMIENTO</span>
+                </h2>
+                <p class="maintenance-subtitle">
+                    Estamos mejorando tu experiencia cinematográfica
+                </p>
+                <div class="status-indicator">
+                    <div class="pulse-dot"></div>
+                    <span>Sistema en actualización</span>
+                </div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-section">
+                <h3 class="countdown-title">Tiempo estimado de finalización</h3>
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <span class="time-number" id="hours">00</span>
+                        <span class="time-label">Horas</span>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-unit">
+                        <span class="time-number" id="minutes">00</span>
+                        <span class="time-label">Minutos</span>
+                    </div>
+                    <div class="time-separator">:</div>
+                    <div class="time-unit">
+                        <span class="time-number" id="seconds">00</span>
+                        <span class="time-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información de mejoras -->
+            <div class="improvements-section">
+                <h3 class="improvements-title">¿Qué estamos mejorando?</h3>
+                <div class="improvements-grid">
+                    <div class="improvement-card">
+                        <div class="improvement-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Rendimiento</h4>
+                        <p>Optimizando la velocidad de carga</p>
+                    </div>
+                    <div class="improvement-card">
+                        <div class="improvement-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Seguridad</h4>
+                        <p>Actualizando protocolos de seguridad</p>
+                    </div>
+                    <div class="improvement-card">
+                        <div class="improvement-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Nuevas funciones</h4>
+                        <p>Añadiendo características increíbles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de notificación -->
+            <div class="notification-section">
+                <div class="notification-card">
+                    <h3 class="notification-title">
+                        <i class="fas fa-bell"></i>
+                        Recibe una notificación cuando estemos listos
+                    </h3>
+                    <form class="notification-form" id="notificationForm">
+                        <div class="input-group">
+                            <input type="email" id="email" placeholder="tu@email.com" required>
+                            <button type="submit" class="notify-btn">
+                                <span>Notificarme</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <p class="form-note">Te avisaremos tan pronto como SONAURA esté disponible</p>
+                    </form>
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i>
+                        ¡Perfecto! Te notificaremos cuando estemos listos.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información de contacto -->
+            <div class="contact-section">
+                <h3 class="contact-title">¿Necesitas ayuda urgente?</h3>
+                <div class="contact-options">
+                    <a href="mailto:soporte@sonaura.com" class="contact-option">
+                        <i class="fas fa-envelope"></i>
+                        <span>soporte@sonaura.com</span>
+                    </a>
+                    <a href="tel:+34900123456" class="contact-option">
+                        <i class="fas fa-phone"></i>
+                        <span>+34 900 123 456</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="social-section">
+                <h3 class="social-title">Síguenos para actualizaciones</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link" data-platform="twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" data-platform="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" data-platform="instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" data-platform="youtube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link" data-platform="discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="maintenance-footer">
+            <p>&copy; 2024 SONAURA. Todos los derechos reservados.</p>
+            <p class="footer-note">Gracias por tu paciencia mientras mejoramos tu experiencia.</p>
+        </footer>
+    </div>
+
+    <!-- Efectos de carga -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+    </div>
+
+    <script src="mantenimiento.js"></script>
+</body>
+</html>
