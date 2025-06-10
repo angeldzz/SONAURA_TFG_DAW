@@ -1,7 +1,6 @@
 ---Generales
 - Arreglar todos los detalles de responsive( sobre todo en movil para el despligue )
-- Agregar Funcionalidad de Lista de contenidos una vez que es premium
-- IMPORTANTE = token refresh funcional
+- Crear pagina funcional de premium
 
 ---Pagina principal
 - Noticias Dinamico
