@@ -288,4 +288,3 @@ class NoticiaAdmin(admin.ModelAdmin):
 
 # Registrar modelos de relación sin admin personalizado
 admin.site.register(ContenidoGenero)
-admin.site.register(ListaContenido)
