@@ -1,635 +1,502 @@
 {% extends "base/base.html" %}
     
-    {% block cssExtra %}
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/base/noticias.css' %}">
-    {% endblock %}
+{% block cssExtra %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base/noticias.css' %}">
+{% endblock %}
 
-    {% block principal %}
+{% block principal %}
 
-    <!-- Hero Section -->
-    <section class="hero news-hero">
-        <div class="container">
-            <div class="hero-content news-hero-content">
-                <div class="hero-text">
-                    <div class="news-badge featured-badge">Exclusiva</div>
-                    <h1 class="glitch" data-text="Christopher Nolan anuncia su próximo proyecto">Christopher Nolan anuncia su próximo proyecto</h1>
-                    <div class="news-meta hero-meta">
-                        <span><i class="far fa-calendar-alt"></i> 25 Abril, 2025</span>
-                        <span><i class="far fa-user"></i> Carlos Martínez</span>
-                        <span><i class="far fa-clock"></i> 8 min lectura</span>
-                        <span><i class="far fa-eye"></i> 2.4K vistas</span>
-                    </div>
-                    <p>El aclamado director británico ha revelado detalles sobre su próxima película, un thriller de ciencia ficción que promete revolucionar el género. La producción comenzará a finales de este año con un reparto estelar.</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn-primary"><i class="fas fa-book-open"></i> Leer artículo completo</a>
-                        <a href="#" class="btn-outline"><i class="fas fa-share-alt"></i> Compartir</a>
-                    </div>
+<!-- Hero Section -->
+<section class="hero news-hero">
+    <div class="container">
+        <div class="hero-content news-hero-content">
+            <div class="hero-text">
+                <div class="news-badge featured-badge">Exclusiva</div>
+                <h1 class="glitch" data-text="Christopher Nolan anuncia su próximo proyecto">Christopher Nolan anuncia su próximo proyecto</h1>
+                <div class="news-meta hero-meta">
+                    <span><i class="far fa-calendar-alt"></i> 25 Abril, 2025</span>
+                    <span><i class="far fa-user"></i> Carlos Martínez</span>
+                    <span><i class="far fa-clock"></i> 8 min lectura</span>
+                    <span><i class="far fa-eye"></i> 2.4K vistas</span>
                 </div>
-                <div class="hero-image">
-                    <img src="https://spcdn.shortpixel.ai/spio/ret_img,q_orig,to_auto,s_webp:avif/www.cinemascomics.com/wp-content/uploads/2024/10/Christopher-Nolan-oscars-2024-cordonpress-cine-pelicula.jpg" alt="Christopher Nolan anuncia su próximo proyecto">
-                    <div class="image-glow"></div>
+                <p>El aclamado director británico ha revelado detalles sobre su próxima película, un thriller de ciencia ficción que promete revolucionar el género. La producción comenzará a finales de este año con un reparto estelar.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary"><i class="fas fa-book-open"></i> Leer artículo completo</a>
+                    <a href="#" class="btn-outline"><i class="fas fa-share-alt"></i> Compartir</a>
                 </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://spcdn.shortpixel.ai/spio/ret_img,q_orig,to_auto,s_webp:avif/www.cinemascomics.com/wp-content/uploads/2024/10/Christopher-Nolan-oscars-2024-cordonpress-cine-pelicula.jpg" alt="Christopher Nolan anuncia su próximo proyecto">
+                <div class="image-glow"></div>
             </div>
         </div>
-        <div class="hero-overlay"></div>
-    </section>
+    </div>
+    <div class="hero-overlay"></div>
+</section>
 
-    
-
-    <!-- Latest News Section -->
-    <section class="latest-news">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Últimas Noticias</h2>
-                    <div class="title-line"></div>
-                </div>
-                <div class="section-tabs">
-                    <button class="tab active" data-tab="all">Todas</button>
-                    <button class="tab" data-tab="movies">Cine</button>
-                    <button class="tab" data-tab="series">Series</button>
-                    <button class="tab" data-tab="entrevistas">Entrevistas</button>
-                    <button class="tab" data-tab="reseñas">Reseñas</button>
-                    <button class="tab" data-tab="premios">Premios</button>
-                    <button class="tab" data-tab="trailers">Trailers</button>
-                    <button class="tab" data-tab="estrenos">Estrenos</button>
-                </div>
+<!-- Latest News Section -->
+<section class="latest-news">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>Últimas Noticias</h2>
+                <div class="title-line"></div>
             </div>
-
-            <div class="tab-content active" id="all-content">
-                <div class="news-grid">
-                    <article class="news-card featured-news">
-                        <div class="news-image">
-                            <img src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2022/11/the-last-of-us-hbo-portada.jpg?fit=2160%2C1501&quality=70&strip=all&ssl=1" alt="Anunciada nueva temporada de 'The Last of Us'">
-                            <div class="news-badge">Series</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Anunciada nueva temporada de 'The Last of Us'</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 23 Abril, 2025</span>
-                                <span><i class="far fa-user"></i> María García</span>
-                                <span><i class="far fa-clock"></i> 5 min lectura</span>
-                            </div>
-                            <p>HBO confirma la fecha de estreno de la esperada segunda temporada de la aclamada serie basada en el videojuego. Pedro Pascal y Bella Ramsey regresan a sus papeles principales en esta nueva entrega que adaptará los eventos de "The Last of Us Part II".</p>
-                            <a href="#" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://es.web.img3.acsta.net/videothumbnails/17/07/21/13/55/581493.jpg" alt="Entrevista exclusiva con Christopher Nolan">
-                            <div class="news-badge">Entrevistas</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Entrevista exclusiva con Christopher Nolan</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 20 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 7 min lectura</span>
-                            </div>
-                            <p>El director habla sobre su próximo proyecto después del éxito de Oppenheimer y su visión del cine actual.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://i.blogs.es/595379/diseno-sin-titulo/1366_2000.jpg" alt="Top 10 películas imprescindibles de ciencia ficción">
-                            <div class="news-badge">Recomendaciones</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Top 10 películas imprescindibles de ciencia ficción</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 18 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 10 min lectura</span>
-                            </div>
-                            <p>Nuestra selección de las mejores películas del género para este 2025, desde clásicos hasta nuevos estrenos.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://images.ecestaticos.com/p0ZOLEpl4yHsDpmDpPQRrSJZ_C8=/22x0:1171x596/600x315/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F211%2Fa8b%2F5bc%2F211a8b5bcf43484dd6caebe2271f9bf9.jpg" alt="Netflix anuncia nuevas series originales">
-                            <div class="news-badge">Streaming</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Netflix anuncia nuevas series originales para 2025</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 15 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 4 min lectura</span>
-                            </div>
-                            <p>La plataforma de streaming revela su catálogo de producciones originales para la segunda mitad del año.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://i.ytimg.com/vi/I6ConidIXz0/maxresdefault.jpg" alt="Primer tráiler de Gladiator 2">
-                            <div class="news-badge">Cine</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Lanzado el primer tráiler de Gladiator 2</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 12 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 3 min lectura</span>
-                            </div>
-                            <p>Ridley Scott regresa a la antigua Roma con la esperada secuela del clásico del año 2000.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://assetsio.gnwcdn.com/falloutserie.png?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="Fallout renovada para una segunda temporada">
-                            <div class="news-badge">Series</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Fallout renovada para una segunda temporada</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 10 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 4 min lectura</span>
-                            </div>
-                            <p>Amazon Prime Video confirma la renovación de la exitosa adaptación del popular videojuego.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-                </div>
-                
-                <div class="load-more">
-                    <button class="btn-outline btn-load-more">Cargar más noticias <i class="fas fa-spinner"></i></button>
-                </div>
-            </div>
-
-            <div class="tab-content" id="movies-content">
-                <!-- Contenido de la pestaña Cine -->
-                <div class="news-grid">
-                    <article class="news-card featured-news">
-                        <div class="news-image">
-                            <img src="https://i.ytimg.com/vi/I6ConidIXz0/maxresdefault.jpg" alt="Primer tráiler de Gladiator 2">
-                            <div class="news-badge">Cine</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Lanzado el primer tráiler de Gladiator 2</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 12 Abril, 2025</span>
-                                <span><i class="far fa-user"></i> Javier López</span>
-                                <span><i class="far fa-clock"></i> 3 min lectura</span>
-                            </div>
-                            <p>Ridley Scott regresa a la antigua Roma con la esperada secuela del clásico del año 2000. Paul Mescal protagoniza esta nueva entrega que promete expandir el universo de la película original y traer de vuelta la épica del Coliseo romano a la gran pantalla.</p>
-                            <a href="#" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://okdiario.com/img/2024/03/01/dune-parte-dos-warner-bros-pictures-620x349.jpg" alt="Dune: Parte 2 supera los mil millones en taquilla">
-                            <div class="news-badge">Cine</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Dune: Parte 2 supera los mil millones en taquilla</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 8 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 4 min lectura</span>
-                            </div>
-                            <p>La épica de ciencia ficción de Denis Villeneuve alcanza un hito histórico en la taquilla mundial.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://www.lavanguardia.com/files/content_image_mobile_filter/uploads/2022/07/25/62de4b5057a89.jpeg" alt="Marvel anuncia nuevos proyectos">
-                            <div class="news-badge">Cine</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Marvel anuncia nuevos proyectos para su Fase 6</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 5 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 6 min lectura</span>
-                            </div>
-                            <p>Kevin Feige revela los próximos títulos que formarán parte del Universo Cinematográfico de Marvel.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-                </div>
-                
-                <div class="load-more">
-                    <button class="btn-outline btn-load-more">Cargar más noticias <i class="fas fa-spinner"></i></button>
-                </div>
-            </div>
-
-            <div class="tab-content" id="series-content">
-                <!-- Contenido de la pestaña Series -->
-                <div class="news-grid">
-                    <article class="news-card featured-news">
-                        <div class="news-image">
-                            <img src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2025/02/Diseno-sin-titulo-105.jpg?fit=1200%2C675&quality=70&strip=all&ssl=1" alt="Anunciada nueva temporada de 'The Last of Us'">
-                            <div class="news-badge">Series</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Anunciada nueva temporada de 'The Last of Us'</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 23 Abril, 2025</span>
-                                <span><i class="far fa-user"></i> María García</span>
-                                <span><i class="far fa-clock"></i> 5 min lectura</span>
-                            </div>
-                            <p>HBO confirma la fecha de estreno de la esperada segunda temporada de la aclamada serie basada en el videojuego. Pedro Pascal y Bella Ramsey regresan a sus papeles principales en esta nueva entrega que adaptará los eventos de "The Last of Us Part II".</p>
-                            <a href="#" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://assetsio.gnwcdn.com/falloutserie.png?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp" alt="Fallout renovada para una segunda temporada">
-                            <div class="news-badge">Series</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Fallout renovada para una segunda temporada</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 10 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 4 min lectura</span>
-                            </div>
-                            <p>Amazon Prime Video confirma la renovación de la exitosa adaptación del popular videojuego.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://www.elheraldo.hn/binrepository/1014x760/0c0/1000d760/none/45933/IRNR/7_7041972_20240320120649.jpg" alt="House of the Dragon revela imágenes de su segunda temporada">
-                            <div class="news-badge">Series</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>House of the Dragon revela imágenes de su segunda temporada</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 3 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 3 min lectura</span>
-                            </div>
-                            <p>HBO muestra un adelanto de la nueva temporada de la precuela de Game of Thrones.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-                </div>
-                
-                <div class="load-more">
-                    <button class="btn-outline btn-load-more">Cargar más noticias <i class="fas fa-spinner"></i></button>
-                </div>
-            </div>
-
-            <div class="tab-content" id="streaming-content">
-                <!-- Contenido de la pestaña Streaming -->
-                <div class="news-grid">
-                    <article class="news-card featured-news">
-                        <div class="news-image">
-                            <img src="https://www.adslzone.net/app/uploads-adslzone.net/2024/11/Evento-presentacion-series-Netflix-2024.jpg" alt="Netflix anuncia nuevas series originales">
-                            <div class="news-badge">Streaming</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Netflix anuncia nuevas series originales para 2025</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 15 Abril, 2025</span>
-                                <span><i class="far fa-user"></i> Ana Rodríguez</span>
-                                <span><i class="far fa-clock"></i> 4 min lectura</span>
-                            </div>
-                            <p>La plataforma de streaming revela su catálogo de producciones originales para la segunda mitad del año, incluyendo nuevas temporadas de sus series más exitosas y apuestas por nuevos formatos y géneros que buscan ampliar su audiencia global.</p>
-                            <a href="#" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://fotografias.larazon.es/clipping/cmsimages01/2020/03/03/DB1DC4D7-6EA7-4F4B-81D0-6597C83A3E9E/98.jpg?crop=1024,576,x0,y0&width=1900&height=1069&optimize=low&format=webply" alt="Disney+ aumenta sus precios">
-                            <div class="news-badge">Streaming</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>Disney+ anuncia cambios en sus planes de suscripción</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 7 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 3 min lectura</span>
-                            </div>
-                            <p>La plataforma modifica sus tarifas y añade nuevas opciones para los suscriptores.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card">
-                        <div class="news-image">
-                            <img src="https://static.eldiario.es/clip/0dd1f623-cc79-483f-a658-66e2d17c7ec9_16-9-discover-aspect-ratio_default_0.jpg" alt="HBO Max se fusiona con Discovery+">
-                            <div class="news-badge">Streaming</div>
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="news-content">
-                            <h3>HBO Max completa su fusión con Discovery+</h3>
-                            <div class="news-meta">
-                                <span><i class="far fa-calendar-alt"></i> 2 Abril, 2025</span>
-                                <span><i class="far fa-clock"></i> 5 min lectura</span>
-                            </div>
-                            <p>La nueva plataforma unificada ofrece un catálogo ampliado con contenido de ambos servicios.</p>
-                            <a href="#" class="read-more">Leer artículo <i class="fas fa-long-arrow-alt-right"></i></a>
-                        </div>
-                    </article>
-                </div>
-                
-                <div class="load-more">
-                    <button class="btn-outline btn-load-more">Cargar más noticias <i class="fas fa-spinner"></i></button>
-                </div>
+            <div class="section-tabs">
+                <button class="tab active" data-tab="all">Todas</button>
+                <button class="tab" data-tab="Cine">Cine</button>
+                <button class="tab" data-tab="Series">Series</button>
+                <button class="tab" data-tab="Entrevistas">Entrevistas</button>
+                <button class="tab" data-tab="Reseñas">Reseñas</button>
+                <button class="tab" data-tab="Premios">Premios</button>
+                <button class="tab" data-tab="Trailers">Trailers</button>
             </div>
         </div>
-    </section>
 
-    <!-- Featured Interviews -->
-    <section class="interviews-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Entrevistas Destacadas</h2>
-                    <div class="title-line"></div>
+        <div class="tab-content active" id="all-content">
+            <div class="news-grid" id="all-news-grid">
+                <!-- News articles will be dynamically loaded here -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="all">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Cine-content">
+            <div class="news-grid" id="Cine-news-grid">
+                <!-- News articles for Cine will be dynamically loaded here -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="Cine">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Series-content">
+            <div class="news-grid" id="Series-news-grid">
+                <!-- News articles for Series will be dynamically loaded here -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="Series">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Entrevistas-content">
+            <div class="news-grid" id="Entrevistas-news-grid">
+                <!-- News articles for Entrevistas will be dynamically loaded here -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="Entrevistas">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Reseñas-content">
+            <div class="news-grid" id="Reseñas-news-grid">
+                <!-- News articles for Reseñas will be dynamically loaded here -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="Reseñas">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Premios-content">
+            <div class="news-grid" id="Premios-news-grid">
+                <!-- News articles for Premios will be dynamically loaded here -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="Premios">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Trailers-content">
+            <div class="news-grid" id="Trailers-news-grid">
+                <!-- News articles for Trailers will be dynamically loaded here -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="Trailers">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Estrenos-content">
+            <div class="news-grid" id="Estrenos-news-grid">
+                <!-- Estrenos tab is not implemented as per request -->
+            </div>
+            <div class="load-more">
+                <button class="btn-outline btn-load-more" data-tab="Estrenos">Cargar más noticias <i class="fas fa-spinner"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Interviews -->
+<section class="interviews-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>Entrevistas Destacadas</h2>
+                <div class="title-line"></div>
+            </div>
+            <a href="/entrevistas" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="interviews-grid">
+            <div class="interview-card neon-card">
+                <div class="interview-image">
+                    <img src="https://holatelcel.com/wp-content/uploads/2024/02/Dune-2.png" alt="Entrevista con Timothée Chalamet">
+                    <div class="interview-play">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="interview-badge">Video</div>
                 </div>
-                <a href="/entrevistas" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+                <div class="interview-content">
+                    <h3>Timothée Chalamet habla sobre su papel en Dune: Parte 2</h3>
+                    <div class="interview-meta">
+                        <span><i class="fas fa-clock"></i> 15:42</span>
+                        <span><i class="fas fa-eye"></i> 1.2K</span>
+                    </div>
+                </div>
             </div>
             
-            <div class="interviews-grid">
-                <div class="interview-card neon-card">
-                    <div class="interview-image">
-                        <img src="https://holatelcel.com/wp-content/uploads/2024/02/Dune-2.png" alt="Entrevista con Timothée Chalamet">
-                        <div class="interview-play">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="interview-badge">Video</div>
+            <div class="interview-card neon-card">
+                <div class="interview-image">
+                    <img src="https://assets.isu.pub/document-structure/220623200136-78eab0cdb269f1568b6fafb494d679b8/v1/95c2ee7b14ef1c31c1a378e4887341d2.jpeg?width=720&quality=85%2C50" alt="Entrevista con Florence Pugh">
+                    <div class="interview-play">
+                        <i class="fas fa-play"></i>
                     </div>
-                    <div class="interview-content">
-                        <h3>Timothée Chalamet habla sobre su papel en Dune: Parte 2</h3>
-                        <div class="interview-meta">
-                            <span><i class="fas fa-clock"></i> 15:42</span>
-                            <span><i class="fas fa-eye"></i> 1.2K</span>
-                        </div>
+                    <div class="interview-badge">Video</div>
+                </div>
+                <div class="interview-content">
+                    <h3>Florence Pugh sobre su carrera y próximos proyectos</h3>
+                    <div class="interview-meta">
+                        <span><i class="fas fa-clock"></i> 18:27</span>
+                        <span><i class="fas fa-eye"></i> 956</span>
                     </div>
                 </div>
-                
-                <div class="interview-card neon-card">
-                    <div class="interview-image">
-                        <img src="https://assets.isu.pub/document-structure/220623200136-78eab0cdb269f1568b6fafb494d679b8/v1/95c2ee7b14ef1c31c1a378e4887341d2.jpeg?width=720&quality=85%2C50" alt="Entrevista con Florence Pugh">
-                        <div class="interview-play">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="interview-badge">Video</div>
-                    </div>
-                    <div class="interview-content">
-                        <h3>Florence Pugh sobre su carrera y próximos proyectos</h3>
-                        <div class="interview-meta">
-                            <span><i class="fas fa-clock"></i> 18:27</span>
-                            <span><i class="fas fa-eye"></i> 956</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="interview-card neon-card">
-                    <div class="interview-image">
-                        <img src="https://media.vandalsports.com/i/640x360/2-2025/202524131542_1.jpg" alt="Entrevista con Denis Villeneuve">
-                        <div class="interview-play">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="interview-badge">Video</div>
-                    </div>
-                    <div class="interview-content">
-                        <h3>Denis Villeneuve revela detalles sobre Dune: Parte 3</h3>
-                        <div class="interview-meta">
-                            <span><i class="fas fa-clock"></i> 22:15</span>
-                            <span><i class="fas fa-eye"></i> 1.5K</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="interview-card neon-card">
-                    <div class="interview-image">
-                        <img src="https://www.revistaestilo.net/binrepository/959x1200/0c0/0d0/none/179468266/OYBI/challengers-april-26thwishing-you-all_7187162_20240409144546.jpg" alt="Entrevista con Zendaya">
-                        <div class="interview-play">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="interview-badge">Video</div>
-                    </div>
-                    <div class="interview-content">
-                        <h3>Zendaya habla sobre Challengers y su evolución como actriz</h3>
-                        <div class="interview-meta">
-                            <span><i class="fas fa-clock"></i> 16:50</span>
-                            <span><i class="fas fa-eye"></i> 1.1K</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Weekly Recommendations -->
-    <section class="recommendations-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Recomendaciones Semanales</h2>
-                    <div class="title-line"></div>
-                </div>
-                <a href="/recomendaciones" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
             </div>
             
-            <div class="recommendations-grid">
-                <div class="recommendation-card neon-card">
-                    <div class="recommendation-image">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcou-PpxCoPh0PCAx3Kmq5HIQLkboKepjyC95KbbKE9c0kK0C-J6TRCmRuR-h6nAYH9DwjZEsVxHQAoa7x7mJLip75Mw5N9cZvJHgqvnfAQoMRKVesHXPFyMMTfoi5LenoKlilGg8DRCFsycZsRdluQbE83LZ7ErDeEZjF3z4U3hlJucf3A9gPHfHWV0I/s660/civil-war-poster.png" alt="Civil War">
-                        <div class="recommendation-overlay">
-                            <div class="recommendation-badge">Película</div>
-                            <div class="recommendation-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.6</span>
-                            </div>
-                        </div>
+            <div class="interview-card neon-card">
+                <div class="interview-image">
+                    <img src="https://media.vandalsports.com/i/640x360/2-2025/202524131542_1.jpg" alt="Entrevista con Denis Villeneuve">
+                    <div class="interview-play">
+                        <i class="fas fa-play"></i>
                     </div>
-                    <div class="recommendation-content">
-                        <h3>Civil War</h3>
-                        <p>La nueva película de Alex Garland es una impactante visión de un futuro distópico que no te puedes perder.</p>
-                        <div class="recommendation-meta">
-                            <span><i class="fas fa-film"></i> Acción/Drama</span>
-                            <span><i class="fas fa-calendar"></i> 2024</span>
-                        </div>
-                        <a href="#" class="btn-outline recommendation-btn">Ver crítica completa</a>
+                    <div class="interview-badge">Video</div>
+                </div>
+                <div class="interview-content">
+                    <h3>Denis Villeneuve revela detalles sobre Dune: Parte 3</h3>
+                    <div class="interview-meta">
+                        <span><i class="fas fa-clock"></i> 22:15</span>
+                        <span><i class="fas fa-eye"></i> 1.5K</span>
                     </div>
                 </div>
+            </div>
+            
+            <div class="interview-card neon-card">
+                <div class="interview-image">
+                    <img src="https://www.revistaestilo.net/binrepository/959x1200/0c0/0d0/none/179468266/OYBI/challengers-april-26thwishing-you-all_7187162_20240409144546.jpg" alt="Entrevista con Zendaya">
+                    <div class="interview-play">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="interview-badge">Video</div>
+                </div>
+                <div class="interview-content">
+                    <h3>Zendaya habla sobre Challengers y su evolución como actriz</h3>
+                    <div class="interview-meta">
+                        <span><i class="fas fa-clock"></i> 16:50</span>
+                        <span><i class="fas fa-eye"></i> 1.1K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Weekly Recommendations -->
+<section class="recommendations-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>Recomendaciones Semanales</h2>
+                <div class="title-line"></div>
+            </div>
+            <a href="/recomendaciones" class="view-all">Ver todas <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="recommendations-grid">
+            <div class="recommendation-card neon-card">
+                <div class="recommendation-image">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcou-PpxCoPh0PCAx3Kmq5HIQLkboKepjyC95KbbKE9c0kK0C-J6TRCmRuR-h6nAYH9DwjZEsVxHQAoa7x7mJLip75Mw5N9cZvJHgqvnfAQoMRKVesHXPFyMMTfoi5LenoKlilGg8DRCFsycZsRdluQbE83LZ7ErDeEZjF3z4U3hlJucf3A9gPHfHWV0I/s660/civil-war-poster.png" alt="Civil War">
+                    <div class="recommendation-overlay">
+                        <div class="recommendation-badge">Película</div>
+                        <div class="recommendation-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-content">
+                    <h3>Civil War</h3>
+                    <p>La nueva película de Alex Garland es una impactante visión de un futuro distópico que no te puedes perder.</p>
+                    <div class="recommendation-meta">
+                        <span><i class="fas fa-film"></i> Acción/Drama</span>
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                    </div>
+                    <a href="#" class="btn-outline recommendation-btn">Ver crítica completa</a>
+                </div>
+            </div>
+            
+            <div class="recommendation-card neon-card">
+                <div class="recommendation-image">
+                    <img src="https://areajugones.sport.es/wp-content/uploads/2023/11/shogun-disney-1560x880.jpg" alt="Shogun">
+                    <div class="recommendation-overlay">
+                        <div class="recommendation-badge">Serie</div>
+                        <div class="recommendation-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommendation-content">
+                    <h3>Shogun</h3>
+                    <p>Esta adaptación del clásico de James Clavell es una obra maestra de la televisión con una ambientación histórica impecable.</p>
+                    <div class="recommendation-meta">
+                        <span><i class="fas fa-tv"></i> Drama/Histórico</span>
+                        <span><i class="fas fa-calendar"></i> 2024</span>
+                    </div>
+                    <a href="#" class="btn-outline recommendation-btn">Ver crítica completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+    <div class="container">
+        <div class="newsletter-card">
+            <div class="newsletter-content">
+                <div class="newsletter-badge">Newsletter</div>
+                <h2>Mantente al día con las últimas noticias</h2>
+                <p>Suscríbete a nuestro boletín y recibe las últimas noticias y recomendaciones directamente en tu correo.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit" class="btn-primary">Suscribirse</button>
+                </form>
+                <p class="newsletter-privacy">Al suscribirte, aceptas nuestra <a href="#">política de privacidad</a>.</p>
+            </div>
+            <div class="newsletter-image">
+                <img src="/media/descargadas/icono_newsletter.avif" alt="Newsletter">
+                <div class="image-glow"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Premium Section -->
+<section class="premium-section">
+    <div class="container">
+        <div class="premium-card">
+            <div class="premium-content">
+                <div class="premium-badge">Premium</div>
+                <h2>Eleva tu experiencia cinematográfica</h2>
+                <p>Desbloquea contenido exclusivo, crea listas personalizadas y recibe notificaciones de estrenos con nuestra suscripción premium.</p>
                 
-                <div class="recommendation-card neon-card">
-                    <div class="recommendation-image">
-                        <img src="https://areajugones.sport.es/wp-content/uploads/2023/11/shogun-disney-1560x880.jpg" alt="Shogun">
-                        <div class="recommendation-overlay">
-                            <div class="recommendation-badge">Serie</div>
-                            <div class="recommendation-rating">
-                                <i class="fas fa-star"></i>
-                                <span>4.7</span>
-                            </div>
+                <div class="premium-features">
+                    <div class="premium-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-newspaper"></i>
                         </div>
-                    </div>
-                    <div class="recommendation-content">
-                        <h3>Shogun</h3>
-                        <p>Esta adaptación del clásico de James Clavell es una obra maestra de la televisión con una ambientación histórica impecable.</p>
-                        <div class="recommendation-meta">
-                            <span><i class="fas fa-tv"></i> Drama/Histórico</span>
-                            <span><i class="fas fa-calendar"></i> 2024</span>
-                        </div>
-                        <a href="#" class="btn-outline recommendation-btn">Ver crítica completa</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-card">
-                <div class="newsletter-content">
-                    <div class="newsletter-badge">Newsletter</div>
-                    <h2>Mantente al día con las últimas noticias</h2>
-                    <p>Suscríbete a nuestro boletín y recibe las últimas noticias y recomendaciones directamente en tu correo.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico" required>
-                        <button type="submit" class="btn-primary">Suscribirse</button>
-                    </form>
-                    <p class="newsletter-privacy">Al suscribirte, aceptas nuestra <a href="#">política de privacidad</a>.</p>
-                </div>
-                <div class="newsletter-image">
-                    <img src="/media/descargadas/icono_newsletter.avif" alt="Newsletter">
-                    <div class="image-glow"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Premium Section -->
-    <section class="premium-section">
-        <div class="container">
-            <div class="premium-card">
-                <div class="premium-content">
-                    <div class="premium-badge">Premium</div>
-                    <h2>Eleva tu experiencia cinematográfica</h2>
-                    <p>Desbloquea contenido exclusivo, crea listas personalizadas y recibe notificaciones de estrenos con nuestra suscripción premium.</p>
-                    
-                    <div class="premium-features">
-                        <div class="premium-feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-newspaper"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Artículos exclusivos</h4>
-                                <p>Accede a contenido escrito por críticos profesionales</p>
-                            </div>
-                        </div>
-                        
-                        <div class="premium-feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Entrevistas extendidas</h4>
-                                <p>Disfruta de versiones completas de nuestras entrevistas</p>
-                            </div>
-                        </div>
-                        
-                        <div class="premium-feature">
-                            <div class="feature-icon">
-                                <i class="fas fa-bell"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Notificaciones personalizadas</h4>
-                                <p>Recibe alertas sobre tus temas favoritos</p>
-                            </div>
+                        <div class="feature-text">
+                            <h4>Artículos exclusivos</h4>
+                            <p>Accede a contenido escrito por críticos profesionales</p>
                         </div>
                     </div>
                     
-                    <a href="/premium" class="btn-premium">Suscríbete ahora</a>
+                    <div class="premium-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Entrevistas extendidas</h4>
+                            <p>Disfruta de versiones completas de nuestras entrevistas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="premium-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Notificaciones personalizadas</h4>
+                            <p>Recibe alertas sobre tus temas favoritos</p>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="premium-image">
-                    <img src="/media/descargadas/Imagen_premium.jpg" alt="Premium features">
-                    <div class="glow-effect"></div>
-                </div>
+                <a href="/premium" class="btn-premium">Suscríbete ahora</a>
+            </div>
+            
+            <div class="premium-image">
+                <img src="/media/descargadas/Imagen_premium.jpg" alt="Premium features">
+                <div class="glow-effect"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script>
-        // Tab functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tabs functionality
-            const tabs = document.querySelectorAll('.tab');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    // Hide all tab content
-                    const tabContents = document.querySelectorAll('.tab-content');
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
-                    // Show the corresponding tab content
-                    const tabId = this.getAttribute('data-tab');
-                    document.getElementById(tabId + '-content').classList.add('active');
-                });
-            });
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Base URL for the API (adjust to your actual API endpoint)
+    const API_BASE_URL = '/api/noticias/';
 
-            // Search toggle
-            const searchToggle = document.querySelector('.search-toggle');
-            const searchOverlay = document.querySelector('.search-overlay');
-            const searchClose = document.querySelector('.search-close');
-            
-            searchToggle.addEventListener('click', function() {
-                searchOverlay.classList.add('active');
-                document.body.classList.add('search-open');
-                setTimeout(() => {
-                    searchOverlay.querySelector('input').focus();
-                }, 300);
-            });
-            
-            searchClose.addEventListener('click', function() {
-                searchOverlay.classList.remove('active');
-                document.body.classList.remove('search-open');
-            });
+    // Function to fetch news by category
+    async function fetchNews(category, gridId, offset = 0, limit = 6) {
+        let url = category === 'all' 
+            ? `${API_BASE_URL}?limit=${limit}&offset=${offset}` 
+            : `${API_BASE_URL}?categoria=${encodeURIComponent(category)}&limit=${limit}&offset=${offset}`;
+        console.log(`Fetching news from: ${url}`); // Debug: Log the URL
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log(`Received data for ${category}:`, data); // Debug: Log the response
+            renderNews(data.results || [], gridId, category);
+            // Update "Load More" button visibility
+            const loadMoreButton = document.querySelector(`.btn-load-more[data-tab="${category}"]`);
+            if (data.next) {
+                loadMoreButton.style.display = 'block';
+                loadMoreButton.dataset.offset = offset + limit;
+            } else {
+                loadMoreButton.style.display = 'none';
+            }
+        } catch (error) {
+            console.error(`Error fetching news for ${category}:`, error);
+            const grid = document.getElementById(gridId);
+            grid.innerHTML = '<p>Error al cargar las noticias. Por favor, intenta de nuevo.</p>';
+        }
+    }
 
-            // Mobile menu toggle
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const header = document.querySelector('.header');
-
-            mobileToggle.addEventListener('click', function() {
-                header.classList.toggle('menu-open');
-                document.body.classList.toggle('no-scroll');
-            });
-            
-            // Category pills
-            const categoryPills = document.querySelectorAll('.category-pill');
-            
-            categoryPills.forEach(pill => {
-                pill.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    categoryPills.forEach(p => p.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+    // Function to render news articles in the grid
+    function renderNews(articles, gridId, category) {
+        const grid = document.getElementById(gridId);
+        // Clear grid only if it's the initial load (offset = 0)
+        if (grid.dataset.offset === '0' || !grid.dataset.offset) {
+            grid.innerHTML = '';
+        }
+        if (articles.length === 0) {
+            grid.innerHTML = '<p>No hay noticias disponibles para esta categoría.</p>';
+            return;
+        }
+        articles.forEach(article => {
+            const isFeatured = article.es_exclusiva ? 'featured-news' : '';
+            const creator = article.creador && typeof article.creador === 'object' ? article.creador.username : article.creador || 'Anónimo';
+            const articleHTML = `
+                <article class="news-card ${isFeatured}">
+                    <div class="news-image">
+                        <img src="${article.imagen_principal || '/media/placeholder.jpg'}" alt="${article.alt_imagen_principal || article.titulo}">
+                        <div class="news-badge">${article.categoria}</div>
+                        <div class="image-overlay"></div>
+                    </div>
+                    <div class="news-content">
+                        <h3>${article.titulo}</h3>
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar-alt"></i> ${new Date(article.fecha_publicacion).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                            <span><i class="far fa-user"></i> ${creator}</span>
+                            <span><i class="far fa-clock"></i> ${article.tiempo_lectura} min lectura</span>
+                            <span><i class="far fa-eye"></i> ${article.vistas} vistas</span>
+                        </div>
+                        <p>${article.contenido.substring(0, 150)}...</p>
+                        <a href="/noticias/${article.id_noticia}" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </article>
+            `;
+            grid.innerHTML += articleHTML;
         });
-    </script>
+    }
+
+    // Tabs functionality
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Show the corresponding tab content
+            const tabId = this.getAttribute('data-tab');
+            const tabContent = document.getElementById(`${tabId}-content`);
+            tabContent.classList.add('active');
+            
+            // Fetch news for the selected category
+            const gridId = `${tabId}-news-grid`;
+            const grid = document.getElementById(gridId);
+            grid.dataset.offset = 0; // Reset offset for new tab
+            fetchNews(tabId, gridId, 0);
+        });
+    });
+
+    // Load More functionality
+    const loadMoreButtons = document.querySelectorAll('.btn-load-more');
+    loadMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.getAttribute('data-tab');
+            const gridId = `${category}-news-grid`;
+            const grid = document.getElementById(gridId);
+            const offset = parseInt(grid.dataset.offset || 0);
+            fetchNews(category, gridId, offset);
+        });
+    });
+
+    // Initial load for the active tab ("all")
+    fetchNews('all', 'all-news-grid', 0);
+
+    // Search toggle
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchOverlay = document.querySelector('.search-overlay');
+    const searchClose = document.querySelector('.search-close');
+    
+    if (searchToggle && searchOverlay && searchClose) {
+        searchToggle.addEventListener('click', function() {
+            searchOverlay.classList.add('active');
+            document.body.classList.add('search-open');
+            setTimeout(() => {
+                searchOverlay.querySelector('input').focus();
+            }, 300);
+        });
+        
+        searchClose.addEventListener('click', function() {
+            searchOverlay.classList.remove('active');
+            document.body.classList.remove('search-open');
+        });
+    }
+
+    // Mobile menu toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const header = document.querySelector('.header');
+
+    if (mobileToggle && header) {
+        mobileToggle.addEventListener('click', function() {
+            header.classList.toggle('menu-open');
+            document.body.classList.toggle('no-scroll');
+        });
+    }
+    
+    // Category pills
+    const categoryPills = document.querySelectorAll('.category-pill');
+    categoryPills.forEach(pill => {
+        pill.addEventListener('click', function(e) {
+            e.preventDefault();
+            categoryPills.forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+});
+</script>
 {% endblock %}

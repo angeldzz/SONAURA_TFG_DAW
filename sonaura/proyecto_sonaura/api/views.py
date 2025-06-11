@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import filters  # Asegúrate de importar esto
+from rest_framework import filters
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
     Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
@@ -17,9 +17,6 @@ from .serializers import (
 )
 from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly
 from django.db.models import Avg
-
-# Create your views here.
-
 # Ejemplo para Perfil (usa IsStaffOrReadOnly)
 class PerfilViewSet(viewsets.ModelViewSet):
     queryset = Perfil.objects.all()
@@ -28,7 +25,6 @@ class PerfilViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(id_usuario=self.request.user)
-
 # Ejemplo para Valoracion
 class ValoracionViewSet(viewsets.ModelViewSet):
     queryset = Valoracion.objects.all()
@@ -72,12 +68,20 @@ class ValoracionViewSet(viewsets.ModelViewSet):
         # Actualiza la puntuación del contenido después de actualizar la valoración
         id_contenido = self.request.data.get('id_contenido')
         self.update_contenido_puntuacion(id_contenido)
-
 # Ejemplo para Noticia (usa IsStaffOrReadOnly)
 class NoticiaViewSet(viewsets.ModelViewSet):
-    queryset = Noticia.objects.all()
+    queryset = Noticia.objects.all().order_by('-fecha_publicacion')
     serializer_class = NoticiaSerializer
     permission_classes = [AllowAny, IsStaffOrReadOnly]
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['fecha_publicacion', 'vistas']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        categoria = self.request.query_params.get('categoria')
+        if categoria:
+            queryset = queryset.filter(categoria=categoria)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(creador=self.request.user)
@@ -118,43 +122,36 @@ class ContenidoViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        
         # Filtro por tipo (película o serie)
         pelicula_serie = self.request.query_params.get('pelicula_serie')
         if pelicula_serie:
             queryset = queryset.filter(pelicula_serie=pelicula_serie)
-        
-        # Filtros de año
+            # Filtros de año
         año_estreno = self.request.query_params.get('año_estreno')
         año_estreno_lt = self.request.query_params.get('año_estreno__lt')
         if año_estreno:
             queryset = queryset.filter(año_estreno=año_estreno)
         if año_estreno_lt:
             queryset = queryset.filter(año_estreno__lt=año_estreno_lt)
-        
         # Filtro por género
         genero = self.request.query_params.get('genero')
         if genero:
             queryset = queryset.filter(contenidogenero__id_genero__nombre=genero)
-        
-        # Filtros de puntuación
+            # Filtros de puntuación
         puntuacion_gte = self.request.query_params.get('puntuacion__gte')
         if puntuacion_gte:
             try:
                 queryset = queryset.filter(puntuacion__gte=float(puntuacion_gte))
             except (ValueError, TypeError):
-                pass  # Ignorar si el valor no es numérico
-        
+                pass # Ignorar si el valor no es numérico
         puntuacion_lt = self.request.query_params.get('puntuacion__lt')
         if puntuacion_lt:
             try:
                 queryset = queryset.filter(puntuacion__lt=float(puntuacion_lt))
             except (ValueError, TypeError):
-                pass  # Ignorar si el valor no es numérico
-        
-        # Excluir valores nulos en puntuación
+                pass # Ignorar si el valor no es numérico
+            # Excluir valores nulos en puntuación
         queryset = queryset.exclude(puntuacion__isnull=True)
-        
         # Nuevo: Soporte para limit
         limit = self.request.query_params.get('limit')
         if limit:
@@ -162,8 +159,7 @@ class ContenidoViewSet(viewsets.ModelViewSet):
                 limit = int(limit)
                 queryset = queryset[:limit]
             except ValueError:
-                pass  # Si no es un número válido, ignorar el limit
-        
+                pass # Si no es un número válido, ignorar el limit
         return queryset
 
     def perform_create(self, serializer):
