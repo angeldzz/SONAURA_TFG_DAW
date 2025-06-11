@@ -205,3 +205,4 @@ function borrarTokens(event) {
     localStorage.removeItem("refresh_token");
     event.target.submit();
 }
+

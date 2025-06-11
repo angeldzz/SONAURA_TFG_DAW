@@ -19,9 +19,9 @@ router.register(r'comentarios', views.ComentarioViewSet)
 router.register(r'notificaciones', views.NotificacionViewSet)
 router.register(r'newsletters', views.NewsletterViewSet)
 router.register(r'noticias', views.NoticiaViewSet)
-router.register(r'listas-personalizadas', views.ListaPersonalizadaViewSet)
-router.register(r'listas-contenido', views.ListaContenidoViewSet)
+router.register(r'lista-personalizada', views.ListaViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),  # Incluye las rutas de la API
+    path("verificar-usuario/", views.verificar_usuario_premium, name="verificar_usuario_premium"),
 ]

@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from .models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, 
     ContenidoGenero, Reparto, Actor, Galeria, Valoracion, Comentario, 
-    Notificacion, Newsletter, Noticia, ListaPersonalizada, ListaContenido
+    Notificacion, Newsletter, Noticia, Lista
 )
 
 # Inlines para relaciones
@@ -14,7 +14,6 @@ class ContenidoGeneroInline(admin.TabularInline):
     verbose_name_plural = "Géneros"
     fields = ('id_genero',)
 
-    # Metodo para agregar el creador automanticamente
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
@@ -23,9 +22,8 @@ class ContenidoGeneroInline(admin.TabularInline):
 class RepartoInline(admin.TabularInline):
     model = Reparto
     extra = 1
-    fields = ('id_contenido',)  # Solo el campo de relación, o puedes dejarlo vacío si no quieres mostrar nada
-    
-    # Metodo para agregar el creador automanticamente
+    fields = ('id_contenido',)
+
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
@@ -35,7 +33,7 @@ class GaleriaInline(admin.TabularInline):
     model = Galeria
     extra = 1
     fields = ('url_imagen', 'alt_imagen')
-    # Metodo para agregar el creador automanticamente
+
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
@@ -45,8 +43,7 @@ class PlataformaStreamingInline(admin.TabularInline):
     model = PlataformaStreaming
     extra = 1
     fields = ('nombre_plataforma', 'imagen_logo_plataforma', 'alt_imagen_logo_plataforma', 'tipo_acceso', 'precio')
-    
-    # Metodo para agregar el creador automanticamente
+
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
@@ -56,19 +53,7 @@ class ActorInline(admin.TabularInline):
     model = Actor
     extra = 1
     fields = ('nombre_actor', 'personaje', 'imagen_actor')
-    
-    # Metodo para agregar el creador automanticamente
-    def save_model(self, request, obj, form, change):
-        if not obj.creador_id:
-            obj.creador = request.user
-        super().save_model(request, obj, form, change)
-        
-class ListaContenidoInline(admin.TabularInline):
-    model = ListaContenido
-    extra = 1
-    fields = ('id_contenido',)
-    
-    # Metodo para agregar el creador automanticamente
+
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
@@ -100,13 +85,12 @@ class SuscripcionUsuarioAdmin(admin.ModelAdmin):
 class GeneroAdmin(admin.ModelAdmin):
     list_display = ('id_genero', 'nombre')
     search_fields = ('nombre',)
-    
-    # Metodo para agregar el creador automanticamente
+
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
         super().save_model(request, obj, form, change)
-        
+
 @admin.register(Contenido)
 class ContenidoAdmin(admin.ModelAdmin):
     list_display = ('id_contenido', 'titulo','pelicula_serie', 'eslogan', 'año_estreno', 'mostrar_poster', 'puntuacion', 'es_exclusivo')
@@ -128,7 +112,7 @@ class ContenidoAdmin(admin.ModelAdmin):
             'fields': ('clasificacion', 'puntuacion', 'es_exclusivo')
         }),
     )
-    # Metodo para agregar el creador automanticamente
+
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
@@ -161,7 +145,7 @@ class PlataformaStreamingAdmin(admin.ModelAdmin):
     list_display = ('id_plataforma', 'nombre_plataforma', 'mostrar_logo', 'tipo_acceso', 'precio')
     search_fields = ('nombre_plataforma',)
     list_filter = ('tipo_acceso',)
-    
+
     def mostrar_logo(self, obj):
         if obj.imagen_logo_plataforma:
             return format_html('<img src="{}" width="50" />', obj.imagen_logo_plataforma.url)
@@ -172,7 +156,7 @@ class PlataformaStreamingAdmin(admin.ModelAdmin):
 class GaleriaAdmin(admin.ModelAdmin):
     list_display = ('id_imagen', 'id_contenido', 'mostrar_imagen')
     search_fields = ('id_contenido__titulo', 'alt_imagen')
-    
+
     def mostrar_imagen(self, obj):
         if obj.url_imagen:
             return format_html('<img src="{}" width="100" />', obj.url_imagen.url)
@@ -193,7 +177,7 @@ class ComentarioAdmin(admin.ModelAdmin):
     list_filter = ('fecha_comentario',)
     search_fields = ('id_usuario__username', 'id_contenido__titulo', 'comentario')
     date_hierarchy = 'fecha_comentario'
-    
+
     def tiene_respuestas(self, obj):
         return obj.respuestas.exists()
     tiene_respuestas.boolean = True
@@ -206,26 +190,17 @@ class NotificacionAdmin(admin.ModelAdmin):
     search_fields = ('id_usuario__username', 'mensaje')
     date_hierarchy = 'fecha_envio'
     actions = ['marcar_como_leidas']
-    
+
     def marcar_como_leidas(self, request, queryset):
         queryset.update(leida=True)
     marcar_como_leidas.short_description = "Marcar notificaciones seleccionadas como leídas"
 
-@admin.register(ListaPersonalizada)
-class ListaPersonalizadaAdmin(admin.ModelAdmin):
-    list_display = ('id_lista', 'id_usuario', 'nombre_lista', 'fecha_creacion', 'contar_contenidos')
-    search_fields = ('nombre_lista', 'id_usuario__username')
-    date_hierarchy = 'fecha_creacion'
-    inlines = [ListaContenidoInline]
-        
-    # Metodo para agregar el creador automanticamente
-    def save_model(self, request, obj, form, change):
-        if not obj.creador_id:
-            obj.creador = request.user
-        super().save_model(request, obj, form, change)
-        
+@admin.register(Lista)
+class ListaAdmin(admin.ModelAdmin):
+    list_display = ('id_usuario', 'id_contenido')
+
     def contar_contenidos(self, obj):
-        return ListaContenido.objects.filter(id_lista=obj).count()
+        return Lista.objects.filter(id_usuario=obj.id_usuario, nombre_lista=obj.nombre_lista).count()
     contar_contenidos.short_description = "Contenidos"
 
 # Admin para noticias y contenido editorial
@@ -236,17 +211,16 @@ class NewsletterAdmin(admin.ModelAdmin):
     search_fields = ('correo',)
     date_hierarchy = 'fechas_suscripcion'
     actions = ['activar_suscripciones', 'desactivar_suscripciones']
-        
-    # Metodo para agregar el creador automanticamente
+
     def save_model(self, request, obj, form, change):
         if not obj.creador_id:
             obj.creador = request.user
         super().save_model(request, obj, form, change)
-        
+
     def activar_suscripciones(self, request, queryset):
         queryset.update(estado='activo')
     activar_suscripciones.short_description = "Activar suscripciones seleccionadas"
-    
+
     def desactivar_suscripciones(self, request, queryset):
         queryset.update(estado='inactivo')
     desactivar_suscripciones.short_description = "Desactivar suscripciones seleccionadas"
@@ -271,7 +245,7 @@ class NoticiaAdmin(admin.ModelAdmin):
             'fields': ('es_exclusiva', 'fecha_publicacion', 'creador')
         }),
     )
-    readonly_fields = ('creador',)  # Make creador read-only to prevent manual changes
+    readonly_fields = ('creador',)
 
     # Method to automatically set the creator
     def save_model(self, request, obj, form, change):

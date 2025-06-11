@@ -316,32 +316,15 @@ class Noticia(models.Model):
     def __str__(self):
         return self.titulo
 
-# Personalized List model
-class ListaPersonalizada(models.Model):
+class Lista(models.Model):
     id_lista = models.AutoField(primary_key=True, verbose_name='ID de Lista')
     id_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='listas', null=True, blank=True, verbose_name='Usuario')
-    nombre_lista = models.CharField(max_length=100, verbose_name='Nombre de la lista')
-    fecha_edicion = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
-    fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
+    id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, related_name='listas', null=True, blank=True, verbose_name='Contenido')
 
     class Meta:
-        db_table = 'listas_personalizadas'
-        verbose_name = 'Lista Personalizada'
-        verbose_name_plural = 'Listas Personalizadas'
+        db_table = 'listas'
+        verbose_name = 'Lista'
+        verbose_name_plural = 'Listas'
 
     def __str__(self):
-        return self.nombre_lista
-
-# List-Content relationship (N:M)
-class ListaContenido(models.Model):
-    id_lista = models.ForeignKey(ListaPersonalizada, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Lista')
-    id_contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Contenido')
-    creador = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Creador')
-
-    class Meta:
-        db_table = 'lista_personalizadas_contenidos'
-        verbose_name = 'Contenido de Lista Personalizada'
-        verbose_name_plural = 'Contenidos de Listas Personalizadas'
-
-    def __str__(self):
-        return str(self.id_lista) + " " + str(self.id_contenido)
+        return f"{self.id_lista}"

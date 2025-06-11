@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.views.generic import TemplateView, DetailView
 from django.views.generic import View
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
@@ -13,9 +13,7 @@ import stripe
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from datetime import datetime, timedelta
-import json
 from django.utils.decorators import method_decorator
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -102,7 +100,7 @@ class Detalle_Pelicula_Serie(DetailView):
                 "imagen_logo_plataforma": plataforma.imagen_logo_plataforma,
                 "alt_imagen_logo_plataforma": plataforma.alt_imagen_logo_plataforma,
                 "tipo_acceso": plataforma.tipo_acceso,
-                "precio": plataforma,
+                "precio": plataforma.precio,
                 "url": url,
             })
         context['plataformas'] = plataformas_info

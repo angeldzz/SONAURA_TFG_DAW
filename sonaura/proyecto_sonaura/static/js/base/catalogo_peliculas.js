@@ -1,17 +1,62 @@
-// Definir la variable global pelicula_serie
-    let pelicula_serie = document.getElementById("pelicula-serie").value;
+// Definir las variables globales
+let pelicula_serie = document.getElementById("pelicula-serie").value;
+let premium = false;
+let premiumLoaded = false;
 
-    // Inicializar partículas cósmicas
-    initParticles();
-    
-    // Inicializar carrusel
-    initCarousel();
+// Inicializar partículas cósmicas
+initParticles();
 
-    //Llamamos al Top 10
-    Top_10();
-    
-    // Cargar películas
-    cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion());
+// Inicializar carrusel
+initCarousel();
+
+//Llamamos al Top 10
+Top_10();
+
+async function inicializar() {
+    await verificarUsuarioPremium(); // Esperar a que se complete la verificación
+    cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(), filtro_valoracion());
+}
+
+// Cargar estado premium
+async function verificarUsuarioPremium() {
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+        console.log('Usuario no autenticado');
+        premium = false;
+        premiumLoaded = true;
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/verificar-usuario/', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al verificar el estado del usuario');
+        }
+
+        const data = await response.json();
+        console.log('Usuario:', data);
+
+        premium = data.es_premium;
+    } catch (error) {
+        console.error('Error:', error);
+        premium = false;
+    }
+
+    premiumLoaded = true;
+}
+
+// Llamar a la función inicializar al cargar la página
+inicializar();
+
+// Cargar películas
     document.getElementById("yearFilter").addEventListener("change", () => 
         cargarPeliculas_Series(filtro_anio(), filtro_genero(), filtro_orden(),filtro_valoracion())
     );
@@ -74,7 +119,6 @@ function initCarousel() {
 
     const slidesPerView = 5;
     let currentIndex = 0;
-
     const moveToSlide = () => {
         const slides = track.children.length;
         const totalGroups = Math.ceil(slides / slidesPerView);
@@ -218,7 +262,7 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
             nextBtn.id = 'nextPageBtn';
             nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
             paginationContainer.appendChild(nextBtn);
-
+            console.log(premium);
             // Generar el catálogo completo
             for (let pagina = 0; pagina < totalPaginas; pagina++) {
                 const catalogPage = document.createElement('div');
@@ -230,7 +274,6 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
                 const peliculasPagina = peliculas.slice(inicio, fin);
 
                 const filas = Math.ceil(peliculasPagina.length / peliculasPorFila);
-
                 for (let i = 0; i < filas; i++) {
                     const row = document.createElement('div');
                     row.className = 'catalog-row';
@@ -239,7 +282,6 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
                         const idx = i * peliculasPorFila + j;
                         if (idx >= peliculasPagina.length) break;
                         const peli = peliculasPagina[idx];
-
                         const card = document.createElement('div');
                         card.className = 'media-card neon-card';
                         card.innerHTML = `
@@ -296,7 +338,11 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation(); // Prevent touch event on card
                         const id = this.getAttribute('data-id');
+                        if(premium){
+                            agregarElementoLista(id);
+                        }else{
                         window.location.href = `/premium`;
+                        }
                     });
                 });
 
@@ -315,6 +361,33 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
         .catch(error => {
             console.error('Error:', error);
         });
+}
+async function agregarElementoLista(id) {
+    const token = localStorage.getItem('access_token');
+    
+    try {
+        const response = await fetch('/api/lista-personalizada/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                id_contenido: id
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Error al añadir a la lista');
+        }
+        
+        const data = await response.json();
+        console.log('Elemento añadido:', data);
+        alert('¡Elemento añadido a la lista!');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error al añadir el elemento', error);
+    }
 }
 function Top_10 () {
     fetch(`http://127.0.0.1:8000/api/contenidos/?pelicula_serie=${pelicula_serie}&limit=10`)
@@ -431,3 +504,4 @@ function initPagination() {
 
     updatePage();
 }
+

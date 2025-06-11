@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
-    Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter, Noticia, ListaPersonalizada, ListaContenido
+    Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter, Noticia, Lista
 )
 
 class PerfilSerializer(serializers.ModelSerializer):
@@ -116,6 +116,7 @@ class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Newsletter
         fields = '__all__'
+        
 
 class NoticiaSerializer(serializers.ModelSerializer):
     creador = serializers.ReadOnlyField(source='creador.username')
@@ -123,14 +124,8 @@ class NoticiaSerializer(serializers.ModelSerializer):
         model = Noticia
         fields = '__all__'
 
-class ListaPersonalizadaSerializer(serializers.ModelSerializer):
-    id_usuario = serializers.ReadOnlyField(source='id_usuario.username')
+class ListaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ListaPersonalizada
+        model = Lista
         fields = '__all__'
-
-class ListaContenidoSerializer(serializers.ModelSerializer):
-    creador = serializers.ReadOnlyField(source='creador.username')
-    class Meta:
-        model = ListaContenido
-        fields = '__all__'
+        

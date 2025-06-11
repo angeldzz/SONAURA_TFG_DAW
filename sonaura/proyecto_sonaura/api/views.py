@@ -3,22 +3,41 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import filters  # Asegúrate de importar esto
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import filters
 from base.models import (
     Perfil, SuscripcionUsuario, PlataformaStreaming, Genero, Contenido, ContenidoGenero,
     Reparto, Actor, Galeria, Valoracion, Comentario, Notificacion, Newsletter,
-    Noticia, ListaPersonalizada, ListaContenido
+    Noticia,Lista
 )
 from .serializers import (
     PerfilSerializer, SuscripcionUsuarioSerializer, PlataformaStreamingSerializer, GeneroSerializer,
     ContenidoSerializer, ContenidoGeneroSerializer, RepartoSerializer, ActorSerializer, GaleriaSerializer,
     ValoracionSerializer, ComentarioSerializer, NotificacionSerializer, NewsletterSerializer,
-    NoticiaSerializer, ListaPersonalizadaSerializer, ListaContenidoSerializer
+    NoticiaSerializer, ListaSerializer
 )
-from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly
+from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly,IsPremiumOrReadOnly
 from django.db.models import Avg
 
 # Create your views here.
+
+#Endpoint api
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def verificar_usuario_premium(request):
+    usuario = request.user
+    try:
+        suscripcion = SuscripcionUsuario.objects.filter(id_usuario=usuario, es_premium=True).first()
+        es_premium = suscripcion is not None
+    except SuscripcionUsuario.DoesNotExist:
+        es_premium = False
+
+    return Response({
+        'autenticado': True,
+        'es_premium': es_premium,
+        'username': usuario.username
+    })
 
 # Ejemplo para Perfil (usa IsStaffOrReadOnly)
 class PerfilViewSet(viewsets.ModelViewSet):
@@ -256,19 +275,19 @@ class NewsletterViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(creador=self.request.user)
-
-class ListaPersonalizadaViewSet(viewsets.ModelViewSet):
-    queryset = ListaPersonalizada.objects.all()
-    serializer_class = ListaPersonalizadaSerializer
-    permission_classes = [AllowAny, IsStaffOrReadOnly]
-
-    def perform_create(self, serializer):
-        serializer.save(id_usuario=self.request.user)
-
-class ListaContenidoViewSet(viewsets.ModelViewSet):
-    queryset = ListaContenido.objects.all()
-    serializer_class = ListaContenidoSerializer
-    permission_classes = [AllowAny, IsStaffOrReadOnly]
+    
+class NewsletterViewSet(viewsets.ModelViewSet):
+    queryset = Newsletter.objects.all()
+    serializer_class = NewsletterSerializer
+    permission_classes = [AllowAny, IsPremiumOrReadOnly]
     
     def perform_create(self, serializer):
         serializer.save(creador=self.request.user)
+        
+class ListaViewSet(viewsets.ModelViewSet):
+    queryset = Lista.objects.all()
+    serializer_class = ListaSerializer
+    permission_classes = [AllowAny, IsPremiumOrReadOnly]
+    
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)
