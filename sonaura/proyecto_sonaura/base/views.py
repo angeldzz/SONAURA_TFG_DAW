@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from datetime import datetime, timedelta
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -258,22 +261,26 @@ class SuccessView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         session_id = request.GET.get('session_id')
-        try:
-            session = stripe.checkout.Session.retrieve(session_id)
-            subscription = stripe.Subscription.retrieve(session.subscription)
-            
-            if subscription.status != 'active':
-                messages.error(self.request, "La suscripción no se pudo activar.")
-                return redirect('premium')
+        logger.info(f"Procesando SuccessView con session_id: {session_id}")
 
+        try:
+            # Recuperar la sesión de Stripe
+            session = stripe.checkout.Session.retrieve(session_id)
+            logger.info(f"Sesión de Stripe recuperada: {session.id}, plan: {session.metadata.get('plan')}")
+
+            # Obtener el plan y monto desde los metadatos
             plan = session.metadata.get('plan')
-            amount = float(session.metadata.get('amount', 89.99))  # Obtener el monto desde metadata
+            if not plan:
+                logger.warning("No se encontró el plan en los metadatos de la sesión.")
+                plan = request.GET.get('plan', 'mensual')
+
+            amount = float(session.metadata.get('amount', 9.99 if plan == 'mensual' else 89.99))
             duration = 30 if plan == 'mensual' else 365
             end_date = datetime.now() + timedelta(days=duration)
 
-            # Sobrescribir o crear la suscripción
+            # Registrar o actualizar la suscripción
             SuscripcionUsuario.objects.update_or_create(
-                id_usuario=self.request.user,
+                id_usuario=request.user,
                 defaults={
                     'tipo_suscripcion': plan,
                     'es_premium': True,
@@ -282,19 +289,46 @@ class SuccessView(TemplateView):
                     'monto_pagado': amount
                 }
             )
+            logger.info(f"Suscripción registrada para usuario: {request.user.id}, plan: {plan}, monto: {amount}")
 
-            messages.success(self.request, f"¡Suscripción {plan} activada con éxito!")
+            # Enviar correo con template HTML adaptado
+            html_content = render_to_string('base/success_email.html', {
+                'nombre': request.user.first_name,
+                'plan': plan.capitalize(),
+                'year': datetime.now().year
+            })
+
+            email = EmailMultiAlternatives(
+                subject='¡Bienvenido a SONAURA Premium!',
+                body='Gracias por suscribirte a SONAURA Premium.',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[request.user.email]
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send()
+            logger.info(f"Correo enviado a {request.user.email} para el plan {plan}")
+
+            # Verificar el estado de la suscripción
+            subscription = stripe.Subscription.retrieve(session.subscription)
+            if subscription.status != 'active':
+                logger.warning(f"La suscripción no está activa: {subscription.status}")
+                messages.warning(request, "La suscripción se creó, pero no está activa. Contacta con soporte.")
+                return redirect('premium')
+
+            messages.success(request, f"¡Suscripción {plan} activada con éxito!")
             return self.render_to_response({'plan': plan})
 
         except Exception as e:
             logger.error(f"Error al procesar el pago: {str(e)}")
+
+            # Fallback si falla el contacto con Stripe
             plan = request.GET.get('plan', 'mensual')
             duration = 30 if plan == 'mensual' else 365
+            amount = 9.99 if plan == 'mensual' else 80.00
             end_date = datetime.now() + timedelta(days=duration)
-            amount = 9.99 if plan == 'mensual' else 80.00  # Precio para pruebas, asumiendo 80 euros para anual
 
             SuscripcionUsuario.objects.update_or_create(
-                id_usuario=self.request.user,
+                id_usuario=request.user,
                 defaults={
                     'tipo_suscripcion': plan,
                     'es_premium': True,
@@ -303,6 +337,24 @@ class SuccessView(TemplateView):
                     'monto_pagado': amount
                 }
             )
+            logger.info(f"Suscripción registrada en modo fallback para usuario: {request.user.id}, plan: {plan}, monto: {amount}")
+
+            # Enviar correo igual aunque sea modo fallback
+            html_content = render_to_string('base/success_email.html', {
+                'nombre': request.user.first_name,
+                'plan': plan.capitalize(),
+                'year': datetime.now().year
+            })
+
+            email = EmailMultiAlternatives(
+                subject='¡Bienvenido a SONAURA Premium!',
+                body='Gracias por suscribirte a SONAURA Premium.',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[request.user.email]
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send()
+            logger.info(f"Correo enviado en modo fallback a {request.user.email} para el plan {plan}")
 
             return self.render_to_response({'plan': plan})
 
