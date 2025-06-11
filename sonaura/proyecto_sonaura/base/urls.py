@@ -8,6 +8,7 @@ urlpatterns = [
         path('series',Series.as_view(),name='series'),#ruta a la pagina de series
         path('detalles/<int:pk>/', Detalle_Pelicula_Serie.as_view(), name='detalles'),  # ruta a la página de detalles con pk
         path('noticias',Noticias.as_view(),name='noticias'),#ruta a la pagina de noticias
+        path('noticia/<int:id_noticia>/', DetalleNoticia.as_view(), name='detalle_noticia'),
         path('premium',Premium.as_view(),name='premium'),#ruta a la pagina de noticias
         path('perfil',PerfilView.as_view(),name='perfil'),#ruta a la pagina de noticias
         path('checkout/', CheckoutView.as_view(), name='checkout'),

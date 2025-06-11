@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.urls import reverse
 import logging
 from django.contrib import messages
-from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria, Perfil
+from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria, Perfil, Noticia
 from django.utils import timezone
 from django.conf import settings
 import stripe
@@ -364,3 +364,35 @@ class CancelView(TemplateView):
     def get(self, request, *args, **kwargs):
         messages.warning(self.request, "El pago fue cancelado.")
         return self.render_to_response({})
+    
+    
+
+class DetalleNoticia(DetailView):
+    model = Noticia
+    template_name = "base/detalleNoticia.html"
+    context_object_name = "noticia"
+    pk_url_kwarg = 'id_noticia'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        # Noticias relacionadas (misma categoría, excluyendo la actual)
+        noticias_relacionadas = Noticia.objects.filter(
+            categoria=self.object.categoria
+        ).exclude(id_noticia=self.object.id_noticia)[:4]
+        
+        # Más artículos del mismo autor
+        mas_del_autor = Noticia.objects.filter(
+            creador=self.object.creador
+        ).exclude(id_noticia=self.object.id_noticia)[:3]
+        
+        # Noticias trending (más vistas)
+        noticias_trending = Noticia.objects.order_by('-vistas')[:5]
+        
+        context.update({
+            'noticias_relacionadas': noticias_relacionadas,
+            'mas_del_autor': mas_del_autor,
+            'noticias_trending': noticias_trending,
+        })
+        
+        return context

@@ -365,7 +365,9 @@ document.addEventListener('DOMContentLoaded', function() {
             renderNews(data.results || [], gridId, category);
             // Update "Load More" button visibility
             const loadMoreButton = document.querySelector(`.btn-load-more[data-tab="${category}"]`);
-            if (data.next) {
+            if (category === 'all') {
+                loadMoreButton.style.display = 'none';
+            } else if (data.next) {
                 loadMoreButton.style.display = 'block';
                 loadMoreButton.dataset.offset = offset + limit;
             } else {
@@ -389,8 +391,10 @@ document.addEventListener('DOMContentLoaded', function() {
             grid.innerHTML = '<p>No hay noticias disponibles para esta categoría.</p>';
             return;
         }
-        articles.forEach(article => {
-            const isFeatured = article.es_exclusiva ? 'featured-news' : '';
+        // Solo mostrar máximo 5 noticias
+        const maxArticles = 5;
+        articles.slice(0, maxArticles).forEach((article, idx) => {
+            const isFeatured = idx === 0 ? 'featured-row' : '';
             const creator = article.creador && typeof article.creador === 'object' ? article.creador.username : article.creador || 'Anónimo';
             const articleHTML = `
                 <article class="news-card ${isFeatured}">
@@ -408,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span><i class="far fa-eye"></i> ${article.vistas} vistas</span>
                         </div>
                         <p>${article.contenido.substring(0, 150)}...</p>
-                        <a href="/noticias/${article.id_noticia}" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
+                        <a href="/noticia/${article.id_noticia}/" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                 </article>
             `;

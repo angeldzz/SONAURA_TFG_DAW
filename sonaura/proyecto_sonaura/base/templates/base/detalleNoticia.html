@@ -1,0 +1,164 @@
+{% extends "base/base.html" %}
+    
+{% block cssExtra %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base/noticias.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/detalleNoticia.css' %}">
+{% endblock %}
+
+{% block principal %}
+<!-- Barra de progreso de lectura -->
+<div class="reading-progress" id="reading-progress"></div>
+
+<!-- Botón de regreso -->
+<a href="{% url 'noticias' %}" class="back-button" title="Volver a noticias">
+    <i class="fas fa-arrow-left"></i>
+</a>
+
+<!-- Detalle del artículo -->
+<article class="article-detail">
+    <div class="container">
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <div class="article-category">{{ noticia.categoria }}</div>
+            {% if noticia.es_exclusiva %}
+                <div class="exclusive-badge">
+                    <i class="fas fa-crown"></i> Exclusiva
+                </div>
+            {% endif %}
+            <h1 class="article-title">{{ noticia.titulo }}</h1>
+            <div class="article-meta">
+                <span>
+                    <i class="far fa-calendar-alt"></i>
+                    {{ noticia.fecha_publicacion|date:"d F, Y" }}
+                </span>
+                <span>
+                    <i class="far fa-user"></i>
+                    {% if noticia.creador.first_name %}
+                        {{ noticia.creador.first_name }} {{ noticia.creador.last_name }}
+                    {% else %}
+                        {{ noticia.creador.username }}
+                    {% endif %}
+                </span>
+                <span>
+                    <i class="far fa-clock"></i>
+                    {{ noticia.tiempo_lectura }} min lectura
+                </span>
+                <span>
+                    <i class="far fa-eye"></i>
+                    {{ noticia.vistas }} vistas
+                </span>
+            </div>
+        </header>
+
+        <!-- Imagen principal -->
+        {% if noticia.imagen_principal %}
+        <div class="article-image-container">
+            <img src="{{ noticia.imagen_principal.url }}" 
+                 alt="{{ noticia.alt_imagen_principal|default:noticia.titulo }}" 
+                 class="article-image">
+            <div class="article-image-overlay"></div>
+        </div>
+        {% endif %}
+
+        <!-- Contenido del artículo -->
+        <div class="article-content">
+            <div class="article-text">
+                {{ noticia.contenido|linebreaks }}
+            </div>
+
+            <!-- Acciones del artículo -->
+            <div class="article-actions">
+                <button class="btn-outline" onclick="shareArticle()">
+                    <i class="fas fa-share-alt"></i> Compartir
+                </button>
+                <button class="btn-outline" onclick="toggleBookmark()">
+                    <i class="far fa-bookmark"></i> Guardar
+                </button>
+                <button class="btn-primary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Imprimir
+                </button>
+            </div>
+        </div>
+    </div>
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Barra de progreso de lectura
+    const progressBar = document.getElementById('reading-progress');
+    const article = document.querySelector('.article-content');
+    
+    function updateReadingProgress() {
+        const articleTop = article.offsetTop;
+        const articleHeight = article.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrollTop = window.pageYOffset;
+        
+        const progress = Math.min(
+            Math.max((scrollTop - articleTop + windowHeight) / articleHeight * 100, 0),
+            100
+        );
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    window.addEventListener('scroll', updateReadingProgress);
+    updateReadingProgress();
+
+    // Incrementar vistas (solo una vez por sesión)
+    if (!sessionStorage.getItem('noticia_{{ noticia.id_noticia }}_viewed')) {
+        fetch(`/api/noticias/{{ noticia.id_noticia }}/incrementar-vistas/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'Content-Type': 'application/json',
+            },
+        }).then(() => {
+            sessionStorage.setItem('noticia_{{ noticia.id_noticia }}_viewed', 'true');
+        });
+    }
+});
+
+// Función para compartir artículo
+function shareArticle() {
+    if (navigator.share) {
+        navigator.share({
+            title: '{{ noticia.titulo }}',
+            text: '{{ noticia.titulo }} - {{ noticia.categoria }}',
+            url: window.location.href
+        });
+    } else {
+        // Fallback para navegadores que no soportan Web Share API
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Enlace copiado al portapapeles');
+        });
+    }
+}
+
+// Función para guardar/quitar de favoritos
+function toggleBookmark() {
+    const button = event.target.closest('button');
+    const icon = button.querySelector('i');
+    
+    if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        button.innerHTML = '<i class="fas fa-bookmark"></i> Guardado';
+        // Aquí puedes agregar la lógica para guardar en favoritos
+    } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        button.innerHTML = '<i class="far fa-bookmark"></i> Guardar';
+        // Aquí puedes agregar la lógica para quitar de favoritos
+    }
+}
+</script>
+
+<!-- Token CSRF para las peticiones AJAX -->
+{% csrf_token %}
+
+{% block jsExtra %}
+    <script src="{% static 'js/detalleNoticia.js' %}"></script>
+{% endblock %}
+{% endblock %}
