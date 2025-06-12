@@ -39,8 +39,6 @@
   --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-<<<<<<<< HEAD:sonaura/proyecto_sonaura/static/css/base/premiumPremium.css
-========
 * {
   margin: 0;
   padding: 0;
@@ -74,7 +72,6 @@ button {
   font-family: inherit;
 }
 
->>>>>>>> 5ada18faeeae54b789ad76e9a91a0e7f2541966d:sonaura/proyecto_sonaura/static/css/base/premiumP.css
 /* Cosmic Background */
 .cosmos-bg {
   position: fixed;
@@ -207,17 +204,9 @@ button {
   margin: 0 auto;
   position: relative;
   z-index: 1;
-<<<<<<<< HEAD:sonaura/proyecto_sonaura/static/css/base/premiumPremium.css
   padding-top: 2rem;
 }
 
-/* Hero Dashboard */
-========
-  padding-top: 2rem; /* Added top padding to replace header space */
-}
-
-/* Hero Dashboard - Adjusted spacing */
->>>>>>>> 5ada18faeeae54b789ad76e9a91a0e7f2541966d:sonaura/proyecto_sonaura/static/css/base/premiumP.css
 .hero-dashboard {
   padding: 3rem 2rem 4rem; /* Reduced top padding */
   background: linear-gradient(135deg, rgba(21, 11, 46, 0.8), rgba(31, 17, 71, 0.6));
@@ -971,11 +960,17 @@ button {
   color: var(--gray-300);
   font-size: 0.9rem;
   line-height: 1.5;
+  
   display: -webkit-box;
+  display: box; /* propiedad estándar (poco soportada) */
   -webkit-line-clamp: 2;
+  line-clamp: 2; /* propiedad estándar */
   -webkit-box-orient: vertical;
+  box-orient: vertical; /* no siempre necesaria */
+  
   overflow: hidden;
 }
+
 
 /* Stats Dashboard */
 .stats-dashboard {
@@ -1427,13 +1422,12 @@ button {
 }
 
 @media (max-width: 768px) {
-<<<<<<<< HEAD:sonaura/proyecto_sonaura/static/css/base/premiumPremium.css
-========
+
   .premium-container {
     padding-top: 1rem;
   }
 
->>>>>>>> 5ada18faeeae54b789ad76e9a91a0e7f2541966d:sonaura/proyecto_sonaura/static/css/base/premiumP.css
+
   .hero-dashboard {
     margin: 0 1rem 2rem;
     padding: 2rem 1rem;
