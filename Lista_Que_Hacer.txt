@@ -1,21 +1,10 @@
 ---Generales
+- Revisar elementos estaticos que todo este correcto y logico
 - Arreglar todos los detalles de responsive( sobre todo en movil para el despligue )
 - Crear pagina funcional de premium
 
 ---Pagina principal
+- Guardar peliculas
 - Noticias Dinamico
 - Newsletter Funcional
 
----Pagina Peliculas
-- Funcionalidad guardar pelicula (premium)
-
----Pagina Series
-- Funcionalidad guardar pelicula (premium)
-
----Pagina Noticias
-- Noticias dinamico
-
----Pagina Premium 
-- Pago funcional ( falta el anual )
-- Enviar correo de pago realizado y que ya es premium
-- Revisar elementos estaticos que todo este correcto y logico
