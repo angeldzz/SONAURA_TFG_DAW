@@ -50,9 +50,6 @@
                             {% endif %}
                             <span>{{ user.username }}</span>
                         </a>
-                        <a href="#" class="nav-notification">
-                            <i class="fas fa-bell"></i>
-                        </a>
                         <form method="post" action="{% url 'logout' %}" onsubmit="borrarTokens(event)"
                             class="logout-form">
                             {% csrf_token %}
