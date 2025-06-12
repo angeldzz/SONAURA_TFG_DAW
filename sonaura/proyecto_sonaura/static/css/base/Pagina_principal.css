@@ -230,7 +230,7 @@
 
   .nav-notification,
   .nav-logout {
-    width: 100%;
+    width: 40px;
     border-radius: var(--radius);
     height: 40px;
   }
