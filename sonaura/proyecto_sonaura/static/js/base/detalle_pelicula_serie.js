@@ -1,3 +1,5 @@
+let premium = false;
+let premiumLoaded = false;
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener el ID del contenido desde el input oculto
     const contenidoId = document.getElementById('contenido-id').value;
@@ -150,4 +152,97 @@ function mostrarPeliculasSimilares(contenidos) {
         
         similarMoviesContainer.appendChild(similarMovieElement);
     });
+}
+async function inicializar() {
+    await verificarUsuarioPremium(); // Esperar a que se complete la verificación
+}
+// Cargar estado premium
+async function verificarUsuarioPremium() {
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+        console.log('Usuario no autenticado');
+        premium = false;
+        premiumLoaded = true;
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/verificar-usuario/', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al verificar el estado del usuario');
+        }
+
+        const data = await response.json();
+        console.log('Usuario:', data);
+
+        premium = data.es_premium;
+    } catch (error) {
+        console.error('Error:', error);
+        premium = false;
+    }
+
+    premiumLoaded = true;
+}
+// Llamar a la función inicializar al cargar la página
+inicializar();
+// Añadir event listeners para los botones de información y marcador
+setTimeout(() => {
+    document.querySelectorAll('.bookmark-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent touch event on card
+            const id = this.getAttribute('data-id');
+            console.log(id);
+            if(premium){
+                agregarElementoLista(id);
+            }else{
+            window.location.href = `/premium`;
+            }
+        });
+    });
+
+    // Añadir soporte para eventos táctiles
+    document.querySelectorAll('.media-card').forEach(card => {
+        card.addEventListener('touchstart', function(e) {
+            // Prevenir comportamiento predeterminado en algunos dispositivos
+            e.preventDefault();
+            // Alternar la clase active en el card-overlay
+            const overlay = this.querySelector('.card-overlay');
+            overlay.classList.toggle('active');
+        });
+    });
+}, 0);
+async function agregarElementoLista(id) {
+    const token = localStorage.getItem('access_token');
+    
+    try {
+        const response = await fetch('/api/lista-personalizada/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                id_contenido: id
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Error al añadir a la lista');
+        }
+        
+        const data = await response.json();
+        console.log('Elemento añadido:', data);
+        alert('¡Elemento añadido a la lista!');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error al añadir el elemento', error);
+    }
 }
