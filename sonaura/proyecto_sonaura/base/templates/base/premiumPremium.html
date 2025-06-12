@@ -1,0 +1,514 @@
+{% extends "base/base.html" %}
+    
+{% block cssExtra %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base/premiumPremium.js' %}">
+{% endblock %}
+
+{% block principal %}
+
+<!-- Fondo cósmico animado -->
+<div class="cosmos-bg">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="nebula"></div>
+</div>
+
+<!-- Partículas animadas -->
+<div id="particles-js"></div>
+
+<!-- Círculos animados -->
+<div class="animated-circles">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+</div>
+
+<!-- Contenido principal -->
+<div class="premium-container">
+    <!-- Hero Section Personalizada -->
+    <section class="hero-dashboard">
+        <div class="welcome-content">
+            <div class="welcome-text">
+                <h1>¡Bienvenido de vuelta, <span class="user-name">{% if user.is_authenticated %}{{ user.username }}{% else %}Usuario{% endif %}</span>!</h1>
+                <p>Continúa donde lo dejaste y descubre nuevos estrenos exclusivos</p>
+                <div class="user-stats">
+                    <div class="stat">
+                        <span class="stat-number">127</span>
+                        <span class="stat-label">Películas vistas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">23</span>
+                        <span class="stat-label">En mi lista</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">340h</span>
+                        <span class="stat-label">Tiempo total</span>
+                    </div>
+                </div>
+            </div>
+            <div class="continue-watching">
+                <h3>Continuar viendo</h3>
+                <div class="continue-item">
+                    <div class="continue-poster">
+                        <img src="https://pics.filmaffinity.com/Dune_Parte_Dos-835984588-large.jpg" alt="Dune: Parte Dos">
+                        <div class="progress-overlay">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="continue-info">
+                        <h4>Dune: Parte Dos</h4>
+                        <p>Te quedaste en: 1h 47m</p>
+                        <span class="time-remaining">58 minutos restantes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendario de Estrenos -->
+    <section class="calendar-section">
+        <div class="section-header">
+            <h2 class="section-title">Calendario de Estrenos</h2>
+            <div class="calendar-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="month">Mes</button>
+                    <button class="view-btn" data-view="week">Semana</button>
+                </div>
+                <div class="calendar-nav">
+                    <button class="nav-btn" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                    <span class="current-month">Enero 2025</span>
+                    <button class="nav-btn" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar-filters">
+                <div class="filter-group">
+                    <label>Filtrar por género:</label>
+                    <select id="genreFilter">
+                        <option value="all">Todos los géneros</option>
+                        <option value="accion">Acción</option>
+                        <option value="drama">Drama</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="ciencia-ficcion">Ciencia Ficción</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Tipo:</label>
+                    <select id="typeFilter">
+                        <option value="all">Todo</option>
+                        <option value="movie">Películas</option>
+                        <option value="series">Series</option>
+                        <option value="documentary">Documentales</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- El calendario se generará dinámicamente con JavaScript -->
+            </div>
+
+            <div class="upcoming-highlights">
+                <h3>Próximos Estrenos Destacados</h3>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-poster">
+                            <img src="https://pics.filmaffinity.com/Furiosa_A_Mad_Max_Saga-643739461-large.jpg" alt="Furiosa">
+                            <div class="release-badge">15 ENE</div>
+                        </div>
+                        <div class="highlight-info">
+                            <h4>Furiosa: Una Saga de Mad Max</h4>
+                            <p>Acción • 2h 28m</p>
+                            <div class="highlight-actions">
+                                <button class="btn-add-list"><i class="fas fa-plus"></i> Mi Lista</button>
+                                <button class="btn-notify"><i class="fas fa-bell"></i> Notificar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="highlight-poster">
+                            <img src="https://pics.filmaffinity.com/Deadpool_3-240896522-large.jpg" alt="Deadpool 3">
+                            <div class="release-badge">22 ENE</div>
+                        </div>
+                        <div class="highlight-info">
+                            <h4>Deadpool & Wolverine</h4>
+                            <p>Acción • Comedia • 2h 7m</p>
+                            <div class="highlight-actions">
+                                <button class="btn-add-list"><i class="fas fa-plus"></i> Mi Lista</button>
+                                <button class="btn-notify"><i class="fas fa-bell"></i> Notificar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="highlight-poster">
+                            <img src="https://pics.filmaffinity.com/Inside_Out_2-629969113-large.jpg" alt="Inside Out 2">
+                            <div class="release-badge">28 ENE</div>
+                        </div>
+                        <div class="highlight-info">
+                            <h4>Inside Out 2</h4>
+                            <p>Animación • Familia • 1h 36m</p>
+                            <div class="highlight-actions">
+                                <button class="btn-add-list"><i class="fas fa-plus"></i> Mi Lista</button>
+                                <button class="btn-notify"><i class="fas fa-bell"></i> Notificar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mi Lista Personalizada -->
+    <section class="my-list-section">
+        <div class="section-header">
+            <h2 class="section-title">Mi Lista Personal</h2>
+            <div class="list-controls">
+                <div class="sort-options">
+                    <select id="sortList">
+                        <option value="added">Añadido recientemente</option>
+                        <option value="title">Título A-Z</option>
+                        <option value="year">Año</option>
+                        <option value="rating">Valoración</option>
+                        <option value="duration">Duración</option>
+                    </select>
+                </div>
+                <div class="view-options">
+                    <button class="view-option active" data-view="grid"><i class="fas fa-th"></i></button>
+                    <button class="view-option" data-view="list"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-list-container">
+            <div class="list-stats">
+                <div class="stat-card">
+                    <i class="fas fa-bookmark"></i>
+                    <div class="stat-info">
+                        <span class="stat-number">23</span>
+                        <span class="stat-label">En mi lista</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-info">
+                        <span class="stat-number">47h</span>
+                        <span class="stat-label">Tiempo total</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <span class="stat-number">8.2</span>
+                        <span class="stat-label">Valoración media</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-list-grid" id="myListGrid">
+                <div class="list-item">
+                    <div class="item-poster">
+                        <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer">
+                        <div class="item-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="watch-status">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h4>Oppenheimer</h4>
+                        <div class="item-meta">
+                            <span class="year">2023</span>
+                            <span class="duration">3h 0m</span>
+                            <span class="rating"><i class="fas fa-star"></i> 8.6</span>
+                        </div>
+                        <p class="item-description">La historia del físico J. Robert Oppenheimer y su papel en el desarrollo de la bomba atómica.</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="item-poster">
+                        <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Pobres Criaturas">
+                        <div class="item-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="progress-indicator" style="width: 30%"></div>
+                    </div>
+                    <div class="item-info">
+                        <h4>Pobres Criaturas</h4>
+                        <div class="item-meta">
+                            <span class="year">2023</span>
+                            <span class="duration">2h 21m</span>
+                            <span class="rating"><i class="fas fa-star"></i> 8.4</span>
+                        </div>
+                        <p class="item-description">Una joven mujer resucitada por un científico excéntrico emprende una odisea de autodescubrimiento.</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="item-poster">
+                        <img src="https://pics.filmaffinity.com/Killers_of_the_Flower_Moon-222123180-large.jpg" alt="Los Asesinos de la Luna">
+                        <div class="item-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h4>Los Asesinos de la Luna</h4>
+                        <div class="item-meta">
+                            <span class="year">2023</span>
+                            <span class="duration">3h 26m</span>
+                            <span class="rating"><i class="fas fa-star"></i> 7.8</span>
+                        </div>
+                        <p class="item-description">Miembros de la tribu Osage son asesinados bajo misteriosas circunstancias en la década de 1920.</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="item-poster">
+                        <img src="https://pics.filmaffinity.com/The_Zone_of_Interest-722348748-large.jpg" alt="La Zona de Interés">
+                        <div class="item-overlay">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <button class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h4>La Zona de Interés</h4>
+                        <div class="item-meta">
+                            <span class="year">2023</span>
+                            <span class="duration">1h 45m</span>
+                            <span class="rating"><i class="fas fa-star"></i> 7.9</span>
+                        </div>
+                        <p class="item-description">El comandante de Auschwitz y su esposa se esfuerzan por construir una vida de ensueño.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard de Estadísticas Premium -->
+    <section class="stats-dashboard">
+        <div class="section-header">
+            <h2 class="section-title">Tu Universo Cinematográfico</h2>
+            <p class="section-subtitle">Descubre tus patrones de visualización y preferencias</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-widget">
+                <div class="widget-header">
+                    <h3>Géneros Favoritos</h3>
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="genre-chart">
+                    <div class="genre-item">
+                        <span class="genre-name">Ciencia Ficción</span>
+                        <div class="genre-bar">
+                            <div class="genre-fill" style="width: 85%"></div>
+                        </div>
+                        <span class="genre-percent">85%</span>
+                    </div>
+                    <div class="genre-item">
+                        <span class="genre-name">Drama</span>
+                        <div class="genre-bar">
+                            <div class="genre-fill" style="width: 72%"></div>
+                        </div>
+                        <span class="genre-percent">72%</span>
+                    </div>
+                    <div class="genre-item">
+                        <span class="genre-name">Thriller</span>
+                        <div class="genre-bar">
+                            <div class="genre-fill" style="width: 68%"></div>
+                        </div>
+                        <span class="genre-percent">68%</span>
+                    </div>
+                    <div class="genre-item">
+                        <span class="genre-name">Acción</span>
+                        <div class="genre-bar">
+                            <div class="genre-fill" style="width: 54%"></div>
+                        </div>
+                        <span class="genre-percent">54%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-widget">
+                <div class="widget-header">
+                    <h3>Actividad Semanal</h3>
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="activity-chart">
+                    <div class="chart-bars">
+                        <div class="bar" style="height: 60%" data-day="Lun" data-hours="3.2"></div>
+                        <div class="bar" style="height: 40%" data-day="Mar" data-hours="2.1"></div>
+                        <div class="bar" style="height: 80%" data-day="Mié" data-hours="4.3"></div>
+                        <div class="bar" style="height: 30%" data-day="Jue" data-hours="1.5"></div>
+                        <div class="bar" style="height: 90%" data-day="Vie" data-hours="5.1"></div>
+                        <div class="bar" style="height: 100%" data-day="Sáb" data-hours="6.2"></div>
+                        <div class="bar" style="height: 70%" data-day="Dom" data-hours="3.8"></div>
+                    </div>
+                    <div class="chart-labels">
+                        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-widget">
+                <div class="widget-header">
+                    <h3>Logros Desbloqueados</h3>
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="achievements-grid">
+                    <div class="achievement unlocked">
+                        <i class="fas fa-film"></i>
+                        <span>Cinéfilo</span>
+                        <small>100 películas vistas</small>
+                    </div>
+                    <div class="achievement unlocked">
+                        <i class="fas fa-clock"></i>
+                        <span>Maratonista</span>
+                        <small>24h en un día</small>
+                    </div>
+                    <div class="achievement unlocked">
+                        <i class="fas fa-star"></i>
+                        <span>Crítico</span>
+                        <small>50 valoraciones</small>
+                    </div>
+                    <div class="achievement locked">
+                        <i class="fas fa-crown"></i>
+                        <span>Experto</span>
+                        <small>500 películas</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-widget">
+                <div class="widget-header">
+                    <h3>Recomendaciones IA</h3>
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="ai-recommendations">
+                    <div class="recommendation-item">
+                        <img src="https://pics.filmaffinity.com/Blade_Runner_2049-731117498-large.jpg" alt="Blade Runner 2049">
+                        <div class="rec-info">
+                            <h4>Blade Runner 2049</h4>
+                            <div class="match-score">
+                                <span class="match-percent">96%</span>
+                                <span class="match-label">compatibilidad</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-item">
+                        <img src="https://pics.filmaffinity.com/Arrival-445362628-large.jpg" alt="La Llegada">
+                        <div class="rec-info">
+                            <h4>La Llegada</h4>
+                            <div class="match-score">
+                                <span class="match-percent">94%</span>
+                                <span class="match-label">compatibilidad</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recommendation-item">
+                        <img src="https://pics.filmaffinity.com/Ex_Machina-607688954-large.jpg" alt="Ex Machina">
+                        <div class="rec-info">
+                            <h4>Ex Machina</h4>
+                            <div class="match-score">
+                                <span class="match-percent">91%</span>
+                                <span class="match-label">compatibilidad</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acceso Anticipado Premium -->
+    <section class="early-access-section">
+        <div class="section-header">
+            <h2 class="section-title">Acceso Anticipado Premium</h2>
+            <p class="section-subtitle">Contenido exclusivo disponible solo para miembros Premium</p>
+        </div>
+
+        <div class="early-access-grid">
+            <div class="access-card featured">
+                <div class="card-header">
+                    <span class="exclusive-badge">EXCLUSIVO</span>
+                    <h3>Entrevista Exclusiva: Denis Villeneuve</h3>
+                </div>
+                <div class="card-content">
+                    <div class="content-preview">
+                        <img src="https://images.unsplash.com/photo-1489599162163-3f4b2c5b8b9e?q=80&w=2070&auto=format&fit=crop" alt="Denis Villeneuve">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                            <span>45 min</span>
+                        </div>
+                    </div>
+                    <p>Una conversación íntima con el director de Dune sobre su visión cinematográfica y los desafíos de adaptar la obra maestra de Frank Herbert.</p>
+                    <div class="card-actions">
+                        <button class="btn-watch">Ver Ahora</button>
+                        <button class="btn-save"><i class="fas fa-bookmark"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="access-card">
+                <div class="card-header">
+                    <span class="early-badge">ANTICIPADO</span>
+                    <h3>Making Of: Oppenheimer</h3>
+                </div>
+                <div class="card-content">
+                    <div class="content-preview">
+                        <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=2070&auto=format&fit=crop" alt="Making Of">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                            <span>32 min</span>
+                        </div>
+                    </div>
+                    <p>Descubre los secretos detrás de la creación de la película más ambiciosa de Christopher Nolan.</p>
+                    <div class="card-actions">
+                        <button class="btn-watch">Ver Ahora</button>
+                        <button class="btn-save"><i class="fas fa-bookmark"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="access-card">
+                <div class="card-header">
+                    <span class="preview-badge">AVANCE</span>
+                    <h3>Trailer Extendido: Furiosa</h3>
+                </div>
+                <div class="card-content">
+                    <div class="content-preview">
+                        <img src="https://images.unsplash.com/photo-1489599162163-3f4b2c5b8b9e?q=80&w=2070&auto=format&fit=crop" alt="Furiosa">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                            <span>4 min</span>
+                        </div>
+                    </div>
+                    <p>Versión extendida del trailer con escenas nunca antes vistas de la nueva saga de Mad Max.</p>
+                    <div class="card-actions">
+                        <button class="btn-watch">Ver Ahora</button>
+                        <button class="btn-save"><i class="fas fa-bookmark"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="{% static 'js/base/premiumPremium.js' %}"></script>
+
+{% endblock %}
