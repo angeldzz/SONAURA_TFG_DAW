@@ -1415,4 +1415,43 @@ input:checked + .toggle-slider:before {
     margin: 1rem;
   }
 }
+/* Añade estos estilos a tu archivo perfil.css */
 
+.password-messages {
+    margin-bottom: 15px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    animation: slideDown 0.3s ease-out;
+}
+
+.password-messages.success {
+    background-color: rgba(0, 200, 150, 0.1);
+    border: 1px solid rgba(0, 200, 150, 0.3);
+    color: #00c896;
+}
+
+.password-messages.error {
+    background-color: rgba(255, 94, 120, 0.1);
+    border: 1px solid rgba(255, 94, 120, 0.3);
+    color: #ff5e78;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Botón deshabilitado */
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background: linear-gradient(135deg, #666, #888);
+}

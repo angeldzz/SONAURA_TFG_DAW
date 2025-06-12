@@ -4,19 +4,19 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.urls import reverse
-import logging
 from django.contrib import messages
 from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria, Perfil, Noticia
 from django.utils import timezone
 from django.conf import settings
-import stripe
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from datetime import datetime, timedelta
 from django.utils.decorators import method_decorator
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
+from django.contrib.auth import update_session_auth_hash
+import stripe
+import logging
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -115,6 +115,67 @@ class Detalle_Pelicula_Serie(DetailView):
 class Login(TemplateView):
     template_name = "base/login.html"
 
+
+@method_decorator(login_required, name='dispatch')
+class CambiarPasswordView(View):
+    def post(self, request):
+        try:
+            # Obtener datos del POST
+            current_password = request.POST.get('current_password')
+            new_password = request.POST.get('new_password')
+            confirm_password = request.POST.get('confirm_password')
+            
+            # Validar que se enviaron todos los campos
+            if not all([current_password, new_password, confirm_password]):
+                return JsonResponse({
+                    'success': False,
+                    'message': 'Todos los campos son obligatorios'
+                })
+            
+            # Verificar contraseña actual
+            if not request.user.check_password(current_password):
+                return JsonResponse({
+                    'success': False,
+                    'message': 'La contraseña actual es incorrecta'
+                })
+            
+            # Verificar que las nuevas contraseñas coincidan
+            if new_password != confirm_password:
+                return JsonResponse({
+                    'success': False,
+                    'message': 'Las nuevas contraseñas no coinciden'
+                })
+            
+            # Validar fortaleza de la nueva contraseña
+            if len(new_password) < 8:
+                return JsonResponse({
+                    'success': False,
+                    'message': 'La contraseña debe tener al menos 8 caracteres'
+                })
+            
+            # Cambiar la contraseña
+            request.user.set_password(new_password)
+            request.user.save()
+            
+            # Actualizar la sesión para no desloguear al usuario
+            update_session_auth_hash(request, request.user)
+            
+            return JsonResponse({
+                'success': True,
+                'message': '¡Contraseña cambiada exitosamente!'
+            })
+            
+        except Exception as e:
+            return JsonResponse({
+                'success': False,
+                'message': 'Error interno del servidor'
+            })
+    
+    def get(self, request):
+        return JsonResponse({
+            'success': False,
+            'message': 'Método no permitido'
+        })
 class Premium(TemplateView):
     template_name = "base/premium.html"
 
