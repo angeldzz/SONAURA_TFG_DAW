@@ -141,6 +141,39 @@ document.addEventListener("DOMContentLoaded", () => {
     "2025-01-28": [{ title: "Inside Out 2", type: "movie", genre: "animacion" }],
     "2025-02-05": [{ title: "Avatar 3", type: "movie", genre: "ciencia-ficcion" }],
     "2025-02-14": [{ title: "Spider-Man 4", type: "movie", genre: "accion" }],
+
+    // NUEVOS ESTRENOS
+    "2025-06-13": [{ title: "Cómo entrenar a tu dragón", type: "movie", genre: "animacion" }],
+    "2025-06-20": [{ title: "28 años después", type: "movie", genre: "terror" }],
+    "2025-06-27": [{ title: "Padre no hay más que uno 5: Nido repleto", type: "movie", genre: "comedia" }],
+    "2025-07-02": [{ title: "JURASSIC WORLD: EL RENACER", type: "movie", genre: "aventura" }],
+    "2025-07-11": [{ title: "SUPERMAN", type: "movie", genre: "superhéroes" }],
+    "2025-07-25": [{ title: "LOS 4 FANTÁSTICOS: PRIMEROS PASOS", type: "movie", genre: "superhéroes" }],
+    "2025-08-01": [{ title: "AGÁRRALO COMO PUEDAS", type: "movie", genre: "comedia" }],
+    "2025-08-08": [{ title: "KARATE KID: LEGENDS", type: "movie", genre: "acción" }],
+    "2025-08-15": [{ title: "MERCY", type: "movie", genre: "thriller" }],
+        // ESTRENOS DE SERIES Y STREAMING
+    "2025-06-01": [{ title: "Sisi: Emperatriz de Austria T3 (Disney+)", type: "serie", genre: "historia" }],
+    "2025-06-02": [{ title: "SkyMed T3 (SkyShowtime)", type: "serie", genre: "drama" }],
+    "2025-06-05": [
+      { title: "Chespirito: Sin querer queriendo (Max)", type: "serie", genre: "biografía" },
+      { title: "Matices (SkyShowtime)", type: "serie", genre: "drama" }
+    ],
+    "2025-06-09": [{ title: "Tierra de mafiosos (SkyShowtime)", type: "serie", genre: "crimen" }],
+    "2025-06-12": [{ title: "FUBAR T2 (Netflix)", type: "serie", genre: "acción" }],
+    "2025-06-18": [
+      { title: "The Buccaneers: aristócratas por amor (Apple TV+)", type: "serie", genre: "romance" },
+      { title: "Éramos mentirosos (Prime Video)", type: "serie", genre: "misterio" }
+    ],
+    "2025-06-19": [{ title: "Aguas turbias (Netflix)", type: "serie", genre: "thriller" }],
+    "2025-06-25": [{ title: "Ironheart (Disney+)", type: "serie", genre: "superhéroes" }],
+    "2025-06-26": [
+      { title: "The Bear T4 (Disney+)", type: "serie", genre: "drama" },
+      { title: "Los sin nombre (Movistar Plus+)", type: "serie", genre: "thriller" }
+    ],
+    "2025-06-27": [{ title: "El juego del calamar T3 (Netflix)", type: "serie", genre: "suspenso" }],
+    "2025-07-18": [{ title: "Superestar", type: "serie", genre: "comedia" }],
+
   }
 
   function generateCalendar(year, month) {
@@ -228,9 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return dayElement
   }
 
-  function showReleaseDetails(release) {
-    alert(`${release.title}\nTipo: ${release.type}\nGénero: ${release.genre}`)
-  }
+  
 
   // Event listeners para navegación del calendario
   prevMonthBtn.addEventListener("click", () => {
