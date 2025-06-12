@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2025 a las 10:59:33
+-- Tiempo de generación: 12-06-2025 a las 11:09:55
 -- Versión del servidor: 11.6.2-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -549,7 +549,7 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$1000000$47HZ1zH7eFpTXlmBg4cXnt$TysLoJyl/TN6So7NE1QmNxI/gtMH8dsBzmyNbXTdZuw=', '2025-06-12 08:55:52.262959', 1, 'sonaura', 'Angcaidemor', 'TFG', 'sonaura2025@gmail.com', 1, 1, '2025-06-12 08:54:43.978075');
+(1, 'pbkdf2_sha256$1000000$47HZ1zH7eFpTXlmBg4cXnt$TysLoJyl/TN6So7NE1QmNxI/gtMH8dsBzmyNbXTdZuw=', '2025-06-12 09:08:03.553928', 1, 'sonaura', 'Angcaidemor', 'TFG', 'sonaura2025@gmail.com', 1, 1, '2025-06-12 08:54:43.978075');
 
 -- --------------------------------------------------------
 
@@ -1126,6 +1126,19 @@ CREATE TABLE `django_admin_log` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
+--
+-- Volcado de datos para la tabla `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+(1, '2025-06-12 09:04:40.240344', '1', 'Dune 1', 1, '[{\"added\": {}}]', 10, 1),
+(2, '2025-06-12 09:04:55.489633', '2', 'Dune 2', 1, '[{\"added\": {}}]', 10, 1),
+(3, '2025-06-12 09:05:07.238660', '3', 'Dune 3', 1, '[{\"added\": {}}]', 10, 1),
+(4, '2025-06-12 09:05:17.782253', '4', 'Dune 4', 1, '[{\"added\": {}}]', 10, 1),
+(5, '2025-06-12 09:05:59.035720', '5', 'Breaking Bad', 1, '[{\"added\": {}}]', 10, 1),
+(6, '2025-06-12 09:06:11.847344', '6', 'Breaking Bad 2', 1, '[{\"added\": {}}]', 10, 1),
+(7, '2025-06-12 09:06:23.515029', '7', 'Breaking Bad 3', 1, '[{\"added\": {}}]', 10, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -1225,7 +1238,7 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('ioelctutrlbhc3pve1vg432bct7lggsj', '.eJxVjDsOwjAQBe_iGll2_Kek5wzWrndNAsiR4qRC3B0ipYD2zcx7iQzbOuat85InEmehxel3QygPbjugO7TbLMvc1mVCuSvyoF1eZ-Ln5XD_Dkbo47c2XBkNYqkcB08Gk3IeSBkbqIAymsE67aIlGIC46FDVkCC4xOgjKPH-AA_ROK0:1uPdiy:wxh3r1ZoMjkdc1O3_RlDmdlxgTbK8dZiIUnxzSOtp4Y', '2025-06-26 08:55:52.266481');
+('o7f2tp34fy0dtnjnhwq12l3pof3liht6', '.eJxVjDsOwjAQBe_iGll2_Kek5wzWrndNAsiR4qRC3B0ipYD2zcx7iQzbOuat85InEmehxel3QygPbjugO7TbLMvc1mVCuSvyoF1eZ-Ln5XD_Dkbo47c2XBkNYqkcB08Gk3IeSBkbqIAymsE67aIlGIC46FDVkCC4xOgjKPH-AA_ROK0:1uPdul:N2FkJjWCzjPqQ3iB2FoCuIsKdLFIJ2KERYrVH8EdCNc', '2025-06-26 09:08:03.553928');
 
 -- --------------------------------------------------------
 
@@ -1240,6 +1253,19 @@ CREATE TABLE `galeria` (
   `creador_id` int(11) NOT NULL,
   `id_contenido_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `galeria`
+--
+
+INSERT INTO `galeria` (`id_imagen`, `url_imagen`, `alt_imagen`, `creador_id`, `id_contenido_id`) VALUES
+(1, 'galeria/Dune1_tIvdTYm.webp', 'Dune 1', 1, 11),
+(2, 'galeria/Dune2_0knx5ZQ.jpeg', 'Dune 2', 1, 11),
+(3, 'galeria/Dune3_ZC0S7t4.jpeg', 'Dune 3', 1, 11),
+(4, 'galeria/Dune4_vIavBa3.jpg', 'Dune 4', 1, 11),
+(5, 'galeria/Breaking_Bad_aScDUPE.webp', 'Breaking Bad', 1, 62),
+(6, 'galeria/breaking-bad-2_6iQvqcL.jpg', 'Breaking Bad 2', 1, 62),
+(7, 'galeria/breaking-bad-3_u4hhh4U.jpg', 'Breaking Bad 3', 1, 62);
 
 -- --------------------------------------------------------
 
@@ -1290,6 +1316,18 @@ CREATE TABLE `listas` (
   `id_contenido_id` int(11) DEFAULT NULL,
   `id_usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Volcado de datos para la tabla `listas`
+--
+
+INSERT INTO `listas` (`id_lista`, `id_contenido_id`, `id_usuario_id`) VALUES
+(1, 11, 1),
+(2, 20, 1),
+(3, 24, 1),
+(4, 18, 1),
+(5, 87, 1),
+(6, 112, 1);
 
 -- --------------------------------------------------------
 
@@ -2312,7 +2350,7 @@ ALTER TABLE `contenidos_generos`
 -- AUTO_INCREMENT de la tabla `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `django_content_type`
@@ -2330,7 +2368,7 @@ ALTER TABLE `django_migrations`
 -- AUTO_INCREMENT de la tabla `galeria`
 --
 ALTER TABLE `galeria`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`
@@ -2342,7 +2380,7 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `listas`
 --
 ALTER TABLE `listas`
-  MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `newsletter`
