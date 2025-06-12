@@ -177,7 +177,27 @@ class CambiarPasswordView(View):
             'message': 'Método no permitido'
         })
 class Premium(TemplateView):
-    template_name = "base/premium.html"
+    def get_template_names(self):
+        # Log para depuración
+        logger.info(f"Usuario: {self.request.user}, Autenticado: {self.request.user.is_authenticated}")
+        
+        if not self.request.user.is_authenticated:
+            logger.info("Usuario no autenticado, mostrando premium.html")
+            return ["base/premium.html"]
+
+        # Buscar suscripción activa
+        suscripcion = SuscripcionUsuario.objects.filter(
+            id_usuario=self.request.user,
+            es_premium=True,
+            fecha_fin_suscripcion__gte=timezone.now().date()
+        ).exists()  # Usamos exists() para mayor claridad
+
+        if suscripcion:
+            logger.info(f"Usuario {self.request.user.username} es premium, mostrando premiuP.html")
+            return ["base/premiuP.html"]
+        
+        logger.info(f"Usuario {self.request.user.username} no es premium, mostrando premium.html")
+        return ["base/premium.html"]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
