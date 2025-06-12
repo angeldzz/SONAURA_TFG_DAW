@@ -4,19 +4,19 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.urls import reverse
-import logging
 from django.contrib import messages
 from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria, Perfil, Noticia
 from django.utils import timezone
 from django.conf import settings
-import stripe
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from datetime import datetime, timedelta
 from django.utils.decorators import method_decorator
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
+from django.contrib.auth import update_session_auth_hash
+import stripe
+import logging
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -115,6 +115,67 @@ class Detalle_Pelicula_Serie(DetailView):
 class Login(TemplateView):
     template_name = "base/login.html"
 
+
+@method_decorator(login_required, name='dispatch')
+class CambiarPasswordView(View):
+    def post(self, request):
+        try:
+            # Obtener datos del POST
+            current_password = request.POST.get('current_password')
+            new_password = request.POST.get('new_password')
+            confirm_password = request.POST.get('confirm_password')
+            
+            # Validar que se enviaron todos los campos
+            if not all([current_password, new_password, confirm_password]):
+                return JsonResponse({
+                    'success': False,
+                    'message': 'Todos los campos son obligatorios'
+                })
+            
+            # Verificar contraseña actual
+            if not request.user.check_password(current_password):
+                return JsonResponse({
+                    'success': False,
+                    'message': 'La contraseña actual es incorrecta'
+                })
+            
+            # Verificar que las nuevas contraseñas coincidan
+            if new_password != confirm_password:
+                return JsonResponse({
+                    'success': False,
+                    'message': 'Las nuevas contraseñas no coinciden'
+                })
+            
+            # Validar fortaleza de la nueva contraseña
+            if len(new_password) < 8:
+                return JsonResponse({
+                    'success': False,
+                    'message': 'La contraseña debe tener al menos 8 caracteres'
+                })
+            
+            # Cambiar la contraseña
+            request.user.set_password(new_password)
+            request.user.save()
+            
+            # Actualizar la sesión para no desloguear al usuario
+            update_session_auth_hash(request, request.user)
+            
+            return JsonResponse({
+                'success': True,
+                'message': '¡Contraseña cambiada exitosamente!'
+            })
+            
+        except Exception as e:
+            return JsonResponse({
+                'success': False,
+                'message': 'Error interno del servidor'
+            })
+    
+    def get(self, request):
+        return JsonResponse({
+            'success': False,
+            'message': 'Método no permitido'
+        })
 class Premium(TemplateView):
     template_name = "base/premium.html"
 
@@ -142,37 +203,198 @@ class Premium(TemplateView):
 
 class PerfilView(TemplateView):
     template_name = "base/perfil.html"
-
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        es_premium = False
+        
+        if self.request.user.is_authenticated:
+            suscripcion = SuscripcionUsuario.objects.filter(
+                id_usuario=self.request.user,
+                es_premium=True,
+                fecha_fin_suscripcion__gte=timezone.now().date()
+            ).first()
+            if suscripcion:
+                es_premium = True
+        
+        context['es_premium'] = es_premium
+        
+        # También agregar el perfil al contexto aquí
+        if self.request.user.is_authenticated:
+            perfil, created = Perfil.objects.get_or_create(id_usuario=self.request.user)
+            
+            # Si es un perfil recién creado, prellenar con datos de auth_user
+            if created:
+                if not perfil.nombre_perfil and self.request.user.first_name:
+                    perfil.nombre_perfil = self.request.user.first_name
+                
+                if not perfil.apellidos and self.request.user.last_name:
+                    perfil.apellidos = self.request.user.last_name
+                    
+                if not perfil.nombre_usuario and self.request.user.username:
+                    perfil.nombre_usuario = self.request.user.username
+                
+                perfil.save()
+            
+            # También podemos actualizar campos vacíos en perfiles existentes
+            else:
+                updated = False
+                
+                if not perfil.nombre_perfil and self.request.user.first_name:
+                    perfil.nombre_perfil = self.request.user.first_name
+                    updated = True
+                
+                if not perfil.apellidos and self.request.user.last_name:
+                    perfil.apellidos = self.request.user.last_name
+                    updated = True
+                    
+                if not perfil.nombre_usuario and self.request.user.username:
+                    perfil.nombre_usuario = self.request.user.username
+                    updated = True
+                
+                if updated:
+                    perfil.save()
+            
+            context['perfil'] = perfil
+        
+        return context
+    
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect(reverse('login'))
-        perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
-        context = {
-            'perfil': perfil,
-        }
-        return render(request, self.template_name, context)
-
+        
+        # Usar el método padre que automáticamente incluye get_context_data
+        return super().get(request, *args, **kwargs)
+    
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect('login')
+        
         perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
+        
+        # Actualizar campos del perfil
         perfil.nombre_perfil = request.POST.get('nombre_perfil')
         perfil.apellidos = request.POST.get('apellidos')
         perfil.nombre_usuario = request.POST.get('nombre_usuario')
         perfil.telefono = request.POST.get('telefono')
         perfil.biografia = request.POST.get('biografia')
-        perfil.fecha_nacimiento = request.POST.get('fecha_nacimiento')
+        
+        # Manejar fecha de nacimiento
+        fecha_nacimiento = request.POST.get('fecha_nacimiento')
+        if fecha_nacimiento:
+            perfil.fecha_nacimiento = fecha_nacimiento
+        
         perfil.pais = request.POST.get('pais')
+        
+        # Manejar imagen de avatar
         avatar_url = request.POST.get('avatar_url')
         imagen_avatar = request.FILES.get('imagen_avatar')
+        
         if avatar_url:
             perfil.imagen_avatar = avatar_url
         elif imagen_avatar:
             perfil.imagen_avatar = imagen_avatar
+        
         perfil.save()
+        
         messages.success(request, "Perfil actualizado correctamente.")
         return redirect('perfil')
 
+
+# ALTERNATIVA: Si prefieres mantener tu estructura actual, combina los contextos
+class PerfilViewAlternativa(TemplateView):
+    template_name = "base/perfil.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        es_premium = False
+        
+        if self.request.user.is_authenticated:
+            suscripcion = SuscripcionUsuario.objects.filter(
+                id_usuario=self.request.user,
+                es_premium=True,
+                fecha_fin_suscripcion__gte=timezone.now().date()
+            ).first()
+            if suscripcion:
+                es_premium = True
+        
+        context['es_premium'] = es_premium
+        return context
+    
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(reverse('login'))
+        
+        perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
+        
+        # Tu lógica de prellenado...
+        if created:
+            if not perfil.nombre_perfil and request.user.first_name:
+                perfil.nombre_perfil = request.user.first_name
+            
+            if not perfil.apellidos and request.user.last_name:
+                perfil.apellidos = request.user.last_name
+                
+            if not perfil.nombre_usuario and request.user.username:
+                perfil.nombre_usuario = request.user.username
+            
+            perfil.save()
+        else:
+            updated = False
+            
+            if not perfil.nombre_perfil and request.user.first_name:
+                perfil.nombre_perfil = request.user.first_name
+                updated = True
+            
+            if not perfil.apellidos and request.user.last_name:
+                perfil.apellidos = request.user.last_name
+                updated = True
+                
+            if not perfil.nombre_usuario and request.user.username:
+                perfil.nombre_usuario = request.user.username
+                updated = True
+            
+            if updated:
+                perfil.save()
+        
+        # IMPORTANTE: Obtener el contexto de get_context_data y agregar el perfil
+        context = self.get_context_data()
+        context['perfil'] = perfil
+        
+        return render(request, self.template_name, context)
+    
+    def post(self, request, *args, **kwargs):
+        # Tu lógica POST actual...
+        if not request.user.is_authenticated:
+            return redirect('login')
+        
+        perfil, created = Perfil.objects.get_or_create(id_usuario=request.user)
+        
+        perfil.nombre_perfil = request.POST.get('nombre_perfil')
+        perfil.apellidos = request.POST.get('apellidos')
+        perfil.nombre_usuario = request.POST.get('nombre_usuario')
+        perfil.telefono = request.POST.get('telefono')
+        perfil.biografia = request.POST.get('biografia')
+        
+        fecha_nacimiento = request.POST.get('fecha_nacimiento')
+        if fecha_nacimiento:
+            perfil.fecha_nacimiento = fecha_nacimiento
+        
+        perfil.pais = request.POST.get('pais')
+        
+        avatar_url = request.POST.get('avatar_url')
+        imagen_avatar = request.FILES.get('imagen_avatar')
+        
+        if avatar_url:
+            perfil.imagen_avatar = avatar_url
+        elif imagen_avatar:
+            perfil.imagen_avatar = imagen_avatar
+        
+        perfil.save()
+        
+        messages.success(request, "Perfil actualizado correctamente.")
+        return redirect('perfil')
+    
 @method_decorator(login_required, name='dispatch')
 class CheckoutView(View):
     template_name = 'base/checkout.html'

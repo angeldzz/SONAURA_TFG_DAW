@@ -11,6 +11,7 @@ urlpatterns = [
         path('noticia/<int:id_noticia>/', DetalleNoticia.as_view(), name='detalle_noticia'),
         path('premium',Premium.as_view(),name='premium'),#ruta a la pagina de noticias
         path('perfil',PerfilView.as_view(),name='perfil'),#ruta a la pagina de noticias
+        path('cambiar-password/', CambiarPasswordView.as_view(), name='cambiar_password'),
         path('checkout/', CheckoutView.as_view(), name='checkout'),
         path('success/', SuccessView.as_view(), name='success'),
         path('cancel/', CancelView.as_view(), name='cancel'),
