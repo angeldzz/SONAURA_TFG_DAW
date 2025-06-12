@@ -109,17 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
     retina_detect: true,
   })
 
-  // Toggle menú móvil
-  const menuToggle = document.querySelector(".menu-toggle")
-  const premiumNav = document.querySelector(".premium-nav")
-
-  if (menuToggle) {
-    menuToggle.addEventListener("click", function () {
-      premiumNav.classList.toggle("active")
-      this.classList.toggle("active")
-    })
-  }
-
   // Calendario
   const calendarGrid = document.getElementById("calendarGrid")
   const currentMonthSpan = document.querySelector(".current-month")
