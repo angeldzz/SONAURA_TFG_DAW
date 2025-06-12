@@ -356,7 +356,7 @@ function cargarPeliculas_Series(anio_filtro, genero_filtro, orden_filtro = "", v
                         overlay.classList.toggle('active');
                     });
                 });
-            }, 0);
+            }, 100);
         })
         .catch(error => {
             console.error('Error:', error);

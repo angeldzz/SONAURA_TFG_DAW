@@ -218,7 +218,7 @@ setTimeout(() => {
             overlay.classList.toggle('active');
         });
     });
-}, 0);
+}, 100);
 async function agregarElementoLista(id) {
     const token = localStorage.getItem('access_token');
     
