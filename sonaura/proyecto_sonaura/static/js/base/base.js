@@ -206,3 +206,15 @@ function borrarTokens(event) {
     event.target.submit();
 }
 
+// Añadir manejador de eventos para el botón de toggle móvil
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const body = document.body;
+
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function () {
+            body.classList.toggle('menu-open');
+            console.log('Toggling menu-open class:', body.classList.contains('menu-open'));
+        });
+    }
+});
