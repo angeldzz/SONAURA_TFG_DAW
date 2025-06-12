@@ -11,7 +11,8 @@
     <script src="{% static 'js/base/base.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'css/base/modal.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="/media/logo_sonaura.webp" type="image/x-icon">
 </head>
 
@@ -42,16 +43,18 @@
                     <div class="user-nav-menu">
                         <a href="{% url 'perfil' %}" class="user-profile-link">
                             {% if user.perfil.imagen_avatar %}
-                                <img src="{{ user.perfil.imagen_avatar.url }}" alt="Avatar" class="header-avatar" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                            <img src="{{ user.perfil.imagen_avatar.url }}" alt="Avatar" class="header-avatar"
+                                style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
                             {% else %}
-                                <i class="fas fa-user-circle"></i>
+                            <i class="fas fa-user-circle"></i>
                             {% endif %}
                             <span>{{ user.username }}</span>
                         </a>
                         <a href="#" class="nav-notification">
                             <i class="fas fa-bell"></i>
                         </a>
-                        <form method="post" action="{% url 'logout' %}" onsubmit="borrarTokens(event)" class="logout-form">
+                        <form method="post" action="{% url 'logout' %}" onsubmit="borrarTokens(event)"
+                            class="logout-form">
                             {% csrf_token %}
                             <button id="logout" type="submit" class="nav-logout">
                                 <i class="fas fa-sign-out-alt"></i>
@@ -107,9 +110,13 @@
                     </a>
                     <p>Tu guía definitiva para encontrar las mejores películas y series.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/sonaura2025" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/sonaura.2025/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:sonaura2025@gmail.com" class="social-link">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <a href="https://x.com/sonaura2025" class="social-link"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/sonaura.2025/" class="social-link"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
@@ -141,22 +148,19 @@
         </div>
     </footer>
     <!-- Modal mejorado -->
-    <div id="modalAviso" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalContent">
+    <div id="modalAviso" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
+        aria-describedby="modalContent">
         <div class="modal-container">
             <header class="modal-header">
                 <h2 id="modalTitle" class="modal-title">Aviso Importante</h2>
-                <button 
-                    id="cerrarModalAviso" 
-                    class="modal-close" 
-                    aria-label="Cerrar modal"
-                    onclick="cerrarModal()"
-                >
+                <button id="cerrarModalAviso" class="modal-close" aria-label="Cerrar modal" onclick="cerrarModal()">
                     ×
                 </button>
             </header>
             <div id="modalContent" class="modal-content">
                 <div id="mensajeModalAviso">
-                    <p>Este es un mensaje de ejemplo para el modal mejorado. Aquí puedes colocar cualquier contenido que necesites mostrar al usuario.</p>
+                    <p>Este es un mensaje de ejemplo para el modal mejorado. Aquí puedes colocar cualquier contenido que
+                        necesites mostrar al usuario.</p>
                     <p>El modal ahora incluye:</p>
                     <ul>
                         <li>Mejor accesibilidad con ARIA labels</li>
@@ -174,14 +178,14 @@
         function abrirModal(mensaje = null) {
             const modal = document.getElementById('modalAviso');
             const mensajeElement = document.getElementById('mensajeModalAviso');
-            
+
             if (mensaje) {
                 mensajeElement.innerHTML = mensaje;
             }
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevenir scroll del body
-            
+
             // Focus en el botón de cerrar para accesibilidad
             setTimeout(() => {
                 document.getElementById('cerrarModalAviso').focus();
@@ -196,14 +200,14 @@
         }
 
         // Cerrar modal al hacer clic en el overlay
-        document.getElementById('modalAviso').addEventListener('click', function(e) {
+        document.getElementById('modalAviso').addEventListener('click', function (e) {
             if (e.target === this) {
                 cerrarModal();
             }
         });
 
         // Cerrar modal con la tecla Escape
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('modalAviso');
                 if (modal.classList.contains('active')) {
@@ -223,4 +227,5 @@
         }
     </script>
 </body>
+
 </html>

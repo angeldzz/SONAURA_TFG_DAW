@@ -1519,9 +1519,6 @@
     color: var(--white);
     transform: translateY(-3px);
   }
-  .social-link i{
-    margin-left: 5px;
-  }
   .footer-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
