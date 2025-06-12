@@ -4,7 +4,5 @@
 - Crear pagina funcional de premium
 
 ---Pagina principal
-- Guardar peliculas
 - Noticias Dinamico
 - Newsletter Funcional
-
