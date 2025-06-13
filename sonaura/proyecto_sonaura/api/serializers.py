@@ -127,7 +127,7 @@ class NoticiaSerializer(serializers.ModelSerializer):
 class ContenidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contenido
-        fields = ['id_contenido', 'titulo', 'imagen_poster', 'puntuacion']
+        fields = ['id_contenido', 'titulo', 'imagen_poster', 'puntuacion', 'duracion', 'año_estreno']
 
 class ListaSerializer(serializers.ModelSerializer):
     contenido = ContenidoSerializer(source='id_contenido', read_only=True)
@@ -142,6 +142,8 @@ class ListaSerializer(serializers.ModelSerializer):
             'id_contenido': instance.id_contenido.id_contenido,
             'titulo': instance.id_contenido.titulo,
             'imagen_poster': instance.id_contenido.imagen_poster.url if instance.id_contenido.imagen_poster else None,
-            'puntuacion': instance.id_contenido.puntuacion
+            'puntuacion': instance.id_contenido.puntuacion,
+            'duracion': instance.id_contenido.duracion,
+            'año_estreno': instance.id_contenido.año_estreno
         } if instance.id_contenido else None
         return rep

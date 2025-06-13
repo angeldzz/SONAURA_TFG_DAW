@@ -153,6 +153,10 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <i class="fas fa-star"></i> ${item.contenido.puntuacion ? item.contenido.puntuacion.toFixed(1) : '-'}
                                         </div>
                                     </div>
+                                    <div class="activity-meta">
+                                        <span class="meta-year"><i class="fas fa-calendar-alt"></i> ${item.contenido.año_estreno || '-'}</span>
+                                        <span class="meta-duration"><i class="fas fa-clock"></i> ${item.contenido.duracion ? item.contenido.duracion + ' min' : '-'}</span>
+                                    </div>
                                 `;
                                 activityList.appendChild(card);
                             }
