@@ -1458,6 +1458,45 @@ input:checked + .toggle-slider:before {
     cursor: not-allowed;
     background: linear-gradient(135deg, #666, #888);
 }
+
+/* Paginación personalizada */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pagination button {
+    background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(157, 78, 221, 0.15);
+    transition: var(--transition);
+    outline: none;
+}
+
+.pagination button:hover,
+.pagination button:focus {
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    color: var(--yellow);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px rgba(157, 78, 221, 0.25);
+}
+
+.pagination button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: linear-gradient(45deg, var(--gray-600), var(--gray-700));
+    color: var(--gray-300);
+}
+
 @media (max-width: 576px){
     .profile-sidebar {
     width: 88%;

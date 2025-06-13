@@ -19,6 +19,7 @@ from .serializers import (
 )
 from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly,IsPremiumOrReadOnly
 from django.db.models import Avg
+from rest_framework.pagination import PageNumberPagination
 
 # Create your views here.
 
@@ -290,3 +291,14 @@ class ListaViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(id_usuario=self.request.user)
+
+class ListaPagination(PageNumberPagination):
+    page_size = 5
+
+class ListaViewSet(viewsets.ModelViewSet):
+    queryset = Lista.objects.all()
+    serializer_class = ListaSerializer
+    pagination_class = ListaPagination
+
+    def get_queryset(self):
+        return Lista.objects.filter(id_usuario=self.request.user)

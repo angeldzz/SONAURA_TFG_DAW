@@ -1,4 +1,4 @@
-        document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
             // Navegación entre secciones
             const navItems = document.querySelectorAll('.nav-item');
             const sections = document.querySelectorAll('.profile-section');
@@ -123,6 +123,59 @@
                     circle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
                 });
             });
+
+            cargarActividad(1);
+
+            function cargarActividad(page) {
+                fetch(`/api/lista-personalizada/?page=${page}`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const activityList = document.getElementById('activity-list');
+                    activityList.innerHTML = '';
+
+                    const items = Array.isArray(data.results) ? data.results : [];
+                    if (items.length === 0) {
+                        activityList.innerHTML = '<p>No hay actividad reciente.</p>';
+                    } else {
+                        items.forEach(item => {
+                            if (item.contenido) {
+                                const card = document.createElement('div');
+                                card.className = 'activity-item';
+                                card.innerHTML = `
+                                    <img src="${item.contenido.imagen_poster || '/placeholder.svg?height=100&width=70'}" alt="${item.contenido.titulo}" class="activity-poster">
+                                    <div class="activity-info">
+                                        <h4>${item.contenido.titulo}</h4>
+                                        <div class="activity-rating">
+                                            <i class="fas fa-star"></i> ${item.contenido.puntuacion ? item.contenido.puntuacion.toFixed(1) : '-'}
+                                        </div>
+                                    </div>
+                                `;
+                                activityList.appendChild(card);
+                            }
+                        });
+                    }
+
+                    // Paginación
+                    const pagination = document.getElementById('activity-pagination');
+                    pagination.innerHTML = '';
+                    if (data.previous) {
+                        const prevBtn = document.createElement('button');
+                        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i> Anterior';
+                        prevBtn.onclick = () => cargarActividad(page - 1);
+                        pagination.appendChild(prevBtn);
+                    }
+                    if (data.next) {
+                        const nextBtn = document.createElement('button');
+                        nextBtn.innerHTML = 'Siguiente <i class="fas fa-chevron-right"></i>';
+                        nextBtn.onclick = () => cargarActividad(page + 1);
+                        pagination.appendChild(nextBtn);
+                    }
+                });
+            }
         });
 
         // Funciones para el modal de avatar

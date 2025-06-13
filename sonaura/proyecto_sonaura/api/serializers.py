@@ -124,8 +124,24 @@ class NoticiaSerializer(serializers.ModelSerializer):
         model = Noticia
         fields = '__all__'
 
+class ContenidoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contenido
+        fields = ['id_contenido', 'titulo', 'imagen_poster', 'puntuacion']
+
 class ListaSerializer(serializers.ModelSerializer):
+    contenido = ContenidoSerializer(source='id_contenido', read_only=True)
+
     class Meta:
         model = Lista
-        fields = '__all__'
-        
+        fields = ['id_lista', 'id_usuario', 'contenido']
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['contenido'] = {
+            'id_contenido': instance.id_contenido.id_contenido,
+            'titulo': instance.id_contenido.titulo,
+            'imagen_poster': instance.id_contenido.imagen_poster.url if instance.id_contenido.imagen_poster else None,
+            'puntuacion': instance.id_contenido.puntuacion
+        } if instance.id_contenido else None
+        return rep
