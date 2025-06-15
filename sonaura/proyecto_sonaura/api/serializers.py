@@ -124,11 +124,6 @@ class NoticiaSerializer(serializers.ModelSerializer):
         model = Noticia
         fields = '__all__'
 
-class ContenidoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Contenido
-        fields = ['id_contenido', 'titulo', 'imagen_poster', 'puntuacion', 'duracion', 'año_estreno']
-
 class ListaSerializer(serializers.ModelSerializer):
     id_contenido = serializers.PrimaryKeyRelatedField(queryset=Contenido.objects.all(), write_only=True)
     contenido = ContenidoSerializer(source='id_contenido', read_only=True)
