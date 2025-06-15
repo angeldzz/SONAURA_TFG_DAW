@@ -21,6 +21,9 @@ from .permissions import IsStaffOrReadOnly, IsAuthenticatedOrReadOnly,IsPremiumO
 from django.db.models import Avg
 from rest_framework.pagination import PageNumberPagination
 
+class ListaPagination(PageNumberPagination):
+    page_size = 5  # o el número que prefieras
+
 # Create your views here.
 
 #Endpoint api
@@ -288,17 +291,10 @@ class ListaViewSet(viewsets.ModelViewSet):
     queryset = Lista.objects.all()
     serializer_class = ListaSerializer
     permission_classes = [AllowAny, IsPremiumOrReadOnly]
-    
-    def perform_create(self, serializer):
-        serializer.save(id_usuario=self.request.user)
-
-class ListaPagination(PageNumberPagination):
-    page_size = 5
-
-class ListaViewSet(viewsets.ModelViewSet):
-    queryset = Lista.objects.all()
-    serializer_class = ListaSerializer
     pagination_class = ListaPagination
 
     def get_queryset(self):
         return Lista.objects.filter(id_usuario=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(id_usuario=self.request.user)

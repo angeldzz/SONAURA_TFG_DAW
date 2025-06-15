@@ -130,11 +130,12 @@ class ContenidoSerializer(serializers.ModelSerializer):
         fields = ['id_contenido', 'titulo', 'imagen_poster', 'puntuacion', 'duracion', 'año_estreno']
 
 class ListaSerializer(serializers.ModelSerializer):
+    id_contenido = serializers.PrimaryKeyRelatedField(queryset=Contenido.objects.all(), write_only=True)
     contenido = ContenidoSerializer(source='id_contenido', read_only=True)
 
     class Meta:
         model = Lista
-        fields = ['id_lista', 'id_usuario', 'contenido']
+        fields = ['id_lista', 'id_usuario', 'id_contenido', 'contenido']
 
     def to_representation(self, instance):
         rep = super().to_representation(instance)
