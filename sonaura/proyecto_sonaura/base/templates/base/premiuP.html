@@ -117,103 +117,12 @@
         </div>
 
         <div class="my-list-container">
-            <div class="list-stats">
-                <div class="stat-card">
-                    <i class="fas fa-bookmark"></i>
-                    <div class="stat-info">
-                        <span class="stat-number">23</span>
-                        <span class="stat-label">En mi lista</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-clock"></i>
-                    <div class="stat-info">
-                        <span class="stat-number">47h</span>
-                        <span class="stat-label">Tiempo total</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="my-list-grid" id="myListGrid">
-                <div class="list-item">
-                    <div class="item-poster">
-                        <img src="https://pics.filmaffinity.com/Oppenheimer-828933592-large.jpg" alt="Oppenheimer">
-                        <div class="item-overlay">
-                            <button class="play-btn"><i class="fas fa-play"></i></button>
-                            <button class="remove-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="watch-status">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <h4>Oppenheimer</h4>
-                        <div class="item-meta">
-                            <span class="year">2023</span>
-                            <span class="duration">3h 0m</span>
-                            <span class="rating"><i class="fas fa-star"></i> 8.6</span>
-                        </div>
-                        <p class="item-description">La historia del físico J. Robert Oppenheimer y su papel en el desarrollo de la bomba atómica.</p>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="item-poster">
-                        <img src="https://pics.filmaffinity.com/poor_things-235700969-large.jpg" alt="Pobres Criaturas">
-                        <div class="item-overlay">
-                            <button class="play-btn"><i class="fas fa-play"></i></button>
-                            <button class="remove-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="progress-indicator" style="width: 30%"></div>
-                    </div>
-                    <div class="item-info">
-                        <h4>Pobres Criaturas</h4>
-                        <div class="item-meta">
-                            <span class="year">2023</span>
-                            <span class="duration">2h 21m</span>
-                            <span class="rating"><i class="fas fa-star"></i> 8.4</span>
-                        </div>
-                        <p class="item-description">Una joven mujer resucitada por un científico excéntrico emprende una odisea de autodescubrimiento.</p>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="item-poster">
-                        <img src="https://pics.filmaffinity.com/Killers_of_the_Flower_Moon-222123180-large.jpg" alt="Los Asesinos de la Luna">
-                        <div class="item-overlay">
-                            <button class="play-btn"><i class="fas fa-play"></i></button>
-                            <button class="remove-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <h4>Los Asesinos de la Luna</h4>
-                        <div class="item-meta">
-                            <span class="year">2023</span>
-                            <span class="duration">3h 26m</span>
-                            <span class="rating"><i class="fas fa-star"></i> 7.8</span>
-                        </div>
-                        <p class="item-description">Miembros de la tribu Osage son asesinados bajo misteriosas circunstancias en la década de 1920.</p>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="item-poster">
-                        <img src="https://pics.filmaffinity.com/The_Zone_of_Interest-722348748-large.jpg" alt="La Zona de Interés">
-                        <div class="item-overlay">
-                            <button class="play-btn"><i class="fas fa-play"></i></button>
-                            <button class="remove-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <h4>La Zona de Interés</h4>
-                        <div class="item-meta">
-                            <span class="year">2023</span>
-                            <span class="duration">1h 45m</span>
-                            <span class="rating"><i class="fas fa-star"></i> 7.9</span>
-                        </div>
-                        <p class="item-description">El comandante de Auschwitz y su esposa se esfuerzan por construir una vida de ensueño.</p>
-                    </div>
-                </div>
+                <!-- Aquí se cargan las tarjetas -->
+            </div>
+            <div style="text-align:center; margin-top:2rem;">
+                <button id="prevPageBtn" class="btn-watch" style="display:none;"><i class="fas fa-chevron-left"></i> Página anterior</button>
+                <button id="nextPageBtn" class="btn-watch" style="display:none;">Siguiente página <i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -305,8 +214,112 @@
         </div>
     </section>
 
+    <div style="text-align:center; margin-top:2rem;">
+        <button id="nextPageBtn" class="btn-watch" style="display:none;">Siguiente página <i class="fas fa-chevron-right"></i></button>
+    </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="{% static 'js/base/premiumP.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let currentPage = 1;
+    let hasNext = false;
+    let hasPrev = false;
+
+    cargarMiListaPersonal(currentPage);
+
+    function cargarMiListaPersonal(page) {
+        fetch(`/api/lista-personalizada/?page=${page}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            renderMiListaPersonal(data.results || []);
+            hasNext = !!data.next;
+            hasPrev = !!data.previous;
+            document.getElementById('nextPageBtn').style.display = hasNext ? 'inline-block' : 'none';
+            document.getElementById('prevPageBtn').style.display = hasPrev ? 'inline-block' : 'none';
+        });
+    }
+
+    function renderMiListaPersonal(items) {
+        const grid = document.getElementById('myListGrid');
+        grid.innerHTML = '';
+        if (!items.length) {
+            grid.innerHTML = '<p>No tienes películas o series guardadas en tu lista.</p>';
+            return;
+        }
+        items.forEach(item => {
+            if (item.contenido) {
+                grid.innerHTML += `
+                <div class="list-item">
+                    <div class="item-poster">
+                        <img src="${item.contenido.imagen_poster || '/media/placeholder.jpg'}" alt="${item.contenido.titulo}">
+                        <div class="item-overlay">
+                            <button class="play-btn" data-id="${item.contenido.id_contenido}"><i class="fas fa-play"></i></button>
+                            <button class="remove-btn" data-id="${item.id_lista}"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="watch-status">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h4>${item.contenido.titulo}</h4>
+                        <div class="item-meta">
+                            <span class="year">${item.contenido.año_estreno || '-'}</span>
+                            <span class="duration">${item.contenido.duracion ? item.contenido.duracion + ' min' : '-'}</span>
+                            <span class="rating"><i class="fas fa-star"></i> ${item.contenido.puntuacion ? item.contenido.puntuacion.toFixed(1) : '-'}</span>
+                        </div>
+                        <p class="item-description">${item.contenido.descripcion ? item.contenido.descripcion.substring(0, 120) + '...' : ''}</p>
+                    </div>
+                </div>
+                `;
+            }
+        });
+
+        // Botón eliminar
+        grid.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                fetch(`/api/lista-personalizada/${id}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                    }
+                }).then(() => cargarMiListaPersonal(currentPage));
+            });
+        });
+
+        // Botón play: ir al detalle
+        grid.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                window.location.href = `/detalles/${id}/`;
+            });
+        });
+    }
+
+    // Botón siguiente página
+    document.getElementById('nextPageBtn').addEventListener('click', function() {
+        if (hasNext) {
+            currentPage += 1;
+            cargarMiListaPersonal(currentPage);
+            window.scrollTo({ top: document.getElementById('myListGrid').offsetTop - 100, behavior: 'smooth' });
+        }
+    });
+
+    // Botón página anterior
+    document.getElementById('prevPageBtn').addEventListener('click', function() {
+        if (hasPrev && currentPage > 1) {
+            currentPage -= 1;
+            cargarMiListaPersonal(currentPage);
+            window.scrollTo({ top: document.getElementById('myListGrid').offsetTop - 100, behavior: 'smooth' });
+        }
+    });
+});
+</script>
 
 {% endblock %}
