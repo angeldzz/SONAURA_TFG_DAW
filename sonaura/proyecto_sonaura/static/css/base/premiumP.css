@@ -842,7 +842,7 @@ button {
 
 .item-poster {
   width: 100%;
-  height: 200px;
+  height: 260px; /* antes: 200px */
   position: relative;
   overflow: hidden;
 }
@@ -851,7 +851,8 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition);
+  object-position: top; /* Esto fuerza a mostrar la parte superior de la imagen */
+  display: block;
 }
 
 .list-item:hover .item-poster img {
