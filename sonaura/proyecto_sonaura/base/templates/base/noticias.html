@@ -272,10 +272,12 @@
                 <div class="newsletter-badge">Newsletter</div>
                 <h2>Mantente al día con las últimas noticias</h2>
                 <p>Suscríbete a nuestro boletín y recibe las últimas noticias y recomendaciones directamente en tu correo.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Tu correo electrónico" required>
-                    <button type="submit" class="btn-primary">Suscribirse</button>
-                </form>
+                <form class="newsletter-form" method="POST" action="{% url 'newsletter_suscribir' %}">
+    {% csrf_token %}
+    <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+    <button type="submit" class="btn-primary">Suscribirse</button>
+</form>
+
                 <p class="newsletter-privacy">Al suscribirte, aceptas nuestra <a href="#">política de privacidad</a>.</p>
             </div>
             <div class="newsletter-image">

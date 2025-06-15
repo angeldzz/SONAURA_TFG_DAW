@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>¡Bienvenido a SONAURA!</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      font-family: "Inter", sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+    .welcome-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #1b2735;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(215, 38, 56, 0.3);
+    }
+    .welcome-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #D72638, #ff4757);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-icon::before {
+      content: "🎵";
+      font-size: 3rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .welcome-title {
+      font-size: 2.2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #D72638, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .brand-name {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #D72638;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .welcome-message {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      color: #b0b0b0;
+      line-height: 1.6;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .feature {
+      background: rgba(215, 38, 56, 0.1);
+      border: 1px solid rgba(215, 38, 56, 0.2);
+      color: #ff6b7a;
+      padding: 20px 15px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(215, 38, 56, 0.2);
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .feature-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, rgba(215, 38, 56, 0.1), rgba(59, 130, 246, 0.1));
+      border: 1px solid rgba(215, 38, 56, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      margin: 30px 0;
+    }
+    .cta-text {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    .social-link:hover {
+      background: #D72638;
+      transform: scale(1.1);
+    }
+    .unsubscribe {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .unsubscribe a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    .unsubscribe a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 20px;
+    }
+    .highlight {
+      color: #D72638;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <div class="welcome-icon"></div>
+    
+    <h1 class="welcome-title">¡Gracias por suscribirte!</h1>
+    <div class="brand-name">SONAURA</div>
+    
+    <p class="welcome-message">
+      ¡Hola y bienvenido/a a nuestra comunidad!<br>
+      Te damos la bienvenida al mundo de <span class="highlight">SONAURA</span>, donde tus estrenos favoritos cobran vida.<br>
+      A partir de ahora recibirás las mejores noticias, estrenos exclusivos y recomendaciones personalizadas directamente en tu correo.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature">
+        <span class="feature-icon">🎵</span>
+        <div class="feature-text">Nuevos Estrenos</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📰</span>
+        <div class="feature-text">Noticias Exclusivas</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎯</span>
+        <div class="feature-text">Recomendaciones</div>
+      </div>
+
+    <div class="cta-section">
+      <div class="cta-text">
+        🎉 <strong>¡Tu aventura comienza ahora!</strong><br>
+        Prepárate para descubrir contenido increíble y ser parte de una comunidad cinéfila.
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="mailto:sonaura2025@gmail.com?subject=Consulta desde Newsletter&body=Hola equipo SONAURA,%0D%0A%0D%0AMe gustaría..." class="social-link" data-social="email" title="Email">📧</a>
+      <a href="https://x.com/sonaura2025" class="social-link">🐦</a>
+      <a href="https://www.instagram.com/sonaura.2025/" class="social-link">📱</a>
+    </div>
+
+    <p class="welcome-message">
+      Si tienes alguna pregunta o sugerencia, no dudes en contactarnos en 
+      <a href="mailto:sonaura2025@gmail.com" style="color: #3b82f6;">sonaura2025@gmail.com</a>
+    </p>
+
+
+    <div class="footer">
+      <strong>¡Disfruta del contenido!</strong><br>
+      El equipo de <span class="highlight">SONAURA</span><br>
+      &copy; 2025 SONAURA. Todos los derechos reservados.
+    </div>
+  </div>
+</body>
+</html>

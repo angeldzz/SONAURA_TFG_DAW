@@ -15,6 +15,7 @@ urlpatterns = [
         path('checkout/', CheckoutView.as_view(), name='checkout'),
         path('success/', SuccessView.as_view(), name='success'),
         path('cancel/', CancelView.as_view(), name='cancel'),
+        path('newsletter/suscribir/', newsletter_suscribir, name='newsletter_suscribir'),
         path('legal/aviso/', TemplateView.as_view(template_name="base/aviso_legal.html"), name='aviso_legal'),
         path('legal/privacidad/', TemplateView.as_view(template_name="base/privacidad.html"), name='privacidad'),
         path('legal/cookies/', TemplateView.as_view(template_name="base/cookies.html"), name='cookies'),

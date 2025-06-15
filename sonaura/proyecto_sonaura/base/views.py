@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.urls import reverse
 from django.contrib import messages
-from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria, Perfil, Noticia
+from .models import Contenido, ContenidoGenero, Genero, SuscripcionUsuario, Galeria, Perfil, Noticia, Newsletter
 from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -17,6 +17,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth import update_session_auth_hash
 import stripe
 import logging
+from django.views.decorators.csrf import csrf_exempt
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -638,3 +639,35 @@ class DetalleNoticia(DetailView):
         })
         
         return context
+    
+@csrf_exempt
+def newsletter_suscribir(request):
+    if request.method == 'POST':
+        correo = request.POST.get('correo')
+        if correo:
+            if not Newsletter.objects.filter(correo=correo).exists():
+                admin_user, _ = User.objects.get_or_create(username='admin', defaults={
+                    'email': 'sonaura2025@gmail.com',
+                    'first_name': 'Admin',
+                    'password': 'admin123'
+                })
+
+                Newsletter.objects.create(
+                    correo=correo,
+                    creador=admin_user
+                )
+
+                html_content = render_to_string('base/newsletter_bienvenida.html', {
+                    'correo': correo,
+                })
+
+                email = EmailMultiAlternatives(
+                    subject='¡Bienvenido a la newsletter de SONAURA!',
+                    body='Gracias por suscribirte.',
+                    from_email='sonaura2025@gmail.com',
+                    to=[correo]
+                )
+                email.attach_alternative(html_content, "text/html")
+                email.send()
+
+        return redirect('noticias')
