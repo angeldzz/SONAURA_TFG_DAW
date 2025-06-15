@@ -383,10 +383,10 @@ async function agregarElementoLista(id) {
         
         const data = await response.json();
         console.log('Elemento añadido:', data);
-        alert('¡Elemento añadido a la lista!');
+        abrirModal('Elemento añadido a su lista: ' + data["contenido"]["titulo"]);
     } catch (error) {
         console.error('Error:', error);
-        alert('Error al añadir el elemento', error);
+        abrirModal('Error al añadir el elemento', error);
     }
 }
 function Top_10 () {
@@ -504,4 +504,44 @@ function initPagination() {
 
     updatePage();
 }
+// Función para abrir el modal
+function abrirModal(mensaje = null) {
+    const modal = document.getElementById('modalAviso');
+    const mensajeElement = document.getElementById('mensajeModalAviso');
 
+    if (mensaje) {
+        mensajeElement.innerHTML = mensaje;
+    }
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+
+    // Focus en el botón de cerrar para accesibilidad
+    setTimeout(() => {
+        document.getElementById('cerrarModalAviso').focus();
+    }, 100);
+}
+
+// Función para cerrar el modal
+function cerrarModal() {
+    const modal = document.getElementById('modalAviso');
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restaurar scroll del body
+}
+
+// Cerrar modal al hacer clic en el overlay
+document.getElementById('modalAviso').addEventListener('click', function (e) {
+    if (e.target === this) {
+        cerrarModal();
+    }
+});
+
+// Cerrar modal con la tecla Escape
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('modalAviso');
+        if (modal.classList.contains('active')) {
+            cerrarModal();
+        }
+    }
+});

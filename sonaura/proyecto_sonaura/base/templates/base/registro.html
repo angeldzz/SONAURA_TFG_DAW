@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="{% static 'css/base/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base/registro.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -45,16 +47,17 @@
                 <p class="login-subtitle">Únete a la comunidad cinematográfica más completa</p>
 
                 <div class="social-login">
-    <button class="social-btn google">
-        <i class="fab fa-google"></i>
-    </button>
-    <button class="social-btn facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-    </button>
-    <a href="https://x.com/sonaura2025" target="_blank" class="social-btn twitter">
-        <i class="fa-brands fa-x-twitter"></i>
-    </a>
-</div>
+                    <button class="social-btn google" onclick="window.open('mailto:sonaura2025@gmail.com', '_blank')">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-btn facebook"
+                        onclick="window.open('https://www.instagram.com/sonaura.2025/', '_blank')">
+                        <i class="fa-brands fab fa-instagram"></i>
+                    </button>
+                    <button class="social-btn twitter" onclick="window.open('https://x.com/sonaura2025', '_blank')">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </button>
+                </div>
 
 
                 <div class="divider">
@@ -205,18 +208,15 @@
                 <div class="visual-overlay"></div>
                 <div class="floating-cards">
                     <div class="card-float" style="--delay: 0s">
-                        <img src="/media/posters/Chernobyl.jpg"
-                            alt="Película destacada">
+                        <img src="/media/posters/Chernobyl.jpg" alt="Película destacada">
                         <div class="card-glow"></div>
                     </div>
                     <div class="card-float" style="--delay: 0.2s">
-                        <img src="/media/posters/BetterCallSaul.jpg"
-                            alt="Película destacada">
+                        <img src="/media/posters/BetterCallSaul.jpg" alt="Película destacada">
                         <div class="card-glow"></div>
                     </div>
                     <div class="card-float" style="--delay: 0.4s">
-                        <img src="/media/posters/Arcane.jpg"
-                            alt="Película destacada">
+                        <img src="/media/posters/Arcane.jpg" alt="Película destacada">
                         <div class="card-glow"></div>
                     </div>
                 </div>

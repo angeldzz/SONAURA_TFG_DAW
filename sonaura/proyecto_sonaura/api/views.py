@@ -22,7 +22,7 @@ from django.db.models import Avg
 from rest_framework.pagination import PageNumberPagination
 
 class ListaPagination(PageNumberPagination):
-    page_size = 5  # o el número que prefieras
+    page_size = 6  # o el número que prefieras
 
 # Create your views here.
 

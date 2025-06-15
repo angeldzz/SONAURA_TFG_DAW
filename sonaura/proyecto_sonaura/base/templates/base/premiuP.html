@@ -99,21 +99,6 @@
     <section class="my-list-section">
         <div class="section-header">
             <h2 class="section-title">Mi Lista Personal</h2>
-            <div class="list-controls">
-                <div class="sort-options">
-                    <select id="sortList">
-                        <option value="added">Añadido recientemente</option>
-                        <option value="title">Título A-Z</option>
-                        <option value="year">Año</option>
-                        <option value="rating">Valoración</option>
-                        <option value="duration">Duración</option>
-                    </select>
-                </div>
-                <div class="view-options">
-                    <button class="view-option active" data-view="grid"><i class="fas fa-th"></i></button>
-                    <button class="view-option" data-view="list"><i class="fas fa-list"></i></button>
-                </div>
-            </div>
         </div>
 
         <div class="my-list-container">
@@ -226,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentPage = 1;
     let hasNext = false;
     let hasPrev = false;
+    let shownIds = new Set();
 
     cargarMiListaPersonal(currentPage);
 
@@ -237,7 +223,20 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            renderMiListaPersonal(data.results || []);
+            // Filtrar para que solo quede un contenido por id_contenido en TODAS las páginas vistas
+            const unique = {};
+            (data.results || []).forEach(item => {
+                if (
+                    item.contenido &&
+                    !unique[item.contenido.id_contenido] &&
+                    !shownIds.has(item.contenido.id_contenido)
+                ) {
+                    unique[item.contenido.id_contenido] = item;
+                    shownIds.add(item.contenido.id_contenido);
+                }
+            });
+            const filteredResults = Object.values(unique);
+            renderMiListaPersonal(filteredResults);
             hasNext = !!data.next;
             hasPrev = !!data.previous;
             document.getElementById('nextPageBtn').style.display = hasNext ? 'inline-block' : 'none';
@@ -312,6 +311,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('prevPageBtn').addEventListener('click', function() {
         if (hasPrev && currentPage > 1) {
             currentPage -= 1;
+            if (currentPage === 1) shownIds.clear();
             cargarMiListaPersonal(currentPage);
             window.scrollTo({ top: document.getElementById('myListGrid').offsetTop - 100, behavior: 'smooth' });
         }

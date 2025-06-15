@@ -42,13 +42,14 @@
                 <p class="login-subtitle">Accede a tu cuenta para disfrutar de todo el contenido</p>
 
                 <div class="social-login">
-                    <button class="social-btn google">
+                    <button class="social-btn google" onclick="window.open('mailto:sonaura2025@gmail.com', '_blank')">
                         <i class="fab fa-google"></i>
                     </button>
-                    <button class="social-btn facebook">
-                        <i class="fa-brands fa-facebook-f"></i>
+                    <button class="social-btn facebook"
+                        onclick="window.open('https://www.instagram.com/sonaura.2025/', '_blank')">
+                        <i class="fa-brands fab fa-instagram"></i>
                     </button>
-                    <button class="social-btn twitter">
+                    <button class="social-btn twitter" onclick="window.open('https://x.com/sonaura2025', '_blank')">
                         <i class="fa-brands fa-x-twitter"></i>
                     </button>
                 </div>
@@ -58,13 +59,13 @@
                 </div>
 
                 <form class="login-form" method="post" class="needs-validation" novalidate>
-                        {% csrf_token %}
-                        {% if form.errors %}
-                        <div class="error-message">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span>Nombre de usuario o contraseña incorrectos</span>
-                        </div>
-                        {% endif %}
+                    {% csrf_token %}
+                    {% if form.errors %}
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>Nombre de usuario o contraseña incorrectos</span>
+                    </div>
+                    {% endif %}
                     <div class="form-group">
                         <div class="input-icon">
                             <i class="far fa-envelope"></i>
@@ -103,7 +104,8 @@
                 </form>
 
                 <div class="register-link">
-                    <p>¿No tienes una cuenta? <a href="{% url 'crear_usuario' %}" class="register-btn">Regístrate</a></p>
+                    <p>¿No tienes una cuenta? <a href="{% url 'crear_usuario' %}" class="register-btn">Regístrate</a>
+                    </p>
                 </div>
             </div>
             <div class="login-visual">
@@ -135,18 +137,15 @@
                 <div class="visual-overlay"></div>
                 <div class="floating-cards">
                     <div class="card-float" style="--delay: 0s">
-                        <img src="/media/posters/Deadpool y Wolverine (2024).jpg"
-                            alt="Película destacada">
+                        <img src="/media/posters/Deadpool y Wolverine (2024).jpg" alt="Película destacada">
                         <div class="card-glow"></div>
                     </div>
                     <div class="card-float" style="--delay: 0.2s">
-                        <img src="/media/posters/El Padrino.jpg"
-                            alt="Película destacada">
+                        <img src="/media/posters/El Padrino.jpg" alt="Película destacada">
                         <div class="card-glow"></div>
                     </div>
                     <div class="card-float" style="--delay: 0.4s">
-                        <img src="/media/posters/GameOfThrones.jpg"
-                            alt="Película destacada">
+                        <img src="/media/posters/GameOfThrones.jpg" alt="Película destacada">
                         <div class="card-glow"></div>
                     </div>
                 </div>
@@ -163,4 +162,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             });
 
-            cargarActividad(1);
+            let shownIds = new Set();
 
             function cargarActividad(page) {
                 fetch(`/api/lista-personalizada/?page=${page}`, {
@@ -134,14 +134,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    const uniqueItems = [];
+                    const items = Array.isArray(data.results) ? data.results : [];
+                    items.forEach(item => {
+                        if (
+                            item.contenido &&
+                            item.contenido.id_contenido &&
+                            !shownIds.has(item.contenido.id_contenido)
+                        ) {
+                            uniqueItems.push(item);
+                            shownIds.add(item.contenido.id_contenido);
+                        }
+                    });
+
                     const activityList = document.getElementById('activity-list');
                     activityList.innerHTML = '';
 
-                    const items = Array.isArray(data.results) ? data.results : [];
-                    if (items.length === 0) {
+                    if (uniqueItems.length === 0) {
                         activityList.innerHTML = '<p>No hay actividad reciente.</p>';
                     } else {
-                        items.forEach(item => {
+                        uniqueItems.forEach(item => {
                             if (item.contenido) {
                                 const card = document.createElement('div');
                                 card.className = 'activity-item';
@@ -169,7 +181,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data.previous) {
                         const prevBtn = document.createElement('button');
                         prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i> Anterior';
-                        prevBtn.onclick = () => cargarActividad(page - 1);
+                        prevBtn.onclick = () => {
+                            if (page - 1 === 1) shownIds.clear();
+                            cargarActividad(page - 1);
+                        };
                         pagination.appendChild(prevBtn);
                     }
                     if (data.next) {
@@ -180,6 +195,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             }
+
+            // Al cargar la primera página, limpia el set
+            function cargarPrimeraActividad() {
+                shownIds.clear();
+                cargarActividad(1);
+            }
+
+            cargarPrimeraActividad();
         });
 
         // Funciones para el modal de avatar
