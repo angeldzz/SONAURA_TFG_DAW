@@ -1766,6 +1766,7 @@
   
   .news-meta {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     color: var(--gray-400);
     font-size: 0.75rem;
@@ -1853,7 +1854,7 @@
   
   @media (max-width: 767px) {
     .news-secondary {
-      margin-top: 1.5rem;
+      margin-top: 0;
     }
   }
   
@@ -1949,22 +1950,50 @@
       display: none;
     }
   }
-
-  /* Estilos actualizados para la sección de noticias */
-  .news-container-inicio {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 1100px;
+  
+  /* Newsletter */
+  .newsletter {
+    padding: 3rem 0;
+    background-color: var(--dark-surface-transparente);
+    margin: 50px auto;
+    width: 800px;
+    border-radius: 20px;
+  }
+  
+  .newsletter-content {
+    text-align: center;
+    max-width: 600px;
     margin: 0 auto;
   }
   
-  .news-main {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  .newsletter-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
   }
   
+  .newsletter-content p {
+    color: var(--gray-300);
+    margin-bottom: 2rem;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-700);
+    background-color: var(--dark-surface-2);
+    color: var(--white);
+  }
+  
+  /* Estilos para la sección de noticias al estilo prin2 */
   .news-featured {
     background-color: var(--dark-surface-2);
     border-radius: var(--radius-lg);
@@ -2015,6 +2044,7 @@
   
   .news-meta {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     color: var(--gray-400);
     font-size: 0.75rem;
@@ -2076,8 +2106,27 @@
   
   /* Media queries para la sección de noticias */
   @media (min-width: 768px) {
-    .news-container-inicio {
+    .news-grid {
       grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  
+    .news-featured {
+      grid-column: span 1;
+    }
+  
+    .news-secondary {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .news-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+  
+    .news-featured {
+      grid-column: span 1;
     }
   }
   
@@ -2087,329 +2136,187 @@
     }
   }
   
-  .header-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 6px;
-    vertical-align: middle;
-}
-/* Responsive styles for screens smaller than 520px */
-@media (max-width: 520px) {
-  .section-header {
-    display: block; /* Apilar título y tabs verticalmente */
-    text-align: center; /* Centrar texto */
-    margin-bottom: 1.5rem; /* Reducir margen para ahorrar espacio */
+  @media (min-width: 640px) {
+    .news-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .featured-news {
+      grid-column: span 2;
+    }
+  
+    .premium-features {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
   }
-
-  .section-title {
-    margin-bottom: 1rem; /* Espacio entre título y tabs */
+  @media (min-width: 768px) {
+    .hero-text h1 {
+      font-size: 4rem;
+    }
+  
+    .premium-card {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .footer-content {
+      grid-template-columns: 1fr 2fr;
+    }
   }
-
-  .title-line {
-    margin: 0 auto; /* Centrar la línea */
-    width: 40px; /* Reducir ancho para móviles */
+  
+  @media (min-width: 1024px) {
+    .news-grid {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  
+    .featured-news {
+      grid-column: span 1;
+    }
   }
-
-  .section-tabs {
-    display: flex;
-    flex-wrap: wrap; /* Permitir que los botones se envuelvan */
-    justify-content: center; /* Centrar los botones */
-    margin: 0 auto; /* Centrar el contenedor */
-    width: 100%; /* Usar todo el ancho disponible */
-    max-width: 300px; /* Limitar ancho máximo */
-    padding: 0.2rem; /* Reducir padding */
-    gap: 0.5rem; /* Espacio entre botones */
-    background-color: var(--dark-surface); /* Restaurar fondo si es necesario */
-    border-radius: var(--radius-md); /* Ajustar radio */
+  
+  @media (max-width: 768px) {
+    .nav-container-inicio {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--dark);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(-100%);
+      transition: var(--transition);
+      z-index: 999;
+    }
+  
+    .menu-open .nav-container-inicio {
+      transform: translateX(0);
+    }
+  
+    .main-nav {
+      flex-direction: column;
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+  
+    .nav-link {
+      font-size: 1.25rem;
+      padding: 1rem;
+      text-align: center;
+    }
+  
+    .mobile-toggle {
+      display: block;
+      z-index: 1000;
+    }
+  
+    .footer-brand {
+      display: none;
+    }
+  
+    .hero-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .hero-visual {
+      display: none;
+    }
   }
-
-  .tab {
-    padding: 0.4rem 0.8rem; /* Reducir padding */
-    font-size: 0.85rem; /* Fuente más pequeña */
-    flex: 1; /* Botones se expanden equitativamente */
-    min-width: 80px; /* Ancho mínimo para evitar que se encojan demasiado */
-    text-align: center; /* Centrar texto */
-    border-radius: var(--radius-sm); /* Radio más pequeño */
-  }
-
-  .tab.active {
-    background-color: var(--primary);
-    color: var(--white);
-  }
-}
-
-/* Ajustes para pantallas muy pequeñas */
-@media (max-width: 320px) {
-  .section-tabs {
-    max-width: 250px; /* Aún más compacto */
-    gap: 0.3rem; /* Menos espacio entre botones */
-  }
-
-  .tab {
-    padding: 0.3rem 0.6rem; /* Más compacto */
-    font-size: 0.75rem; /* Fuente más pequeña */
-    min-width: 70px; /* Ancho mínimo reducido */
-  }
-}
-/* Responsive styles for screens smaller than 471px */
-@media (max-width: 471px) {
-  /* Top 5 Section */
-  .media-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Smaller card width for mobile */
-    gap: 1rem; /* Reduce gap between cards */
-  }
-
-  .card-image {
-    aspect-ratio: 2 / 3; /* Maintain aspect ratio */
-    width: 100%; /* Ensure image takes full container width */
-    height: auto; /* Allow height to adjust naturally */
-  }
-
-  .media-card {
-    border-radius: var(--radius-sm); /* Slightly smaller radius for mobile */
-  }
-
-  .card-content h3 {
-    font-size: 0.875rem; /* Smaller title font size */
-  }
-
-  .card-meta {
-    font-size: 0.7rem; /* Smaller meta text */
-    gap: 0.5rem; /* Reduce gap between meta items */
-  }
-
-  .card-rating-inicio .rating-circle {
-    width: 30px; /* Smaller rating circle */
-    height: 30px;
-    font-size: 0.75rem; /* Smaller rating text */
-  }
-
-  .card-badge-inicio {
-    font-size: 0.65rem; /* Smaller badge text */
-    padding: 0.2rem 0.5rem; /* Adjust badge padding */
-  }
-
-  .card-action-btn-inicio {
-    width: 32px; /* Smaller action buttons */
-    height: 32px;
-    font-size: 0.9rem; /* Smaller icon size */
-  }
-
-  /* Newsletter Section */
-  .newsletter {
-    width: 100%; /* Remove fixed width for mobile */
-    margin: 2rem 0; /* Adjust margin */
-    padding: 2rem 1rem; /* Reduce padding */
-    border-radius: var(--radius-md); /* Slightly smaller radius */
-  }
-
-  .newsletter-content h2 {
-    font-size: 1.5rem; /* Smaller heading */
-  }
-
-  .newsletter-content p {
-    font-size: 0.875rem; /* Smaller paragraph text */
-    margin-bottom: 1.5rem;
-  }
-
-  .newsletter-form {
-    flex-direction: column; /* Stack input and button vertically */
-    gap: 0.75rem; /* Increase gap for better spacing */
-  }
-
-  .newsletter-form input {
-    padding: 0.5rem; /* Reduce input padding */
-    font-size: 0.875rem; /* Smaller input text */
-  }
-
-  .newsletter-form .btn-primary {
-    padding: 0.75rem; /* Adjust button padding */
-    font-size: 0.875rem; /* Smaller button text */
-  }
-  .section-tabs{
-    margin-left: 20px;
-  }
+  
+  /* Grid para noticias de inicio */
+.news-grid-inicio {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 2rem;
 }
 
-/* Responsive styles for screens smaller than 342px */
-@media (max-width: 344px) {
-  /* Top 5 Section */
-  .media-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Even smaller card width */
-    gap: 0.75rem; /* Tighter gap for very small screens */
-  }
-
-  .card-image {
-    aspect-ratio: 2 / 3; /* Maintain aspect ratio */
-    width: 100%; /* Full container width */
-    height: auto; /* Adjust height dynamically */
-  }
-
-  .media-card {
-    border-radius: var(--radius-sm); /* Keep smaller radius */
-  }
-
-  .card-content h3 {
-    font-size: 0.75rem; /* Smaller title font size */
-    white-space: normal; /* Allow text wrapping to prevent overflow */
-    line-height: 1.2; /* Tighter line height */
-  }
-
-  .card-meta {
-    font-size: 0.65rem; /* Even smaller meta text */
-    gap: 0.3rem; /* Tighter gap */
-    flex-direction: column; /* Stack meta items vertically */
-  }
-
-  .card-rating-inicio .rating-circle {
-    width: 26px; /* Smaller rating circle */
-    height: 26px;
-    font-size: 0.65rem; /* Smaller rating text */
-  }
-
-  .card-badge-inicio {
-    font-size: 0.6rem; /* Smaller badge text */
-    padding: 0.15rem 0.4rem; /* Tighter badge padding */
-  }
-
-  .card-action-btn-inicio {
-    width: 28px; /* Smaller action buttons */
-    height: 28px;
-    font-size: 0.8rem; /* Smaller icon size */
-  }
-
-  /* Newsletter Section */
-  .newsletter {
-    width: 100%; /* Ensure fluid width */
-    margin: 1.5rem 0; /* Reduce margin */
-    padding: 1.5rem 0.75rem; /* Tighter padding */
-    border-radius: var(--radius-sm); /* Smaller radius */
-  }
-
-  .newsletter-content h2 {
-    font-size: 1.25rem; /* Smaller heading */
-  }
-
-  .newsletter-content p {
-    font-size: 0.75rem; /* Smaller paragraph text */
-    margin-bottom: 1rem;
-  }
-
-  .newsletter-form {
-    flex-direction: column; /* Keep vertical stacking */
-    gap: 0.5rem; /* Tighter gap */
-  }
-
-  .newsletter-form input {
-    padding: 0.4rem; /* Tighter input padding */
-    font-size: 0.75rem; /* Smaller input text */
-  }
-
-  .newsletter-form .btn-primary {
-    padding: 0.6rem; /* Tighter button padding */
-    font-size: 0.75rem; /* Smaller button text */
-  }
+.news-left-inicio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-/* Responsive styles for premium-section on screens smaller than 400px */
-@media (max-width: 400px) {
-  .premium-section {
-    padding: 3rem 0; /* Reduce padding for smaller screens */
-  }
 
-  .premium-card {
-    padding: 1.5rem; /* Tighter padding to save space */
-    border-radius: var(--radius-md); /* Slightly smaller radius */
-    gap: 1.5rem; /* Reduce gap between content and image */
-  }
-
-  .premium-content h2 {
-    font-size: 1.5rem; /* Smaller heading for readability */
-    margin-bottom: 0.75rem;
-  }
-
-  .premium-content p {
-    font-size: 0.875rem; /* Smaller paragraph text */
-    margin-bottom: 1.5rem;
-  }
-
-  .premium-badge {
-    font-size: 0.65rem; /* Smaller badge text */
-    padding: 0.2rem 0.75rem; /* Adjust padding */
-  }
-
-  .premium-features {
-    gap: 1rem; /* Tighter gap between feature items */
-  }
-
-  .premium-feature {
-    gap: 0.75rem; /* Reduce gap between icon and text */
-  }
-
-  .feature-icon {
-    width: 32px; /* Smaller icon size */
-    height: 32px;
-    font-size: 1rem; /* Smaller icon font */
-  }
-
-  .feature-text h4 {
-    font-size: 1rem; /* Smaller feature title */
-  }
-
-  .feature-text p {
-    font-size: 0.75rem; /* Smaller feature description */
-  }
-
-  .btn-premium {
-    padding: 0.75rem 1.5rem; /* Smaller button */
-    font-size: 0.875rem; /* Smaller button text */
-    border-radius: var(--radius-md); /* Adjust radius */
-  }
-
-  .premium-image {
-    height: 200px; /* Reduce image height */
-  }
-
-  .glow-effect {
-    background: radial-gradient(circle at center, rgba(157, 78, 221, 0.2) 0%, transparent 70%); /* Softer glow */
-  }
+.news-featured-inicio {
+  background: var(--dark-surface-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.15);
 }
-/* Responsive styles for newsletter on screens between 500px and 800px */
-@media (min-width: 500px) and (max-width: 800px) {
-  .newsletter {
-    width: 90%; /* Scale to viewport width with some margin */
-    max-width: 600px; /* Cap width to prevent it from being too wide */
-    margin: 2rem auto; /* Reduce margin for better fit */
-    padding: 2.5rem 1rem; /* Slightly tighter padding */
-    border-radius: var(--radius-md); /* Consistent radius, slightly smaller */
-  }
 
-  .newsletter-content {
-    max-width: 90%; /* Ensure content stays within container */
-  }
+.news-featured-inicio .news-image {
+  height: 140px;
+  overflow: hidden;
+}
 
-  .newsletter-content h2 {
-    font-size: 1.75rem; /* Slightly smaller heading for balance */
-  }
+.news-featured-inicio .news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-  .newsletter-content p {
-    font-size: 0.875rem; /* Readable paragraph size */
-    margin-bottom: 1.5rem; /* Adjust spacing */
-  }
+.news-featured-inicio .news-content {
+  padding: 1rem 1.2rem 1.2rem 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .newsletter-form {
-    max-width: 100%; /* Form fills content area */
-    gap: 0.5rem; /* Maintain gap for form elements */
-  }
+.news-secondary-inicio {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
-  .newsletter-form input {
-    padding: 0.75rem; /* Comfortable input padding */
-    font-size: 0.875rem; /* Readable input text */
-  }
+.news-card-inicio {
+  background: var(--dark-surface-2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+}
 
-  .newsletter-form .btn-primary {
-    padding: 0.75rem 1.5rem; /* Balanced button size */
-    font-size: 0.875rem; /* Readable button text */
+.news-card-inicio .news-image {
+  height: 100px;
+  overflow: hidden;
+}
+
+.news-card-inicio .news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-card-inicio .news-content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+  .news-grid-inicio {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .news-left-inicio {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }

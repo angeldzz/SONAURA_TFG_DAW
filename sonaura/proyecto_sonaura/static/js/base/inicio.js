@@ -251,3 +251,81 @@ document.addEventListener('keydown', function (e) {
         }
     }
 });
+function renderNoticias(noticias) {
+    const container = document.getElementById('news-dynamic-container');
+    if (!container) return;
+
+    // Tomamos las dos primeras como destacadas, el resto secundarias
+    const [featured1, featured2, ...secondary] = noticias;
+
+    let html = `
+      <div class="news-left-inicio">
+        ${featured1 ? `
+          <div class="news-featured-inicio">
+            <div class="news-image">
+              <img src="${featured1.imagen_principal || '/static/img/default_news.jpg'}" alt="${featured1.alt_imagen_principal || featured1.titulo}">
+            </div>
+            <div class="news-content">
+              <h3>${featured1.titulo}</h3>
+              <div class="news-meta">
+                <span class="news-date"><i class="far fa-calendar-alt"></i> ${new Date(featured1.fecha_publicacion).toLocaleDateString('es-ES')}</span>
+                <span class="news-author"><i class="far fa-user"></i> ${featured1.creador}</span>
+              </div>
+              <p>${featured1.contenido.substring(0, 100)}...</p>
+              <a href="/noticia/${featured1.id_noticia}/" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </div>
+        ` : ''}
+        ${featured2 ? `
+          <div class="news-featured-inicio">
+            <div class="news-image">
+              <img src="${featured2.imagen_principal || '/static/img/default_news.jpg'}" alt="${featured2.alt_imagen_principal || featured2.titulo}">
+            </div>
+            <div class="news-content">
+              <h3>${featured2.titulo}</h3>
+              <div class="news-meta">
+                <span class="news-date"><i class="far fa-calendar-alt"></i> ${new Date(featured2.fecha_publicacion).toLocaleDateString('es-ES')}</span>
+                <span class="news-author"><i class="far fa-user"></i> ${featured2.creador}</span>
+              </div>
+              <p>${featured2.contenido.substring(0, 100)}...</p>
+              <a href="/noticia/${featured2.id_noticia}/" class="read-more">Leer artículo completo <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </div>
+        ` : ''}
+      </div>
+      <div class="news-secondary-inicio">
+        ${secondary.slice(0, 3).map(noticia => `
+          <div class="news-card-inicio">
+            <div class="news-image">
+              <img src="${noticia.imagen_principal || '/static/img/default_news.jpg'}" alt="${noticia.alt_imagen_principal || noticia.titulo}">
+            </div>
+            <div class="news-content">
+              <h3>${noticia.titulo}</h3>
+              <div class="news-meta">
+                <span class="news-date"><i class="far fa-calendar-alt"></i> ${new Date(noticia.fecha_publicacion).toLocaleDateString('es-ES')}</span>
+              </div>
+              <p>${noticia.contenido.substring(0, 80)}...</p>
+              <a href="/noticia/${noticia.id_noticia}/" class="read-more">Leer más <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    container.innerHTML = html;
+}
+
+function fetchNoticias() {
+    fetch('http://127.0.0.1:8000/api/noticias/?limit=4')
+        .then(response => response.json())
+        .then(data => {
+            const noticias = data.results || data;
+            renderNoticias(noticias);
+        })
+        .catch(error => {
+            console.error('Error al cargar las noticias:', error);
+        });
+}
+
+// Llama a la función al cargar la página
+document.addEventListener('DOMContentLoaded', fetchNoticias);
