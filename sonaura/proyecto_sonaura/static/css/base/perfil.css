@@ -1595,3 +1595,23 @@ input:checked + .toggle-slider:before {
     margin-right: auto !important;
   }
 }
+
+/* Menú superior más estrecho en tablet */
+@media (min-width: 601px) and (max-width: 1100px) {
+  .profile-sidebar {
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+  }
+  .profile-nav {
+    max-width: 400px;
+    margin: 0 auto !important;
+    background: rgba(31, 17, 71, 0.7);
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.08);
+    padding: 0.5rem 0.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    justify-content: center !important;
+  }
+}
