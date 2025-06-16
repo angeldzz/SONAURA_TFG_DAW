@@ -187,7 +187,15 @@
                     </div>
                 </div>
 
-                <a href="/premium" class="btn-premium">Suscríbete ahora</a>
+                <a href="{% if not user.is_authenticated %}crear-usuario/{% else %}/premium{% endif %}" class="btn-premium">
+                    {% if not user.is_authenticated %}
+                        Regístrate para ser premium
+                    {% elif es_premium %}
+                        Ya eres premium
+                    {% else %}
+                        Suscríbete ahora
+                    {% endif %}
+                </a>
             </div>
 
             <div class="premium-image">

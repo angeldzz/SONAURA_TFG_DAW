@@ -25,6 +25,21 @@ logger = logging.getLogger(__name__)
 class Inicio(TemplateView):
     template_name = "base/inicio.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        es_premium = False
+
+        if self.request.user.is_authenticated:
+            suscripcion = SuscripcionUsuario.objects.filter(
+                id_usuario=self.request.user,
+                es_premium=True,
+                fecha_fin_suscripcion__gte=timezone.now().date()
+            ).exists()
+            es_premium = suscripcion
+
+        context['es_premium'] = es_premium
+        return context
+
 class CrearUsuarioView(View):
     template_name = 'base/registro.html'
 
@@ -70,8 +85,24 @@ class CrearUsuarioView(View):
             messages.error(request, f"Error al crear el usuario: {str(e)}")
             return render(request, self.template_name, context=contexto)
 
+
 class Noticias(TemplateView):
     template_name = "base/noticias.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        es_premium = False
+
+        if self.request.user.is_authenticated:
+            suscripcion = SuscripcionUsuario.objects.filter(
+                id_usuario=self.request.user,
+                es_premium=True,
+                fecha_fin_suscripcion__gte=timezone.now().date()
+            ).exists()
+            es_premium = suscripcion
+
+        context['es_premium'] = es_premium
+        return context
 
 class Peliculas(TemplateView):
     template_name = "base/peliculas.html"
