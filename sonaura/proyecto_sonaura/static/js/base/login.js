@@ -147,5 +147,4 @@ function mostrarError() {
     }
     errorDiv.querySelector("span").textContent = msg;
 }
-  // --- FIN: LOGIN CON TOKEN JWT ---
 });
