@@ -72,17 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <div class="comment-date">${fecha}</div>
                             <p>${comentario.comentario}</p>
-                            <div class="comment-actions">
-                                <button data-id="${comentario.id_comentario}" class="like-comment">
-                                    <i class="far fa-thumbs-up"></i> <span>${comentario.likes}</span>
-                                </button>
-                                <button data-id="${comentario.id_comentario}" class="dislike-comment">
-                                    <i class="far fa-thumbs-down"></i> <span>${comentario.dislikes}</span>
-                                </button>
-                                <button data-id="${comentario.id_comentario}" class="reply-comment">
-                                    <i class="far fa-comment"></i> Responder
-                                </button>
-                            </div>
                             <div class="reply-form" style="display: none; margin-top: 1rem;">
                                 <textarea placeholder="Escribe tu respuesta aquí..." style="width: 100%; height: 80px; padding: 0.5rem; border-radius: 4px;"></textarea>
                                 <button class="btn-primary" style="margin-top: 0.5rem;">Enviar respuesta</button>
